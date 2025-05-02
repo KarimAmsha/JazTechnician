@@ -2,9 +2,9 @@ PODS:
   - Alamofire (5.10.2)
   - EditableTextInsetsTextFieldV2 (0.0.3):
     - TapAdditionsKitV2
-  - goSellSDK (2.3.44):
-    - goSellSDK/Core (= 2.3.44)
-  - goSellSDK/Core (2.3.44):
+  - goSellSDK (2.3.46):
+    - goSellSDK/Core (= 2.3.46)
+  - goSellSDK/Core (2.3.46):
     - EditableTextInsetsTextFieldV2
     - SwiftyRSA
     - TapAdditionsKitV2
@@ -68,7 +68,7 @@ DEPENDENCIES:
   - TamaraSDK
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
     - Alamofire
     - EditableTextInsetsTextFieldV2
     - goSellSDK
@@ -93,7 +93,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 7193b3b92c74a07f85569e1a6c4f4237291e7496
   EditableTextInsetsTextFieldV2: 4734d3376d6b1ebe95afc824da5caa1c37b228a3
-  goSellSDK: 0f96ab5f455cea0ceb93054a906d6d1ddef7e859
+  goSellSDK: 8b174b8a9f3fe57a940f73608279667f8a58a7d0
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   SwiftyRSA: 8c6dd1ea7db1b8dc4fb517a202f88bb1354bc2c6
   TamaraSDK: dd5935511c1754aacd6bb0392262233ccefe5318
@@ -112,6 +112,6 @@ SPEC CHECKSUMS:
   TapSwiftFixesV2: ea726f752b6259d9e44624039fd6bad94b2a8633
   TapVisualEffectViewV2: bc2b3b718acc3c1298ce7d21985633941d986345
 
-PODFILE CHECKSUM: 6278f409aa0e9efd3e2d9e117e1a1591d951915b
+PODFILE CHECKSUM: 7c0a829bf4c6bff9047d2012511f0480ab4f97fb
 
 COCOAPODS: 1.16.2
