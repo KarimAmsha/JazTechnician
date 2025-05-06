@@ -113,11 +113,12 @@ struct UpcomingRemindersView: View {
                 .isOpaque(true)
                 .useKeyboardSafeArea(true)
         }
-        .onChange(of: viewModel.errorMessage) { errorMessage in
-            if let errorMessage = errorMessage {
-                appRouter.togglePopupError(.alertError("", errorMessage))
-            }
-        }
+        .overlay(
+            MessageAlertObserverView(
+                message: $viewModel.errorMessage,
+                alertType: .constant(.error)
+            )
+        )
         .onAppear {
             loadData()
         }

@@ -91,7 +91,7 @@ struct SMSVerificationView: View {
 
         }
         .padding(24)
-        .dismissKeyboard()
+        .dismissKeyboardOnTap()
         .navigationBarBackButtonHidden()
         .background(Color.background())
         .toolbar {
@@ -110,11 +110,12 @@ struct SMSVerificationView: View {
                 }
             }
         }
-        .onChange(of: viewModel.errorMessage) { errorMessage in
-            if let errorMessage = errorMessage {
-                appRouter.togglePopupError(.alertError(LocalizedStringKey.error, errorMessage))
-            }
-        }
+        .overlay(
+            MessageAlertObserverView(
+                message: $viewModel.errorMessage,
+                alertType: .constant(.error)
+            )
+        )
     }
     
     private func formattedTime(minutes: Int, seconds: Int) -> String {

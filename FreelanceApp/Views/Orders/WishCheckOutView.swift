@@ -165,16 +165,18 @@ struct WishCheckOutView: View {
                 .isOpaque(true)
                 .useKeyboardSafeArea(true)
         }
-        .onChange(of: orderViewModel.errorMessage) { errorMessage in
-            if let errorMessage = errorMessage {
-                appRouter.togglePopupError(.alertError("", errorMessage))
-            }
-        }
-        .onChange(of: cartViewModel.errorMessage) { errorMessage in
-            if let errorMessage = errorMessage {
-                appRouter.togglePopupError(.alertError("", errorMessage))
-            }
-        }
+        .overlay(
+            MessageAlertObserverView(
+                message: $orderViewModel.errorMessage,
+                alertType: .constant(.error)
+            )
+        )
+        .overlay(
+            MessageAlertObserverView(
+                message: $cartViewModel.errorMessage,
+                alertType: .constant(.error)
+            )
+        )
         .onChange(of: locationManager2.location) { value in
             if let location = locationManager2.location {
                 print("New Location: \(location)")

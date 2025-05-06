@@ -122,11 +122,12 @@ struct MyWishView: View {
                 }
             }
         }
-        .onChange(of: wishesViewModel.errorMessage) { errorMessage in
-            if let errorMessage = errorMessage {
-                appRouter.togglePopupError(.alertError("", errorMessage))
-            }
-        }
+        .overlay(
+            MessageAlertObserverView(
+                message: $wishesViewModel.errorMessage,
+                alertType: .constant(.error)
+            )
+        )
         .onAppear {
             laodWishData()
         }

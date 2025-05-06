@@ -195,15 +195,19 @@ struct MainView: View {
                     .useKeyboardSafeArea(true)
             }
             .popup(isPresented: Binding<Bool>(
-                get: { appRouter.activePopupError != nil },
-                set: { _ in appRouter.togglePopupError(nil) })
+                get: { appRouter.appPopup != nil },
+                set: { _ in appRouter.toggleAppPopup(nil) })
             ) {
-               if let popup = appRouter.activePopupError {
-                   switch popup {
-                   case .alertError(let title, let message):
-                       GeneralErrorToastView(title: title, message: message)
-                   }
-               }
+                if let popup = appRouter.appPopup {
+                    switch popup {
+                    case .alertError(let title, let message):
+                        GeneralAlertToastView(title: title, message: message, type: .error)
+                    case .alertSuccess(let title, let message):
+                        GeneralAlertToastView(title: title, message: message, type: .success)
+                    case .alertInfo(let title, let message):
+                        GeneralAlertToastView(title: title, message: message, type: .info)
+                    }
+                }
             } customize: {
                 $0
                     .type(.toast)

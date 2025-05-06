@@ -8,14 +8,21 @@
 import SwiftUI
 import goSellSDK
 
+enum PaymentStatus: Equatable {
+    case success
+    case failed(String)
+    case cancelled
+}
+
 class PaymentViewModel: NSObject, ObservableObject {
     @Published var myAmount: Decimal = 100.0
     @Published var transactionMode: TransactionMode = .purchase
     let settings = UserSettings.shared
-    @Published var paymentSuccess: Bool = false
-    @Published var errorMessage: String = ""
+//    @Published var paymentSuccess: Bool = false
+    @Published var errorMessage: String?
     var applePay = false
     var applePayUI = false
+    @Published var paymentStatus: PaymentStatus?
 
     var applePayMerchantID: String
     {
@@ -48,21 +55,6 @@ class PaymentViewModel: NSObject, ObservableObject {
             myAmount = decimalAmount
         } else {
             print("Invalid amount format")
-        }
-    }
-    
-    func updatePaymentSuccess(paymentSuccess: Bool, paymentError: String) {
-        DispatchQueue.main.async {
-            self.paymentSuccess = paymentSuccess
-            if !paymentError.isEmpty {
-                self.errorMessage = paymentError.localized
-            }
-        }
-    }
-
-    func notifyPaymentStatus() {
-        DispatchQueue.main.async {
-            self.updatePaymentSuccess(paymentSuccess: self.paymentSuccess, paymentError: self.errorMessage)
         }
     }
 }
@@ -111,30 +103,20 @@ extension PaymentViewModel: SessionDataSource {
 extension PaymentViewModel: SessionDelegate {
     func paymentSucceed(_ charge: goSellSDK.Charge, on session: SessionProtocol) {
         // Handle successful payment
-        handlePaymentSuccess()
+        paymentStatus = .success
+//        handlePaymentSuccess()
     }
 
     func paymentFailed(with charge: goSellSDK.Charge?, error: TapSDKError?, on session: SessionProtocol) {
         // Handle payment failure
-        handlePaymentError(error: error)
+        let message = error?.localizedDescription ?? "حدث خطأ في الدفع"
+        print("Payment Failed: \(message)")
+        paymentStatus = .failed(message)
     }
 
     func sessionCancelled(_ session: SessionProtocol) {
         // Handle payment cancellation
         print("Payment Cancelled")
-    }
-    
-    func handlePaymentSuccess() {
-        print("Payment Succeed")
-        self.paymentSuccess = true
-        self.errorMessage = ""
-        notifyPaymentStatus()
-    }
-
-    func handlePaymentError(error: TapSDKError?) {
-        self.paymentSuccess = false
-        self.errorMessage = error?.localizedDescription ?? ""
-        print("Payment Failed: \(error?.localizedDescription ?? "")")
-        notifyPaymentStatus()
+        paymentStatus = .cancelled
     }
 }

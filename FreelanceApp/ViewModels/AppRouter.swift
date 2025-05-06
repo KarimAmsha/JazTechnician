@@ -54,13 +54,15 @@ final class AppRouter: ObservableObject {
         case inputAlert(AlertModelWithInput)
     }
 
-    public enum GeneralError: Hashable {
+    public enum AppPopup: Hashable {
         case alertError(String, String)
+        case alertSuccess(String, String)
+        case alertInfo(String, String)
     }
 
     @Published var navPath = NavigationPath()
     @Published var activePopup: Popup? = nil
-    @Published var activePopupError: GeneralError? = nil
+    @Published var appPopup: AppPopup? = nil
 
     func navigate(to destination: Destination) {
         navPath.append(destination)
@@ -79,17 +81,17 @@ final class AppRouter: ObservableObject {
     func togglePopup(_ popup: Popup?) {
         activePopup = popup
     }
-    
-    func togglePopupError(_ popupError: GeneralError?) {
-        activePopupError = popupError
+        
+    func toggleAppPopup(_ popup: AppPopup?) {
+        appPopup = popup
     }
     
     func dismissPopup() {
         activePopup = nil
     }
-    
-    func dismissPopupError() {
-        activePopupError = nil
+
+    func dismissAppPopup() {
+        appPopup = nil
     }
 }
 

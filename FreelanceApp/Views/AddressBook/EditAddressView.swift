@@ -179,7 +179,7 @@ struct EditAddressView: View {
                 )
             }
         }
-        .dismissKeyboard()
+        .dismissKeyboardOnTap()
         .navigationBarBackButtonHidden()
         .background(Color.background())
         .toolbar {
@@ -212,11 +212,12 @@ struct EditAddressView: View {
                 }
             }
         }
-        .onChange(of: viewModel.errorMessage) { errorMessage in
-            if let errorMessage = errorMessage {
-                appRouter.togglePopupError(.alertError("", errorMessage))
-            }
-        }
+        .overlay(
+            MessageAlertObserverView(
+                message: $viewModel.errorMessage,
+                alertType: .constant(.error)
+            )
+        )
     }
     
     // Function to create buttons
@@ -250,7 +251,7 @@ struct EditAddressView: View {
 extension EditAddressView {
     private func update() {
         guard !title.isEmpty else {
-            appRouter.togglePopupError(.alertError("", LocalizedStringKey.addressTitleRequired))
+            appRouter.toggleAppPopup(.alertError("", LocalizedStringKey.addressTitleRequired))
             return
         }
 

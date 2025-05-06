@@ -19,7 +19,7 @@ struct AuthenticationView: View {
         if loginStatus == .login {
             LoginView(loginStatus: $loginStatus)
         } else if loginStatus == .register {
-            RegisterView(loginStatus: $loginStatus)
+            RegistrationFlowView()
         } else if loginStatus == .verification {
             SMSVerificationView(id: "", mobile: "", loginStatus: $loginStatus)
         } else if case .profile(let token) = loginStatus {

@@ -82,7 +82,7 @@ struct ProductDetailsView: View {
                            let attributes = viewModel.product?.attributes,
                            !attributes.isEmpty {
 
-                            VStack(alignment: .trailing, spacing: 8) {
+                            VStack(alignment: .leading, spacing: 8) {
                                 Text("الأنواع")
                                     .customFont(weight: .bold, size: 14)
                                     .foregroundColor(Color.purple)
@@ -177,7 +177,8 @@ struct ProductDetailsView: View {
     func addToCart() {
         // فحص وجود فاريشن ويجب اختياره
         if let attributes = viewModel.product?.attributes, !attributes.isEmpty, selectedSku.isEmpty {
-            appRouter.togglePopupError(.alertError("", "يرجى اختيار نوع المنتج قبل إضافته إلى السلة."))
+            appRouter.toggleAppPopup(.alertError("", "يرجى اختيار نوع المنتج قبل إضافته إلى السلة."))
+
             return
         }
 
@@ -207,7 +208,7 @@ struct ProductDetailsView: View {
     func addToMyWish(group_id: String, type: String, isShare: Bool) {
         // فحص وجود فاريشن ويجب اختياره
         if let attributes = viewModel.product?.attributes, !attributes.isEmpty, selectedSku.isEmpty {
-            appRouter.togglePopupError(.alertError("", "يرجى اختيار نوع المنتج قبل إضافته إلى السلة."))
+            appRouter.toggleAppPopup(.alertError("", "يرجى اختيار نوع المنتج قبل إضافته إلى السلة."))
             return
         }
 

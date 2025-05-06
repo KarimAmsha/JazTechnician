@@ -27,10 +27,6 @@ struct AddBalanceView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            
-//            CustomTextFieldWithTitle(text: $coupon, placeholder: LocalizedStringKey.coupon, textColor: .black4E5556(), placeholderColor: .grayA4ACAD())
-//                .disabled(paymentState.isLoading)
-            
             CustomTextFieldWithTitle(text: $amount, placeholder: LocalizedStringKey.amount, textColor: .black4E5556(), placeholderColor: .grayA4ACAD())
                 .keyboardType(.numberPad)
                 .disabled(paymentState.isLoading)
@@ -59,7 +55,6 @@ struct AddBalanceView: View {
 //            .padding()
 
             Button {
-//                addBalance()
                 checkCoupon()
             } label: {
                 Text(LocalizedStringKey.send)
@@ -77,15 +72,24 @@ struct AddBalanceView: View {
         .onAppear {
             GoSellSDK.mode = .production
         }
-        .onChange(of: viewModel.errorMessage) { errorMessage in
-            if !errorMessage.isEmpty {
-                appRouter.togglePopupError(.alertError("", errorMessage))
-            }
-        }
-        .onChange(of: viewModel.paymentSuccess) { paymentSuccess in
-            // Do something when payment is successful
-            if paymentSuccess {
+        .overlay(
+            MessageAlertObserverView(
+                message: $viewModel.errorMessage,
+                alertType: .constant(.error)
+            )
+        )
+        .onChange(of: viewModel.paymentStatus) { status in
+            guard let status = status else { return }
+
+            paymentState.isLoading = false
+
+            switch status {
+            case .success:
                 addBalance()
+            case .failed(let message):
+                viewModel.errorMessage = message
+            case .cancelled:
+                viewModel.errorMessage = "تم إلغاء عملية الدفع"
             }
         }
     }
@@ -110,6 +114,7 @@ extension AddBalanceView {
     }
     
     func startPayment(amount: Double) {
+        paymentState.isLoading = true
         viewModel.updateAmount(amount.toString())
         viewModel.startPayment()
     }

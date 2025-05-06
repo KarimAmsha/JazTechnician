@@ -152,7 +152,7 @@ struct PersonalInfoView: View {
                 }
             }
         }
-        .dismissKeyboard()
+        .dismissKeyboardOnTap()
         .fullScreenCover(isPresented: $mediaPickerViewModel.isPresentingImagePicker, content: {
             ImagePicker(sourceType: mediaPickerViewModel.sourceType, completionHandler: mediaPickerViewModel.didSelectImage)
         })
@@ -203,11 +203,12 @@ struct PersonalInfoView: View {
                 self.userLocation = userLocation
             }
         }
-        .onChange(of: viewModel.errorMessage) { errorMessage in
-            if let errorMessage = errorMessage {
-                appRouter.togglePopupError(.alertError("", errorMessage))
-            }
-        }
+        .overlay(
+            MessageAlertObserverView(
+                message: $viewModel.errorMessage,
+                alertType: .constant(.error)
+            )
+        )
         .popup(isPresented: $isShowingDatePicker) {
             let dateModel = DateTimeModel(pickerMode: .date) { date in
                 self.date = date

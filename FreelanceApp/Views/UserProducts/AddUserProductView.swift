@@ -137,11 +137,12 @@ struct AddUserProductView: View {
                 }
             }
         }
-        .onChange(of: viewModel.errorMessage) { errorMessage in
-            if let errorMessage = errorMessage {
-                appRouter.togglePopupError(.alertError("", errorMessage))
-            }
-        }
+        .overlay(
+            MessageAlertObserverView(
+                message: $viewModel.errorMessage,
+                alertType: .constant(.error)
+            )
+        )
         .popup(isPresented: $isShowingCategory) {
             let model = CustomModel(
                 title: LocalizedStringKey.categories,

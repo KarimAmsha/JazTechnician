@@ -233,7 +233,7 @@ enum APIEndpoint {
         case .guest:
             return "/mobile/guest/token"
         case .deleteAccount(let id, _):
-            return "/mobile/user/delete/\(id)"
+            return "/mobile/delete/\(id)"
         case .getContact:
             return "/mobile/constant/contact_options"
         case .tamaraCheckout:

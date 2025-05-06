@@ -33,41 +33,75 @@ extension Color {
         )
     }
     
-    static
-    func primaryGradientColor() -> LinearGradient {
+    // ✅ Primary Colors (محدثة حسب الهوية الجديدة)
+    static func primary1() -> Color {
+        return Color(hex: "4C8E48") // أخضر فاتح
+    }
+
+    static func primary2() -> Color {
+        return Color(hex: "225E2E") // أخضر داكن
+    }
+
+    static func primary() -> Color {
+        return Color(hex: "225E2E") // الأخضر الأساسي
+    }
+
+    static func primaryNormal() -> Color {
+        return Color(hex: "3A7334") // أخضر متوسط
+    }
+
+    static func primaryLight() -> Color {
+        return Color(hex: "F2F2F2") // فاتح جداً
+    }
+
+    static func primaryLightHover() -> Color {
+        return Color(hex: "F3F3F3")
+    }
+
+    static func primaryLightActive() -> Color {
+        return Color(hex: "FEF3DE")
+    }
+
+    // ✅ خلفيات إضافية من الصور
+    static func backgroundF3F3F3() -> Color {
+        return Color(hex: "F3F3F3")
+    }
+
+    static func backgroundFEF3DE() -> Color {
+        return Color(hex: "FEF3DE")
+    }
+
+    static func backgroundFEFEFE() -> Color {
+        return Color(hex: "FEFEFE")
+    }
+    
+    static func yellowF8B22A() -> Color {
+        return Color(hex: "F8B22A")
+    }
+
+    static func yellowFFF3D9() -> Color {
+        return Color(hex: "FFF3D9")
+    }
+
+    // ✅ Gradients
+    static func primaryGradientColor() -> LinearGradient {
         let colors = [Color.primary1(), Color.primary2()]
         return LinearGradient(gradient: Gradient(colors: colors), startPoint: .topLeading, endPoint: .bottomTrailing)
     }
 
-    static
-    func grayGradientColor() -> LinearGradient {
+    static func grayGradientColor() -> LinearGradient {
         let colors = [Color.grayF8F8F8(), Color.grayF8F8F8()]
         return LinearGradient(gradient: Gradient(colors: colors), startPoint: .topLeading, endPoint: .bottomTrailing)
     }
 
-    static
-    func primary1() -> Color {
-        return Color(hex: "A850D3")//"09335E")
-    }
-    
-    static
-    func primary2() -> Color {
-        return Color(hex: "7D25A8")//"09335E")
-    }
-    
-    static
-    func primary() -> Color {
-        return Color(hex: "7D25A8")//"09335E")
+    static func GetGradientBGColor() -> LinearGradient {
+        let colors = [Color.primary(), Color.primary()]
+        return LinearGradient(gradient: Gradient(colors: colors), startPoint: .bottom, endPoint: .top)
     }
 
-    static
-    func primaryNormal() -> Color {
-        return Color(hex: "9942C4")
-    }
-    
-    static
-    func primaryLight() -> Color {
-        return Color(hex: "F5ECF9")
+    static func GetGradientWhiteColor() -> LinearGradient {
+        let colors = [Color.white, Color.white]
+        return LinearGradient(gradient: Gradient(colors: colors), startPoint: .top, endPoint: .bottom)
     }
 
     static
@@ -78,16 +112,6 @@ extension Color {
     static
     func primaryDarker() -> Color {
         return Color(hex: "021828")
-    }
-
-    static
-    func primaryLightHover() -> Color {
-        return Color(hex: "F0E3F6")
-    }
-
-    static
-    func primaryLightActive() -> Color {
-        return Color(hex: "DFC4ED")
     }
 
     static
@@ -578,19 +602,7 @@ extension Color {
     static
     func background() -> Color {
         return Color(hex: "FAFAFA")
-    }
-    
-    static
-    func GetGradientBGColor() -> LinearGradient {
-        let colors = [Color.primary(), Color.primary()]
-        return LinearGradient(gradient: Gradient(colors: colors), startPoint: .bottom, endPoint: .top)
-    }
-
-    static
-    func GetGradientWhiteColor() -> LinearGradient {
-        let colors = [Color.white, Color.white]
-        return LinearGradient(gradient: Gradient(colors: colors), startPoint: .top, endPoint: .bottom)
-    }
+    }    
 }
 
 public extension Color {

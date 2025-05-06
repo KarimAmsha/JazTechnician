@@ -54,7 +54,7 @@ struct LoginView: View {
                         Button {
                             Messaging.messaging().token { token, error in
                                 if let error = error {
-                                    appRouter.activePopupError = .alertError(LocalizedStringKey.error, error.localizedDescription)
+                                    appRouter.toggleAppPopup(.alertError(LocalizedStringKey.error, error.localizedDescription))
                                 } else if let token = token {
                                     register(fcmToken: token)
                                 }
@@ -73,7 +73,7 @@ struct LoginView: View {
         .padding(24)
         .toolbarColorScheme(.light, for: .navigationBar)
         .toolbarBackground(Color.white,for: .navigationBar)
-        .dismissKeyboard()
+        .dismissKeyboardOnTap()
         .background(Color.white)
         .sheet(isPresented: $presentSheet) {
             NavigationStack {
@@ -129,11 +129,12 @@ struct LoginView: View {
 //            mobile = "905345719207"
 //            #endif
         }
-        .onChange(of: viewModel.errorMessage) { errorMessage in
-            if let errorMessage = errorMessage {
-                appRouter.togglePopupError(.alertError("", errorMessage))
-            }
-        }
+        .overlay(
+            MessageAlertObserverView(
+                message: $viewModel.errorMessage,
+                alertType: .constant(.error)
+            )
+        )
     }
     
     private func getCompletePhoneNumber() -> String {

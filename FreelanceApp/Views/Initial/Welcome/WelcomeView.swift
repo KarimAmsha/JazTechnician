@@ -48,7 +48,7 @@ struct WelcomeView: View {
                                             if currentPage < 2 {
                                                 currentPage += 1
                                             } else if currentPage == 2 {
-                                                loginStatus = .register
+                                                loginStatus = .login
                                             }
                                         }
                                     } label: {
@@ -59,10 +59,10 @@ struct WelcomeView: View {
                                     if currentPage == 2 {
                                         Button {
                                             withAnimation {
-                                                loginStatus = .login
+                                                loginStatus = .register
                                             }
                                         } label: {
-                                            Text(LocalizedStringKey.login)
+                                            Text(LocalizedStringKey.createNewAccount)
                                         }
                                         .buttonStyle(GradientPrimaryButton(fontSize: 16, fontWeight: .bold, background: Color.primaryGradientColor(), foreground: .white, height: 48, radius: 12))
                                     }
@@ -75,13 +75,13 @@ struct WelcomeView: View {
                                 } label: {
                                     HStack {
                                         Spacer()
-                                        Text(LocalizedStringKey.discoverApp)
+                                        Text(LocalizedStringKey.guest)
                                         Spacer()
                                         
                                     }
                                     .padding(.horizontal)
                                 }
-                                .buttonStyle(PrimaryButton(fontSize: 14, fontWeight: .regular, background: .clear, foreground: .primaryNormal(), height: 48, radius: 12))
+                                .buttonStyle(PrimaryButton(fontSize: 14, fontWeight: .regular, background: .backgroundFEFEFE(), foreground: .black151515(), height: 48, radius: 12))
                             }
                         }
                         .padding()
@@ -94,15 +94,19 @@ struct WelcomeView: View {
                     }
                 }
                 .popup(isPresented: Binding<Bool>(
-                    get: { appRouter.activePopupError != nil },
-                    set: { _ in appRouter.togglePopupError(nil) })
+                    get: { appRouter.appPopup != nil },
+                    set: { _ in appRouter.toggleAppPopup(nil) })
                 ) {
-                   if let popup = appRouter.activePopupError {
-                       switch popup {
-                       case .alertError(let title, let message):
-                           GeneralErrorToastView(title: title, message: message)
-                       }
-                   }
+                    if let popup = appRouter.appPopup {
+                        switch popup {
+                        case .alertError(let title, let message):
+                            GeneralAlertToastView(title: title, message: message, type: .error)
+                        case .alertSuccess(let title, let message):
+                            GeneralAlertToastView(title: title, message: message, type: .success)
+                        case .alertInfo(let title, let message):
+                            GeneralAlertToastView(title: title, message: message, type: .info)
+                        }
+                    }
                 } customize: {
                     $0
                         .type(.toast)

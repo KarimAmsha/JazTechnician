@@ -191,11 +191,12 @@ struct OrderDetailsView: View {
         .onAppear {
             getOrderDetails()
         }
-        .onChange(of: viewModel.errorMessage) { errorMessage in
-            if let errorMessage = errorMessage {
-                appRouter.togglePopupError(.alertError(LocalizedStringKey.error, errorMessage))
-            }
-        }
+        .overlay(
+            MessageAlertObserverView(
+                message: $viewModel.errorMessage,
+                alertType: .constant(.error)
+            )
+        )
     }
     
     func color(forOrderStatuses targetStatuses: [OrderStatus], currentStatus: OrderStatus) -> Color {

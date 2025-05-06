@@ -20,6 +20,7 @@ struct RetailPaymentView: View {
     @StateObject var orderViewModel = OrderViewModel(errorHandling: ErrorHandling())
     @State private var showTamaraPayment = false
     @State private var checkoutUrl = ""
+    @State var tamaraViewModel: TamaraWebViewModel? = nil
 
     var body: some View {
         VStack {
@@ -92,102 +93,127 @@ struct RetailPaymentView: View {
                 }
             }
         }
-        .onChange(of: wishesViewModel.errorMessage) { errorMessage in
-            if let errorMessage = errorMessage {
-                appRouter.togglePopupError(.alertError("", errorMessage))
-            }
-        }
-        .onChange(of: paymentViewModel.errorMessage) { errorMessage in
-            if !errorMessage.isEmpty {
-                appRouter.togglePopupError(.alertError("", errorMessage))
-            }
-        }
-        .onChange(of: paymentViewModel.paymentSuccess) { paymentSuccess in
-            if paymentSuccess {
+        .overlay(
+            MessageAlertObserverView(
+                message: $orderViewModel.errorMessage,
+                alertType: .constant(.error)
+            )
+        )
+        .overlay(
+            MessageAlertObserverView(
+                message: $wishesViewModel.errorMessage,
+                alertType: .constant(.error)
+            )
+        )
+        .overlay(
+            MessageAlertObserverView(
+                message: $paymentViewModel.errorMessage,
+                alertType: .constant(.error)
+            )
+        )
+        .onChange(of: paymentViewModel.paymentStatus) { status in
+            guard let status = status else { return }
+
+            wishesViewModel.isLoading = false
+
+            switch status {
+            case .success:
                 payWish()
+            case .failed(let message):
+                paymentViewModel.errorMessage = message
+            case .cancelled:
+                paymentViewModel.errorMessage = "تم إلغاء عملية الدفع"
             }
         }
         .fullScreenCover(isPresented: $showTamaraPayment) {
-            let merchantURL = TamaraMerchantURL(
-                success: "tamara://checkout/success",
-                failure: "tamara://checkout/failure",
-                cancel: "tamara://checkout/cancel",
-                notification: "tamara://checkout/notification"
-            )
-
-            let tamaraViewModel = TamaraSDKCheckoutSwiftUIViewModel(
-                url: checkoutUrl,
-                merchantURL: merchantURL
-            )
-
-            VStack {
-                VStack(alignment: .leading) {
-                    HStack {
-                        Spacer()
-                        Button {
-                            showTamaraPayment = false
-                        } label: {
-                            Image(systemName: "xmark")
-                                .resizable()
-                                .frame(width: 16, height: 16)
-                                .foregroundColor(Color.gray)
-                                .padding(10)
-                        }
-                    }
-                    .padding()
-                    Divider()
+            if let url = URL(string: checkoutUrl) {
+                SafariView(url: url) { redirectedURL in
+                    handleTamaraRedirect(url: redirectedURL)
                 }
-
-                TamaraSDKCheckoutSwiftUI(tamaraViewModel)
-                    .onReceive(tamaraViewModel.$successDirection) { _ in
-                        showTamaraPayment = false
-                        payWish()
-                    }
-                    .onReceive(tamaraViewModel.$failedDirection) { _ in
-                        showTamaraPayment = false
-                    }
-                    .onReceive(tamaraViewModel.$finishLoadingHandler) { _ in }
             }
         }
         .onAppear {
             GoSellSDK.mode = .production
+            
+            laodWishData()
         }
+    }
+
+    private func handleTamaraRedirect(url: URL) {
+        let urlStr = url.absoluteString
+        showTamaraPayment = false
+
+        if urlStr.contains("wishy.sa/tamara/success") {
+            payWish()
+        } else if urlStr.contains("wishy.sa/tamara/failure") {
+            orderViewModel.errorMessage = "فشلت عملية الدفع"
+        } else if urlStr.contains("wishy.sa/tamara/cancel") {
+            orderViewModel.errorMessage = "تم إلغاء عملية الدفع"
+        }
+
+        // بغض النظر عن الحالة، أغلق الفيو
+        showTamaraPayment = false
     }
 
     func payWish() {
         let params: [String: Any] = [
             "total": total
         ]
+
         wishesViewModel.payWish(id: wishId ?? "", params: params) {
             appRouter.navigate(to: .paymentSuccess)
         }
     }
 
     func startPayment(amount: Double) {
+        orderViewModel.isLoading = true
         paymentViewModel.updateAmount(amount.toString())
         paymentViewModel.startPayment()
     }
 
     func startTamaraCheckout(amount: Double) {
+        orderViewModel.isLoading = true
+        let productId = wishesViewModel.wish?.product_id?.id ?? ""
+
         let tamaraBody = TamaraBody(
             amount: amount,
             products: [
                 TamaraProduct(
-                    product_id: wishId ?? "",
+                    product_id: productId,
                     variation_name: "",
                     variation_sku: "",
                     qty: 1
                 )
             ]
         )
-        
+
         orderViewModel.tamaraCheckout(params: tamaraBody) {
-            self.checkoutUrl = orderViewModel.tamaraCheckout?.checkout_url ?? ""
+            let url = orderViewModel.tamaraCheckout?.checkout_url ?? ""
+            self.checkoutUrl = url
+//            self.checkoutUrl = "https://raw.githack.com/KarimAmsha/my-project/main/index.html"
+
+            // Initialize the Tamara view model with the new URL and merchantURL
+            self.tamaraViewModel = TamaraWebViewModel(
+                url: self.checkoutUrl,
+                merchantURL: TamaraMerchantURL(
+                    success: "https://wishy.sa/tamara/success",
+                    failure: "https://wishy.sa/tamara/failure",
+                    cancel: "https://wishy.sa/tamara/cancel",
+                    notification: "https://wishy.sa/tamara/cancel"
+                )
+            )
+
             showTamaraPayment.toggle()
         }
     }
+    
 }
 
+extension RetailPaymentView {
+    func laodWishData() {
+        wishesViewModel.getWish(id: wishId ?? "")
+    }
+}
 struct PaymentOptionsSection: View {
     @Binding var payMada: Bool
     @Binding var payTamara: Bool
