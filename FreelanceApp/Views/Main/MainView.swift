@@ -61,23 +61,23 @@ struct MainView: View {
                         CustomDivider()
                         
                         GeometryReader { geometry in
-                            HStack {
+                            HStack(spacing: 0) {
                                 ForEach(tabItems, id: \.page) { item in
                                     TabBarIcon(
                                         appState: appState,
                                         assignedPage: item.page,
-                                        width: geometry.size.width / 5,
-                                        height: geometry.size.height / 30,
+                                        width: 24,
+                                        height: 24,
                                         iconName: item.iconSystemName,
                                         tabName: item.title,
                                         isAddButton: item.isAddButton,
                                         isCart: item.isCart
                                     )
-                                    Spacer()
+                                    .frame(maxWidth: .infinity)
                                 }
                             }
                             .padding(.horizontal)
-                            .padding(10)
+                            .padding(.bottom, 10)
                             .frame(height: 60)
                             .background(Color.white)
                         }
