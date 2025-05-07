@@ -31,8 +31,8 @@ struct OtpModifer: ViewModifier {
             .background(Color.white.cornerRadius(12))
             .background(
                 RoundedRectangle(cornerRadius: 12)
-                    .stroke(Color.primaryGreen(), lineWidth: 1)
+                    .stroke(Color.yellowF8B22A(), lineWidth: 1)
             )
-            .accentColor(Color.primaryGreen())
+            .accentColor(Color.yellowF8B22A())
     }
 }

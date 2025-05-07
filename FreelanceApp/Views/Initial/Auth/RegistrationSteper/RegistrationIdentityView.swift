@@ -19,8 +19,6 @@ struct RegistrationIdentityView: View {
                 UploadBox(title: "قم بالضغط لرفع صورتك الشخصية")
                 UploadBox(title: "قم بالضغط لرفع صورة هويتك")
             }
-
-            Spacer()
         }
         .padding()
         .background(Color.background())
@@ -33,12 +31,14 @@ struct UploadBox: View {
 
     var body: some View {
         VStack {
+            Spacer()
             Image(systemName: "camera")
                 .font(.system(size: 24))
             Text(title)
                 .font(.caption)
                 .multilineTextAlignment(.center)
                 .padding(.top, 4)
+            Spacer()
         }
         .frame(maxWidth: .infinity, minHeight: 120)
         .background(Color.white)

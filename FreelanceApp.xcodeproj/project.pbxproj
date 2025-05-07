@@ -176,7 +176,6 @@
 		1ECC95042BDD14A0002BFE54 /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECC95032BDD14A0002BFE54 /* Pagination.swift */; };
 		1ECC95072BDD1587002BFE54 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECC95062BDD1587002BFE54 /* AuthenticationView.swift */; };
 		1ECC95092BDD15A5002BFE54 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECC95082BDD15A5002BFE54 /* LoginView.swift */; };
-		1ECC950B2BDD15B8002BFE54 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECC950A2BDD15B8002BFE54 /* RegisterView.swift */; };
 		1ECC950D2BDD1642002BFE54 /* CPData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECC950C2BDD1642002BFE54 /* CPData.swift */; };
 		1ECC950F2BDD166A002BFE54 /* CountryNumbers.json in Resources */ = {isa = PBXBuildFile; fileRef = 1ECC950E2BDD166A002BFE54 /* CountryNumbers.json */; };
 		1ECC95122BDD17B9002BFE54 /* GeneralErrorToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECC95112BDD17B9002BFE54 /* GeneralErrorToastView.swift */; };
@@ -245,6 +244,10 @@
 		52C6AD762DCA519400D0A672 /* SuccessSubmissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C6AD752DCA519300D0A672 /* SuccessSubmissionView.swift */; };
 		52C6AD782DCA51D600D0A672 /* RegistrationFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C6AD772DCA51D400D0A672 /* RegistrationFlowView.swift */; };
 		52C6AD7A2DCA544D00D0A672 /* SpecialtySelectionPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C6AD792DCA544C00D0A672 /* SpecialtySelectionPopup.swift */; };
+		52D9E6C22DCB64DF00ED2874 /* PrivacyPolicyAgreementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D9E6C12DCB64DE00ED2874 /* PrivacyPolicyAgreementView.swift */; };
+		52D9E6CC2DCB92AA00ED2874 /* MainTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D9E6CB2DCB92A800ED2874 /* MainTabItem.swift */; };
+		52D9E6D22DCB956400ED2874 /* ProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D9E6D12DCB956400ED2874 /* ProjectsView.swift */; };
+		52D9E6D42DCB957500ED2874 /* AddServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D9E6D32DCB957500ED2874 /* AddServiceView.swift */; };
 		52F03F922DC1448F00D11215 /* TamaraProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F03F912DC1448E00D11215 /* TamaraProduct.swift */; };
 		F872D44543075CFBF2B4A677 /* Pods_FreelanceApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B391A68D56F805841B7EE54 /* Pods_FreelanceApp.framework */; };
 /* End PBXBuildFile section */
@@ -392,7 +395,6 @@
 		1ECC95032BDD14A0002BFE54 /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
 		1ECC95062BDD1587002BFE54 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		1ECC95082BDD15A5002BFE54 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		1ECC950A2BDD15B8002BFE54 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		1ECC950C2BDD1642002BFE54 /* CPData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPData.swift; sourceTree = "<group>"; };
 		1ECC950E2BDD166A002BFE54 /* CountryNumbers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CountryNumbers.json; sourceTree = "<group>"; };
 		1ECC95112BDD17B9002BFE54 /* GeneralErrorToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralErrorToastView.swift; sourceTree = "<group>"; };
@@ -463,6 +465,10 @@
 		52C6AD752DCA519300D0A672 /* SuccessSubmissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessSubmissionView.swift; sourceTree = "<group>"; };
 		52C6AD772DCA51D400D0A672 /* RegistrationFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationFlowView.swift; sourceTree = "<group>"; };
 		52C6AD792DCA544C00D0A672 /* SpecialtySelectionPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialtySelectionPopup.swift; sourceTree = "<group>"; };
+		52D9E6C12DCB64DE00ED2874 /* PrivacyPolicyAgreementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyAgreementView.swift; sourceTree = "<group>"; };
+		52D9E6CB2DCB92A800ED2874 /* MainTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabItem.swift; sourceTree = "<group>"; };
+		52D9E6D12DCB956400ED2874 /* ProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsView.swift; sourceTree = "<group>"; };
+		52D9E6D32DCB957500ED2874 /* AddServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddServiceView.swift; sourceTree = "<group>"; };
 		52F03F912DC1448E00D11215 /* TamaraProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamaraProduct.swift; sourceTree = "<group>"; };
 		55B38A8D84CF5B9E08BEC8F8 /* Pods-FreelanceApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreelanceApp.release.xcconfig"; path = "Target Support Files/Pods-FreelanceApp/Pods-FreelanceApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -648,6 +654,8 @@
 		1ECC944C2BDC56E6002BFE54 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				52D9E6CE2DCB954400ED2874 /* Projects */,
+				52D9E6CD2DCB953600ED2874 /* Services */,
 				1E0053392C1F051300C75E42 /* Review */,
 				1EFB9B332C1C4CF100C15CE4 /* VIPGift */,
 				1EFB9B2A2C1BA92600C15CE4 /* UserProducts */,
@@ -673,6 +681,7 @@
 		1ECC944D2BDC56EE002BFE54 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				52D9E6CB2DCB92A800ED2874 /* MainTabItem.swift */,
 				52F03F912DC1448E00D11215 /* TamaraProduct.swift */,
 				1ECC94D52BDC5FB1002BFE54 /* AlertModel.swift */,
 				1ECC94D72BDC5FF7002BFE54 /* CustomModel.swift */,
@@ -820,17 +829,9 @@
 		1ECC95052BDD156F002BFE54 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				52C6AD792DCA544C00D0A672 /* SpecialtySelectionPopup.swift */,
-				52C6AD772DCA51D400D0A672 /* RegistrationFlowView.swift */,
-				52C6AD752DCA519300D0A672 /* SuccessSubmissionView.swift */,
-				52C6AD732DCA517500D0A672 /* ConfirmPhoneView.swift */,
-				52C6AD712DCA515000D0A672 /* RegistrationIdentityView.swift */,
-				52C6AD6F2DCA513200D0A672 /* RegistrationWorkInfoView.swift */,
-				52C6AD6D2DCA511000D0A672 /* RegistrationPersonalInfoView.swift */,
-				52C6AD5F2DCA4DA300D0A672 /* RegistrationRoleView.swift */,
+				52D9E6C02DCB500B00ED2874 /* RegistrationSteper */,
 				1ECC95062BDD1587002BFE54 /* AuthenticationView.swift */,
 				1ECC95082BDD15A5002BFE54 /* LoginView.swift */,
-				1ECC950A2BDD15B8002BFE54 /* RegisterView.swift */,
 				1ECC952E2BDD75E7002BFE54 /* MobileView.swift */,
 				1ECC95302BDD77B5002BFE54 /* SMSVerificationView.swift */,
 				1ECC95322BDD77D3002BFE54 /* OtpFormFieldView.swift */,
@@ -1018,6 +1019,38 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		52D9E6C02DCB500B00ED2874 /* RegistrationSteper */ = {
+			isa = PBXGroup;
+			children = (
+				52D9E6C12DCB64DE00ED2874 /* PrivacyPolicyAgreementView.swift */,
+				52C6AD792DCA544C00D0A672 /* SpecialtySelectionPopup.swift */,
+				52C6AD772DCA51D400D0A672 /* RegistrationFlowView.swift */,
+				52C6AD752DCA519300D0A672 /* SuccessSubmissionView.swift */,
+				52C6AD732DCA517500D0A672 /* ConfirmPhoneView.swift */,
+				52C6AD712DCA515000D0A672 /* RegistrationIdentityView.swift */,
+				52C6AD6F2DCA513200D0A672 /* RegistrationWorkInfoView.swift */,
+				52C6AD6D2DCA511000D0A672 /* RegistrationPersonalInfoView.swift */,
+				52C6AD5F2DCA4DA300D0A672 /* RegistrationRoleView.swift */,
+			);
+			path = RegistrationSteper;
+			sourceTree = "<group>";
+		};
+		52D9E6CD2DCB953600ED2874 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				52D9E6D32DCB957500ED2874 /* AddServiceView.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		52D9E6CE2DCB954400ED2874 /* Projects */ = {
+			isa = PBXGroup;
+			children = (
+				52D9E6D12DCB956400ED2874 /* ProjectsView.swift */,
+			);
+			path = Projects;
+			sourceTree = "<group>";
+		};
 		65990345DAB10ED1583F3F85 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1196,6 +1229,7 @@
 				52294D392DC54FA900C1D456 /* FreelanceApp.swift in Sources */,
 				1EDEF6762BE1788300863C10 /* MyOrdersView.swift in Sources */,
 				52C6AD5A2DCA3E4D00D0A672 /* GeneralAlertToastView.swift in Sources */,
+				52D9E6CC2DCB92AA00ED2874 /* MainTabItem.swift in Sources */,
 				1E41E1FC2BE942490061AC47 /* FirestoreService.swift in Sources */,
 				1EFB9B2C2C1BA94300C15CE4 /* UserProductsView.swift in Sources */,
 				1E5F31912BE2414B00E5A914 /* RetailPaymentView.swift in Sources */,
@@ -1221,6 +1255,8 @@
 				1ECC95372BDD8150002BFE54 /* PersonalInfoView.swift in Sources */,
 				1EA6D3212C1DB0E7007E8AE0 /* TransactionsRowiew.swift in Sources */,
 				1E2804342C04D4DA0021DFB0 /* NotificationsStruct.swift in Sources */,
+				52D9E6C22DCB64DF00ED2874 /* PrivacyPolicyAgreementView.swift in Sources */,
+				52D9E6D22DCB956400ED2874 /* ProjectsView.swift in Sources */,
 				1ECC95092BDD15A5002BFE54 /* LoginView.swift in Sources */,
 				1ECC95392BDD81EF002BFE54 /* LocationManager.swift in Sources */,
 				52C6AD7A2DCA544D00D0A672 /* SpecialtySelectionPopup.swift in Sources */,
@@ -1344,12 +1380,12 @@
 				1ECC94722BDC5B68002BFE54 /* Color+Extensions.swift in Sources */,
 				1ECC953D2BDD8298002BFE54 /* UserViewModel.swift in Sources */,
 				1ECC951F2BDD1874002BFE54 /* CustomDivider.swift in Sources */,
-				1ECC950B2BDD15B8002BFE54 /* RegisterView.swift in Sources */,
 				1ECC94F02BDD11D4002BFE54 /* LanguageManager.swift in Sources */,
 				1E28041A2C04C6700021DFB0 /* AddressRowView.swift in Sources */,
 				1ECC94EA2BDC6A3F002BFE54 /* WelcomeSlideView.swift in Sources */,
 				1E0053342C1EF7CD00C75E42 /* ExplorWishView.swift in Sources */,
 				1EA6D32B2C1DB17A007E8AE0 /* PaymentViewModel.swift in Sources */,
+				52D9E6D42DCB957500ED2874 /* AddServiceView.swift in Sources */,
 				1EDEF6852BE1A93600863C10 /* FriendWishesView.swift in Sources */,
 				1EC27FF02C038A0E0007279D /* CartItemView.swift in Sources */,
 				1E1EDA7C2C1CDA27003047CA /* UserWishesView.swift in Sources */,

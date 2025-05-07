@@ -171,7 +171,7 @@ extension MyWishView {
             onOKAction: {
                 appRouter.togglePopup(nil)
                 appRouter.navigateBack()
-                appState.currentPage = .cart
+                appState.currentPage = .home
             },
             onCancelAction: {
                 withAnimation {

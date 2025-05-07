@@ -1,10 +1,3 @@
-//
-//  LoginView.swift
-//  Wishy
-//
-//  Created by Karim Amsha on 27.04.2024.
-//
-
 import SwiftUI
 import PopupView
 import FirebaseMessaging
@@ -40,12 +33,21 @@ struct LoginView: View {
     var body: some View {
         GeometryReader { geometry in
             ScrollView(showsIndicators: false) {
-                VStack(spacing: 20) {
-                    MobileView(mobile: $mobile, presentSheet: $presentSheet)
-                    
-                    Spacer()
+                VStack(spacing: 32) {
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("يا هلا! 👋")
+                            .font(.title2.bold())
+                            .foregroundColor(.black)
 
-                    // Show a loader while registering
+                        Text("سعيدين برؤيتك من جديد! قم بإدخال البيانات التالية بشكل صحيح للوصول إلى حسابك ...")
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                            .multilineTextAlignment(.leading)
+                    }
+                    .padding(.top, 40)
+
+                    MobileView(mobile: $mobile, presentSheet: $presentSheet)
+
                     if viewModel.isLoading {
                         LoadingView()
                     }
@@ -60,25 +62,44 @@ struct LoginView: View {
                                 }
                             }
                         } label: {
-                            Text(LocalizedStringKey.login)
+                            Text("ارسل رمز التحقق")
                         }
                         .buttonStyle(GradientPrimaryButton(fontSize: 16, fontWeight: .bold, background: Color.primaryGradientColor(), foreground: .white, height: 48, radius: 12))
                         .disabled(viewModel.isLoading)
+
+                        HStack {
+                            Button("سجل الآن") {
+                                loginType = .register
+                            }
+                            .font(.footnote)
+                            .foregroundColor(.gray)
+                            .padding(.horizontal)
+                            .padding(.vertical, 10)
+                            .background(Color.gray.opacity(0.1))
+                            .cornerRadius(10)
+
+                            Spacer()
+
+                            Button("ليس لديك حساب؟") {
+                                loginType = .register
+                            }
+                            .font(.footnote)
+                            .foregroundColor(.gray)
+                        }
                     }
+
+                    Spacer()
                 }
                 .frame(maxWidth: .infinity)
                 .frame(minHeight: geometry.size.height)
             }
         }
         .padding(24)
-        .toolbarColorScheme(.light, for: .navigationBar)
-        .toolbarBackground(Color.white,for: .navigationBar)
-        .dismissKeyboardOnTap()
-        .background(Color.white)
+        .background(Color.background())
+        .navigationBarBackButtonHidden()
         .sheet(isPresented: $presentSheet) {
             NavigationStack {
                 List(filteredResorts) { country in
-                    
                     HStack {
                         Text(country.flag)
                         Text(country.name)
@@ -99,35 +120,7 @@ struct LoginView: View {
                 .listStyle(.plain)
                 .searchable(text: $searchCountry, prompt: LocalizedStringKey.yourCountry)
             }
-            .environment(\.layoutDirection, .leftToRight)
-        }
-        .navigationBarBackButtonHidden()
-        .background(Color.background())
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                HStack {
-                    Image("ic_gift")
-
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text(LocalizedStringKey.login)
-                            .customFont(weight: .bold, size: 20)
-                        
-                        Text(LocalizedStringKey.loginHint)
-                            .customFont(weight: .regular, size: 12)
-                    }
-                    .foregroundColor(Color.primaryBlack())
-                }
-            }
-        }
-        .onAppear {
-            // Use the user's current location if available
-//            if let userLocation = LocationManager.shared.userLocation {
-//                self.userLocation = userLocation
-//            }
-            
-//            #if DEBUG
-//            mobile = "905345719207"
-//            #endif
+            .environment(\.layoutDirection, .rightToLeft)
         }
         .overlay(
             MessageAlertObserverView(
@@ -136,15 +129,14 @@ struct LoginView: View {
             )
         )
     }
-    
+
     private func getCompletePhoneNumber() -> String {
         completePhoneNumber = "\(countryCode)\(mobile)".replacingOccurrences(of: " ", with: "")
-        
-        // Remove "+" from countryCode
+
         if countryCode.hasPrefix("+") {
             completePhoneNumber = completePhoneNumber.replacingOccurrences(of: countryCode, with: String(countryCode.dropFirst()))
         }
-        
+
         return completePhoneNumber
     }
 
@@ -157,16 +149,10 @@ struct LoginView: View {
     }
 }
 
-#Preview {
-    LoginView(loginStatus: .constant(.login))
-        .environmentObject(AppState())
-        .environmentObject(UserSettings())
-}
-
 extension LoginView {
     func register(fcmToken: String) {
         appState.phoneNumber = getCompletePhoneNumber()
-        
+
         var params: [String: Any] = [
             "phone_number": getCompletePhoneNumber(),
             "os": "IOS",
@@ -175,21 +161,19 @@ extension LoginView {
             "lng": userLocation?.longitude ?? 0.0,
         ]
 
-        // Check if user location is available
         if let userLocation = userLocation {
             let dispatchGroup = DispatchGroup()
             dispatchGroup.enter()
-            
+
             Utilities.getAddress(for: userLocation) { address in
                 params["address"] = address
                 dispatchGroup.leave()
             }
-            
+
             dispatchGroup.notify(queue: .main) {
                 self.continueRegistration(with: params)
             }
         } else {
-            // No user location available, proceed with registration without address
             continueRegistration(with: params)
         }
     }
@@ -202,3 +186,8 @@ extension LoginView {
     }
 }
 
+#Preview {
+    LoginView(loginStatus: .constant(.login))
+        .environmentObject(AppState())
+        .environmentObject(UserSettings())
+}

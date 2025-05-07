@@ -54,11 +54,10 @@ struct TabBarIcon: View {
                     }
                     
                     VStack(spacing: 8) {
-                        Image(appState.currentPage == assignedPage ? "\(iconName)_s" : iconName)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: width, height: height)
-
+                        Image(systemName: iconName)
+                            .font(.system(size: 20))
+                            .foregroundColor(appState.currentPage == assignedPage ? .primary() : .gray6C7278())
+                            .frame(width: 28, height: 28)
                         
                         Text(tabName)
                             .customFont(weight: appState.currentPage == assignedPage ? .bold : .regular, size: 12)

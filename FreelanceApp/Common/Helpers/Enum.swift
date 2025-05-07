@@ -86,11 +86,7 @@ enum MediaType {
 }
 
 enum Page {
-    case home
-    case explor
-    case cart
-    case favourite
-    case more
+    case home, chat, addService, more, projects
 }
 
 enum RequestType {

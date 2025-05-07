@@ -16,6 +16,22 @@ struct MainView: View {
     @ObservedObject var appRouter = AppRouter()
     @ObservedObject var viewModel = InitialViewModel(errorHandling: ErrorHandling())
     @StateObject var cartViewModel = CartViewModel(errorHandling: ErrorHandling())
+    private var tabItems: [MainTabItem] {
+        let isProvider = settings.userRole == .provider
+        
+        var items: [MainTabItem] = [
+            MainTabItem(page: .home, iconSystemName: "house", title: "الرئيسية"),
+            MainTabItem(page: .chat, iconSystemName: "message", title: "الرسائل", isCart: true),
+            MainTabItem(page: .projects, iconSystemName: "briefcase", title: "المشاريع"),
+            MainTabItem(page: .more, iconSystemName: "line.3.horizontal", title: "المزيد")
+        ]
+        
+        if isProvider {
+            items.insert(MainTabItem(page: .addService, iconSystemName: "plus", title: "إضافة خدمة", isAddButton: true), at: 2)
+        }
+        
+        return items
+    }
 
     var body: some View {
         NavigationStack(path: $appRouter.navPath) {
@@ -25,71 +41,56 @@ struct MainView: View {
                     .foregroundColor(.clear)
                     .background(.white)
 
-                GeometryReader { geometry in
+//                GeometryReader { geometry in
                     VStack(spacing: 0) {
                         Spacer()
+                        
                         switch appState.currentPage {
                         case .home:
                             HomeView()
-                        case .explor:
-                            ExplorView()
-                        case .cart:
-                            if settings.id == nil {
-                                CustomeEmptyView()
-                            } else {
-                                CartView()
-                            }
-                        case .favourite:
-                            if settings.id == nil {
-                                CustomeEmptyView()
-                            } else {
-                                FavoriteView(viewModel: viewModel)
-                            }
+                        case .chat:
+                            CartView()
+                        case .projects:
+                            ProjectsView()
+                        case .addService:
+                            settings.id == nil ? CustomeEmptyView().eraseToAnyView() : AddServiceView().eraseToAnyView()
                         case .more:
-                            if settings.id == nil {
-                                CustomeEmptyView()
-                            } else {
-                                ProfileView()
-                            }
+                            settings.id == nil ? CustomeEmptyView().eraseToAnyView() : ProfileView().eraseToAnyView()
                         }
+
+                        CustomDivider()
                         
-                        ZStack {
-                            VStack(spacing: 0) {
-                                CustomDivider()
-                                
-                                HStack(spacing: 4) {
-                                    TabBarIcon(appState: appState, assignedPage: .home, width: geometry.size.width/6, height: geometry.size.height/30, iconName: "ic_home", tabName: LocalizedStringKey.home, isAddButton: false, isCart: false)
-                                    
+                        GeometryReader { geometry in
+                            HStack {
+                                ForEach(tabItems, id: \.page) { item in
+                                    TabBarIcon(
+                                        appState: appState,
+                                        assignedPage: item.page,
+                                        width: geometry.size.width / 5,
+                                        height: geometry.size.height / 30,
+                                        iconName: item.iconSystemName,
+                                        tabName: item.title,
+                                        isAddButton: item.isAddButton,
+                                        isCart: item.isCart
+                                    )
                                     Spacer()
-
-                                    TabBarIcon(appState: appState, assignedPage: .explor, width: geometry.size.width/6, height: geometry.size.height/30, iconName: "ic_wishes", tabName: LocalizedStringKey.explor, isAddButton: false, count: 0, isCart: false)
-
-                                    Spacer()
-
-                                    TabBarIcon(appState: appState, assignedPage: .cart, width: geometry.size.width/6, height: geometry.size.height/30, iconName: "ic_cart", tabName: LocalizedStringKey.cart, isAddButton: false, isCart: true)
-                                    
-                                    Spacer()
-
-                                    TabBarIcon(appState: appState, assignedPage: .favourite, width: geometry.size.width/6, height: geometry.size.height/30, iconName: "ic_category", tabName: LocalizedStringKey.favourite, isAddButton: false, isCart: false)
-
-                                    Spacer()
-
-
-                                    TabBarIcon(appState: appState, assignedPage: .more, width: geometry.size.width/6, height: geometry.size.height/30, iconName: "ic_profile", tabName: LocalizedStringKey.more, isAddButton: false, isCart: false)
                                 }
-                                .padding(.horizontal)
-                                .frame(width: geometry.size.width, height: geometry.size.height/10)
                             }
+                            .padding(.horizontal)
+                            .padding(10)
+                            .frame(height: 60)
+                            .background(Color.white)
                         }
-                        .padding(.bottom, 10)
+                        .frame(height: 70)
                     }
-                }
-                .background(Color.background())
-                .edgesIgnoringSafeArea(.bottom)
+//                }
             }
+            .background(Color.background())
+            .edgesIgnoringSafeArea(.bottom)
             .toolbarColorScheme(.light, for: .navigationBar)
-            .toolbarBackground(Color.background(),for: .navigationBar)
+            .toolbarBackground(Color.background(), for: .navigationBar)
             .navigationBarTitleDisplayMode(.inline)
+            .environmentObject(appRouter)
             .navigationDestination(for: AppRouter.Destination.self) { destination in
                 switch destination {
                 case .profile:

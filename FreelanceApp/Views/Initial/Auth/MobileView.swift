@@ -22,7 +22,7 @@ struct MobileView: View {
         VStack(alignment: .leading, spacing: 4) {
             Text(LocalizedStringKey.phoneNumber)
                 .customFont(weight: .medium, size: 12)
-                .foregroundColor(.primaryBlack())
+                .foregroundColor(.gray)
 
             HStack(spacing: 10) {
                 Button {

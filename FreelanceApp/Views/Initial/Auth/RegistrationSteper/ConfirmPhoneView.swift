@@ -1,69 +1,38 @@
 //
-//  SMSVerificationView.swift
-//  Wishy
+//  ConfirmPhoneView.swift
+//  FreelanceApp
 //
-//  Created by Karim Amsha on 27.04.2024.
+//  Created by Karim OTHMAN on 6.05.2025.
 //
 
 import SwiftUI
-import Combine
-import PopupView
 
-struct SMSVerificationView: View {
-    @EnvironmentObject var appState: AppState
-    @EnvironmentObject var settings: UserSettings
-    @State private var passCodeFilled = false
-    @Environment(\.presentationMode) var presentationMode
+struct ConfirmPhoneView: View {
+    @State var code = ""
+    @FocusState private var focusedField: Int?
     @State private var totalSeconds = 59
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     var minutes: Int { totalSeconds / 60 }
     var seconds: Int { totalSeconds % 60 }
-
-    var id: String
-    var mobile: String
-
-    @State var code = ""
-    @FocusState private var focusedField: Int?
-
     @StateObject private var viewModel = AuthViewModel(errorHandling: ErrorHandling())
-    private let errorHandling = ErrorHandling()
-    @Binding var loginStatus: LoginStatus
-    @EnvironmentObject var appRouter: AppRouter
+    @EnvironmentObject var appState: AppState
+    @EnvironmentObject var settings: UserSettings
+    var onComplete: (() -> Void)? = nil
 
     var body: some View {
         VStack(alignment: .leading, spacing: 24) {
-            VStack(alignment: .leading, spacing: 12) {
-                HStack(spacing: 8) {
-                    Text("👋")
-                    Text("ادخل رمز التحقق!")
-                        .font(.title3.bold())
-                        .foregroundColor(.primaryBlack())
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
+            RegistrationStepHeader(
+                title: "تأكيد رقم الهاتف",
+                subtitle: "قم بإدخال رمز التفعيل المرسل الى رقم هاتفك"
+            )
 
-                Text("قم بادخال كلمة المرور المؤقتة المرسلة الى رقم هاتفك")
-                    .font(.footnote)
-                    .multilineTextAlignment(.leading)
-                    .foregroundColor(.gray)
-
-                Text("+970 594 0700 68")
-                    .font(.headline)
-            }
+            Text("+970 594 0700 68")
+                .font(.headline)
 
             OtpFormFieldView(combinedPins: $code)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .disabled(viewModel.isLoading)
                 .environment(\.layoutDirection, .leftToRight)
-
-            Spacer()
-
-            Button {
-                verify()
-            } label: {
-                Text("تسجيل الدخول")
-            }
-            .buttonStyle(GradientPrimaryButton(fontSize: 16, fontWeight: .bold, background: Color.primaryGradientColor(), foreground: .white, height: 48, radius: 12))
-            .disabled(viewModel.isLoading)
 
             HStack(spacing: 100) {
                 Text("0:\(seconds) - لم تستلم رمزًا؟")
@@ -76,8 +45,10 @@ struct SMSVerificationView: View {
                 .buttonStyle(CustomButtonStyle(fontSize: 14, fontWeight: .bold, background: .primaryLight(), foreground: .primaryBlack()))
             }
             .frame(maxWidth: .infinity, alignment: .center)
+
+            Spacer()
         }
-        .padding(24)
+        .padding()
         .dismissKeyboardOnTap()
         .navigationBarBackButtonHidden()
         .background(Color.background())
@@ -92,8 +63,9 @@ struct SMSVerificationView: View {
                 alertType: .constant(.error)
             )
         )
+        .environment(\.layoutDirection, .rightToLeft)
     }
-
+    
     private func verify() {
         let params = [
             "id": appState.userId,
@@ -105,8 +77,9 @@ struct SMSVerificationView: View {
         viewModel.verify(params: params) { profileCompleted, token in
             if profileCompleted {
                 settings.loggedIn = true
+                onComplete?()
             } else {
-                loginStatus = .profile(appState.token)
+//                loginStatus = .profile(appState.token)
             }
         }
     }
@@ -118,7 +91,7 @@ struct SMSVerificationView: View {
 }
 
 #Preview {
-    SMSVerificationView(id: "", mobile: "", loginStatus: .constant(.verification))
+    ConfirmPhoneView()
         .environmentObject(AppState())
         .environmentObject(UserSettings())
 }

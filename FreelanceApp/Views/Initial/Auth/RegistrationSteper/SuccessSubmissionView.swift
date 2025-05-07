@@ -1,13 +1,9 @@
-//
-//  SuccessSubmissionView.swift
-//  FreelanceApp
-//
-//  Created by Karim OTHMAN on 6.05.2025.
-//
-
 import SwiftUI
 
 struct SuccessSubmissionView: View {
+    @Binding var isPresented: Bool
+    @EnvironmentObject var appState: AppState
+
     var body: some View {
         VStack(spacing: 24) {
             Spacer()
@@ -39,9 +35,17 @@ struct SuccessSubmissionView: View {
         .padding()
         .background(Color(hex: "FFF3D9"))
         .environment(\.layoutDirection, .rightToLeft)
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                isPresented = false
+                appState.currentPage = .home
+                UserSettings.shared.loggedIn = true
+            }
+        }
     }
 }
 
 #Preview {
-    SuccessSubmissionView()
+    SuccessSubmissionView(isPresented: .constant(false))
+        .environmentObject(AppState())
 }

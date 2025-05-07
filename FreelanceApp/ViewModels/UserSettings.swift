@@ -15,7 +15,8 @@ class UserSettings: ObservableObject {
     @Published var user: User?
     @Published var id: String?
     @Published var token: String?
-    
+    @Published var userRole: UserRole = .client
+
     @Published var loggedIn: Bool {
         didSet {
             if !loggedIn {
