@@ -11,6 +11,5 @@ struct MainTabItem {
     var page: Page
     var iconSystemName: String
     var title: String
-    var isAddButton: Bool = false
-    var isCart: Bool = false
+    var isNotified: Bool = false
 }

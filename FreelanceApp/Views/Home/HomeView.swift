@@ -21,83 +21,68 @@ struct HomeView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .center, spacing: 16) {
-                HStack {
-                    SearchBar2(text: $searchText) {
-                        appRouter.navigate(to: .productsSearchView)
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("للمشاريع الفعالة")
+                        .font(.system(size: 16, weight: .bold))
+                    
+                    VStack(alignment: .leading, spacing: 12) {
+                        Text("تصميم بروشور شركة")
+                            .font(.system(size: 14, weight: .semibold))
+                        HStack {
+                            Text("عبد سعيد")
+                            Spacer()
+                            Text("100 مشروع مكتمل")
+                        }
+                        .font(.system(size: 12))
+                        
+                        HStack {
+                            Label("4.8", systemImage: "star.fill")
+                            Spacer()
+                            Text("$160")
+                            Spacer()
+                            Text("٢٧ أكتوبر ٣٦")
+                            Spacer()
+                            Text("قيد التنفيذ")
+                        }
+                        .font(.system(size: 12))
                     }
-
-                    Button {
-                        appRouter.navigate(to: .notifications)
-                    } label: {
-                        Image("ic_bell")
-                    }
+                    .padding()
+                    .background(Color.primary())
+                    .cornerRadius(12)
                 }
-                                
+                .foregroundColor(.white)
+                .padding(.horizontal)
+
                 if viewModel.isLoading {
                     LoadingView()
                 } else {
                     ScrollView(showsIndicators: false) {
                         VStack(alignment: .leading, spacing: 12) {
-                            if let items = viewModel.homeItems, let sliders = items.slider {
-                                VStack {
-                                    TabView(selection: $currentIndex) {
-                                        ForEach(sliders.indices, id: \.self) { index in
-                                            if let imageUrl = sliders[index].image?.toURL() {
-                                                AsyncImageView(
-                                                    width: geometry.size.width - 32,
-                                                    height: 150,
-                                                    cornerRadius: 10,
-                                                    imageURL: imageUrl,
-                                                    placeholder: Image(systemName: "photo"),
-                                                    contentMode: .fill
-                                                )
-                                                .tag(index)
-                                            }
-                                        }
-                                    }
-                                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
-                                    .frame(height: 150)
-                                    .onReceive(timer) { _ in
-                                        withAnimation {
-                                            currentIndex = (currentIndex + 1) % sliders.count
-                                        }
-                                    }
-                                }
-                                .padding(.horizontal, 16)
-                            }
+                            Text("البحث بالتخصص")
+                                .font(.system(size: 16, weight: .bold))
+                                .padding(.horizontal)
 
                             if let categories = viewModel.homeItems?.category, categories.isEmpty {
                                 DefaultEmptyView(title: LocalizedStringKey.noDataFound)
                             } else if let categories = viewModel.homeItems?.category {
-                                LazyVGrid(columns: [
-                                    GridItem(.flexible(), spacing: 16),
-                                    GridItem(.flexible(), spacing: 16),
-                                    GridItem(.flexible(), spacing: 16)
-                                ], spacing: 16) {
-                                    ForEach(categories, id: \.self) { item in
-                                        CategoryItemView(item: item, onSelect: {
-                                            if item.categoryType == .wishes {
-                                                appRouter.navigate(to: .wishesView)
-                                            } else if item.categoryType == .events {
-                                                appRouter.navigate(to: .upcomingReminders)
-                                            } else if item.categoryType == .userProducts {
-                                                appRouter.navigate(to: .userProducts(item.id ?? ""))
-                                            } else if item.categoryType == .eventPreparation || item.categoryType == .giftVIP {
-                                                appRouter.navigate(to: .VIPGiftView(item.categoryType))
-                                            } else {
-                                                appRouter.navigate(to: .productsListView(item))
-                                            }
-                                        })
+                                LazyVGrid(columns: Array(repeating: .init(.flexible(), spacing: 16), count: 2), spacing: 16) {
+                                    ForEach(sampleCategories) { category in
+                                        VStack {
+                                            Image(category.image)
+                                                .resizable()
+                                                .scaledToFill()
+                                                .frame(height: 120)
+                                                .cornerRadius(10)
+                                            Text(category.title)
+                                                .font(.system(size: 14, weight: .semibold))
+                                            Text("+1500 فريلانسر")
+                                                .font(.system(size: 12))
+                                                .foregroundColor(.gray)
+                                        }
                                     }
                                 }
+                                .padding(.horizontal)
                             }
-                            
-                            let image = viewModel.homeItems?.whatsApp?.image ?? ""
-                            CustomAsyncImage(imageURL: image.toURL(), cornerRadius: 10)
-                                .padding(.top, 30)
-                                .onTapGesture(perform: {
-                                    openWhatsApp()
-                                })
                         }
                     }
                 }
@@ -107,6 +92,30 @@ struct HomeView: View {
             .padding(16)
             .frame(maxWidth: .infinity)
             .frame(minHeight: geometry.size.height)
+        }
+        .background(Color.background())
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                HStack {
+                    AsyncImageView(
+                        width: 60,
+                        height: 60,
+                        cornerRadius: 10,
+                        imageURL: UserSettings.shared.user?.image?.toURL(),
+                        placeholder: Image(systemName: "person.fill"),
+                        contentMode: .fill
+                    )
+                    
+                    
+                    VStack(alignment: .leading) {
+                        Text("مرحباً أحمد! 👋")
+                            .customFont(weight: .bold, size: 20)
+                        Text("UXUI Designer")
+                            .customFont(weight: .regular, size: 10)
+                    }
+                    .foregroundColor(Color.black222020())
+                }
+            }
         }
         .onAppear {
             getHome()
@@ -150,3 +159,15 @@ extension HomeView {
         }
     }
 }
+
+struct Category2: Identifiable {
+    let id = UUID()
+    let title: String
+    let image: String
+}
+let sampleCategories: [Category2] = [
+    .init(title: "التصميم", image: "design_image"),
+    .init(title: "المجال المالي", image: "finance_image"),
+    .init(title: "المجال الطبي", image: "medical_image"),
+    .init(title: "التدريس", image: "teaching_image")
+]
