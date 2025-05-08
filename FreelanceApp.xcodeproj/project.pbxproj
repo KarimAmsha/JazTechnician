@@ -246,6 +246,17 @@
 		5235B1A32DCCE0D9009F75FA /* FreelancerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5235B1A22DCCE0D7009F75FA /* FreelancerListView.swift */; };
 		5235B1A52DCCE432009F75FA /* FreelancerProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5235B1A42DCCE431009F75FA /* FreelancerProfileView.swift */; };
 		5235B1A72DCCE641009F75FA /* ServiceDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5235B1A62DCCE640009F75FA /* ServiceDetailsView.swift */; };
+		5267FAB72DCD3D930063AF67 /* FirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267FAB62DCD3D900063AF67 /* FirebaseUser.swift */; };
+		5267FABA2DCD3E990063AF67 /* FirebaseChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267FAB92DCD3E980063AF67 /* FirebaseChat.swift */; };
+		5267FABC2DCD3EA50063AF67 /* FirebaseMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267FABB2DCD3EA40063AF67 /* FirebaseMessage.swift */; };
+		5267FABF2DCD40420063AF67 /* ChatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267FABE2DCD40410063AF67 /* ChatListView.swift */; };
+		5267FAC12DCD40D10063AF67 /* ChatDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267FAC02DCD40D00063AF67 /* ChatDetailView.swift */; };
+		5267FAC32DCD40ED0063AF67 /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267FAC22DCD40EC0063AF67 /* ChatBubble.swift */; };
+		5267FAC52DCD41000063AF67 /* ChatInputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267FAC42DCD40FF0063AF67 /* ChatInputBar.swift */; };
+		5267FAC72DCD413C0063AF67 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267FAC62DCD413B0063AF67 /* ChatViewModel.swift */; };
+		5267FAC92DCD42650063AF67 /* ChatListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267FAC82DCD42640063AF67 /* ChatListViewModel.swift */; };
+		5267FACB2DCD42F20063AF67 /* FirebaseUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267FACA2DCD42F10063AF67 /* FirebaseUserService.swift */; };
+		5267FACD2DCD44850063AF67 /* PushNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267FACC2DCD44840063AF67 /* PushNotificationService.swift */; };
 		52AEC8D72DCBE61C00B4FC84 /* ServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AEC8D62DCBE61A00B4FC84 /* ServiceModel.swift */; };
 		52AEC8D92DCBF23500B4FC84 /* .swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AEC8D82DCBF22900B4FC84 /* .swift */; };
 		52AEC8DD2DCBF26900B4FC84 /* DeliveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AEC8DC2DCBF26100B4FC84 /* DeliveryView.swift */; };
@@ -486,6 +497,17 @@
 		5235B1A22DCCE0D7009F75FA /* FreelancerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreelancerListView.swift; sourceTree = "<group>"; };
 		5235B1A42DCCE431009F75FA /* FreelancerProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreelancerProfileView.swift; sourceTree = "<group>"; };
 		5235B1A62DCCE640009F75FA /* ServiceDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDetailsView.swift; sourceTree = "<group>"; };
+		5267FAB62DCD3D900063AF67 /* FirebaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUser.swift; sourceTree = "<group>"; };
+		5267FAB92DCD3E980063AF67 /* FirebaseChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseChat.swift; sourceTree = "<group>"; };
+		5267FABB2DCD3EA40063AF67 /* FirebaseMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseMessage.swift; sourceTree = "<group>"; };
+		5267FABE2DCD40410063AF67 /* ChatListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListView.swift; sourceTree = "<group>"; };
+		5267FAC02DCD40D00063AF67 /* ChatDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailView.swift; sourceTree = "<group>"; };
+		5267FAC22DCD40EC0063AF67 /* ChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubble.swift; sourceTree = "<group>"; };
+		5267FAC42DCD40FF0063AF67 /* ChatInputBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputBar.swift; sourceTree = "<group>"; };
+		5267FAC62DCD413B0063AF67 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		5267FAC82DCD42640063AF67 /* ChatListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewModel.swift; sourceTree = "<group>"; };
+		5267FACA2DCD42F10063AF67 /* FirebaseUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserService.swift; sourceTree = "<group>"; };
+		5267FACC2DCD44840063AF67 /* PushNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationService.swift; sourceTree = "<group>"; };
 		52AEC8D62DCBE61A00B4FC84 /* ServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceModel.swift; sourceTree = "<group>"; };
 		52AEC8D82DCBF22900B4FC84 /* .swift */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swift; sourceTree = "<group>"; };
 		52AEC8DC2DCBF26100B4FC84 /* DeliveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryView.swift; sourceTree = "<group>"; };
@@ -646,6 +668,8 @@
 		1ECC94492BDC56CF002BFE54 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				5267FACC2DCD44840063AF67 /* PushNotificationService.swift */,
+				5267FACA2DCD42F10063AF67 /* FirebaseUserService.swift */,
 				1ECC94532BDC57D3002BFE54 /* APIEndpoint.swift */,
 				1ECC94552BDC57EA002BFE54 /* APIClient.swift */,
 				1E41E1FB2BE942490061AC47 /* FirestoreService.swift */,
@@ -666,6 +690,8 @@
 		1ECC944B2BDC56DE002BFE54 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				5267FAC82DCD42640063AF67 /* ChatListViewModel.swift */,
+				5267FAC62DCD413B0063AF67 /* ChatViewModel.swift */,
 				52C6AD5B2DCA419400D0A672 /* TamaraWebViewModel.swift */,
 				1E28042F2C04D41A0021DFB0 /* NotificationsViewModel.swift */,
 				1ECC94EF2BDD11D4002BFE54 /* LanguageManager.swift */,
@@ -692,6 +718,7 @@
 		1ECC944C2BDC56E6002BFE54 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5267FABD2DCD3ED80063AF67 /* Chat */,
 				52D9E6CE2DCB954400ED2874 /* Projects */,
 				52D9E6CD2DCB953600ED2874 /* Services */,
 				1E0053392C1F051300C75E42 /* Review */,
@@ -719,6 +746,7 @@
 		1ECC944D2BDC56EE002BFE54 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5267FAB82DCD3D980063AF67 /* Chat */,
 				52AEC8D62DCBE61A00B4FC84 /* ServiceModel.swift */,
 				52D9E6CB2DCB92A800ED2874 /* MainTabItem.swift */,
 				52F03F912DC1448E00D11215 /* TamaraProduct.swift */,
@@ -1064,6 +1092,27 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		5267FAB82DCD3D980063AF67 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				5267FABB2DCD3EA40063AF67 /* FirebaseMessage.swift */,
+				5267FAB92DCD3E980063AF67 /* FirebaseChat.swift */,
+				5267FAB62DCD3D900063AF67 /* FirebaseUser.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		5267FABD2DCD3ED80063AF67 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				5267FAC42DCD40FF0063AF67 /* ChatInputBar.swift */,
+				5267FAC22DCD40EC0063AF67 /* ChatBubble.swift */,
+				5267FAC02DCD40D00063AF67 /* ChatDetailView.swift */,
+				5267FABE2DCD40410063AF67 /* ChatListView.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
 		52D9E6C02DCB500B00ED2874 /* RegistrationSteper */ = {
 			isa = PBXGroup;
 			children = (
@@ -1318,6 +1367,7 @@
 				52D9E6C22DCB64DF00ED2874 /* PrivacyPolicyAgreementView.swift in Sources */,
 				52D9E6D22DCB956400ED2874 /* ProjectsView.swift in Sources */,
 				1ECC95092BDD15A5002BFE54 /* LoginView.swift in Sources */,
+				5267FAB72DCD3D930063AF67 /* FirebaseUser.swift in Sources */,
 				1ECC95392BDD81EF002BFE54 /* LocationManager.swift in Sources */,
 				52C6AD7A2DCA544D00D0A672 /* SpecialtySelectionPopup.swift in Sources */,
 				1EA7FEEF2C1A0BC100823465 /* EditGroupView.swift in Sources */,
@@ -1327,6 +1377,7 @@
 				1EA6D3292C1DB15C007E8AE0 /* PaymentState.swift in Sources */,
 				5235B1A12DCCD763009F75FA /* AccountSettingsView.swift in Sources */,
 				1EFB9B2E2C1BAD9D00C15CE4 /* AddUserProductView.swift in Sources */,
+				5267FACD2DCD44850063AF67 /* PushNotificationService.swift in Sources */,
 				52F03F922DC1448F00D11215 /* TamaraProduct.swift in Sources */,
 				1E00533B2C1F051F00C75E42 /* AddReviewView.swift in Sources */,
 				1E2804292C04CECF0021DFB0 /* Contact.swift in Sources */,
@@ -1353,6 +1404,7 @@
 				1ECC95412BDDAB8D002BFE54 /* TabBarIcon.swift in Sources */,
 				1EA740532BFB931F0028AAD0 /* CategoryItemView.swift in Sources */,
 				52C6AD5C2DCA419500D0A672 /* TamaraWebViewModel.swift in Sources */,
+				5267FACB2DCD42F20063AF67 /* FirebaseUserService.swift in Sources */,
 				1EA6D3252C1DB109007E8AE0 /* AddBalanceView.swift in Sources */,
 				52C6AD702DCA513300D0A672 /* RegistrationWorkInfoView.swift in Sources */,
 				1EA7405A2BFBE9190028AAD0 /* AppConstants.swift in Sources */,
@@ -1366,6 +1418,7 @@
 				1ECC946A2BDC5B68002BFE54 /* Int64+Extensions.swift in Sources */,
 				1ECC95312BDD77B5002BFE54 /* SMSVerificationView.swift in Sources */,
 				1ECC94C82BDC5E49002BFE54 /* RoundedCorner.swift in Sources */,
+				5267FAC12DCD40D10063AF67 /* ChatDetailView.swift in Sources */,
 				1EFB9B322C1C40B900C15CE4 /* AddUserProduct.swift in Sources */,
 				1E1EDA782C1CBCA6003047CA /* GroupListView.swift in Sources */,
 				5235B18B2DCC93BC009F75FA /* ClientProjectsView.swift in Sources */,
@@ -1381,10 +1434,13 @@
 				1ECC95162BDD17E4002BFE54 /* InputAlertView.swift in Sources */,
 				1EC27FE82C035C050007279D /* MainCategoryItemView.swift in Sources */,
 				1ECC953F2BDDA9EF002BFE54 /* DateTimePicker.swift in Sources */,
+				5267FAC52DCD41000063AF67 /* ChatInputBar.swift in Sources */,
 				1ECC95002BDD13D7002BFE54 /* ConstantItem.swift in Sources */,
 				1EDEF6632BE0E57E00863C10 /* CategoriesView.swift in Sources */,
 				1ECC94FA2BDD130F002BFE54 /* InitialViewModel.swift in Sources */,
+				5267FABA2DCD3E990063AF67 /* FirebaseChat.swift in Sources */,
 				5235B1A72DCCE641009F75FA /* ServiceDetailsView.swift in Sources */,
+				5267FAC72DCD413C0063AF67 /* ChatViewModel.swift in Sources */,
 				1EA7FEF32C1A201600823465 /* AddFriend.swift in Sources */,
 				1ECC94D02BDC5E49002BFE54 /* OtpModifer.swift in Sources */,
 				1EC27FEA2C0375390007279D /* Cart.swift in Sources */,
@@ -1401,6 +1457,7 @@
 				1E2804252C04C8740021DFB0 /* FullMapView.swift in Sources */,
 				1EA6D32D2C1DB39C007E8AE0 /* Coupon.swift in Sources */,
 				1E2804442C067E4E0021DFB0 /* ProductsSearchView.swift in Sources */,
+				5267FAC32DCD40ED0063AF67 /* ChatBubble.swift in Sources */,
 				1ECC94E82BDC6A1A002BFE54 /* ControlDots.swift in Sources */,
 				52C6AD782DCA51D600D0A672 /* RegistrationFlowView.swift in Sources */,
 				1E60849A2BE0037A007D83B1 /* SearchBar.swift in Sources */,
@@ -1445,6 +1502,7 @@
 				1ECC94CC2BDC5E49002BFE54 /* CustomFont.swift in Sources */,
 				1EDEF6682BE1607E00863C10 /* SuccessView.swift in Sources */,
 				1ECC94742BDC5B68002BFE54 /* Double+Extensions.swift in Sources */,
+				5267FABF2DCD40420063AF67 /* ChatListView.swift in Sources */,
 				5235B1932DCC9979009F75FA /* CancelRequestSheet.swift in Sources */,
 				1EC27FEE2C0383720007279D /* CartItems.swift in Sources */,
 				1ECC94722BDC5B68002BFE54 /* Color+Extensions.swift in Sources */,
@@ -1465,6 +1523,7 @@
 				1EA740582BFBCDFE0028AAD0 /* Products.swift in Sources */,
 				1E479B312C4D881B006130E1 /* WhatsApp.swift in Sources */,
 				1ECC95182BDD17FA002BFE54 /* FloatingPickerView.swift in Sources */,
+				5267FAC92DCD42650063AF67 /* ChatListViewModel.swift in Sources */,
 				1ECC952D2BDD2C02002BFE54 /* MainView.swift in Sources */,
 				1ECC94792BDC5B8B002BFE54 /* Constants.swift in Sources */,
 				52C6AD722DCA515100D0A672 /* RegistrationIdentityView.swift in Sources */,
@@ -1483,6 +1542,7 @@
 				1ECC951E2BDD1874002BFE54 /* CustomTextFieldWithTitle.swift in Sources */,
 				1EDEF6872BE1ABDF00863C10 /* ProgressLineView.swift in Sources */,
 				52AEC8D72DCBE61C00B4FC84 /* ServiceModel.swift in Sources */,
+				5267FABC2DCD3EA50063AF67 /* FirebaseMessage.swift in Sources */,
 				1E2804382C04EDDF0021DFB0 /* FavoriteView.swift in Sources */,
 				1E28041D2C04C6B00021DFB0 /* Mark.swift in Sources */,
 				1ECC95352BDD77FF002BFE54 /* AppState.swift in Sources */,

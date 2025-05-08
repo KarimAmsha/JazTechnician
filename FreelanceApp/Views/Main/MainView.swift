@@ -49,7 +49,8 @@ struct MainView: View {
                     case .home:
                         HomeView()
                     case .chat:
-                        CartView()
+//                        ChatListView(userId: UserSettings.shared.id ?? "")
+                        ChatListView(viewModel: MockChatListViewModel(userId: "user1"))
                     case .projects:
                         if settings.userRole == .provider {
                             ProjectsView()
@@ -189,6 +190,9 @@ struct MainView: View {
                     FreelancerProfileView()
                 case .serviceDetails:
                     ServiceDetailsView()
+                case .chatDetail(let id):
+//                    ChatDetailView(chatId: id, currentUserId: UserSettings.shared.id ?? "")
+                    ChatDetailView(viewModel: MockChatViewModel())
                 }
             }
             .popup(isPresented: Binding<Bool>(

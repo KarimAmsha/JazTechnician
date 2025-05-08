@@ -73,6 +73,9 @@ struct FreelancerProfileView: View {
                     switch selectedTab {
                     case .services:
                         FreelancerServicesTab()
+                            .onTapGesture {
+                                appRouter.navigate(to: .serviceDetails)
+                            }
                     case .portfolio:
                         FreelancerPortfolioTab()
                     case .about:
