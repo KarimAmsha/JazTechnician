@@ -51,7 +51,11 @@ struct MainView: View {
                     case .chat:
                         CartView()
                     case .projects:
-                        ProjectsView()
+                        if settings.userRole == .provider {
+                            ProjectsView()
+                        } else {
+                            ClientProjectsView()
+                        }
                     case .addService:
                         settings.id == nil ? CustomeEmptyView().eraseToAnyView() : AddServiceView().eraseToAnyView()
                     case .more:
@@ -171,6 +175,8 @@ struct MainView: View {
                     MyWishView(wishId: id, viewModel: viewModel)
                 case .addReview(let id):
                     AddReviewView(orderId: id)
+                case .deliveryDetails:
+                    DeliveryDetailsView()
                 }
             }
             .popup(isPresented: Binding<Bool>(

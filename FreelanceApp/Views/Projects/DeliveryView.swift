@@ -55,7 +55,7 @@ struct DeliveryView: View {
             ForEach(files, id: \.self) { file in
                 HStack {
                     Image(systemName: "trash")
-                        .foregroundColor(.red)
+                        .foregroundColor(.redE50000())
                     VStack(alignment: .leading) {
                         Text(file).bold()
                         Text("100MB").font(.caption).foregroundColor(.gray)

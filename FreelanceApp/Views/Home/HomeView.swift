@@ -22,36 +22,19 @@ struct HomeView: View {
         GeometryReader { geometry in
             VStack(alignment: .center, spacing: 16) {
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("للمشاريع الفعالة")
+                    Text("المشاريع الفعالة")
                         .font(.system(size: 16, weight: .bold))
                     
-                    VStack(alignment: .leading, spacing: 12) {
-                        Text("تصميم بروشور شركة")
-                            .font(.system(size: 14, weight: .semibold))
-                        HStack {
-                            Text("عبد سعيد")
-                            Spacer()
-                            Text("100 مشروع مكتمل")
-                        }
-                        .font(.system(size: 12))
-                        
-                        HStack {
-                            Label("4.8", systemImage: "star.fill")
-                            Spacer()
-                            Text("$160")
-                            Spacer()
-                            Text("٢٧ أكتوبر ٣٦")
-                            Spacer()
-                            Text("قيد التنفيذ")
-                        }
-                        .font(.system(size: 12))
-                    }
-                    .padding()
-                    .background(Color.primary())
-                    .cornerRadius(12)
+                    GeneralCardView(
+                        title: "تصميم بروشور شركة",
+                        rating: 4.8,
+                        reviewer: "محمد سعيد",
+                        completedProjects: 100,
+                        price: "$160",
+                        date: "٢٧ أكتوبر 2024",
+                        status: "قيد التنفيذ"
+                    )
                 }
-                .foregroundColor(.white)
-                .padding(.horizontal)
 
                 if viewModel.isLoading {
                     LoadingView()

@@ -70,6 +70,19 @@ struct ProjectsView: View {
 
 // MARK: - الحالات
 
+//enum ProjectStatus: String, CaseIterable {
+//    case inProgress, underReview, completed, cancelled
+//
+//    var title: String {
+//        switch self {
+//        case .inProgress: return "قيد التنفيذ"
+//        case .underReview: return "قيد المراجعة"
+//        case .completed: return "المكتملة"
+//        case .cancelled: return "ملغية"
+//        }
+//    }
+//}
+
 enum ProjectStatus: String, CaseIterable {
     case inProgress, underReview, completed, cancelled
 
@@ -77,9 +90,40 @@ enum ProjectStatus: String, CaseIterable {
         switch self {
         case .inProgress: return "قيد التنفيذ"
         case .underReview: return "قيد المراجعة"
-        case .completed: return "المكتلة"
+        case .completed: return "المكتملة"
         case .cancelled: return "ملغية"
         }
+    }
+
+    var color: Color {
+        switch self {
+        case .inProgress: return Color.blue.opacity(0.1)
+        case .underReview: return Color.yellow.opacity(0.2)
+        case .completed: return Color.green.opacity(0.2)
+        case .cancelled: return Color.red.opacity(0.2)
+        }
+    }
+
+    var textColor: Color {
+        switch self {
+        case .inProgress: return .blue
+        case .underReview: return .orange
+        case .completed: return .green
+        case .cancelled: return .red
+        }
+    }
+}
+
+struct ProjectStatusBadge: View {
+    let status: ProjectStatus
+
+    var body: some View {
+        Text(status.title)
+            .font(.caption)
+            .padding(12)
+            .background(status.color)
+            .foregroundColor(status.textColor)
+            .clipShape(Capsule())
     }
 }
 
@@ -96,13 +140,7 @@ struct ProjectCardView: View {
             HStack {
                 Text("اسم العميل").bold()
                 Spacer()
-                Text(statusLabel)
-                    .font(.caption)
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 6)
-                    .background(statusColor.opacity(0.2))
-                    .foregroundColor(statusColor)
-                    .clipShape(Capsule())
+                ProjectStatusBadge(status: status)
             }
 
             Text("الخدمة: تصميم بوستات لمنصات السوشيال لليبيا و مواقع الويب")
@@ -124,6 +162,7 @@ struct ProjectCardView: View {
                         showDelivery = true
                     }) {
                         Text("تسليم الخدمة")
+                            .customFont(weight: .bold, size: 12)
                             .frame(maxWidth: .infinity)
                             .padding()
                             .background(Color.primary())
@@ -132,6 +171,7 @@ struct ProjectCardView: View {
                     }
                     Button(action: {}) {
                         Label("محادثة", systemImage: "bubble.left")
+                            .customFont(weight: .bold, size: 12)
                             .padding(8)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 8)
@@ -142,6 +182,7 @@ struct ProjectCardView: View {
             } else if status == .underReview {
                 Button(action: {}) {
                     Label("محادثة", systemImage: "bubble.left")
+                        .customFont(weight: .bold, size: 12)
                         .padding(8)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
@@ -153,6 +194,7 @@ struct ProjectCardView: View {
                     showRating = true
                 }) {
                     Text("تقييم العميل")
+                        .customFont(weight: .bold, size: 12)
                         .frame(maxWidth: .infinity)
                         .padding()
                         .background(Color.primary())
@@ -164,6 +206,7 @@ struct ProjectCardView: View {
                     showRejectionReason = true
                 }) {
                     Text("عرض سبب الرفض")
+                        .customFont(weight: .bold, size: 12)
                         .frame(maxWidth: .infinity)
                         .padding()
                         .background(Color.red.opacity(0.2))
@@ -176,24 +219,6 @@ struct ProjectCardView: View {
         .background(Color.white)
         .cornerRadius(12)
         .shadow(color: .black.opacity(0.05), radius: 4, x: 0, y: 2)
-    }
-
-    var statusColor: Color {
-        switch status {
-        case .inProgress: return .blue
-        case .underReview: return .orange
-        case .completed: return .primary()
-        case .cancelled: return .red
-        }
-    }
-
-    var statusLabel: String {
-        switch status {
-        case .inProgress: return "قيد التنفيذ"
-        case .underReview: return "قيد المراجعة"
-        case .completed: return "مكتمل"
-        case .cancelled: return "ملغي!"
-        }
     }
 }
 

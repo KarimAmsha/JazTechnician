@@ -512,7 +512,7 @@ struct OrderTimelineView: View {
             Image(getImageName(for: status))
                 .resizable()
                 .frame(width: 20, height: 20)
-                .foregroundColor(isStepActive(for: status) ? .green : .gray)
+                .foregroundColor(isStepActive(for: status) ? .primary() : .gray)
             VStack(alignment: .leading) {
                 Text(title)
                 Text(description)

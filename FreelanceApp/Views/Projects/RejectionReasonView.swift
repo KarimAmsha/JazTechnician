@@ -40,7 +40,7 @@ struct RejectionReasonView: View {
                 Text("فهمت، إغلاق")
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(Color.red)
+                    .background(Color.redE50000())
                     .foregroundColor(.white)
                     .cornerRadius(12)
             }
