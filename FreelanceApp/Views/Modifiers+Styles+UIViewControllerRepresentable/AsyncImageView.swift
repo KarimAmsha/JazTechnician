@@ -31,7 +31,7 @@ struct CustomAsyncImage: View {
 }
 
 struct AsyncImageView: View {
-    var width: CGFloat
+    var width: CGFloat?
     var height: CGFloat
     var cornerRadius: CGFloat
     var imageURL: URL?

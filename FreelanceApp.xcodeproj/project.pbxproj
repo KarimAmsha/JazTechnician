@@ -240,6 +240,12 @@
 		5235B1972DCC99AA009F75FA /* RejectionReasonSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5235B1962DCC99A9009F75FA /* RejectionReasonSheet.swift */; };
 		5235B1992DCC9A2E009F75FA /* DeliveryDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5235B1982DCC9A2C009F75FA /* DeliveryDetailsView.swift */; };
 		5235B19B2DCC9C19009F75FA /* ProjectOptionsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5235B19A2DCC9C18009F75FA /* ProjectOptionsSheet.swift */; };
+		5235B19D2DCCD40F009F75FA /* EarningsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5235B19C2DCCD40E009F75FA /* EarningsView.swift */; };
+		5235B19F2DCCD5EA009F75FA /* NotificationsSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5235B19E2DCCD5E8009F75FA /* NotificationsSettingsView.swift */; };
+		5235B1A12DCCD763009F75FA /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5235B1A02DCCD761009F75FA /* AccountSettingsView.swift */; };
+		5235B1A32DCCE0D9009F75FA /* FreelancerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5235B1A22DCCE0D7009F75FA /* FreelancerListView.swift */; };
+		5235B1A52DCCE432009F75FA /* FreelancerProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5235B1A42DCCE431009F75FA /* FreelancerProfileView.swift */; };
+		5235B1A72DCCE641009F75FA /* ServiceDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5235B1A62DCCE640009F75FA /* ServiceDetailsView.swift */; };
 		52AEC8D72DCBE61C00B4FC84 /* ServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AEC8D62DCBE61A00B4FC84 /* ServiceModel.swift */; };
 		52AEC8D92DCBF23500B4FC84 /* .swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AEC8D82DCBF22900B4FC84 /* .swift */; };
 		52AEC8DD2DCBF26900B4FC84 /* DeliveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AEC8DC2DCBF26100B4FC84 /* DeliveryView.swift */; };
@@ -474,6 +480,12 @@
 		5235B1962DCC99A9009F75FA /* RejectionReasonSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RejectionReasonSheet.swift; sourceTree = "<group>"; };
 		5235B1982DCC9A2C009F75FA /* DeliveryDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDetailsView.swift; sourceTree = "<group>"; };
 		5235B19A2DCC9C18009F75FA /* ProjectOptionsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectOptionsSheet.swift; sourceTree = "<group>"; };
+		5235B19C2DCCD40E009F75FA /* EarningsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningsView.swift; sourceTree = "<group>"; };
+		5235B19E2DCCD5E8009F75FA /* NotificationsSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSettingsView.swift; sourceTree = "<group>"; };
+		5235B1A02DCCD761009F75FA /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
+		5235B1A22DCCE0D7009F75FA /* FreelancerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreelancerListView.swift; sourceTree = "<group>"; };
+		5235B1A42DCCE431009F75FA /* FreelancerProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreelancerProfileView.swift; sourceTree = "<group>"; };
+		5235B1A62DCCE640009F75FA /* ServiceDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDetailsView.swift; sourceTree = "<group>"; };
 		52AEC8D62DCBE61A00B4FC84 /* ServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceModel.swift; sourceTree = "<group>"; };
 		52AEC8D82DCBF22900B4FC84 /* .swift */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swift; sourceTree = "<group>"; };
 		52AEC8DC2DCBF26100B4FC84 /* DeliveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryView.swift; sourceTree = "<group>"; };
@@ -901,6 +913,9 @@
 		1ECC95422BDDAC3C002BFE54 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				5235B1A62DCCE640009F75FA /* ServiceDetailsView.swift */,
+				5235B1A42DCCE431009F75FA /* FreelancerProfileView.swift */,
+				5235B1A22DCCE0D7009F75FA /* FreelancerListView.swift */,
 				1ECC95432BDDAC4A002BFE54 /* HomeView.swift */,
 				1E6084992BE0037A007D83B1 /* SearchBar.swift */,
 				1EA740522BFB931F0028AAD0 /* CategoryItemView.swift */,
@@ -937,6 +952,9 @@
 		1EDEF6692BE167E400863C10 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				5235B1A02DCCD761009F75FA /* AccountSettingsView.swift */,
+				5235B19E2DCCD5E8009F75FA /* NotificationsSettingsView.swift */,
+				5235B19C2DCCD40E009F75FA /* EarningsView.swift */,
 				1EA6D31D2C1DB0C2007E8AE0 /* Wallet */,
 				1E28041E2C04C6DE0021DFB0 /* ContactUsView.swift */,
 				1EDEF66A2BE167F200863C10 /* ProfileView.swift */,
@@ -1307,6 +1325,7 @@
 				1ED8DE372C22EFD000613489 /* CustomeEmptyView.swift in Sources */,
 				1EDEF6712BE1761F00863C10 /* ConstantView.swift in Sources */,
 				1EA6D3292C1DB15C007E8AE0 /* PaymentState.swift in Sources */,
+				5235B1A12DCCD763009F75FA /* AccountSettingsView.swift in Sources */,
 				1EFB9B2E2C1BAD9D00C15CE4 /* AddUserProductView.swift in Sources */,
 				52F03F922DC1448F00D11215 /* TamaraProduct.swift in Sources */,
 				1E00533B2C1F051F00C75E42 /* AddReviewView.swift in Sources */,
@@ -1365,6 +1384,7 @@
 				1ECC95002BDD13D7002BFE54 /* ConstantItem.swift in Sources */,
 				1EDEF6632BE0E57E00863C10 /* CategoriesView.swift in Sources */,
 				1ECC94FA2BDD130F002BFE54 /* InitialViewModel.swift in Sources */,
+				5235B1A72DCCE641009F75FA /* ServiceDetailsView.swift in Sources */,
 				1EA7FEF32C1A201600823465 /* AddFriend.swift in Sources */,
 				1ECC94D02BDC5E49002BFE54 /* OtpModifer.swift in Sources */,
 				1EC27FEA2C0375390007279D /* Cart.swift in Sources */,
@@ -1409,6 +1429,7 @@
 				52AEC8D92DCBF23500B4FC84 /* .swift in Sources */,
 				1E28041B2C04C6700021DFB0 /* EditAddressView.swift in Sources */,
 				5235B1912DCC98D7009F75FA /* EditRequestSheet.swift in Sources */,
+				5235B19F2DCCD5EA009F75FA /* NotificationsSettingsView.swift in Sources */,
 				1E5F318F2BE23F3E00E5A914 /* RetailFriendWishesView.swift in Sources */,
 				1E2804212C04C70B0021DFB0 /* AddressItem.swift in Sources */,
 				1EA7404A2BFB8DC40028AAD0 /* Slider.swift in Sources */,
@@ -1436,6 +1457,7 @@
 				1EA6D32B2C1DB17A007E8AE0 /* PaymentViewModel.swift in Sources */,
 				52D9E6D42DCB957500ED2874 /* AddServiceView.swift in Sources */,
 				1EDEF6852BE1A93600863C10 /* FriendWishesView.swift in Sources */,
+				5235B19D2DCCD40F009F75FA /* EarningsView.swift in Sources */,
 				1EC27FF02C038A0E0007279D /* CartItemView.swift in Sources */,
 				1E1EDA7C2C1CDA27003047CA /* UserWishesView.swift in Sources */,
 				1EDEF67D2BE1930C00863C10 /* ProductsListView.swift in Sources */,
@@ -1472,7 +1494,9 @@
 				1ECC94702BDC5B68002BFE54 /* Int+Extensions.swift in Sources */,
 				1EC27FE42C034F440007279D /* MainCategory.swift in Sources */,
 				1ECC950D2BDD1642002BFE54 /* CPData.swift in Sources */,
+				5235B1A52DCCE432009F75FA /* FreelancerProfileView.swift in Sources */,
 				1ECC94542BDC57D3002BFE54 /* APIEndpoint.swift in Sources */,
+				5235B1A32DCCE0D9009F75FA /* FreelancerListView.swift in Sources */,
 				5235B1992DCC9A2E009F75FA /* DeliveryDetailsView.swift in Sources */,
 				1E5F318D2BE23E5100E5A914 /* FriendWishesDetailsView.swift in Sources */,
 				1E2804302C04D41A0021DFB0 /* NotificationsViewModel.swift in Sources */,

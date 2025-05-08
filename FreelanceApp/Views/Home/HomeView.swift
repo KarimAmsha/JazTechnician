@@ -62,6 +62,9 @@ struct HomeView: View {
                                                 .font(.system(size: 12))
                                                 .foregroundColor(.gray)
                                         }
+                                        .onTapGesture {
+                                            appRouter.navigate(to: .freelancerList)
+                                        }
                                     }
                                 }
                                 .padding(.horizontal)

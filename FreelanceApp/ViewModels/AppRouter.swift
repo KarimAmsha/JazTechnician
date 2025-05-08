@@ -47,6 +47,12 @@ final class AppRouter: ObservableObject {
         case myWishView(String)
         case addReview(String)
         case deliveryDetails
+        case earningsView
+        case notificationsSettings
+        case accountSettings
+        case freelancerList
+        case freelancerProfile
+        case serviceDetails
     }
     
     public enum Popup: Hashable {

@@ -68,21 +68,6 @@ struct ProjectsView: View {
     }
 }
 
-// MARK: - الحالات
-
-//enum ProjectStatus: String, CaseIterable {
-//    case inProgress, underReview, completed, cancelled
-//
-//    var title: String {
-//        switch self {
-//        case .inProgress: return "قيد التنفيذ"
-//        case .underReview: return "قيد المراجعة"
-//        case .completed: return "المكتملة"
-//        case .cancelled: return "ملغية"
-//        }
-//    }
-//}
-
 enum ProjectStatus: String, CaseIterable {
     case inProgress, underReview, completed, cancelled
 

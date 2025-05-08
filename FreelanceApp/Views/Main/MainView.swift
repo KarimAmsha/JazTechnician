@@ -177,6 +177,18 @@ struct MainView: View {
                     AddReviewView(orderId: id)
                 case .deliveryDetails:
                     DeliveryDetailsView()
+                case .earningsView:
+                    EarningsView()
+                case .notificationsSettings:
+                    NotificationsSettingsView()
+                case .accountSettings:
+                    AccountSettingsView()
+                case .freelancerList:
+                    FreelancerListView()
+                case .freelancerProfile:
+                    FreelancerProfileView()
+                case .serviceDetails:
+                    ServiceDetailsView()
                 }
             }
             .popup(isPresented: Binding<Bool>(

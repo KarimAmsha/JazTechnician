@@ -17,167 +17,82 @@ struct ProfileView: View {
         GeometryReader { geometry in
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 20) {
-                    VStack(alignment: .center, spacing: 8) {
-                        AsyncImageView(
-                            width: 57,
-                            height: 57,
-                            cornerRadius: 8,
-                            imageURL: UserSettings.shared.user?.image?.toURL(),
-                            placeholder: Image(systemName: "photo"),
-                            contentMode: .fill
-                        )
-
-                        Text(UserSettings.shared.user?.full_name ?? "")
-                            .customFont(weight: .bold, size: 14)
-                            .foregroundColor(.white)
-                        
-//                        HStack {
-//                            Text("2 قوائم علنية")
-//                            Image(systemName: "circle.fill")
-//                                .resizable().frame(width: 4, height: 4)
-//                            Text("2 قوائم خاصة")
-//                            Image(systemName: "circle.fill")
-//                                .resizable().frame(width: 4, height: 4)
-//                            Text("1 أمنية بنظام القَطَّة")
-//
-//                        }
-//                        .customFont(weight: .regular, size: 12)
-//                        .foregroundColor(.white)
-                        
+                    // Profile Card
+                    ZStack(alignment: .topLeading) {
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(Color.primary())
+                            .frame(height: 80)
                         HStack {
-                            Button {
-                                appRouter.navigate(to: .editProfile)
-                            } label: {
-                                Text(LocalizedStringKey.editMyProfile)
+                            VStack(alignment: .trailing, spacing: 4) {
+                                Text("قد سعيد")
+                                    .foregroundColor(.white)
+                                    .bold()
+                                Text("100 مشروع مكتمل")
+                                    .foregroundColor(.white)
+                                    .font(.caption)
                             }
-                            .buttonStyle(PrimaryButton(fontSize: 12, fontWeight: .semiBold, background: .primaryLight(), foreground: .primaryBlack(), height: 34, radius: 4))
+                            Spacer()
+                            Image("profile")
+                                .resizable()
+                                .frame(width: 48, height: 48)
+                                .clipShape(Circle())
+                        }
+                        .padding(.horizontal)
 
-                            Button {
-                                appRouter.navigate(to: .editProfile)
-                            } label: {
-                                Image("ic_enter")
-                                    .padding(8)
-                                    .background(Color.primaryNormal().cornerRadius(4))
-                            }
+                        Button(action: {}) {
+                            Image(systemName: "pencil")
+                                .padding(8)
+                                .background(Color.white.opacity(0.2))
+                                .clipShape(Circle())
+                                .foregroundColor(.white)
+                        }
+                        .padding(8)
+                    }
+                    .padding(.horizontal)
 
+                    // Settings List
+                    VStack(spacing: 0) {
+                        settingsRow(title: "أرباحي", icon: "bag") {
+                            appRouter.navigate(to: .earningsView)
+                        }
+
+                        settingsRow(title: "الإشعارات", icon: "bell") {
+                            appRouter.navigate(to: .notificationsSettings)
+                        }
+
+                        settingsRow(title: "إعدادات الحساب", icon: "gearshape") {
+                            appRouter.navigate(to: .accountSettings)
+                        }
+
+                        settingsRow(title: "المساعدة", icon: "questionmark.bubble") {
+                            appRouter.navigate(to: .editProfile)
+                        }
+                        settingsRow(title: "تسجيل الخروج", icon: "rectangle.portrait.and.arrow.right") {
+                            appRouter.navigate(to: .editProfile)
                         }
                     }
-                    .frame(maxWidth: .infinity)
-                    .padding(24)
-                    .background(Color.primary().cornerRadius(4))
-                    .padding(6)
-                    .roundedBackground(cornerRadius: 4, strokeColor: .grayEBF0FF(), lineWidth: 1)
+                    .background(Color.white)
+                    .cornerRadius(12)
+                    .shadow(color: Color.black.opacity(0.05), radius: 4, x: 0, y: 2)
+                    .padding(.horizontal)
 
-                    VStack(spacing: 16) {
-                        CustomListItem(title: LocalizedStringKey.eventReminders,
-                                       subtitle: LocalizedStringKey.eventReminders,
-                                       icon: Image("ic_calendar"),
-                                       action: {
-                            appRouter.navigate(to: .upcomingReminders)
-                        }) {
-                        }
-                        
-                        CustomListItem(title: LocalizedStringKey.myOrders,
-                                       subtitle: LocalizedStringKey.myOrders,
-                                       icon: Image("ic_orders"),
-                                       action: {
-                            appRouter.navigate(to: .myOrders)
-                        }) {
-                        }
-
-                        CustomListItem(title: LocalizedStringKey.wallet,
-                                       subtitle: LocalizedStringKey.walletHit,
-                                       icon: Image("ic_user_square"),
-                                       action: {
-                            appRouter.navigate(to: .walletView)
-                        }) {
-                        }
-
-                        CustomListItem(title: LocalizedStringKey.notifications,
-                                       subtitle: LocalizedStringKey.notifications,
-                                       icon: Image("ic_b_bell"),
-                                       action: {
-                            appRouter.navigate(to: .notifications)
-                        }) {
-                        }
-                        
-                        CustomListItem(title: LocalizedStringKey.addressBook,
-                                       subtitle: LocalizedStringKey.addressBook,
-                                       icon: Image("ic_user_square"),
-                                       action: {
-                            appRouter.navigate(to: .addressBook)
-                        }) {
-                        }
-
-                        CustomListItem(title: LocalizedStringKey.contactUs,
-                                       subtitle: LocalizedStringKey.contactUsHint,
-                                       icon: Image("ic_support"),
-                                       action: {
-                            appRouter.navigate(to: .contactUs)
-                        }) {
-                        }
-
-                        CustomListItem(title: LocalizedStringKey.aboutApp,
-                                       subtitle: LocalizedStringKey.aboutApp,
-                                       icon: Image("ic_mobile"),
-                                       action: {
-                            if let item = initialViewModel.constantsItems?.filter({ $0.constantType == .about }).first {
-                                appRouter.navigate(to: .constant(item))
-                            }
-                        }) {
-                        }
-
-                        CustomListItem(title: LocalizedStringKey.usePolicy,
-                                       subtitle: LocalizedStringKey.usePolicy,
-                                       icon: Image("ic_lock"),
-                                       action: {
-                            if let item = initialViewModel.constantsItems?.filter({ $0.constantType == .using }).first {
-                                appRouter.navigate(to: .constant(item))
-                            }
-                        }) {
-                        }
-
-                        CustomListItem(title: LocalizedStringKey.privacyPolicy,
-                                       subtitle: LocalizedStringKey.privacyPolicy,
-                                       icon: Image("ic_lock"),
-                                       action: {
-                            if let item = initialViewModel.constantsItems?.filter({ $0.constantType == .privacy }).first {
-                                appRouter.navigate(to: .constant(item))
-                            } else {
-                                if let item = initialViewModel.constantsItems?.filter({ $0.constantType == .privacy }).first {
-                                    appRouter.navigate(to: .constant(item))
-                                }
-                            }
-                        }) {
-                        }
-                        
-                        CustomListItem(title: LocalizedStringKey.deleteAccount,
-                                       subtitle: LocalizedStringKey.deleteAccountHint,
-                                       icon: Image("ic_delete"),
-                                       action: {
-                            deleteAccount()
-                        }, textColor: .dangerNormal()) {
-                        }
-                        
-                        CustomListItem(title: LocalizedStringKey.logout,
-                                       subtitle: LocalizedStringKey.logoutHint,
-                                       icon: Image("ic_logout"),
-                                       action: {
-                            logout()
-                        }, textColor: .dangerNormal()) {
-                        }
-                    }
+                    Spacer()
                 }
                 .padding()
             }
         }
         .navigationBarBackButtonHidden()
         .background(Color.background())
+//        .tabBar()
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                Text(LocalizedStringKey.profile)
-                    .customFont(weight: .bold, size: 20)
-                    .foregroundColor(Color.primaryBlack())
+                VStack(alignment: .leading) {
+                    Text("الزيد 🚗")
+                        .customFont(weight: .bold, size: 20)
+                    Text("الإعدادات والتحكم بتفاصيل الحساب!")
+                        .customFont(weight: .regular, size: 10)
+                }
+                .foregroundColor(Color.black222020())
             }
             
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -191,10 +106,57 @@ struct ProfileView: View {
             getConstants()
         }
     }
+    
+    @ViewBuilder
+    func settingsRow(title: String, icon: String, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            HStack {
+                Image(systemName: icon)
+                Text(title)
+                Spacer()
+                Image(systemName: "chevron.left")
+            }
+            .foregroundColor(.black)
+            .padding()
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(Color.white)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(PlainButtonStyle()) // لإزالة تأثير الزر الأزرق
+    }
 }
 
+//// Dummy tab bar extension
+//extension View {
+//    func tabBar() -> some View {
+//        VStack(spacing: 0) {
+//            self
+//            Divider()
+//            HStack {
+//                tabItem(title: "الرئيسية", systemImage: "house")
+//                tabItem(title: "الرسائل", systemImage: "bubble.left")
+//                tabItem(title: "إضافة خدمة", systemImage: "plus")
+//                tabItem(title: "المشاريع", systemImage: "briefcase")
+//                tabItem(title: "الزيد", systemImage: "ellipsis")
+//            }
+//            .padding(.vertical, 8)
+//            .background(Color.white)
+//        }
+//    }
+//
+//    func tabItem(title: String, systemImage: String) -> some View {
+//        VStack(spacing: 4) {
+//            Image(systemName: systemImage)
+//            Text(title).font(.caption2)
+//        }
+//        .frame(maxWidth: .infinity)
+//        .foregroundColor(.black)
+//    }
+//}
+//
 #Preview {
     ProfileView()
+        .environmentObject(AppRouter())
 }
 
 extension ProfileView {
