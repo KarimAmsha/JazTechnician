@@ -12,10 +12,10 @@ struct SplashView: View {
 
     var body: some View {
         ZStack {
-            Color.primaryGradientColor()
+            Color.primary()
                 .ignoresSafeArea()
 
-            Image("")
+            Image("ic_logo")
                 .opacity(logoOpacity)
         }
         .onAppear {

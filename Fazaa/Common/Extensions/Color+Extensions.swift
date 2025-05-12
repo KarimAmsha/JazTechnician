@@ -33,33 +33,32 @@ extension Color {
         )
     }
     
-    // ✅ Primary Colors (محدثة حسب الهوية الجديدة)
     static func primary1() -> Color {
-        return Color(hex: "4C8E48") // أخضر فاتح
+        return Color(hex: "054472")
     }
 
     static func primary2() -> Color {
-        return Color(hex: "225E2E") // أخضر داكن
+        return Color(hex: "054472")
     }
 
     static func primary() -> Color {
-        return Color(hex: "225E2E") // الأخضر الأساسي
+        return Color(hex: "054472")
     }
 
     static func primaryNormal() -> Color {
-        return Color(hex: "3A7334") // أخضر متوسط
+        return Color(hex: "054472")
     }
 
     static func primaryLight() -> Color {
-        return Color(hex: "F2F2F2") // فاتح جداً
+        return Color(hex: "054472")
     }
 
     static func primaryLightHover() -> Color {
-        return Color(hex: "F3F3F3")
+        return Color(hex: "054472")
     }
 
     static func primaryLightActive() -> Color {
-        return Color(hex: "FEF3DE")
+        return Color(hex: "054472")
     }
 
     // ✅ خلفيات إضافية من الصور
@@ -116,32 +115,32 @@ extension Color {
 
     static
     func secondary() -> Color {
-        return Color(hex: "00A991")
+        return Color(hex: "007F6D")
     }
     
     static
     func secondaryLight() -> Color {
-        return Color(hex: "E6F6F4")
+        return Color(hex: "00A991")
     }
 
     static
     func secondaryLightActive() -> Color {
-        return Color(hex: "B0E4DD")
+        return Color(hex: "00A991")
     }
 
     static
     func secondaryLightHover() -> Color {
-        return Color(hex: "D9F2EF")
+        return Color(hex: "00A991")
     }
 
     static
     func secondaryDark() -> Color {
-        return Color(hex: "007F6D")
+        return Color(hex: "00A991")
     }
 
     static
     func secondaryDarker() -> Color {
-        return Color(hex: "003B33")
+        return Color(hex: "00A991")
     }
 
     static

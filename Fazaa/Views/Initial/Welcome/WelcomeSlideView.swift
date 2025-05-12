@@ -23,12 +23,12 @@ struct WelcomeSlideView: View {
 
             VStack(alignment: .center, spacing: 16) {
                 Text(item.Title ?? "")
-                    .customFont(weight: .bold, size: 20)
-                    .foregroundColor(.primaryBlack())
+                    .customFont(weight: .medium, size: 16)
+                    .foregroundColor(.secondary())
                     .multilineTextAlignment(.leading)
 
                 Text(item.Description ?? "")
-                    .customFont(weight: .regular, size: 14)
+                    .customFont(weight: .bold, size: 20)
                     .foregroundColor(.primaryBlack())
                     .multilineTextAlignment(.center)
                     .lineLimit(2)

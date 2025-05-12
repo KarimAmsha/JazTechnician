@@ -35,11 +35,11 @@ struct LoginView: View {
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 32) {
                     VStack(alignment: .leading, spacing: 12) {
-                        Text("يا هلا! 👋")
+                        Text("يا مرحبا! 👋")
                             .font(.title2.bold())
                             .foregroundColor(.black)
 
-                        Text("سعيدين برؤيتك من جديد! قم بإدخال البيانات التالية بشكل صحيح للوصول إلى حسابك ...")
+                        Text("املأ الحقول التالية للوصول إلى حسابك والعودة لملفلك الشخصي مرة أخرى!")
                             .font(.subheadline)
                             .foregroundColor(.gray)
                             .multilineTextAlignment(.leading)

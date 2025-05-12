@@ -15,8 +15,8 @@ struct ControlDots: View {
         HStack(spacing: 8) {
             ForEach(0..<numberOfPages, id: \.self) { page in
                 Capsule()
-                    .fill(page == currentPage ? Color(hex: "C58B32") : Color(hex: "EAEFE9"))
-                    .frame(width: 100, height: 4)
+                    .fill(page == currentPage ? Color.primary() : Color.gray999999())
+                    .frame(width: 20, height: 4)
             }
         }
         .padding(.vertical, 8)
