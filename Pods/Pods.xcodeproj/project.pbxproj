@@ -113,6 +113,7 @@
 		21CFF5002A9804D958C428168380023C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41ACAAC876EF7F0E867591D2662CCC04 /* Foundation.framework */; };
 		2236FC0AB46E5E099BF363EDD63AC072 /* PaymentOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BCB0EBB567B0A20C1CBDD4A5AA3BDB /* PaymentOptions.swift */; };
 		22A8FAF191904D55FD27069D2045F068 /* SortableByOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA99CCB87A4F27CC6456B222AD17BBDB /* SortableByOrder.swift */; };
+		22B50C139AFD2AE996D285E04B60148E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41ACAAC876EF7F0E867591D2662CCC04 /* Foundation.framework */; };
 		22FBF36E396F6D884EBD7282CA47EE06 /* AddressType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B08B113761DCE82060A28A2D7325DF /* AddressType.swift */; };
 		23202349C4BCCFC3D4FD7C16ED357C29 /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F6806D74793339E1B4ADFAEBAB8914 /* Measurement.swift */; };
 		234B0754D737E2F4FF25954156937527 /* EmailAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E00491562C14AE27787BA794A88EC5 /* EmailAddress.swift */; };
@@ -152,7 +153,6 @@
 		30F7B6719EB8AA67D8216A0F73F37D2D /* TapAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1B98C8F04B04B4EA0EB650E330557E /* TapAlertController.swift */; };
 		318E8EB9E41CA0ACF76FD3A103D44BA8 /* TapBodyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AE74014F4F473098A337E06C7C94E3 /* TapBodyModel.swift */; };
 		31985E5AA02559A4F631C5F93EFFDBC3 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB308C4E310ADE131F72D5B91387100C /* KeychainManager.swift */; };
-		31D60C927A9E0851DF33687247876820 /* Pods-FreelanceApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BA595594360BC2E2A25681E44C16AAF6 /* Pods-FreelanceApp-dummy.m */; };
 		33B9599EE99257937E5EFDE6A4C28D17 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC8F54A398F3A29FAEE41F9390166DE /* Currency.swift */; };
 		33F72F7D480E23CE4BB70DE99CE144E6 /* WebPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF38E62BB18B846AA555A5F0D49476A /* WebPaymentViewController.swift */; };
 		348E203431A461FEB66B6C6488558069 /* Authorize.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC38EB3D38EA6FB07A3E07CCA2BE9037 /* Authorize.swift */; };
@@ -172,6 +172,7 @@
 		38DE997260E269EC13FF7FD709E2640C /* PaymentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC7CB963AD91AC8CCC3D40F18C0697B /* PaymentItem.swift */; };
 		38FCF0E11E1D0A60E720531D2B45E7FF /* TapEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF615FD97D49C584875AD68A5D66F49 /* TapEncoder.swift */; };
 		38FD3E0F9AEB71B969E3863929D29209 /* ApplePaymentOptionTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E31C8AA1C4909680AFCB9E35A90C4E /* ApplePaymentOptionTableViewCellModel.swift */; };
+		392091F5D8B95C9E02169F97B0074326 /* Pods-Fazaa-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E14C6F9E81C338BFC60490478BBF1F1D /* Pods-Fazaa-dummy.m */; };
 		39264CA6DFFD644DF84C528EA9C79FA7 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E91F839FAD863AFC7635ECFB1A7474 /* Localizable.swift */; };
 		3931E733514E2A5F45CA26305046CE32 /* CardsContainerTableViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8055FC93EC10F063BA72F93495B3E10 /* CardsContainerTableViewCellModel.swift */; };
 		3934DB8E3042EB896940C9ACBB343FC5 /* ResizablePaymentContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF03762C68D65DABD794D851963A79A /* ResizablePaymentContainerViewController.swift */; };
@@ -332,7 +333,6 @@
 		6D46D778F1512D762FCF5DE1B420272A /* AddressFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721E2AF9925FC57C9F2B4BE1B05CD377 /* AddressFormat.swift */; };
 		6D766A99266CAB33B0444000E5465FF6 /* APIClient+Charges.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6703AADC243844D25671DA7A9176F05 /* APIClient+Charges.swift */; };
 		6DB247F81C026587DAE25DD1F578FAB0 /* APIClient+BIN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03241700AC47F54E89D9CA8902A60177 /* APIClient+BIN.swift */; };
-		6DF735FCEC6FCCBD1CFB512A3AA6C9DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41ACAAC876EF7F0E867591D2662CCC04 /* Foundation.framework */; };
 		6E68FC477FEBC6BAF22C2ABC21F62A84 /* Moya+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD01F343C562087CA004493C60B98C31 /* Moya+Alamofire.swift */; };
 		6EB673FCE90829F99CD80E2614C0151B /* TapNetworkReachabilityStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3DB77764108498E80656244272EEC4 /* TapNetworkReachabilityStatus.swift */; };
 		6EF3BFC8D8E5C0E208C0BC31548C747B /* CapturePayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4047C51D199DFFD475CC5226DB44C9 /* CapturePayment.swift */; };
@@ -382,6 +382,7 @@
 		7C487F0EF22ACC6BDC014FA94D882FEA /* CardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3995A5F9842198DF73489683B4A6AC7 /* CardType.swift */; };
 		7C5BB9A195B9CD65A4793749FD140164 /* AuthorizeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDA07BBB172A64D0997F9EA5C2416C4 /* AuthorizeAction.swift */; };
 		7CBE65B65A7BDAA9F9C0248884B8AA91 /* SourcePaymentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF5B6946BEB078A3A1B973ECDFBFDC9 /* SourcePaymentType.swift */; };
+		7CBE8956D103ED9E83EABE9235A41A3A /* Pods-Fazaa-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3953E96F7628EC8B314DC1F23430F567 /* Pods-Fazaa-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7D2B292D4BFF25DB83F06E47563B9AB5 /* Sequence+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7724684BAF6F4C16E86821BACC9FF6 /* Sequence+Additions.swift */; };
 		7DEFD23EC29D32FEE6077A557834B7E9 /* SessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7148128D549E9D72DF6A133429AF70B /* SessionProtocol.swift */; };
 		7EB347AACE01627DC67165600434A325 /* CreateAuthorizeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418B023A6FFA51EBC5A3F13A2D5A720F /* CreateAuthorizeRequest.swift */; };
@@ -671,7 +672,6 @@
 		D57A8B66CD3C06F76B845A24DA55FE95 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDD0736D02E5DFF7069CC7A21A6D2FB /* Triangle.swift */; };
 		D59ED57BA3FC90CB27780F378BFBC96F /* TapApplicationV2-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DCD2B2A59F30DB147A7BCD5C2EED22E /* TapApplicationV2-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D5A2B190C4A0490CAACAD3C4FC76531D /* Concurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC94866943B8B59870BC3C6C4AB3E99F /* Concurrency.swift */; };
-		D5B4B8CCBB5ED5CC83322840C60E507E /* Pods-FreelanceApp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4BDA096F0F07F477F6A534A8DFE23497 /* Pods-FreelanceApp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D636E2C6CDC49AC44D2F064DFFC039B4 /* AddressField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E6DD00181638B329E5931DB88CED88 /* AddressField.swift */; };
 		D6A0007E4E9BB8A0787556AABB11E7EB /* AuthenticationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375DDD9686D44D524840DA407FD943FA /* AuthenticationType.swift */; };
 		D6AAA14215BE08839A6785C89341689C /* TapResponderChainInputViewV2-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CFF019592740A38D1C11B81C7D332330 /* TapResponderChainInputViewV2-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -808,6 +808,13 @@
 			remoteGlobalIDString = A3DF3C18C03F8EAEC754928B8CBFE78B;
 			remoteInfo = TapAdditionsKitV2;
 		};
+		015048B2AC25261F9C534B90A5AC6FDC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B4315773B41EF24944FFB8C535C19714;
+			remoteInfo = TapFontsKitV2;
+		};
 		02200CC602F7A4E4DA4742451817B918 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -821,6 +828,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = A3DF3C18C03F8EAEC754928B8CBFE78B;
 			remoteInfo = TapAdditionsKitV2;
+		};
+		097AF71D2A7D17C320A93F615805E8DF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DCA479FE2956C2EC87223CB5918E2419;
+			remoteInfo = TapEditableViewV2;
 		};
 		0BF5B90F8ECE4AC534DC2CB659357CBD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -843,19 +857,19 @@
 			remoteGlobalIDString = 3BCA64009C588E875C8B1CD48C7FC318;
 			remoteInfo = TapNibViewV2;
 		};
-		26C247232A82B22993C4994F3D90A5E0 /* PBXContainerItemProxy */ = {
+		2157B3F954B760C286C2DE4D0C4620C9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 92A1C13902E7ACDA3ABB5BA1FEACC86C;
-			remoteInfo = SwiftyRSA;
+			remoteGlobalIDString = 7D7CA289C7EAC480E1D88A58624285ED;
+			remoteInfo = TapKeychainV2;
 		};
-		277A3F8A62BD5E68ADF53C380578995C /* PBXContainerItemProxy */ = {
+		25823701D4C9A27162030A12265F4491 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = CECB7B4A2DADAF3B398D564292452FDB;
-			remoteInfo = goSellSDK;
+			remoteGlobalIDString = E216967D71699A6EF43A16A4B8B6D624;
+			remoteInfo = TapSwiftFixesV2;
 		};
 		2A34A52752366998270DB7C35A6BF4EA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -864,6 +878,13 @@
 			remoteGlobalIDString = A3DF3C18C03F8EAEC754928B8CBFE78B;
 			remoteInfo = TapAdditionsKitV2;
 		};
+		32BDFF8295BE0D9D47536BB59FDD531C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3BCA64009C588E875C8B1CD48C7FC318;
+			remoteInfo = TapNibViewV2;
+		};
 		335CA64B43789504FFF578C447279E74 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -871,12 +892,19 @@
 			remoteGlobalIDString = B4315773B41EF24944FFB8C535C19714;
 			remoteInfo = TapFontsKitV2;
 		};
-		3534CB43CB4BAEAD845D0A7D1D09AD16 /* PBXContainerItemProxy */ = {
+		39DFCDEBA768D0E593D02DFF1997F55B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 812C2C54B141DDEECB4454FC55229161;
-			remoteInfo = TapResponderChainInputViewV2;
+			remoteGlobalIDString = 92A1C13902E7ACDA3ABB5BA1FEACC86C;
+			remoteInfo = SwiftyRSA;
+		};
+		417AAE47A27A8E00CA6B1FDCAC1FA5AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CECB7B4A2DADAF3B398D564292452FDB;
+			remoteInfo = goSellSDK;
 		};
 		462AA2EC9805986108457EDE356705EA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -892,26 +920,33 @@
 			remoteGlobalIDString = DBB4D3FBA5CA232BEF0BD9C8A2EE9F5C;
 			remoteInfo = "TapSearchViewV2-TapSearchViewResources";
 		};
-		4B0AAFA0B7320369BEE5A27A0A86D240 /* PBXContainerItemProxy */ = {
+		4CC1D051905F330A6EC5A00764B8E81E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 3615B323ECE97BB00B6167A5847EF0FF;
 			remoteInfo = "TapCardVlidatorKit-iOS";
 		};
-		5A63A264D0591B7E2D14DFCDC32717AB /* PBXContainerItemProxy */ = {
+		5180F9514DA4CC0EBA05E76657ECA767 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9A8B22F15674A78FC57F1E9B3018E88B;
-			remoteInfo = TapApplicationV2;
+			remoteGlobalIDString = 7E79CE7409C741410DA2A34AFD8913B1;
+			remoteInfo = TapVisualEffectViewV2;
 		};
-		6087A204CB7F3A19F16B27CC38FA3E15 /* PBXContainerItemProxy */ = {
+		57904385F2BD18E7755CB71E31B6F5D5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = DCA479FE2956C2EC87223CB5918E2419;
-			remoteInfo = TapEditableViewV2;
+			remoteGlobalIDString = 128A37608919FF3FB13348EEE4E63A26;
+			remoteInfo = TapNetworkManagerV2;
+		};
+		59DA9970CD1FDD99AA894E48BE0875AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A3DF3C18C03F8EAEC754928B8CBFE78B;
+			remoteInfo = TapAdditionsKitV2;
 		};
 		6466229AA0267BF0CF23B6D943458BFB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -969,12 +1004,12 @@
 			remoteGlobalIDString = 3BCA64009C588E875C8B1CD48C7FC318;
 			remoteInfo = TapNibViewV2;
 		};
-		7A45B99D9844DF2C37D6DA0D1289B7DA /* PBXContainerItemProxy */ = {
+		77E9A0571E1064DB2BF1E742906927A9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 7E79CE7409C741410DA2A34AFD8913B1;
-			remoteInfo = TapVisualEffectViewV2;
+			remoteGlobalIDString = EAAF68CB5C03DE3146C00A64D8B8DCEF;
+			remoteInfo = TamaraSDK;
 		};
 		81D63395DC35E70A4938D2306B26000B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -983,12 +1018,12 @@
 			remoteGlobalIDString = A3DF3C18C03F8EAEC754928B8CBFE78B;
 			remoteInfo = TapAdditionsKitV2;
 		};
-		87C367012BE709DA2E0FCC8FBBA7C523 /* PBXContainerItemProxy */ = {
+		8D8C80BB0D62A46525F4C425B65352D3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 39D83FA8D35F395F8FEBFC954F6666EB;
-			remoteInfo = TapGLKitV2;
+			remoteGlobalIDString = 4E513D55778E7E5F0522F6EA5F37CD3A;
+			remoteInfo = TapBundleLocalizationV2;
 		};
 		8F63AB6F72F7C1D825A395F0E49C76F2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -996,13 +1031,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 9A8B22F15674A78FC57F1E9B3018E88B;
 			remoteInfo = TapApplicationV2;
-		};
-		90CB3918AB9A21DC7DB6681A6ACA24D8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7D7CA289C7EAC480E1D88A58624285ED;
-			remoteInfo = TapKeychainV2;
 		};
 		92BA4C4D616B18996CD31BF0569FEBA7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1025,26 +1053,12 @@
 			remoteGlobalIDString = DF16D1554ABCC7EDB2F26466C1984846;
 			remoteInfo = "TapResponderChainInputViewV2-TapResponderChainInputViewResources";
 		};
-		9E76272B22C8839DB278C85783D742C0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E216967D71699A6EF43A16A4B8B6D624;
-			remoteInfo = TapSwiftFixesV2;
-		};
-		9EE812567350F15E39B2EAF71D6FBCF9 /* PBXContainerItemProxy */ = {
+		A38833362E211C94CEC5A592042D431A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = E9F28119884BFB9B48F0E69941FB768F;
 			remoteInfo = TapSearchViewV2;
-		};
-		A3D603E11850E78E6C8C5AD7680A717E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B4315773B41EF24944FFB8C535C19714;
-			remoteInfo = TapFontsKitV2;
 		};
 		AB73D2E12F1C409F45C9CE5E68029054 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1053,6 +1067,13 @@
 			remoteGlobalIDString = 77AD281DAC3BB055DBF6795D5843432B;
 			remoteInfo = "goSellSDK-goSellSDKResources";
 		};
+		AD71AD0188B5D81DF343F0A104E71561 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EAAA1AD3A8A1B59AB91319EE40752C6D;
+			remoteInfo = Alamofire;
+		};
 		B1FB091050651968A6231DF19FE58C9B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -1060,12 +1081,12 @@
 			remoteGlobalIDString = E9F28119884BFB9B48F0E69941FB768F;
 			remoteInfo = TapSearchViewV2;
 		};
-		B490CF1C1BF35EA8169BE9CBD5A57F02 /* PBXContainerItemProxy */ = {
+		B6982C944926EEB9C67F673FA990F222 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = A3DF3C18C03F8EAEC754928B8CBFE78B;
-			remoteInfo = TapAdditionsKitV2;
+			remoteGlobalIDString = 39D83FA8D35F395F8FEBFC954F6666EB;
+			remoteInfo = TapGLKitV2;
 		};
 		BB42E4157ED11D5DA098B260E71D96ED /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1095,13 +1116,6 @@
 			remoteGlobalIDString = 7E79CE7409C741410DA2A34AFD8913B1;
 			remoteInfo = TapVisualEffectViewV2;
 		};
-		C275C20CD6F2AAAA4B654AFF75E738AE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EAAA1AD3A8A1B59AB91319EE40752C6D;
-			remoteInfo = Alamofire;
-		};
 		C6333A769431A5DE5A7E9778362D9FFC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -1116,19 +1130,19 @@
 			remoteGlobalIDString = 4017F99A726B5DB0932349A4E4D56670;
 			remoteInfo = EditableTextInsetsTextFieldV2;
 		};
-		D1B5FF54CC9A81B658FE8314D1728881 /* PBXContainerItemProxy */ = {
+		D38A561A10E7F1A23FA0F627FF235C49 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 17F9141D333DA1A7BE5937F227221070;
-			remoteInfo = Moya;
+			remoteGlobalIDString = 812C2C54B141DDEECB4454FC55229161;
+			remoteInfo = TapResponderChainInputViewV2;
 		};
-		D33361CD927A4D66B8951B47D3B78B9C /* PBXContainerItemProxy */ = {
+		D58D91FC7FC90A71D42FDE561374C427 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 128A37608919FF3FB13348EEE4E63A26;
-			remoteInfo = TapNetworkManagerV2;
+			remoteGlobalIDString = 4017F99A726B5DB0932349A4E4D56670;
+			remoteInfo = EditableTextInsetsTextFieldV2;
 		};
 		D8BF323F6C8F28A34C17B4C1710AC7F7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1137,26 +1151,19 @@
 			remoteGlobalIDString = EAAA1AD3A8A1B59AB91319EE40752C6D;
 			remoteInfo = Alamofire;
 		};
+		E7114237A2C0674A9B1C2C44782D18BF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17F9141D333DA1A7BE5937F227221070;
+			remoteInfo = Moya;
+		};
 		EC393E469EA3665F86FB7C99747EB268 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = A3DF3C18C03F8EAEC754928B8CBFE78B;
 			remoteInfo = TapAdditionsKitV2;
-		};
-		ECADB9007BCD03F97A8499C0D863A28E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4E513D55778E7E5F0522F6EA5F37CD3A;
-			remoteInfo = TapBundleLocalizationV2;
-		};
-		ECF23E3362602BC2923D3A4AA00BC4F5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4017F99A726B5DB0932349A4E4D56670;
-			remoteInfo = EditableTextInsetsTextFieldV2;
 		};
 		EEBF45E4ACC73022A029744A9D9E98E6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1172,13 +1179,6 @@
 			remoteGlobalIDString = 976126A1CE06DC6E162563800E1BDF14;
 			remoteInfo = "Alamofire-Alamofire";
 		};
-		F2720F9B8B1080F57FC4273758D57A49 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EAAF68CB5C03DE3146C00A64D8B8DCEF;
-			remoteInfo = TamaraSDK;
-		};
 		F9C57968EEA9F6548754165CF33D9A8C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -1193,12 +1193,12 @@
 			remoteGlobalIDString = DBE7C85AC98C4C3FBD3E3C7D72FBADF7;
 			remoteInfo = "TapFontsKitV2-Fonts";
 		};
-		FD0E2735A202F3BAE9E71541A7F46051 /* PBXContainerItemProxy */ = {
+		FE47B03C7AFA7545BAE158901F392230 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 3BCA64009C588E875C8B1CD48C7FC318;
-			remoteInfo = TapNibViewV2;
+			remoteGlobalIDString = 9A8B22F15674A78FC57F1E9B3018E88B;
+			remoteInfo = TapApplicationV2;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -1216,7 +1216,6 @@
 		04B09599A3DF94F374413F2D5F653C59 /* goSellSDK-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "goSellSDK-Info.plist"; sourceTree = "<group>"; };
 		059D589C01880DB89184A033F3DAC866 /* TapVisualEffectViewV2-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TapVisualEffectViewV2-prefix.pch"; sourceTree = "<group>"; };
 		05ACCCB18E41307D1CCA80DD6E9B4B26 /* WobblingViewHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WobblingViewHandler.swift; path = goSellSDK/Core/UI/Internal/Protocols/WobblingViewHandler.swift; sourceTree = "<group>"; };
-		05C438491609087A7C61C4481ECC010A /* Pods-FreelanceApp */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-FreelanceApp"; path = Pods_FreelanceApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		05D4EA998F534CB3ED2BC1E4AF793037 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
 		05FAC0D8B24308C7535401335D8DE6A9 /* SwiftyRSA-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyRSA-prefix.pch"; sourceTree = "<group>"; };
 		06270E3FF885DFDA2DEC63CDB2AEC4AA /* PaymentType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentType.swift; path = goSellSDK/Core/API/Public/Enums/PaymentType.swift; sourceTree = "<group>"; };
@@ -1343,6 +1342,7 @@
 		27DFC1277C59968A1E294896A61A2803 /* CapturePaymentRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CapturePaymentRequest.swift; path = TamaraSDK/TamaraSDK/model/request/CapturePaymentRequest.swift; sourceTree = "<group>"; };
 		27E094934B77F16D023235BBBB099496 /* ThreadingFixes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThreadingFixes.swift; path = Common/Source/ThreadingFixes/ThreadingFixes.swift; sourceTree = "<group>"; };
 		284B687F31986C23BB00810F1875AA2C /* CardValidatorDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardValidatorDelegate.swift; path = goSellSDK/Core/UI/Internal/Protocols/CardValidatorDelegate.swift; sourceTree = "<group>"; };
+		28DC5E6CD37B116F6862DB654E947CF6 /* Pods-Fazaa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Fazaa.debug.xcconfig"; sourceTree = "<group>"; };
 		2961190BFCC0979EC0FA089F9EC4A89D /* CardBINRange.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardBINRange.swift; path = "Sources/TapCardVlidatorKit-iOS/private/CardBINRange.swift"; sourceTree = "<group>"; };
 		29AE82A148CF0F4AAE3608BB4D04FD0A /* QuadGradientView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuadGradientView.swift; path = TapGLKitV2/TapGLKitV2/Source/QuadGradientView/QuadGradientView.swift; sourceTree = "<group>"; };
 		2A4F139992DE31CE2D73E24472F610A3 /* Bundle+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Bundle+Additions.swift"; path = "goSellSDK/Core/UI/Internal/Extensions/Bundle+Additions.swift"; sourceTree = "<group>"; };
@@ -1379,7 +1379,6 @@
 		32455E06A3ABABCA90FF65FB98D42A76 /* URLEncodedFormEncoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = URLEncodedFormEncoder.swift; path = Source/Features/URLEncodedFormEncoder.swift; sourceTree = "<group>"; };
 		324CC4EF6D399FAC05FE89C20BFDA135 /* BillingAddressResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BillingAddressResponse.swift; path = goSellSDK/Core/API/Internal/Models/BillingAddressResponse.swift; sourceTree = "<group>"; };
 		32BD869D3549F59C4EB89DD3B93B76A6 /* CheckoutSession.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CheckoutSession.swift; path = TamaraSDK/TamaraSDK/model/response/CheckoutSession.swift; sourceTree = "<group>"; };
-		32D6818E8E6A97B0C3DBAD4D1168451C /* Pods-FreelanceApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FreelanceApp.release.xcconfig"; sourceTree = "<group>"; };
 		3367AE71DD47E61ED755E41C0CAD01ED /* KeyedDecodingContainer+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "KeyedDecodingContainer+Additions.swift"; path = "TapAdditionsKitV2/TapAdditionsKitV2/SwiftStandartLibrary/KeyedDecodingContainer+Additions.swift"; sourceTree = "<group>"; };
 		33991E3913FD8E38B7DD332A7AEF9FC1 /* Customer.Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Customer.Request.swift; path = goSellSDK/Core/API/Internal/Models/Customer.Request.swift; sourceTree = "<group>"; };
 		33C8A2772FF91248613F4F49DA898AEC /* TapBundleWithPlist.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapBundleWithPlist.swift; path = TapApplicationV2/TapApplicationV2/Source/TapBundleWithPlist.swift; sourceTree = "<group>"; };
@@ -1409,6 +1408,7 @@
 		38FE33D51F27ADA6F312C931DB539F01 /* Country.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Country.swift; path = goSellSDK/Core/API/Public/Models/Country.swift; sourceTree = "<group>"; };
 		39234EBFDC8024F975B215B9F81DC183 /* TapBundleLocalizationV2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TapBundleLocalizationV2.debug.xcconfig; sourceTree = "<group>"; };
 		3935EC030106F47F185D3CCC64833D92 /* SwiftyRSA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyRSA.release.xcconfig; sourceTree = "<group>"; };
+		3953E96F7628EC8B314DC1F23430F567 /* Pods-Fazaa-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Fazaa-umbrella.h"; sourceTree = "<group>"; };
 		39746A43AD58CC83522A61E56A8137EA /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Sources/Moya/MultipartFormData.swift; sourceTree = "<group>"; };
 		3A291378C793E59492D305FE46C5389C /* SeparateWindowViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SeparateWindowViewController.swift; path = goSellSDK/Core/UI/Internal/Controllers/SeparateWindowViewController.swift; sourceTree = "<group>"; };
 		3A37E55508EB29BAB3225698341430AF /* APIClient+Card.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "APIClient+Card.swift"; path = "goSellSDK/Core/API/Internal/Client/APIClient+Card.swift"; sourceTree = "<group>"; };
@@ -1472,12 +1472,12 @@
 		4B2D0E1722BEBEB7240C53212C2AD35C /* DataValidation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DataValidation.swift; path = goSellSDK/Core/UI/Internal/Protocols/DataValidation.swift; sourceTree = "<group>"; };
 		4B87E35489FE365DC70E616691D58ED4 /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Core/Notifications.swift; sourceTree = "<group>"; };
 		4BCEED6CB7B3551F31830FE3D59D668F /* SourceType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SourceType.swift; path = goSellSDK/Core/API/Public/Enums/SourceType.swift; sourceTree = "<group>"; };
-		4BDA096F0F07F477F6A534A8DFE23497 /* Pods-FreelanceApp-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FreelanceApp-umbrella.h"; sourceTree = "<group>"; };
 		4BEF36287566988E6477532B2FF927ED /* TapVisualEffectView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TapVisualEffectView.xib; path = TapVisualEffectViewV2/TapVisualEffectViewV2/Resources/TapVisualEffectView.xib; sourceTree = "<group>"; };
 		4C75CBA448659CBF6EE4465ED0EBBDCE /* PaymentItem+Amount.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "PaymentItem+Amount.swift"; path = "goSellSDK/Core/API/Public/Extensions/PaymentItem+Amount.swift"; sourceTree = "<group>"; };
 		4E47D0FC3CBDB1BFA15AAC961771F82A /* OTPViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OTPViewController.swift; path = goSellSDK/Core/UI/Internal/Controllers/OTPViewController.swift; sourceTree = "<group>"; };
 		4EB516EFC5D4A930E40217597D4513B9 /* TapSearchViewV2-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TapSearchViewV2-prefix.pch"; sourceTree = "<group>"; };
 		4EEEAA6A89EC32CF33FF16F531A038F0 /* TamaraSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TamaraSDK.release.xcconfig; sourceTree = "<group>"; };
+		4FAEA3C6CFFEC0E7506A4D20A030E79B /* Pods-Fazaa-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Fazaa-acknowledgements.markdown"; sourceTree = "<group>"; };
 		509560AF4E894BFF960A816627B11FD6 /* Destination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Destination.swift; path = goSellSDK/Core/API/Public/Models/Destination.swift; sourceTree = "<group>"; };
 		52399D85BBD992ADF3013048DBAEF20D /* EmptyTableViewCellModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EmptyTableViewCellModel.swift; path = "goSellSDK/Core/UI/Internal/View Models/EmptyTableViewCellModel.swift"; sourceTree = "<group>"; };
 		524DE3354C7F5BB88E7898ED5510A5DA /* CardInputTableViewCellLoading.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardInputTableViewCellLoading.swift; path = goSellSDK/Core/UI/Internal/Protocols/CardInputTableViewCellLoading.swift; sourceTree = "<group>"; };
@@ -1486,7 +1486,6 @@
 		53FA4255946CA1E45B6904653E1C92B0 /* DestinationGroup.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DestinationGroup.swift; path = goSellSDK/Core/API/Public/Models/DestinationGroup.swift; sourceTree = "<group>"; };
 		5452810E2091E88F08A07F873394A789 /* NavigationBarStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NavigationBarStyle.swift; path = goSellSDK/Core/UI/Internal/Theme/NavigationBarStyle.swift; sourceTree = "<group>"; };
 		545ABA445F981FD8521584FD14F1E779 /* FontProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FontProvider.swift; path = TapFontsKitV2/TapFontsKitV2/Source/FontProvider.swift; sourceTree = "<group>"; };
-		547B6B0E9CD8C8119A375829D939BC34 /* Pods-FreelanceApp-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FreelanceApp-frameworks.sh"; sourceTree = "<group>"; };
 		5487C6DF72FCF7F5A1D0943C485890C9 /* UIImage+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImage+Additions.swift"; path = "TapAdditionsKitV2/TapAdditionsKitV2/UIKit/UIImage+Additions.swift"; sourceTree = "<group>"; };
 		54A634A54442637A9977C16112F89F52 /* BaseViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = goSellSDK/Core/UI/Internal/Controllers/BaseViewController.swift; sourceTree = "<group>"; };
 		557E31851722D9BCA436C1BC71414277 /* CardInputTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardInputTableViewCell.swift; path = "goSellSDK/Core/UI/Internal/Cells/Table View/CardInputTableViewCell.swift"; sourceTree = "<group>"; };
@@ -1571,9 +1570,9 @@
 		6CD32632DD87B294992F94B3F034227E /* TapActivityIndicatorShader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapActivityIndicatorShader.swift; path = TapGLKitV2/TapGLKitV2/Source/TapActivityIndicatorView/TapActivityIndicatorShader.swift; sourceTree = "<group>"; };
 		6CF38E62BB18B846AA555A5F0D49476A /* WebPaymentViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WebPaymentViewController.swift; path = goSellSDK/Core/UI/Internal/Controllers/WebPaymentViewController.swift; sourceTree = "<group>"; };
 		6D33A8BCD53FD177E08EA23BA8C96E55 /* ThemeObserver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThemeObserver.swift; path = goSellSDK/Core/UI/Internal/Protocols/ThemeObserver.swift; sourceTree = "<group>"; };
+		6DB6EFB50E90A0CD47FA927A6204462B /* Pods-Fazaa */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Fazaa"; path = Pods_Fazaa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DD74FA1D1D8212A0A8983AEA4094308 /* TamaraSDKPayment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TamaraSDKPayment.swift; path = TamaraSDK/TamaraSDK/TamaraSDKPayment.swift; sourceTree = "<group>"; };
 		6E42C5F3307AA7E10025818F574B2A0F /* AmountedCurrencyTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AmountedCurrencyTableViewCell.swift; path = "goSellSDK/Core/UI/Internal/Cells/Table View/AmountedCurrencyTableViewCell.swift"; sourceTree = "<group>"; };
-		6E93BB8739D6E48CE6FD8E329AA3E9E5 /* Pods-FreelanceApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FreelanceApp.debug.xcconfig"; sourceTree = "<group>"; };
 		6EFF85F8AEB7F13C7D9106F69E664722 /* sar-Regular.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = "sar-Regular.ttf"; path = "goSellSDK/Core/UI/Internal/Resources/sar-Regular.ttf"; sourceTree = "<group>"; };
 		7021E2B869D992E5F5D44B60EF220AAA /* ArrowView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ArrowView.swift; path = TapGLKitV2/TapGLKitV2/Source/ArrowView/ArrowView.swift; sourceTree = "<group>"; };
 		7041CAC8AA481499AC4635999673DC2C /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Core/Request.swift; sourceTree = "<group>"; };
@@ -1704,6 +1703,7 @@
 		9A1F1D310C8E0084C10529EC808D87D8 /* ExpirationDateValidator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpirationDateValidator.swift; path = goSellSDK/Core/UI/Internal/Validators/ExpirationDateValidator.swift; sourceTree = "<group>"; };
 		9A66A077B56EEC394D5476D0BFF9F48F /* AppleTokenModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppleTokenModel.swift; path = goSellSDK/Core/API/Internal/Models/AppleTokenModel.swift; sourceTree = "<group>"; };
 		9A765001ED4F009142B6E1C7EC399792 /* UILabel+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UILabel+Additions.swift"; path = "TapAdditionsKitV2/TapAdditionsKitV2/UIKit/UILabel+Additions.swift"; sourceTree = "<group>"; };
+		9A857B7E79059227364A7385F4B85F2D /* Pods-Fazaa-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Fazaa-Info.plist"; sourceTree = "<group>"; };
 		9A8C96AEE8E53C39F19833E1CA767B4A /* TapVisualEffectViewV2-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "TapVisualEffectViewV2-Info.plist"; sourceTree = "<group>"; };
 		9AE1E2EE81120FFB4DA59474AC835D03 /* Process.CurrencySelectionHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Process.CurrencySelectionHandler.swift; path = goSellSDK/Core/UI/Internal/Process/Process.CurrencySelectionHandler.swift; sourceTree = "<group>"; };
 		9BF615FD97D49C584875AD68A5D66F49 /* TapEncoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapEncoder.swift; path = TapNetworkManagerV2/TapNetworkManagerV2/Source/Core/TapEncoder.swift; sourceTree = "<group>"; };
@@ -1727,8 +1727,8 @@
 		A08EE188DE96479AC089603435174156 /* AsyncPaymentResultView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = AsyncPaymentResultView.xib; path = goSellSDK/Core/UI/Internal/Resources/AsyncPaymentResultView.xib; sourceTree = "<group>"; };
 		A0D281C476EB49013AE359D177E178AD /* Reference.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Reference.swift; path = goSellSDK/Core/API/Public/Models/Reference.swift; sourceTree = "<group>"; };
 		A0EC2ACA56417FA44E92D71D282395FC /* TapResponderChainInputView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TapResponderChainInputView.xib; path = TapResponderChainInputViewV2/TapResponderChainInputViewV2/Resources/TapResponderChainInputView.xib; sourceTree = "<group>"; };
-		A1A553B6C652274EC36CC3EFBC19D2ED /* Pods-FreelanceApp.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FreelanceApp.modulemap"; sourceTree = "<group>"; };
 		A207F802129B332D6F90AB703BDAAA2D /* TapNetworkError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapNetworkError.swift; path = TapNetworkManagerV2/TapNetworkManagerV2/Source/Core/TapNetworkError.swift; sourceTree = "<group>"; };
+		A2690E0902BA271106E45BF04125901B /* Pods-Fazaa.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Fazaa.modulemap"; sourceTree = "<group>"; };
 		A26BE14745E3EC3AE741338E5EFACB60 /* UIEdgeInsets+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIEdgeInsets+Additions.swift"; path = "goSellSDK/Core/UI/Internal/Extensions/UIEdgeInsets+Additions.swift"; sourceTree = "<group>"; };
 		A2A9B8F928BA364273563ABCDEA835EF /* TapDecoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapDecoder.swift; path = TapNetworkManagerV2/TapNetworkManagerV2/Source/Core/TapDecoder.swift; sourceTree = "<group>"; };
 		A2ACC3B2330A62BCFF9CA857E9534711 /* Country+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Country+Additions.swift"; path = "goSellSDK/Core/UI/Internal/Extensions/Country+Additions.swift"; sourceTree = "<group>"; };
@@ -1767,6 +1767,7 @@
 		AC1935EC684A80C2D8719BBD945C22DF /* TapButton.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TapButton.xib; path = goSellSDK/Core/UI/Internal/Resources/TapButton.xib; sourceTree = "<group>"; };
 		AC22FFCF31A71C8480687FB55DEBDF29 /* RadialGradientView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RadialGradientView.swift; path = TapGLKitV2/TapGLKitV2/Source/RadialGradientView/RadialGradientView.swift; sourceTree = "<group>"; };
 		AC7B8B88ACB22DDFAAC7C04F5FADA100 /* BindingWithModelCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BindingWithModelCell.swift; path = goSellSDK/Core/UI/Internal/Protocols/BindingWithModelCell.swift; sourceTree = "<group>"; };
+		AC84B4048A065C6F800F05B4B887AD6D /* Pods-Fazaa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Fazaa.release.xcconfig"; sourceTree = "<group>"; };
 		ACD8A42697B15036CF5F284D9C017624 /* TapCardVlidatorKit-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "TapCardVlidatorKit-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		AD16F7C1EC3205F189D3EA43623611AC /* Address.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Address.swift; path = TamaraSDK/TamaraSDK/model/Address.swift; sourceTree = "<group>"; };
 		AD21023FE4B9E0955CA77844903865D0 /* TapFontsKitV2-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TapFontsKitV2-prefix.pch"; sourceTree = "<group>"; };
@@ -1782,10 +1783,10 @@
 		AFF8B7DD5E2D4003DE6F1D489B1550A7 /* Process.TapButtonHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Process.TapButtonHandler.swift; path = goSellSDK/Core/UI/Internal/Process/Process.TapButtonHandler.swift; sourceTree = "<group>"; };
 		B0125E079E110E35AB24409BBEECE4B7 /* EditableTextInsetsTextField+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "EditableTextInsetsTextField+Additions.swift"; path = "goSellSDK/Core/UI/Internal/Extensions/EditableTextInsetsTextField+Additions.swift"; sourceTree = "<group>"; };
 		B088886A5624D73BE26B262FC52F53E8 /* Endpoint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Endpoint.swift; path = Sources/Moya/Endpoint.swift; sourceTree = "<group>"; };
+		B0EC8D1FF95DB75778F5AC53F99435A0 /* Pods-Fazaa-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Fazaa-frameworks.sh"; sourceTree = "<group>"; };
 		B0FA4FD8B2461D638E7F5E621B7409F5 /* Session.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Session.swift; path = goSellSDK/Core/UI/Public/Data/Session.swift; sourceTree = "<group>"; };
 		B17644E33DC167E5A9E01B718882FCB4 /* ServerTrustEvaluation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustEvaluation.swift; path = Source/Features/ServerTrustEvaluation.swift; sourceTree = "<group>"; };
 		B17D3759289C34E35C3FB615CC93127A /* UIEdgeInsets+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIEdgeInsets+Additions.swift"; path = "TapAdditionsKitV2/TapAdditionsKitV2/UIKit/UIEdgeInsets+Additions.swift"; sourceTree = "<group>"; };
-		B1D051C54CAE9F4B4CA238BC48572CDE /* Pods-FreelanceApp-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FreelanceApp-acknowledgements.plist"; sourceTree = "<group>"; };
 		B2FDED41C412242B10D38FF195629E8D /* Line.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Line.swift; path = TapAdditionsKitV2/TapAdditionsKitV2/Tap/Line.swift; sourceTree = "<group>"; };
 		B3300F34FF0E14D60D265A0AD0910011 /* SessionAppearance.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionAppearance.swift; path = goSellSDK/Core/UI/Public/Protocols/SessionAppearance.swift; sourceTree = "<group>"; };
 		B359D71CA87EC580DF889374894D5E9B /* TokenType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TokenType.swift; path = goSellSDK/Core/API/Public/Enums/TokenType.swift; sourceTree = "<group>"; };
@@ -1816,7 +1817,6 @@
 		B9F913C169665D8FB6D0AF01F51E2138 /* CreateTokenWithCardDataRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CreateTokenWithCardDataRequest.swift; path = goSellSDK/Core/API/Internal/Models/CreateTokenWithCardDataRequest.swift; sourceTree = "<group>"; };
 		BA14141224789F4B31525A08C15BD4CE /* AuthorizeActionStatus.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AuthorizeActionStatus.swift; path = goSellSDK/Core/API/Public/Enums/AuthorizeActionStatus.swift; sourceTree = "<group>"; };
 		BA3C9F7448745AD26D451ECF378EF1B5 /* TapCardVlidatorKit-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TapCardVlidatorKit-iOS-prefix.pch"; sourceTree = "<group>"; };
-		BA595594360BC2E2A25681E44C16AAF6 /* Pods-FreelanceApp-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FreelanceApp-dummy.m"; sourceTree = "<group>"; };
 		BADB082452F00B065A142CDDE40564E4 /* UIWindow.Level+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIWindow.Level+Additions.swift"; path = "goSellSDK/Core/UI/Internal/Extensions/UIWindow.Level+Additions.swift"; sourceTree = "<group>"; };
 		BAF22447083EEBBA8B02433F4035536F /* DefinedCardBrand.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DefinedCardBrand.swift; path = "Sources/TapCardVlidatorKit-iOS/public/DefinedCardBrand.swift"; sourceTree = "<group>"; };
 		BC2D79EA2F1C8BC987FCE650712AB69F /* BillingAddressField+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "BillingAddressField+Additions.swift"; path = "goSellSDK/Core/UI/Internal/Extensions/BillingAddressField+Additions.swift"; sourceTree = "<group>"; };
@@ -1936,7 +1936,6 @@
 		D4FE3907C5C60B0C0A0A4887BAC2782A /* TapAdditionsKitV2-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TapAdditionsKitV2-dummy.m"; sourceTree = "<group>"; };
 		D580D64089132502D662736B313216FE /* Bundle+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Bundle+Additions.swift"; path = "TapResponderChainInputViewV2/TapResponderChainInputViewV2/Source/Bundle+Additions.swift"; sourceTree = "<group>"; };
 		D5E436EA6395F434FE9899EC2D134460 /* TapBlurStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapBlurStyle.swift; path = goSellSDK/Core/UI/Public/Enums/TapBlurStyle.swift; sourceTree = "<group>"; };
-		D5FF3FC988649D694AA05AD94AE76B37 /* Pods-FreelanceApp-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FreelanceApp-Info.plist"; sourceTree = "<group>"; };
 		D61C3501DE71C5E7E86B3C805E219F14 /* TapNavigationView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = TapNavigationView.xib; path = goSellSDK/Core/UI/Internal/Resources/TapNavigationView.xib; sourceTree = "<group>"; };
 		D63D66BBD595D290D6A62C049F56A8A5 /* WebCellStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WebCellStyle.swift; path = goSellSDK/Core/UI/Internal/Theme/WebCellStyle.swift; sourceTree = "<group>"; };
 		D6606793C6C784FBBBC62ADA28F90414 /* TapEditableViewV2-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "TapEditableViewV2-Info.plist"; sourceTree = "<group>"; };
@@ -1967,12 +1966,12 @@
 		DEDDA80B59F330F7019030A1A367FFF7 /* HTTPHeaders.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTTPHeaders.swift; path = Source/Core/HTTPHeaders.swift; sourceTree = "<group>"; };
 		DF24ED7898CEF4D0DC90570C24BF410C /* TapVisualEffectViewV2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TapVisualEffectViewV2.release.xcconfig; sourceTree = "<group>"; };
 		DF9AFF55B9BB16496BF32F2E3AB02E02 /* TapResponderChainInputViewSettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TapResponderChainInputViewSettings.swift; path = TapResponderChainInputViewV2/TapResponderChainInputViewV2/Source/TapResponderChainInputViewSettings.swift; sourceTree = "<group>"; };
-		DFD3391A24D413AF570C1E064377E660 /* Pods-FreelanceApp-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FreelanceApp-acknowledgements.markdown"; sourceTree = "<group>"; };
 		DFD7F8617AD5D258B5764365D38C0BC9 /* TamaraSDKCheckout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TamaraSDKCheckout.swift; path = TamaraSDK/TamaraSDK/TamaraSDKCheckout.swift; sourceTree = "<group>"; };
 		E094F033A4EB4815424F56BB755C37C7 /* CurrencyFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CurrencyFormatter.swift; path = goSellSDK/Core/UI/Internal/Utils/CurrencyFormatter.swift; sourceTree = "<group>"; };
 		E111DDA280C6D3BB0D226B96C36F0CC5 /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = goSellSDK/Core/UI/Internal/Resources/Images.xcassets; sourceTree = "<group>"; };
 		E13182A00FE196A7A21D0CE0F24E30A0 /* HeaderNavigatedViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HeaderNavigatedViewController.swift; path = goSellSDK/Core/UI/Internal/Controllers/HeaderNavigatedViewController.swift; sourceTree = "<group>"; };
 		E132D088DA2E82AA72197C6BCDCD5643 /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/Extensions/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
+		E14C6F9E81C338BFC60490478BBF1F1D /* Pods-Fazaa-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Fazaa-dummy.m"; sourceTree = "<group>"; };
 		E15C5FB05625CD463677683234BA1CB0 /* HTTPMethod.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTTPMethod.swift; path = Source/Core/HTTPMethod.swift; sourceTree = "<group>"; };
 		E19775D9E849208E6E05545CA6049ADE /* EditableTextInsetsTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EditableTextInsetsTextField.swift; path = EditableTextInsetsTextFieldV2/EditableTextInsetsTextFieldV2/Source/EditableTextInsetsTextField.swift; sourceTree = "<group>"; };
 		E2E31C8AA1C4909680AFCB9E35A90C4E /* ApplePaymentOptionTableViewCellModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ApplePaymentOptionTableViewCellModel.swift; path = "goSellSDK/Core/UI/Internal/View Models/ApplePaymentOptionTableViewCellModel.swift"; sourceTree = "<group>"; };
@@ -2061,6 +2060,7 @@
 		F74A9A0D89BA670A4BCC3958099DF62A /* InteractivePopViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InteractivePopViewController.swift; path = goSellSDK/Core/UI/Internal/Protocols/InteractivePopViewController.swift; sourceTree = "<group>"; };
 		F751FDE80424AE5B8A52564586D44015 /* WebPaymentOptionTableViewCellModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WebPaymentOptionTableViewCellModel.swift; path = "goSellSDK/Core/UI/Internal/View Models/WebPaymentOptionTableViewCellModel.swift"; sourceTree = "<group>"; };
 		F76D1C071F6DDC744835BA66CB6377A3 /* TapSearchViewV2-TapSearchViewResources */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "TapSearchViewV2-TapSearchViewResources"; path = TapSearchViewResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		F78A75E4F0129A6F7BFBD085737F618B /* Pods-Fazaa-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Fazaa-acknowledgements.plist"; sourceTree = "<group>"; };
 		F7A7E22666600B4614FB726BB4173404 /* ImageTableViewCellModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageTableViewCellModel.swift; path = "goSellSDK/Core/UI/Internal/View Models/ImageTableViewCellModel.swift"; sourceTree = "<group>"; };
 		F7B702F5FE861D2D3B849541C797A365 /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/Core/SessionDelegate.swift; sourceTree = "<group>"; };
 		F7D7D690BE7379D8A7F4D2C7D67F5706 /* AmountModificatorType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AmountModificatorType.swift; path = goSellSDK/Core/API/Public/Enums/AmountModificatorType.swift; sourceTree = "<group>"; };
@@ -2161,6 +2161,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3B837E098BEC99325D315A752B731249 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22B50C139AFD2AE996D285E04B60148E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4724F0CD806DE57514B6AD014A268542 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -2189,14 +2197,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				21CFF5002A9804D958C428168380023C /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		72E01BDC2B3B4F00FCF652EB1FC27EDE /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6DF735FCEC6FCCBD1CFB512A3AA6C9DE /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2597,40 +2597,6 @@
 			);
 			name = TapGLKitV2;
 			path = TapGLKitV2;
-			sourceTree = "<group>";
-		};
-		4241EFA9A63C10D7769DD5AB82824EEB /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				5D797E9A5C5782CE845840781FA1CC81 /* Alamofire */,
-				085DBCE7DD98588B2ED103B1C1F36026 /* Alamofire-Alamofire */,
-				674EDE9742E10DEFE77A8A7593B84B54 /* EditableTextInsetsTextFieldV2 */,
-				22855574470131323C79D26A94C25342 /* goSellSDK */,
-				31865BEA6FD4385BD9E9BAF0A4ED5256 /* goSellSDK-goSellSDKResources */,
-				3756A9BBE41ABEE8DCBF5BCA6972C4DA /* Moya */,
-				05C438491609087A7C61C4481ECC010A /* Pods-FreelanceApp */,
-				0DA4828908E30CE4A29CB9AD3A405635 /* SwiftyRSA */,
-				16BB123BF9FF9B17448308E940598942 /* TamaraSDK */,
-				84871724B175C65C3532EA38AF2E0265 /* TapAdditionsKitV2 */,
-				B541E3114F01C49D046FB659F84AA747 /* TapApplicationV2 */,
-				993237330AE7258B73143DD3F3793A04 /* TapBundleLocalizationV2 */,
-				D08AB4CD09B8D34CBDA2929E1E068EE4 /* TapCardVlidatorKit-iOS */,
-				4B0BC4213C256359D271C59AFF36EEED /* TapEditableViewV2 */,
-				123C590F7FADA30EC678FBF4B315B907 /* TapFontsKitV2 */,
-				9E450A6AB1366B691DF9BBE3832F9E3C /* TapFontsKitV2-Fonts */,
-				31784036C1BD8B91EA3193821833A67E /* TapGLKitV2 */,
-				C8F2D1EC6DE5AF9EE225139039A9082A /* TapKeychainV2 */,
-				0CD8594D76CB758A2F88523D8A3535FF /* TapNetworkManagerV2 */,
-				37F94AEF9BB81C951EE558BD988A1096 /* TapNibViewV2 */,
-				EA1F6F93AA889FEAF7F3CA9842944EFB /* TapResponderChainInputViewV2 */,
-				CA503A072D0B000E42243A606052D939 /* TapResponderChainInputViewV2-TapResponderChainInputViewResources */,
-				FC0B2AC81D7802C95A4F4EF6CACEC02B /* TapSearchViewV2 */,
-				F76D1C071F6DDC744835BA66CB6377A3 /* TapSearchViewV2-TapSearchViewResources */,
-				7D9EAA1EED471F2AF96779DD393CCB73 /* TapSwiftFixesV2 */,
-				9E39AE18A8F8BBF6A5D9A98199DFBCCF /* TapVisualEffectViewV2 */,
-				AA3E7BFC3DDBF26194BD996FE7DB06DF /* TapVisualEffectViewV2-TapVisualEffectViewResources */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		46607F9171A9EEFB5A58E1FCB362B51A /* TapNetworkManagerV2 */ = {
@@ -3192,23 +3158,6 @@
 			path = "../Target Support Files/TapNibViewV2";
 			sourceTree = "<group>";
 		};
-		696A61C9B918B5460B8F15C910419281 /* Pods-FreelanceApp */ = {
-			isa = PBXGroup;
-			children = (
-				A1A553B6C652274EC36CC3EFBC19D2ED /* Pods-FreelanceApp.modulemap */,
-				DFD3391A24D413AF570C1E064377E660 /* Pods-FreelanceApp-acknowledgements.markdown */,
-				B1D051C54CAE9F4B4CA238BC48572CDE /* Pods-FreelanceApp-acknowledgements.plist */,
-				BA595594360BC2E2A25681E44C16AAF6 /* Pods-FreelanceApp-dummy.m */,
-				547B6B0E9CD8C8119A375829D939BC34 /* Pods-FreelanceApp-frameworks.sh */,
-				D5FF3FC988649D694AA05AD94AE76B37 /* Pods-FreelanceApp-Info.plist */,
-				4BDA096F0F07F477F6A534A8DFE23497 /* Pods-FreelanceApp-umbrella.h */,
-				6E93BB8739D6E48CE6FD8E329AA3E9E5 /* Pods-FreelanceApp.debug.xcconfig */,
-				32D6818E8E6A97B0C3DBAD4D1168451C /* Pods-FreelanceApp.release.xcconfig */,
-			);
-			name = "Pods-FreelanceApp";
-			path = "Target Support Files/Pods-FreelanceApp";
-			sourceTree = "<group>";
-		};
 		6B1733B7974131EABD33080031320591 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -3230,6 +3179,40 @@
 				DA2A8EE1B4C3748B775838F4DAE966C0 /* WebViewProgressBar.xib */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		6EDCC31B6F1283C758892CE3ABF641AC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5D797E9A5C5782CE845840781FA1CC81 /* Alamofire */,
+				085DBCE7DD98588B2ED103B1C1F36026 /* Alamofire-Alamofire */,
+				674EDE9742E10DEFE77A8A7593B84B54 /* EditableTextInsetsTextFieldV2 */,
+				22855574470131323C79D26A94C25342 /* goSellSDK */,
+				31865BEA6FD4385BD9E9BAF0A4ED5256 /* goSellSDK-goSellSDKResources */,
+				3756A9BBE41ABEE8DCBF5BCA6972C4DA /* Moya */,
+				6DB6EFB50E90A0CD47FA927A6204462B /* Pods-Fazaa */,
+				0DA4828908E30CE4A29CB9AD3A405635 /* SwiftyRSA */,
+				16BB123BF9FF9B17448308E940598942 /* TamaraSDK */,
+				84871724B175C65C3532EA38AF2E0265 /* TapAdditionsKitV2 */,
+				B541E3114F01C49D046FB659F84AA747 /* TapApplicationV2 */,
+				993237330AE7258B73143DD3F3793A04 /* TapBundleLocalizationV2 */,
+				D08AB4CD09B8D34CBDA2929E1E068EE4 /* TapCardVlidatorKit-iOS */,
+				4B0BC4213C256359D271C59AFF36EEED /* TapEditableViewV2 */,
+				123C590F7FADA30EC678FBF4B315B907 /* TapFontsKitV2 */,
+				9E450A6AB1366B691DF9BBE3832F9E3C /* TapFontsKitV2-Fonts */,
+				31784036C1BD8B91EA3193821833A67E /* TapGLKitV2 */,
+				C8F2D1EC6DE5AF9EE225139039A9082A /* TapKeychainV2 */,
+				0CD8594D76CB758A2F88523D8A3535FF /* TapNetworkManagerV2 */,
+				37F94AEF9BB81C951EE558BD988A1096 /* TapNibViewV2 */,
+				EA1F6F93AA889FEAF7F3CA9842944EFB /* TapResponderChainInputViewV2 */,
+				CA503A072D0B000E42243A606052D939 /* TapResponderChainInputViewV2-TapResponderChainInputViewResources */,
+				FC0B2AC81D7802C95A4F4EF6CACEC02B /* TapSearchViewV2 */,
+				F76D1C071F6DDC744835BA66CB6377A3 /* TapSearchViewV2-TapSearchViewResources */,
+				7D9EAA1EED471F2AF96779DD393CCB73 /* TapSwiftFixesV2 */,
+				9E39AE18A8F8BBF6A5D9A98199DFBCCF /* TapVisualEffectViewV2 */,
+				AA3E7BFC3DDBF26194BD996FE7DB06DF /* TapVisualEffectViewV2-TapVisualEffectViewResources */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		710449AC5F8A594D8F1107E851E73F2C /* TapKeychainV2 */ = {
@@ -3264,6 +3247,14 @@
 			);
 			name = goSellSDK;
 			path = goSellSDK;
+			sourceTree = "<group>";
+		};
+		83E790ABEC4A8B1D842405B5062CDF72 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				FBC5F049B9A4E4AAC88CCBC4CADCCE06 /* Pods-Fazaa */,
+			);
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 		854C3EEE28B4C5D74DD43C9063126086 /* Support Files */ = {
@@ -3596,8 +3587,8 @@
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				03C5C200A0787E300053CFA8F53CA094 /* Frameworks */,
 				626658E77658502B82C53B365B4772EA /* Pods */,
-				4241EFA9A63C10D7769DD5AB82824EEB /* Products */,
-				F18EDAD0819F7D7858D975D2BD933040 /* Targets Support Files */,
+				6EDCC31B6F1283C758892CE3ABF641AC /* Products */,
+				83E790ABEC4A8B1D842405B5062CDF72 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
@@ -3696,14 +3687,6 @@
 			name = Core;
 			sourceTree = "<group>";
 		};
-		F18EDAD0819F7D7858D975D2BD933040 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				696A61C9B918B5460B8F15C910419281 /* Pods-FreelanceApp */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
 		F5F4C04F1AAD7950E32C3550434E5501 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -3732,6 +3715,23 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/TapKeychainV2";
+			sourceTree = "<group>";
+		};
+		FBC5F049B9A4E4AAC88CCBC4CADCCE06 /* Pods-Fazaa */ = {
+			isa = PBXGroup;
+			children = (
+				A2690E0902BA271106E45BF04125901B /* Pods-Fazaa.modulemap */,
+				4FAEA3C6CFFEC0E7506A4D20A030E79B /* Pods-Fazaa-acknowledgements.markdown */,
+				F78A75E4F0129A6F7BFBD085737F618B /* Pods-Fazaa-acknowledgements.plist */,
+				E14C6F9E81C338BFC60490478BBF1F1D /* Pods-Fazaa-dummy.m */,
+				B0EC8D1FF95DB75778F5AC53F99435A0 /* Pods-Fazaa-frameworks.sh */,
+				9A857B7E79059227364A7385F4B85F2D /* Pods-Fazaa-Info.plist */,
+				3953E96F7628EC8B314DC1F23430F567 /* Pods-Fazaa-umbrella.h */,
+				28DC5E6CD37B116F6862DB654E947CF6 /* Pods-Fazaa.debug.xcconfig */,
+				AC84B4048A065C6F800F05B4B887AD6D /* Pods-Fazaa.release.xcconfig */,
+			);
+			name = "Pods-Fazaa";
+			path = "Target Support Files/Pods-Fazaa";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3827,6 +3827,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		801E5740466BAAB6E2974D7F4A022A34 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CBE8956D103ED9E83EABE9235A41A3A /* Pods-Fazaa-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8F490CB4AD710E39261EBD402B4E670B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -3858,14 +3866,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				933AD25D0E24C9C5EA6ECFC31E7E4AAA /* TapFontsKitV2-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D96BABCE9CF52D2BFEE584E47DD14DEF /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D5B4B8CCBB5ED5CC83322840C60E507E /* Pods-FreelanceApp-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3913,44 +3913,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		0EA9FB6B3EEFD49E1A496C490EA2BC3B /* Pods-FreelanceApp */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 95093CE165A705D6F7CD1508EB01F211 /* Build configuration list for PBXNativeTarget "Pods-FreelanceApp" */;
-			buildPhases = (
-				D96BABCE9CF52D2BFEE584E47DD14DEF /* Headers */,
-				06A0836149FACAC748FE84746AFB36D8 /* Sources */,
-				72E01BDC2B3B4F00FCF652EB1FC27EDE /* Frameworks */,
-				50BA9D7FCDD9407C1465918940FB8151 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				13C681F8B999F3A141B2DA20E5730B76 /* PBXTargetDependency */,
-				A8CD176EE66CDBD98128A5EBC2A6D819 /* PBXTargetDependency */,
-				99F1336D29AE04265374D320630D9E09 /* PBXTargetDependency */,
-				2E2452CF7927AABFB57D80A4A0B08572 /* PBXTargetDependency */,
-				FA7D63F23C16928D30D561D1E5DC6554 /* PBXTargetDependency */,
-				764B590E586B947F43A9EAA4657F3E7D /* PBXTargetDependency */,
-				C56FAC348856A7F39300D6B90B1FDB9C /* PBXTargetDependency */,
-				13E2A401F4F33E91D9C85B8CEF7F5953 /* PBXTargetDependency */,
-				BA5383F33A27CBC151E9DE6F0DECC759 /* PBXTargetDependency */,
-				39F27D91832F3ABBCD8A7CB4F23DF93A /* PBXTargetDependency */,
-				FB9DDA989397ACFBF20AF8DECA9631DD /* PBXTargetDependency */,
-				862EE9CBEAAFAB2059176D55F625F506 /* PBXTargetDependency */,
-				C56E8193826CE6C67F539EFC5615EF84 /* PBXTargetDependency */,
-				A5D025B8EB8C3459F3CF40846DDC5DB1 /* PBXTargetDependency */,
-				9A8248244B396694D4CC212C5D548304 /* PBXTargetDependency */,
-				F2F996E10F170163D350FDD8010F6FA9 /* PBXTargetDependency */,
-				1B30D920098AD59C07A80DB0A7DC790C /* PBXTargetDependency */,
-				BD2B1437AC9C3803063AC24619A27644 /* PBXTargetDependency */,
-				69487C53B2B6B7B3097AD4FFC908462B /* PBXTargetDependency */,
-				EE48A31639577B3CBA49BEFE925D8B90 /* PBXTargetDependency */,
-			);
-			name = "Pods-FreelanceApp";
-			productName = Pods_FreelanceApp;
-			productReference = 05C438491609087A7C61C4481ECC010A /* Pods-FreelanceApp */;
-			productType = "com.apple.product-type.framework";
-		};
 		128A37608919FF3FB13348EEE4E63A26 /* TapNetworkManagerV2 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F0F2B52754DEDFE827EB033A569052A7 /* Build configuration list for PBXNativeTarget "TapNetworkManagerV2" */;
@@ -4080,6 +4042,44 @@
 			name = TapBundleLocalizationV2;
 			productName = TapBundleLocalizationV2;
 			productReference = 993237330AE7258B73143DD3F3793A04 /* TapBundleLocalizationV2 */;
+			productType = "com.apple.product-type.framework";
+		};
+		52545747559AC240A03C26FDB8F54D5C /* Pods-Fazaa */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 83ECB1AC1D17A0A63E8342BAA4BDF628 /* Build configuration list for PBXNativeTarget "Pods-Fazaa" */;
+			buildPhases = (
+				801E5740466BAAB6E2974D7F4A022A34 /* Headers */,
+				37AB2AD6381802C322376DB8995FC347 /* Sources */,
+				3B837E098BEC99325D315A752B731249 /* Frameworks */,
+				5ED838FC98E3C7F5E5712E9B6F6D1483 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				32B9CDAD1CCE5424531E30094FE587D6 /* PBXTargetDependency */,
+				C53B2DFA4E3E1B6D4F7B69985FE72F17 /* PBXTargetDependency */,
+				AA730592EC5900154D947887247CE31F /* PBXTargetDependency */,
+				6FDE2585864EDF6D0CF679C9AA187293 /* PBXTargetDependency */,
+				5AD7EF4317B8C4447494946ABCB115FE /* PBXTargetDependency */,
+				76B573C984E07651DD1C2938EF3F654E /* PBXTargetDependency */,
+				3C05E506E7BC4325121E7D4FE13558CA /* PBXTargetDependency */,
+				3800C43E6AFDCC1870F29F0709996321 /* PBXTargetDependency */,
+				B8E821503924BEA419966646CB0626F4 /* PBXTargetDependency */,
+				7CB12696E0EF3F3F5D68E44E184D07D9 /* PBXTargetDependency */,
+				0C4515EAFCB01367574276586B66BE54 /* PBXTargetDependency */,
+				FDAA4FAA45D63EF928B0434B975EA582 /* PBXTargetDependency */,
+				661981E6DE4357CA71445D7C54D24A60 /* PBXTargetDependency */,
+				8EA9441B639AD7608263F9F5FF9B9A75 /* PBXTargetDependency */,
+				7C08C6493265CC62806DD2DF8C88466B /* PBXTargetDependency */,
+				90886BF493FE57A8D9FC1927E49E8080 /* PBXTargetDependency */,
+				B6779F680A8582A4DB066EEEAB003491 /* PBXTargetDependency */,
+				535044B2A361B49DAB796749D4C7E52A /* PBXTargetDependency */,
+				5A2D20FD7FBCFD6A7B65AEA71380CDBF /* PBXTargetDependency */,
+				AA7D1F491358734DFD9A0394183FC202 /* PBXTargetDependency */,
+			);
+			name = "Pods-Fazaa";
+			productName = Pods_Fazaa;
+			productReference = 6DB6EFB50E90A0CD47FA927A6204462B /* Pods-Fazaa */;
 			productType = "com.apple.product-type.framework";
 		};
 		77AD281DAC3BB055DBF6795D5843432B /* goSellSDK-goSellSDKResources */ = {
@@ -4472,7 +4472,7 @@
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
 			minimizedProjectReferenceProxies = 0;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 4241EFA9A63C10D7769DD5AB82824EEB /* Products */;
+			productRefGroup = 6EDCC31B6F1283C758892CE3ABF641AC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -4482,7 +4482,7 @@
 				CECB7B4A2DADAF3B398D564292452FDB /* goSellSDK */,
 				77AD281DAC3BB055DBF6795D5843432B /* goSellSDK-goSellSDKResources */,
 				17F9141D333DA1A7BE5937F227221070 /* Moya */,
-				0EA9FB6B3EEFD49E1A496C490EA2BC3B /* Pods-FreelanceApp */,
+				52545747559AC240A03C26FDB8F54D5C /* Pods-Fazaa */,
 				92A1C13902E7ACDA3ABB5BA1FEACC86C /* SwiftyRSA */,
 				EAAF68CB5C03DE3146C00A64D8B8DCEF /* TamaraSDK */,
 				A3DF3C18C03F8EAEC754928B8CBFE78B /* TapAdditionsKitV2 */,
@@ -4617,7 +4617,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		50BA9D7FCDD9407C1465918940FB8151 /* Resources */ = {
+		5ED838FC98E3C7F5E5712E9B6F6D1483 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -4751,14 +4751,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		06A0836149FACAC748FE84746AFB36D8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				31D60C927A9E0851DF33687247876820 /* Pods-FreelanceApp-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		18FDD6571C1810119089A9339401810C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4875,6 +4867,14 @@
 				8E2CAAB929275502D0E28ACE756A1815 /* TapSearchUpdating.swift in Sources */,
 				49685364C0ADC5123F638647D6FBF82D /* TapSearchView.swift in Sources */,
 				C5BA5721A83BD91B10420435B27825C9 /* TapSearchViewV2-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37AB2AD6381802C322376DB8995FC347 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				392091F5D8B95C9E02169F97B0074326 /* Pods-Fazaa-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5694,35 +5694,23 @@
 			target = 9A8B22F15674A78FC57F1E9B3018E88B /* TapApplicationV2 */;
 			targetProxy = 8F63AB6F72F7C1D825A395F0E49C76F2 /* PBXContainerItemProxy */;
 		};
+		0C4515EAFCB01367574276586B66BE54 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TapFontsKitV2;
+			target = B4315773B41EF24944FFB8C535C19714 /* TapFontsKitV2 */;
+			targetProxy = 015048B2AC25261F9C534B90A5AC6FDC /* PBXContainerItemProxy */;
+		};
 		1326D38F449DFEB356AE9A986EBBFE69 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "TapSearchViewV2-TapSearchViewResources";
 			target = DBB4D3FBA5CA232BEF0BD9C8A2EE9F5C /* TapSearchViewV2-TapSearchViewResources */;
 			targetProxy = 4991292F0785ABBFFA52B0A90A807E65 /* PBXContainerItemProxy */;
 		};
-		13C681F8B999F3A141B2DA20E5730B76 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Alamofire;
-			target = EAAA1AD3A8A1B59AB91319EE40752C6D /* Alamofire */;
-			targetProxy = C275C20CD6F2AAAA4B654AFF75E738AE /* PBXContainerItemProxy */;
-		};
-		13E2A401F4F33E91D9C85B8CEF7F5953 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = TapBundleLocalizationV2;
-			target = 4E513D55778E7E5F0522F6EA5F37CD3A /* TapBundleLocalizationV2 */;
-			targetProxy = ECADB9007BCD03F97A8499C0D863A28E /* PBXContainerItemProxy */;
-		};
 		1A25A182C583F728175216AB9D8C8F33 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = TapNibViewV2;
 			target = 3BCA64009C588E875C8B1CD48C7FC318 /* TapNibViewV2 */;
 			targetProxy = EEBF45E4ACC73022A029744A9D9E98E6 /* PBXContainerItemProxy */;
-		};
-		1B30D920098AD59C07A80DB0A7DC790C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = TapSearchViewV2;
-			target = E9F28119884BFB9B48F0E69941FB768F /* TapSearchViewV2 */;
-			targetProxy = 9EE812567350F15E39B2EAF71D6FBCF9 /* PBXContainerItemProxy */;
 		};
 		1E5A5311FA132708D4BD95003809785A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5742,17 +5730,23 @@
 			target = 92A1C13902E7ACDA3ABB5BA1FEACC86C /* SwiftyRSA */;
 			targetProxy = 0BF5B90F8ECE4AC534DC2CB659357CBD /* PBXContainerItemProxy */;
 		};
-		2E2452CF7927AABFB57D80A4A0B08572 /* PBXTargetDependency */ = {
+		32B9CDAD1CCE5424531E30094FE587D6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = SwiftyRSA;
-			target = 92A1C13902E7ACDA3ABB5BA1FEACC86C /* SwiftyRSA */;
-			targetProxy = 26C247232A82B22993C4994F3D90A5E0 /* PBXContainerItemProxy */;
+			name = Alamofire;
+			target = EAAA1AD3A8A1B59AB91319EE40752C6D /* Alamofire */;
+			targetProxy = AD71AD0188B5D81DF343F0A104E71561 /* PBXContainerItemProxy */;
 		};
-		39F27D91832F3ABBCD8A7CB4F23DF93A /* PBXTargetDependency */ = {
+		3800C43E6AFDCC1870F29F0709996321 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = TapEditableViewV2;
-			target = DCA479FE2956C2EC87223CB5918E2419 /* TapEditableViewV2 */;
-			targetProxy = 6087A204CB7F3A19F16B27CC38FA3E15 /* PBXContainerItemProxy */;
+			name = TapBundleLocalizationV2;
+			target = 4E513D55778E7E5F0522F6EA5F37CD3A /* TapBundleLocalizationV2 */;
+			targetProxy = 8D8C80BB0D62A46525F4C425B65352D3 /* PBXContainerItemProxy */;
+		};
+		3C05E506E7BC4325121E7D4FE13558CA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TapApplicationV2;
+			target = 9A8B22F15674A78FC57F1E9B3018E88B /* TapApplicationV2 */;
+			targetProxy = FE47B03C7AFA7545BAE158901F392230 /* PBXContainerItemProxy */;
 		};
 		3DC69854683E75A93939D0F62016AAE4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5784,11 +5778,29 @@
 			target = 4E513D55778E7E5F0522F6EA5F37CD3A /* TapBundleLocalizationV2 */;
 			targetProxy = 6466229AA0267BF0CF23B6D943458BFB /* PBXContainerItemProxy */;
 		};
+		535044B2A361B49DAB796749D4C7E52A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TapSwiftFixesV2;
+			target = E216967D71699A6EF43A16A4B8B6D624 /* TapSwiftFixesV2 */;
+			targetProxy = 25823701D4C9A27162030A12265F4491 /* PBXContainerItemProxy */;
+		};
 		59E89354A8AE1112CD924F43F353E544 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = TapSearchViewV2;
 			target = E9F28119884BFB9B48F0E69941FB768F /* TapSearchViewV2 */;
 			targetProxy = B1FB091050651968A6231DF19FE58C9B /* PBXContainerItemProxy */;
+		};
+		5A2D20FD7FBCFD6A7B65AEA71380CDBF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TapVisualEffectViewV2;
+			target = 7E79CE7409C741410DA2A34AFD8913B1 /* TapVisualEffectViewV2 */;
+			targetProxy = 5180F9514DA4CC0EBA05E76657ECA767 /* PBXContainerItemProxy */;
+		};
+		5AD7EF4317B8C4447494946ABCB115FE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TamaraSDK;
+			target = EAAF68CB5C03DE3146C00A64D8B8DCEF /* TamaraSDK */;
+			targetProxy = 77E9A0571E1064DB2BF1E742906927A9 /* PBXContainerItemProxy */;
 		};
 		627C570B598DB779D604CFB15BD54AA8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5796,11 +5808,11 @@
 			target = 3BCA64009C588E875C8B1CD48C7FC318 /* TapNibViewV2 */;
 			targetProxy = 6DEED444AEC2D7648B00EC0B2B500637 /* PBXContainerItemProxy */;
 		};
-		69487C53B2B6B7B3097AD4FFC908462B /* PBXTargetDependency */ = {
+		661981E6DE4357CA71445D7C54D24A60 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = TapVisualEffectViewV2;
-			target = 7E79CE7409C741410DA2A34AFD8913B1 /* TapVisualEffectViewV2 */;
-			targetProxy = 7A45B99D9844DF2C37D6DA0D1289B7DA /* PBXContainerItemProxy */;
+			name = TapKeychainV2;
+			target = 7D7CA289C7EAC480E1D88A58624285ED /* TapKeychainV2 */;
+			targetProxy = 2157B3F954B760C286C2DE4D0C4620C9 /* PBXContainerItemProxy */;
 		};
 		6A1BEB0318FE0505C94AA5BDA34FF1B6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5808,17 +5820,23 @@
 			target = 976126A1CE06DC6E162563800E1BDF14 /* Alamofire-Alamofire */;
 			targetProxy = EFB61FB0D629A7361FDF2917D0C1AD98 /* PBXContainerItemProxy */;
 		};
+		6FDE2585864EDF6D0CF679C9AA187293 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftyRSA;
+			target = 92A1C13902E7ACDA3ABB5BA1FEACC86C /* SwiftyRSA */;
+			targetProxy = 39DFCDEBA768D0E593D02DFF1997F55B /* PBXContainerItemProxy */;
+		};
 		70DCE0087CCCE5B778816112522756E6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = TapAdditionsKitV2;
 			target = A3DF3C18C03F8EAEC754928B8CBFE78B /* TapAdditionsKitV2 */;
 			targetProxy = 140AB1911EF846956F543B75AFF97CBD /* PBXContainerItemProxy */;
 		};
-		764B590E586B947F43A9EAA4657F3E7D /* PBXTargetDependency */ = {
+		76B573C984E07651DD1C2938EF3F654E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = TapAdditionsKitV2;
 			target = A3DF3C18C03F8EAEC754928B8CBFE78B /* TapAdditionsKitV2 */;
-			targetProxy = B490CF1C1BF35EA8169BE9CBD5A57F02 /* PBXContainerItemProxy */;
+			targetProxy = 59DA9970CD1FDD99AA894E48BE0875AD /* PBXContainerItemProxy */;
 		};
 		78737A934A6950B4216F384355881355 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5832,17 +5850,23 @@
 			target = A3DF3C18C03F8EAEC754928B8CBFE78B /* TapAdditionsKitV2 */;
 			targetProxy = 81D63395DC35E70A4938D2306B26000B /* PBXContainerItemProxy */;
 		};
+		7C08C6493265CC62806DD2DF8C88466B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TapNibViewV2;
+			target = 3BCA64009C588E875C8B1CD48C7FC318 /* TapNibViewV2 */;
+			targetProxy = 32BDFF8295BE0D9D47536BB59FDD531C /* PBXContainerItemProxy */;
+		};
+		7CB12696E0EF3F3F5D68E44E184D07D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TapEditableViewV2;
+			target = DCA479FE2956C2EC87223CB5918E2419 /* TapEditableViewV2 */;
+			targetProxy = 097AF71D2A7D17C320A93F615805E8DF /* PBXContainerItemProxy */;
+		};
 		7FEFA69988CC1B6C23876B70517CBD11 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "TapFontsKitV2-Fonts";
 			target = DBE7C85AC98C4C3FBD3E3C7D72FBADF7 /* TapFontsKitV2-Fonts */;
 			targetProxy = FCAECA37CB7FD17C406A8EE9162C3E6B /* PBXContainerItemProxy */;
-		};
-		862EE9CBEAAFAB2059176D55F625F506 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = TapGLKitV2;
-			target = 39D83FA8D35F395F8FEBFC954F6666EB /* TapGLKitV2 */;
-			targetProxy = 87C367012BE709DA2E0FCC8FBBA7C523 /* PBXContainerItemProxy */;
 		};
 		8D7967AB79560ABDA02A5F47658532BC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5850,17 +5874,17 @@
 			target = F54D62776BF5DC91E69A079D22FB4019 /* TapVisualEffectViewV2-TapVisualEffectViewResources */;
 			targetProxy = 6BE72EA5CEC277854EE2B8C38D184D16 /* PBXContainerItemProxy */;
 		};
-		99F1336D29AE04265374D320630D9E09 /* PBXTargetDependency */ = {
+		8EA9441B639AD7608263F9F5FF9B9A75 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = Moya;
-			target = 17F9141D333DA1A7BE5937F227221070 /* Moya */;
-			targetProxy = D1B5FF54CC9A81B658FE8314D1728881 /* PBXContainerItemProxy */;
+			name = TapNetworkManagerV2;
+			target = 128A37608919FF3FB13348EEE4E63A26 /* TapNetworkManagerV2 */;
+			targetProxy = 57904385F2BD18E7755CB71E31B6F5D5 /* PBXContainerItemProxy */;
 		};
-		9A8248244B396694D4CC212C5D548304 /* PBXTargetDependency */ = {
+		90886BF493FE57A8D9FC1927E49E8080 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = TapNibViewV2;
-			target = 3BCA64009C588E875C8B1CD48C7FC318 /* TapNibViewV2 */;
-			targetProxy = FD0E2735A202F3BAE9E71541A7F46051 /* PBXContainerItemProxy */;
+			name = TapResponderChainInputViewV2;
+			target = 812C2C54B141DDEECB4454FC55229161 /* TapResponderChainInputViewV2 */;
+			targetProxy = D38A561A10E7F1A23FA0F627FF235C49 /* PBXContainerItemProxy */;
 		};
 		A14A7E5F054BF137D2C313E77524CFD9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5868,29 +5892,29 @@
 			target = E216967D71699A6EF43A16A4B8B6D624 /* TapSwiftFixesV2 */;
 			targetProxy = F9C57968EEA9F6548754165CF33D9A8C /* PBXContainerItemProxy */;
 		};
-		A5D025B8EB8C3459F3CF40846DDC5DB1 /* PBXTargetDependency */ = {
+		AA730592EC5900154D947887247CE31F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = TapNetworkManagerV2;
-			target = 128A37608919FF3FB13348EEE4E63A26 /* TapNetworkManagerV2 */;
-			targetProxy = D33361CD927A4D66B8951B47D3B78B9C /* PBXContainerItemProxy */;
+			name = Moya;
+			target = 17F9141D333DA1A7BE5937F227221070 /* Moya */;
+			targetProxy = E7114237A2C0674A9B1C2C44782D18BF /* PBXContainerItemProxy */;
 		};
-		A8CD176EE66CDBD98128A5EBC2A6D819 /* PBXTargetDependency */ = {
+		AA7D1F491358734DFD9A0394183FC202 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = EditableTextInsetsTextFieldV2;
-			target = 4017F99A726B5DB0932349A4E4D56670 /* EditableTextInsetsTextFieldV2 */;
-			targetProxy = ECF23E3362602BC2923D3A4AA00BC4F5 /* PBXContainerItemProxy */;
+			name = goSellSDK;
+			target = CECB7B4A2DADAF3B398D564292452FDB /* goSellSDK */;
+			targetProxy = 417AAE47A27A8E00CA6B1FDCAC1FA5AD /* PBXContainerItemProxy */;
 		};
-		BA5383F33A27CBC151E9DE6F0DECC759 /* PBXTargetDependency */ = {
+		B6779F680A8582A4DB066EEEAB003491 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TapSearchViewV2;
+			target = E9F28119884BFB9B48F0E69941FB768F /* TapSearchViewV2 */;
+			targetProxy = A38833362E211C94CEC5A592042D431A /* PBXContainerItemProxy */;
+		};
+		B8E821503924BEA419966646CB0626F4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "TapCardVlidatorKit-iOS";
 			target = 3615B323ECE97BB00B6167A5847EF0FF /* TapCardVlidatorKit-iOS */;
-			targetProxy = 4B0AAFA0B7320369BEE5A27A0A86D240 /* PBXContainerItemProxy */;
-		};
-		BD2B1437AC9C3803063AC24619A27644 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = TapSwiftFixesV2;
-			target = E216967D71699A6EF43A16A4B8B6D624 /* TapSwiftFixesV2 */;
-			targetProxy = 9E76272B22C8839DB278C85783D742C0 /* PBXContainerItemProxy */;
+			targetProxy = 4CC1D051905F330A6EC5A00764B8E81E /* PBXContainerItemProxy */;
 		};
 		C010A1359959958C3AC65FC4A74E3A11 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5898,17 +5922,11 @@
 			target = A3DF3C18C03F8EAEC754928B8CBFE78B /* TapAdditionsKitV2 */;
 			targetProxy = 6ACD2DA15D2FDC6E4D66F6C210C13A2E /* PBXContainerItemProxy */;
 		};
-		C56E8193826CE6C67F539EFC5615EF84 /* PBXTargetDependency */ = {
+		C53B2DFA4E3E1B6D4F7B69985FE72F17 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = TapKeychainV2;
-			target = 7D7CA289C7EAC480E1D88A58624285ED /* TapKeychainV2 */;
-			targetProxy = 90CB3918AB9A21DC7DB6681A6ACA24D8 /* PBXContainerItemProxy */;
-		};
-		C56FAC348856A7F39300D6B90B1FDB9C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = TapApplicationV2;
-			target = 9A8B22F15674A78FC57F1E9B3018E88B /* TapApplicationV2 */;
-			targetProxy = 5A63A264D0591B7E2D14DFCDC32717AB /* PBXContainerItemProxy */;
+			name = EditableTextInsetsTextFieldV2;
+			target = 4017F99A726B5DB0932349A4E4D56670 /* EditableTextInsetsTextFieldV2 */;
+			targetProxy = D58D91FC7FC90A71D42FDE561374C427 /* PBXContainerItemProxy */;
 		};
 		CA716F54DAC55A787F42959A830D4DA2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -5934,18 +5952,6 @@
 			target = B4315773B41EF24944FFB8C535C19714 /* TapFontsKitV2 */;
 			targetProxy = 335CA64B43789504FFF578C447279E74 /* PBXContainerItemProxy */;
 		};
-		EE48A31639577B3CBA49BEFE925D8B90 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = goSellSDK;
-			target = CECB7B4A2DADAF3B398D564292452FDB /* goSellSDK */;
-			targetProxy = 277A3F8A62BD5E68ADF53C380578995C /* PBXContainerItemProxy */;
-		};
-		F2F996E10F170163D350FDD8010F6FA9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = TapResponderChainInputViewV2;
-			target = 812C2C54B141DDEECB4454FC55229161 /* TapResponderChainInputViewV2 */;
-			targetProxy = 3534CB43CB4BAEAD845D0A7D1D09AD16 /* PBXContainerItemProxy */;
-		};
 		F4D48B1DB429FC14F7181BA12F6331CA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = TapAdditionsKitV2;
@@ -5958,17 +5964,11 @@
 			target = A3DF3C18C03F8EAEC754928B8CBFE78B /* TapAdditionsKitV2 */;
 			targetProxy = C6333A769431A5DE5A7E9778362D9FFC /* PBXContainerItemProxy */;
 		};
-		FA7D63F23C16928D30D561D1E5DC6554 /* PBXTargetDependency */ = {
+		FDAA4FAA45D63EF928B0434B975EA582 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = TamaraSDK;
-			target = EAAF68CB5C03DE3146C00A64D8B8DCEF /* TamaraSDK */;
-			targetProxy = F2720F9B8B1080F57FC4273758D57A49 /* PBXContainerItemProxy */;
-		};
-		FB9DDA989397ACFBF20AF8DECA9631DD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = TapFontsKitV2;
-			target = B4315773B41EF24944FFB8C535C19714 /* TapFontsKitV2 */;
-			targetProxy = A3D603E11850E78E6C8C5AD7680A717E /* PBXContainerItemProxy */;
+			name = TapGLKitV2;
+			target = 39D83FA8D35F395F8FEBFC954F6666EB /* TapGLKitV2 */;
+			targetProxy = B6982C944926EEB9C67F673FA990F222 /* PBXContainerItemProxy */;
 		};
 		FE4CB646F0B43FB8AC5751DA87CCAA11 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -6260,6 +6260,46 @@
 			};
 			name = Release;
 		};
+		28B551F8CDCE9B895688766D9927B676 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC84B4048A065C6F800F05B4B887AD6D /* Pods-Fazaa.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-Fazaa/Pods-Fazaa-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Fazaa/Pods-Fazaa.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		30E0B9EFD9A5C45D0D351231E81B30B3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -6512,45 +6552,6 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 5;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		43F1B27E3B6266329CEAD4BF01223A9D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6E93BB8739D6E48CE6FD8E329AA3E9E5 /* Pods-FreelanceApp.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				INFOPLIST_FILE = "Target Support Files/Pods-FreelanceApp/Pods-FreelanceApp-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-FreelanceApp/Pods-FreelanceApp.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -6902,6 +6903,45 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		70CC8E3E113B705D902AEEBDE44E32AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28DC5E6CD37B116F6862DB654E947CF6 /* Pods-Fazaa.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-Fazaa/Pods-Fazaa-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Fazaa/Pods-Fazaa.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		7A8ABE4E47A13899964FBF80E6BDD6C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -7851,46 +7891,6 @@
 			};
 			name = Debug;
 		};
-		F563C2BDB83FAC0F2E0BE1F8A2428B09 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 32D6818E8E6A97B0C3DBAD4D1168451C /* Pods-FreelanceApp.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				INFOPLIST_FILE = "Target Support Files/Pods-FreelanceApp/Pods-FreelanceApp-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-FreelanceApp/Pods-FreelanceApp.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		F98EE33558C53FC474C6B9EF9F50E27E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6B53FCFBB5E476223732C6B12B671C11 /* Moya.debug.xcconfig */;
@@ -8090,11 +8090,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		95093CE165A705D6F7CD1508EB01F211 /* Build configuration list for PBXNativeTarget "Pods-FreelanceApp" */ = {
+		83ECB1AC1D17A0A63E8342BAA4BDF628 /* Build configuration list for PBXNativeTarget "Pods-Fazaa" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				43F1B27E3B6266329CEAD4BF01223A9D /* Debug */,
-				F563C2BDB83FAC0F2E0BE1F8A2428B09 /* Release */,
+				70CC8E3E113B705D902AEEBDE44E32AD /* Debug */,
+				28B551F8CDCE9B895688766D9927B676 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

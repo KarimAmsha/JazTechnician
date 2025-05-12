@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_FreelanceAppVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_FreelanceAppVersionString[];
+FOUNDATION_EXPORT double Pods_FazaaVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_FazaaVersionString[];
 

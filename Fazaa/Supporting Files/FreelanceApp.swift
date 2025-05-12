@@ -1,6 +1,6 @@
 //
-//  FreelanceApp.swift
-//  FreelanceApp
+//  FazaaApp.swift
+//  FazaaApp
 //
 //  Created by Karim Amsha on 23.04.2024.
 //
@@ -12,7 +12,7 @@ import FirebaseCrashlytics
 import goSellSDK
 
 @main
-struct FreelanceApp: App {
+struct FazaaApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject var languageManager = LanguageManager()
     @StateObject var appState = AppState()
