@@ -86,7 +86,7 @@ enum MediaType {
 }
 
 enum Page {
-    case home, chat, addService, more, projects
+    case home, chat, orders, more, categories
 }
 
 enum RequestType {

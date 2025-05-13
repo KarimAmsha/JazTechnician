@@ -16,23 +16,6 @@ struct MainView: View {
     @ObservedObject var appRouter = AppRouter()
     @ObservedObject var viewModel = InitialViewModel(errorHandling: ErrorHandling())
     @StateObject var cartViewModel = CartViewModel(errorHandling: ErrorHandling())
-    private var tabItems: [MainTabItem] {
-        var items: [MainTabItem] = [
-            MainTabItem(page: .home, iconSystemName: "house", title: "الرئيسية"),
-            MainTabItem(page: .chat, iconSystemName: "message", title: "الرسائل", isNotified: true),
-            MainTabItem(page: .projects, iconSystemName: "briefcase", title: "المشاريع"),
-            MainTabItem(page: .more, iconSystemName: "line.3.horizontal", title: "المزيد")
-        ]
-
-        if settings.userRole == .provider {
-            items.insert(
-                MainTabItem(page: .addService, iconSystemName: "plus.circle", title: "إضافة خدمة"),
-                at: 2
-            )
-        }
-
-        return items
-    }
 
     var body: some View {
         NavigationStack(path: $appRouter.navPath) {
@@ -48,49 +31,23 @@ struct MainView: View {
                     switch appState.currentPage {
                     case .home:
                         HomeView()
-                    case .chat:
+                    case .categories:
 //                        ChatListView(userId: UserSettings.shared.id ?? "")
                         ChatListView(viewModel: MockChatListViewModel(userId: "user1"))
-                    case .projects:
+                    case .orders:
                         if settings.userRole == .provider {
                             ProjectsView()
                         } else {
                             ClientProjectsView()
                         }
-                    case .addService:
-                        settings.id == nil ? CustomeEmptyView().eraseToAnyView() : AddServiceView().eraseToAnyView()
+                    case .chat:
+//                        ChatListView(userId: UserSettings.shared.id ?? "")
+                        ChatListView(viewModel: MockChatListViewModel(userId: "user1"))
                     case .more:
                         settings.id == nil ? CustomeEmptyView().eraseToAnyView() : ProfileView().eraseToAnyView()
                     }
 
-                    VStack(spacing: 0) {
-                        CustomDivider()
-                            .padding(.bottom)
-
-                        GeometryReader { geometry in
-                            HStack(spacing: 0) {
-                                ForEach(tabItems, id: \.page) { item in
-                                    TabBarIcon(
-                                        appState: appState,
-                                        assignedPage: item.page,
-                                        width: 24,
-                                        height: 24,
-                                        iconName: item.iconSystemName,
-                                        tabName: item.title,
-                                        isNotified: item.isNotified
-                                    )
-                                    .frame(maxWidth: .infinity)
-                                }
-                            }
-                            .padding(.horizontal)
-                            .padding(.bottom, 25)
-                            .frame(height: 60)
-                            .background(Color.white)
-                        }
-                        .frame(height: 70)
-                    }
-                    .frame(height: 70)
-                    .background(Color.white)
+                    CustomTabBar(appState: appState)
                 }
             }
             .background(Color.background())
