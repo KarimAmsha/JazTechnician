@@ -7,8 +7,20 @@
 
 import SwiftUI
 
-struct HomeItems: Codable, Hashable {
-    let category: [Category]?
-    let slider: [Slider]?
-    let whatsApp: WhatsApp?
+struct HomeSection: Codable, Hashable, Identifiable {
+    var id: String { type }
+    let type: String
+    let action: String?
+    let title: String
+    let data: [HomeItem]?
+}
+
+struct HomeItem: Codable, Hashable, Identifiable {
+    let _id: String
+    var id: String { _id }
+
+    let title: String?
+    let description: String?
+    let image: String?
+    let type: String
 }

@@ -40,6 +40,7 @@ class AuthViewModel: ObservableObject {
                     self.handleAPIError(error)
                 }
             }, receiveValue: { [weak self] (response: SingleAPIResponse<User>) in
+                print("sss \(response.items)")
                 if response.status {
                     self?.user = response.items
                     self?.handleVerificationStatus(isVerified: response.items?.isVerify ?? false)

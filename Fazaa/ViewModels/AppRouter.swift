@@ -60,6 +60,7 @@ final class AppRouter: ObservableObject {
         case cancelOrder(AlertModel)
         case alert(AlertModel)
         case inputAlert(AlertModelWithInput)
+        case shareApp
     }
 
     public enum AppPopup: Hashable {

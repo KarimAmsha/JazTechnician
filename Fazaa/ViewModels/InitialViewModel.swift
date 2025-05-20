@@ -19,7 +19,7 @@ class InitialViewModel: ObservableObject {
     @Published var errorMessage: String?
     private var cancellables = Set<AnyCancellable>()
     private let errorHandling: ErrorHandling
-    @Published var homeItems: HomeItems?
+    @Published var homeItems: [HomeSection] = []
     @Published var products: [Products] = []
     @Published var product: Products?
     @Published var currentPage = 0
@@ -156,27 +156,28 @@ class InitialViewModel: ObservableObject {
         errorMessage = nil
         let endpoint = DataProvider.Endpoint.getHome
         
-        DataProvider.shared.request(endpoint: endpoint, responseType: SingleAPIResponse<HomeItems>.self)
+        DataProvider.shared.request(endpoint: endpoint, responseType: ArrayAPIResponse<HomeSection>.self)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
                     break
                 case .failure(let error):
-                    // Use the centralized error handling component
                     self.handleAPIError(error)
                 }
-            }, receiveValue: { [weak self] (response: SingleAPIResponse<HomeItems>) in
+            }, receiveValue: { [weak self] (response: ArrayAPIResponse<HomeSection>) in
                 if response.status {
-                    self?.homeItems = response.items
+                    if let items = response.items {
+                        self?.homeItems = items
+                    }
                     self?.errorMessage = nil
                 } else {
-                    // Use the centralized error handling component
                     self?.handleAPIError(.customError(message: response.message))
                 }
                 self?.isLoading = false
             })
             .store(in: &cancellables)
     }
+
     
     func getMainCategories(q: String?) {
         isLoading = true

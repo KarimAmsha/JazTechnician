@@ -1,6 +1,6 @@
 //
 //  HomeView.swift
-//  Wishy
+//  Fazaa
 //
 //  Created by Karim Amsha on 28.04.2024.
 //
@@ -13,93 +13,168 @@ import FirebaseMessaging
 struct HomeView: View {
     @StateObject var viewModel = InitialViewModel(errorHandling: ErrorHandling())
     @EnvironmentObject var appRouter: AppRouter
-    @State private var searchText: String = ""
-    @State private var currentIndex = 0
-    private let timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
     @StateObject private var userViewModel = UserViewModel(errorHandling: ErrorHandling())
+    @StateObject private var locationManager = LocationManager2()
 
     var body: some View {
-        GeometryReader { geometry in
-            VStack(alignment: .center, spacing: 16) {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("المشاريع الفعالة")
-                        .font(.system(size: 16, weight: .bold))
-                    
-                    GeneralCardView(
-                        title: "تصميم بروشور شركة",
-                        rating: 4.8,
-                        reviewer: "محمد سعيد",
-                        completedProjects: 100,
-                        price: "$160",
-                        date: "٢٧ أكتوبر 2024",
-                        status: "قيد التنفيذ"
-                    )
-                }
+        ScrollView {
+            VStack(spacing: 16) {
+                // الضمان
+                ZStack {
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(Color.orange.opacity(0.1))
+                        .frame(height: 110)
 
-                if viewModel.isLoading {
-                    LoadingView()
-                } else {
-                    ScrollView(showsIndicators: false) {
-                        VStack(alignment: .leading, spacing: 12) {
-                            Text("البحث بالتخصص")
-                                .font(.system(size: 16, weight: .bold))
-                                .padding(.horizontal)
-
-                            if let categories = viewModel.homeItems?.category, categories.isEmpty {
-                                DefaultEmptyView(title: LocalizedStringKey.noDataFound)
-                            } else if let categories = viewModel.homeItems?.category {
-                                LazyVGrid(columns: Array(repeating: .init(.flexible(), spacing: 16), count: 2), spacing: 16) {
-                                    ForEach(sampleCategories) { category in
-                                        VStack {
-                                            Image(category.image)
-                                                .resizable()
-                                                .scaledToFill()
-                                                .frame(height: 120)
-                                                .cornerRadius(10)
-                                            Text(category.title)
-                                                .font(.system(size: 14, weight: .semibold))
-                                            Text("+1500 فريلانسر")
-                                                .font(.system(size: 12))
-                                                .foregroundColor(.gray)
-                                        }
-                                        .onTapGesture {
-                                            appRouter.navigate(to: .freelancerList)
-                                        }
-                                    }
-                                }
-                                .padding(.horizontal)
-                            }
+                    HStack(spacing: 12) {
+                        Image(systemName: "shield")
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                            .foregroundColor(.orange)
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("جميع خدماتنا خاضعة للضمان الذهبي")
+                                .font(.body)
+                                .fontWeight(.bold)
+                            Text("ضمان استرجاع نقودك بالكامل إن لم يتم حل المشكلة")
+                                .font(.footnote)
+                                .foregroundColor(.gray)
                         }
                     }
+                    .padding(.horizontal)
                 }
-                
-                Spacer()
+                .padding(.horizontal)
+
+                // عرض أقسام الخدمات من نوع "main_service"
+                if let mainServiceSection = viewModel.homeItems.first(where: { $0.type == "main_service" }) {
+                    if let categories = mainServiceSection.data, !categories.isEmpty {
+                        // العنوان
+                        if !mainServiceSection.title.isEmpty {
+                            Text(mainServiceSection.title)
+                                .font(.headline)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.horizontal)
+                        }
+
+                        // الشبكة
+                        LazyVGrid(columns: Array(repeating: .init(.flexible()), count: 3), spacing: 20) {
+                            ForEach(categories, id: \._id) { item in
+                                VStack(spacing: 8) {
+                                    VStack {
+                                        AsyncImage(url: URL(string: item.image ?? "")) { phase in
+                                            switch phase {
+                                            case .empty:
+                                                ProgressView()
+                                                    .frame(height: 80)
+                                            case .success(let image):
+                                                image
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .frame(height: 80)
+                                                    .padding(8)
+                                            case .failure:
+                                                Image(systemName: "photo")
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .frame(height: 80)
+                                                    .foregroundColor(.gray)
+                                            @unknown default:
+                                                EmptyView()
+                                            }
+                                        }
+                                    }
+                                    .frame(maxWidth: .infinity)
+                                    .padding()
+                                    .background(Color.gray.opacity(0.1))
+                                    .cornerRadius(12)
+                                    .shadow(color: Color.black.opacity(0.05), radius: 4, x: 0, y: 2)
+                                    .onTapGesture {
+                                        appRouter.navigate(to: .freelancerList)
+                                    }
+
+                                    // العنوان خارج البطاقة
+                                    Text(item.title ?? "")
+                                        .font(.footnote)
+                                        .multilineTextAlignment(.center)
+                                        .frame(maxWidth: .infinity)
+                                }
+                            }
+                        }
+                        .padding(.horizontal)
+                    } else {
+                        DefaultEmptyView(title: LocalizedStringKey.noDataFound)
+                    }
+                }
+
+                if let whatsappSection = viewModel.homeItems.first(where: { $0.type == "whatsapp" }),
+                   let item = whatsappSection.data?.first {
+                    
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(item.title ?? "")
+                            .font(.headline)
+                        Text(item.description ?? "")
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+
+                        Button(action: {
+                            if let url = URL(string: "https://wa.me/رقمك") {
+                                UIApplication.shared.open(url)
+                            }
+                        }) {
+                            HStack {
+                                Image(systemName: "message.fill")
+                                Text("راسلنا على واتساب")
+                            }
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.green)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                        }
+                    }
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(12)
+                    .shadow(color: Color.black.opacity(0.05), radius: 4, x: 0, y: 2)
+                    .padding(.horizontal)
+                }
             }
-            .padding(16)
-            .frame(maxWidth: .infinity)
-            .frame(minHeight: geometry.size.height)
+            .padding(.top)
         }
-        .background(Color.background())
+        .background(Color.white)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                HStack {
-                    AsyncImageView(
-                        width: 60,
-                        height: 60,
-                        cornerRadius: 10,
-                        imageURL: UserSettings.shared.user?.image?.toURL(),
-                        placeholder: Image(systemName: "person.fill"),
-                        contentMode: .fill
-                    )
-                    
-                    
-                    VStack(alignment: .leading) {
-                        Text("مرحباً أحمد! 👋")
-                            .customFont(weight: .bold, size: 20)
-                        Text("UXUI Designer")
-                            .customFont(weight: .regular, size: 10)
+                VStack(alignment: .leading, spacing: 4) {
+                    HStack(spacing: 4) {
+                        Image(systemName: "location.north.circle")
+                            .resizable()
+                            .frame(width: 18, height: 18)
+                            .foregroundColor(.black)
+
+                        Text(LocalizedStringKey.myLocation)
+                            .font(.footnote)
+                            .foregroundColor(.gray)
                     }
-                    .foregroundColor(Color.black222020())
+
+                    Text(locationManager.address.isEmpty ? "جارٍ تحديد الموقع..." : locationManager.address)
+                        .font(.subheadline)
+                        .fontWeight(.medium)
+                        .foregroundColor(.black)
+                        .lineLimit(1)
+                        .truncationMode(.tail)
+                        .frame(maxWidth: UIScreen.main.bounds.width * 0.55, alignment: .leading)
+                }
+            }
+
+            ToolbarItem(placement: .navigationBarTrailing) {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("الرصيد:")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                    HStack(spacing: 4) {
+                        Image(systemName: "wallet.pass")
+                        Text("\(20, specifier: "%.1f") SAR")
+                            .fontWeight(.medium)
+                    }
+                    .foregroundColor(.black)
                 }
             }
         }
@@ -107,53 +182,28 @@ struct HomeView: View {
             getHome()
             viewModel.fetchContactItems()
             refreshFcmToken()
+            locationManager.startUpdatingLocation()
         }
     }
-    
-    func openWhatsApp() {
-        let phoneNumber = viewModel.whatsAppContactItem?.Data ?? ""
-        
-        if let url = URL(string: "https://wa.me/\(phoneNumber)") {
-            UIApplication.shared.open(url)
+
+    func getHome() {
+        viewModel.fetchHomeItems()
+    }
+
+    func refreshFcmToken() {
+        Messaging.messaging().token { token, error in
+            if let token = token {
+                let params: [String: Any] = [
+                    "id": UserSettings.shared.id ?? "",
+                    "fcmToken": token
+                ]
+                userViewModel.refreshFcmToken(params: params, onsuccess: {})
+            }
         }
     }
 }
 
 #Preview {
     HomeView()
+        .environmentObject(AppRouter())
 }
-
-extension HomeView {
-    func getHome() {
-        viewModel.fetchHomeItems()
-    }
-}
-
-extension HomeView {
-    func refreshFcmToken() {
-        Messaging.messaging().token { token, error in
-            if let error = error {
-            } else if let token = token {
-                let params: [String: Any] = [
-                    "id": UserSettings.shared.id ?? "",
-                    "fcmToken": token
-                ]
-                userViewModel.refreshFcmToken(params: params, onsuccess: {
-                    
-                })
-            }
-        }
-    }
-}
-
-struct Category2: Identifiable {
-    let id = UUID()
-    let title: String
-    let image: String
-}
-let sampleCategories: [Category2] = [
-    .init(title: "التصميم", image: "design_image"),
-    .init(title: "المجال المالي", image: "finance_image"),
-    .init(title: "المجال الطبي", image: "medical_image"),
-    .init(title: "التدريس", image: "teaching_image")
-]

@@ -20,7 +20,7 @@ struct Constants {
     static let userLocationRef      = dbRef.child("userLocation")
     static let trackingRef          = dbRef.child("tracking")
     static let messagesRef          = dbRef.child("messages")
-    static let messagesList         = "messagesList"
+    static let messagesList         = "messagesList"   
     static let lastMessage          = "lastMessage"
     static let lastMessageDate      = "lastMessageDate"
     static let receiverId           = "receiverId"

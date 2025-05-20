@@ -164,6 +164,8 @@ struct MainView: View {
                        AlertView(alertModel: alertModel)
                    case .inputAlert(let alertModelWithInput):
                        InputAlertView(alertModel: alertModelWithInput)
+                   case .shareApp:
+                       ShareSheetView(items: ["قم بتحميل تطبيق فزعة الآن: https://example.com"])
                    }
                }
             } customize: {
