@@ -97,6 +97,8 @@ struct HomeView: View {
                                         .font(.footnote)
                                         .multilineTextAlignment(.center)
                                         .frame(maxWidth: .infinity)
+                                        .lineLimit(2) // ✅ يسمح بسطرين كحد أقصى
+                                        .fixedSize(horizontal: false, vertical: true) // ✅ يسمح بتوسيع العمود لأسفل إذا لزم
                                 }
                                 .frame(height: 180) // 💡 إجمالي ارتفاع موحّد لكل عنصر
                             }
