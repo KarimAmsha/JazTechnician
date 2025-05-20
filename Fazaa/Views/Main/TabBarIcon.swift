@@ -44,9 +44,9 @@ struct CustomTabBar: View {
     private var tabItems: [MainTabItem] {
         [
             MainTabItem(page: .home, iconSystemName: "house", title: "الرئيسية"),
-            MainTabItem(page: .categories, iconSystemName: "archivebox", title: "التصنيفات"),
             MainTabItem(page: .orders, iconSystemName: "tray.full", title: "طلباتي"),
             MainTabItem(page: .chat, iconSystemName: "bubble.left.and.bubble.right", title: "الرسائل"),
+            MainTabItem(page: .notifications, iconSystemName: "bell.badge", title: "الاشعارات"),
             MainTabItem(page: .more, iconSystemName: "square.grid.2x2", title: "المزيد"),
         ]
     }

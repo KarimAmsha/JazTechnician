@@ -31,18 +31,13 @@ struct MainView: View {
                     switch appState.currentPage {
                     case .home:
                         HomeView()
-                    case .categories:
-//                        ChatListView(userId: UserSettings.shared.id ?? "")
-                        ChatListView(viewModel: MockChatListViewModel(userId: "user1"))
                     case .orders:
-                        if settings.userRole == .provider {
-                            ProjectsView()
-                        } else {
-                            ClientProjectsView()
-                        }
+                        MyOrdersView()
                     case .chat:
 //                        ChatListView(userId: UserSettings.shared.id ?? "")
                         ChatListView(viewModel: MockChatListViewModel(userId: "user1"))
+                    case .notifications:
+                        NotificationsView()
                     case .more:
                         settings.id == nil ? CustomeEmptyView().eraseToAnyView() : ProfileView().eraseToAnyView()
                     }

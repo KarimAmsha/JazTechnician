@@ -15,33 +15,42 @@ struct HomeView: View {
     @EnvironmentObject var appRouter: AppRouter
     @StateObject private var userViewModel = UserViewModel(errorHandling: ErrorHandling())
     @StateObject private var locationManager = LocationManager2()
+    @State private var currentIndex = 0
+    let timer = Timer.publish(every: 4, on: .main, in: .common).autoconnect()
 
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
                 // الضمان
-                ZStack {
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(Color.orange.opacity(0.1))
-                        .frame(height: 110)
+                if let sliderSection = viewModel.homeItems.first(where: { $0.type == "slider" }),
+                   let item = sliderSection.data?.first {
 
-                    HStack(spacing: 12) {
-                        Image(systemName: "shield")
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                            .foregroundColor(.orange)
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text("جميع خدماتنا خاضعة للضمان الذهبي")
-                                .font(.body)
-                                .fontWeight(.bold)
-                            Text("ضمان استرجاع نقودك بالكامل إن لم يتم حل المشكلة")
-                                .font(.footnote)
+                    AsyncImage(url: URL(string: item.image ?? "")) { phase in
+                        switch phase {
+                        case .empty:
+                            ProgressView()
+                                .frame(height: 140)
+                                .frame(maxWidth: .infinity)
+                        case .success(let image):
+                            image
+                                .resizable()
+                                .scaledToFill()
+                                .frame(height: 140)
+                                .frame(maxWidth: .infinity)
+                                .clipped()
+                                .cornerRadius(12)
+                        case .failure:
+                            Image(systemName: "photo")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: 140)
                                 .foregroundColor(.gray)
+                        @unknown default:
+                            EmptyView()
                         }
                     }
                     .padding(.horizontal)
                 }
-                .padding(.horizontal)
 
                 // عرض أقسام الخدمات من نوع "main_service"
                 if let mainServiceSection = viewModel.homeItems.first(where: { $0.type == "main_service" }) {
@@ -96,11 +105,12 @@ struct HomeView: View {
                                     Text(item.title ?? "")
                                         .font(.footnote)
                                         .multilineTextAlignment(.center)
-                                        .frame(maxWidth: .infinity)
-                                        .lineLimit(2) // ✅ يسمح بسطرين كحد أقصى
-                                        .fixedSize(horizontal: false, vertical: true) // ✅ يسمح بتوسيع العمود لأسفل إذا لزم
+                                        .lineLimit(2)
+                                        .fixedSize(horizontal: false, vertical: true)
+                                        .frame(height: 40) // 🔐 ارتفاع ثابت للنص
+
                                 }
-                                .frame(height: 180) // 💡 إجمالي ارتفاع موحّد لكل عنصر
+                                .frame(height: 190) // ✅ ارتفاع نهائي موحد لكل عنصر
                             }
                         }
                         .padding(.horizontal)
@@ -109,36 +119,84 @@ struct HomeView: View {
                     }
                 }
 
-                if let whatsappSection = viewModel.homeItems.first(where: { $0.type == "whatsapp" }),
-                   let item = whatsappSection.data?.first {
-                    
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text(item.title ?? "")
-                            .font(.headline)
-                        Text(item.description ?? "")
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
+                if let offerSection = viewModel.homeItems.first(where: { $0.type == "offer" }),
+                   let offers = offerSection.data, !offers.isEmpty {
 
-                        Button(action: {
-                            if let url = URL(string: "https://wa.me/رقمك") {
-                                UIApplication.shared.open(url)
+                    TabView(selection: $currentIndex) {
+                        ForEach(offers.indices, id: \.self) { index in
+                            let offer = offers[index]
+                            AsyncImage(url: URL(string: offer.image ?? "")) { phase in
+                                switch phase {
+                                case .empty:
+                                    ProgressView()
+                                        .frame(height: 180)
+                                        .frame(maxWidth: .infinity)
+                                case .success(let image):
+                                    image
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(height: 180)
+                                        .frame(maxWidth: .infinity)
+                                        .clipped()
+                                        .cornerRadius(12)
+                                case .failure:
+                                    Image(systemName: "photo")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(height: 180)
+                                        .frame(maxWidth: .infinity)
+                                        .foregroundColor(.gray)
+                                @unknown default:
+                                    EmptyView()
+                                }
                             }
-                        }) {
-                            HStack {
-                                Image(systemName: "message.fill")
-                                Text("راسلنا على واتساب")
-                            }
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color.green)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
+                            .padding(.horizontal)
+                            .tag(index)
                         }
                     }
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(12)
-                    .shadow(color: Color.black.opacity(0.05), radius: 4, x: 0, y: 2)
+                    .frame(height: 200)
+                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
+                    .onReceive(timer) { _ in
+                        withAnimation {
+                            currentIndex = (currentIndex + 1) % offers.count
+                        }
+                    }
+                }
+
+                if let whatsappSection = viewModel.homeItems.first(where: { $0.type == "whatsapp" }),
+                   let item = whatsappSection.data?.first {
+
+                    VStack(spacing: 12) {
+                        AsyncImage(url: URL(string: item.image ?? "")) { phase in
+                            switch phase {
+                            case .empty:
+                                ProgressView()
+                                    .frame(height: 160)
+                                    .frame(maxWidth: .infinity)
+                            case .success(let image):
+                                image
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(height: 160)
+                                    .frame(maxWidth: .infinity)
+                                    .clipped()
+                                    .cornerRadius(12)
+                            case .failure:
+                                Image(systemName: "photo")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: 160)
+                                    .foregroundColor(.gray)
+                            @unknown default:
+                                EmptyView()
+                            }
+                        }
+                        .onTapGesture {
+                            if let url = URL(string: "https://wa.me/\(viewModel.whatsAppContactItem?.Data ?? "")") {
+                                UIApplication.shared.open(url)
+                            }
+                        }
+                    }
                     .padding(.horizontal)
                 }
             }
@@ -152,20 +210,30 @@ struct HomeView: View {
                         Image(systemName: "location.north.circle")
                             .resizable()
                             .frame(width: 18, height: 18)
-                            .foregroundColor(.black)
+                            .foregroundColor(.secondary())
 
                         Text(LocalizedStringKey.myLocation)
                             .font(.footnote)
                             .foregroundColor(.gray)
                     }
 
-                    Text(locationManager.address.isEmpty ? "جارٍ تحديد الموقع..." : locationManager.address)
-                        .font(.subheadline)
-                        .fontWeight(.medium)
-                        .foregroundColor(.black)
-                        .lineLimit(1)
-                        .truncationMode(.tail)
-                        .frame(maxWidth: UIScreen.main.bounds.width * 0.55, alignment: .leading)
+                    HStack {
+                        Text(locationManager.address.isEmpty ? "جارٍ تحديد الموقع..." : locationManager.address)
+                            .font(.subheadline)
+                            .fontWeight(.medium)
+                            .foregroundColor(.black)
+                            .lineLimit(1)
+                            .truncationMode(.head)
+                        Spacer()
+                        Image(systemName: "chevron.down.circle.fill")
+                            .resizable()
+                            .frame(width: 18, height: 18)
+                            .foregroundColor(Color.gray.opacity(0.5))
+                    }
+                    .frame(maxWidth: UIScreen.main.bounds.width * 0.70, alignment: .leading)
+                }
+                .onTapGesture {
+                    appRouter.navigate(to: .addressBook)
                 }
             }
 
@@ -180,6 +248,9 @@ struct HomeView: View {
                             .fontWeight(.medium)
                     }
                     .foregroundColor(.black)
+                }
+                .onTapGesture {
+                    appRouter.navigate(to: .walletView)
                 }
             }
         }

@@ -1312,9 +1312,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Fazaa/Pods-Fazaa-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Fazaa/Pods-Fazaa-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1713,7 +1717,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Fazaa/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Fazaa;
+				INFOPLIST_KEY_CFBundleDisplayName = "Fazaa - فزعة";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Fazaa will use camera to upload user photo";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Fazaa will use location to send orders, track your order, and continuously provide real-time updates";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Fazaa will use location to send orders, track your order, and continuously provide real-time updates";
@@ -1759,7 +1763,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Fazaa/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Fazaa;
+				INFOPLIST_KEY_CFBundleDisplayName = "Fazaa - فزعة";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Fazaa will use camera to upload user photo";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Fazaa will use location to send orders, track your order, and continuously provide real-time updates";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Fazaa will use location to send orders, track your order, and continuously provide real-time updates";
