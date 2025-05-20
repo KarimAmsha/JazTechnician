@@ -80,8 +80,10 @@ struct HomeView: View {
                                                 EmptyView()
                                             }
                                         }
+                                        Spacer()
                                     }
                                     .frame(maxWidth: .infinity)
+                                    .frame(height: 120)
                                     .padding()
                                     .background(Color.gray.opacity(0.1))
                                     .cornerRadius(12)
@@ -90,12 +92,13 @@ struct HomeView: View {
                                         appRouter.navigate(to: .freelancerList)
                                     }
 
-                                    // العنوان خارج البطاقة
+                                    // النص أسفل البطاقة
                                     Text(item.title ?? "")
                                         .font(.footnote)
                                         .multilineTextAlignment(.center)
                                         .frame(maxWidth: .infinity)
                                 }
+                                .frame(height: 180) // 💡 إجمالي ارتفاع موحّد لكل عنصر
                             }
                         }
                         .padding(.horizontal)
