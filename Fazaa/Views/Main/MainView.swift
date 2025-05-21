@@ -145,6 +145,12 @@ struct MainView: View {
                 case .chatDetail(let id):
 //                    ChatDetailView(chatId: id, currentUserId: UserSettings.shared.id ?? "")
                     ChatDetailView(viewModel: MockChatViewModel())
+                case .subCategory(let title, let categoryId):
+                    SubCategoryView(title: title, categoryId: categoryId)
+                case .subSubCategory(let subCategory):
+                    SubSubCategoryView(title: subCategory.title, items: subCategory.sub ?? [])
+                case .orderCompletion(let selectedItems):
+                    OrderCompletionView(selectedItems: selectedItems)
                 }
             }
             .popup(isPresented: Binding<Bool>(

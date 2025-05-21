@@ -30,6 +30,7 @@ class InitialViewModel: ObservableObject {
     @Published var favoriteItem: FavoriteItem?
     @Published var favoriteItems: [FavoriteItems] = []
     @Published var whatsAppContactItem: Contact?
+    @Published var subCategories: [SubCategoryItem] = []
 
     init(errorHandling: ErrorHandling) {
         self.errorHandling = errorHandling
@@ -97,6 +98,33 @@ class InitialViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
+    func getSubCategories(q: String = "", id: String) {
+        isLoading = true
+        errorMessage = nil
+
+        let endpoint = DataProvider.Endpoint.getSubCategories(q: q, id: id)
+
+        DataProvider.shared.request(endpoint: endpoint, responseType: ArrayAPIResponse<MainServiceItem>.self)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    self.handleAPIError(error)
+                }
+            }, receiveValue: { [weak self] response in
+                if response.status {
+                    // 🔥 هنا نأخذ أول عنصر ونجلب منه الـ category
+                    self?.subCategories = response.items?.first?.category ?? []
+                    self?.errorMessage = nil
+                } else {
+                    self?.handleAPIError(.customError(message: response.message))
+                }
+                self?.isLoading = false
+            })
+            .store(in: &cancellables)
+    }
+
     func fetchConstantItemDetails(_id: String) {
         isLoading = true
         errorMessage = nil

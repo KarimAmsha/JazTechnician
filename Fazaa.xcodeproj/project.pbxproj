@@ -259,10 +259,13 @@
 		5267FACB2DCD42F20063AF67 /* FirebaseUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267FACA2DCD42F10063AF67 /* FirebaseUserService.swift */; };
 		5267FACD2DCD44850063AF67 /* PushNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267FACC2DCD44840063AF67 /* PushNotificationService.swift */; };
 		52AEC8D72DCBE61C00B4FC84 /* ServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AEC8D62DCBE61A00B4FC84 /* ServiceModel.swift */; };
-		52AEC8D92DCBF23500B4FC84 /* .swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AEC8D82DCBF22900B4FC84 /* .swift */; };
 		52AEC8DD2DCBF26900B4FC84 /* DeliveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AEC8DC2DCBF26100B4FC84 /* DeliveryView.swift */; };
 		52AEC8DF2DCBF27C00B4FC84 /* ServiceRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AEC8DE2DCBF27B00B4FC84 /* ServiceRatingView.swift */; };
 		52AEC8E12DCBF47300B4FC84 /* RejectionReasonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AEC8E02DCBF47100B4FC84 /* RejectionReasonView.swift */; };
+		52C32A912DDDDB6F004536FE /* SubCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C32A902DDDDB6E004536FE /* SubCategoryView.swift */; };
+		52C32A932DDDDBC7004536FE /* MainServiceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C32A922DDDDBC6004536FE /* MainServiceItem.swift */; };
+		52C32A952DDDF8D9004536FE /* SubSubCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C32A942DDDF8D7004536FE /* SubSubCategoryView.swift */; };
+		52C32A972DDE04BF004536FE /* OrderCompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C32A962DDE04BD004536FE /* OrderCompletionView.swift */; };
 		52C6AD582DCA3DF900D0A672 /* MessageAlertObserverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C6AD572DCA3DF700D0A672 /* MessageAlertObserverView.swift */; };
 		52C6AD5A2DCA3E4D00D0A672 /* GeneralAlertToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C6AD592DCA3E4C00D0A672 /* GeneralAlertToastView.swift */; };
 		52C6AD5C2DCA419500D0A672 /* TamaraWebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C6AD5B2DCA419400D0A672 /* TamaraWebViewModel.swift */; };
@@ -507,10 +510,13 @@
 		5267FACA2DCD42F10063AF67 /* FirebaseUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserService.swift; sourceTree = "<group>"; };
 		5267FACC2DCD44840063AF67 /* PushNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationService.swift; sourceTree = "<group>"; };
 		52AEC8D62DCBE61A00B4FC84 /* ServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceModel.swift; sourceTree = "<group>"; };
-		52AEC8D82DCBF22900B4FC84 /* .swift */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swift; sourceTree = "<group>"; };
 		52AEC8DC2DCBF26100B4FC84 /* DeliveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryView.swift; sourceTree = "<group>"; };
 		52AEC8DE2DCBF27B00B4FC84 /* ServiceRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRatingView.swift; sourceTree = "<group>"; };
 		52AEC8E02DCBF47100B4FC84 /* RejectionReasonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RejectionReasonView.swift; sourceTree = "<group>"; };
+		52C32A902DDDDB6E004536FE /* SubCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoryView.swift; sourceTree = "<group>"; };
+		52C32A922DDDDBC6004536FE /* MainServiceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainServiceItem.swift; sourceTree = "<group>"; };
+		52C32A942DDDF8D7004536FE /* SubSubCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubSubCategoryView.swift; sourceTree = "<group>"; };
+		52C32A962DDE04BD004536FE /* OrderCompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCompletionView.swift; sourceTree = "<group>"; };
 		52C6AD572DCA3DF700D0A672 /* MessageAlertObserverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageAlertObserverView.swift; sourceTree = "<group>"; };
 		52C6AD592DCA3E4C00D0A672 /* GeneralAlertToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralAlertToastView.swift; sourceTree = "<group>"; };
 		52C6AD5B2DCA419400D0A672 /* TamaraWebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamaraWebViewModel.swift; sourceTree = "<group>"; };
@@ -746,6 +752,7 @@
 		1ECC944D2BDC56EE002BFE54 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				52C32A922DDDDBC6004536FE /* MainServiceItem.swift */,
 				5267FAB82DCD3D980063AF67 /* Chat */,
 				52AEC8D62DCBE61A00B4FC84 /* ServiceModel.swift */,
 				52D9E6CB2DCB92A800ED2874 /* MainTabItem.swift */,
@@ -1132,7 +1139,9 @@
 		52D9E6CD2DCB953600ED2874 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				52AEC8D82DCBF22900B4FC84 /* .swift */,
+				52C32A962DDE04BD004536FE /* OrderCompletionView.swift */,
+				52C32A942DDDF8D7004536FE /* SubSubCategoryView.swift */,
+				52C32A902DDDDB6E004536FE /* SubCategoryView.swift */,
 				52D9E6D32DCB957500ED2874 /* AddServiceView.swift */,
 			);
 			path = Services;
@@ -1370,6 +1379,7 @@
 				5267FAB72DCD3D930063AF67 /* FirebaseUser.swift in Sources */,
 				1ECC95392BDD81EF002BFE54 /* LocationManager.swift in Sources */,
 				52C6AD7A2DCA544D00D0A672 /* SpecialtySelectionPopup.swift in Sources */,
+				52C32A912DDDDB6F004536FE /* SubCategoryView.swift in Sources */,
 				1EA7FEEF2C1A0BC100823465 /* EditGroupView.swift in Sources */,
 				1E0053382C1F009800C75E42 /* MyWishView.swift in Sources */,
 				1ED8DE372C22EFD000613489 /* CustomeEmptyView.swift in Sources */,
@@ -1408,6 +1418,7 @@
 				1EA6D3252C1DB109007E8AE0 /* AddBalanceView.swift in Sources */,
 				52C6AD702DCA513300D0A672 /* RegistrationWorkInfoView.swift in Sources */,
 				1EA7405A2BFBE9190028AAD0 /* AppConstants.swift in Sources */,
+				52C32A932DDDDBC7004536FE /* MainServiceItem.swift in Sources */,
 				1ECC951D2BDD1874002BFE54 /* CustomTextField.swift in Sources */,
 				52C6AD742DCA517700D0A672 /* ConfirmPhoneView.swift in Sources */,
 				1EC27FFC2C03B1AB0007279D /* OrderItemView.swift in Sources */,
@@ -1483,9 +1494,9 @@
 				1E2804192C04C6700021DFB0 /* AddressBookView.swift in Sources */,
 				1E28042D2C04D3F30021DFB0 /* NotificationsView.swift in Sources */,
 				1E2804232C04C7C70021DFB0 /* Complain.swift in Sources */,
-				52AEC8D92DCBF23500B4FC84 /* .swift in Sources */,
 				1E28041B2C04C6700021DFB0 /* EditAddressView.swift in Sources */,
 				5235B1912DCC98D7009F75FA /* EditRequestSheet.swift in Sources */,
+				52C32A972DDE04BF004536FE /* OrderCompletionView.swift in Sources */,
 				5235B19F2DCCD5EA009F75FA /* NotificationsSettingsView.swift in Sources */,
 				1E5F318F2BE23F3E00E5A914 /* RetailFriendWishesView.swift in Sources */,
 				1E2804212C04C70B0021DFB0 /* AddressItem.swift in Sources */,
@@ -1529,6 +1540,7 @@
 				52C6AD722DCA515100D0A672 /* RegistrationIdentityView.swift in Sources */,
 				1EA7405E2BFBEA190028AAD0 /* Special.swift in Sources */,
 				1ECC94CA2BDC5E49002BFE54 /* DismissingKeyboard.swift in Sources */,
+				52C32A952DDDF8D9004536FE /* SubSubCategoryView.swift in Sources */,
 				1E28043E2C0503850021DFB0 /* AddressListView.swift in Sources */,
 				52C6AD5E2DCA41BB00D0A672 /* SafariView.swift in Sources */,
 				1ECC946C2BDC5B68002BFE54 /* Encodable+Extensions.swift in Sources */,

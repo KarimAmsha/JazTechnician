@@ -89,6 +89,7 @@ class DataProvider {
         case checkCartCoupun(params: [String: Any], token: String)
         case addOrderWish(params: [String: Any], token: String)
         case refreshFcmToken(params: [String: Any], token: String)
+        case getSubCategories(q: String?, id: String?)
 
         // Map your custom Endpoint to APIEndpoint
         func toAPIEndpoint() -> APIEndpoint {
@@ -241,6 +242,8 @@ class DataProvider {
                 return .addOrderWish(params: params, token: token)
             case .refreshFcmToken(let params, let token):
                 return .refreshFcmToken(params: params, token: token)
+            case .getSubCategories(let q, let id):
+                return .getSubCategories(q: q, id: id)
             }
         }
     }

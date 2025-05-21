@@ -9,7 +9,7 @@ import SwiftUI
 
 final class AppRouter: ObservableObject {
     
-    public enum Destination: Codable, Hashable {
+    enum Destination: Hashable, Equatable {
         case profile
         case editProfile
         case changePassword
@@ -54,16 +54,19 @@ final class AppRouter: ObservableObject {
         case freelancerProfile
         case serviceDetails
         case chatDetail(String)
+        case subCategory(title: String, categoryId: String)
+        case subSubCategory(SubCategoryItem)
+        case orderCompletion(selectedItems: [SelectedServiceItem])
     }
-    
-    public enum Popup: Hashable {
+
+    enum Popup: Hashable {
         case cancelOrder(AlertModel)
         case alert(AlertModel)
         case inputAlert(AlertModelWithInput)
         case shareApp
     }
 
-    public enum AppPopup: Hashable {
+    enum AppPopup: Hashable {
         case alertError(String, String)
         case alertSuccess(String, String)
         case alertInfo(String, String)
@@ -76,25 +79,25 @@ final class AppRouter: ObservableObject {
     func navigate(to destination: Destination) {
         navPath.append(destination)
     }
-    
+
     func navigateBack() {
         if !navPath.isEmpty {
             navPath.removeLast()
         }
     }
-    
+
     func navigateToRoot() {
         navPath.removeLast(navPath.count)
     }
-    
+
     func togglePopup(_ popup: Popup?) {
         activePopup = popup
     }
-        
+
     func toggleAppPopup(_ popup: AppPopup?) {
         appPopup = popup
     }
-    
+
     func dismissPopup() {
         activePopup = nil
     }
