@@ -151,6 +151,8 @@ struct MainView: View {
                     SubSubCategoryView(title: subCategory.title, items: subCategory.sub ?? [])
                 case .orderCompletion(let selectedItems):
                     OrderCompletionView(selectedItems: selectedItems)
+                case .paymentCheckout(let orderData):
+                    PaymentCheckoutView(orderData: orderData)
                 }
             }
             .popup(isPresented: Binding<Bool>(

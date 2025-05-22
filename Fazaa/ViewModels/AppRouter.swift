@@ -57,6 +57,7 @@ final class AppRouter: ObservableObject {
         case subCategory(title: String, categoryId: String)
         case subSubCategory(SubCategoryItem)
         case orderCompletion(selectedItems: [SelectedServiceItem])
+        case paymentCheckout(orderData: OrderData)
     }
 
     enum Popup: Hashable {

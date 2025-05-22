@@ -284,3 +284,35 @@ extension OrderViewModel {
         errorMessage = errorDescription
     }
 }
+
+extension OrderViewModel {
+    func checkPlace(params: [String: Any], onsuccess: @escaping (String) -> Void) {
+        guard let token = userSettings.token else {
+            self.handleAPIError(.customError(message: LocalizedStringKey.tokenError))
+            return
+        }
+
+        isLoading = true
+        errorMessage = nil
+        let endpoint = DataProvider.Endpoint.checkPlace(params: params, token: token)
+        
+        dataProvider.request(endpoint: endpoint, responseType: SingleAPIResponse<String?>.self) { [weak self] result in
+            self?.isLoading = false
+            
+            switch result {
+            case .success(let response):
+                if response.status {
+                    self?.errorMessage = nil
+                    onsuccess(response.message)
+                } else {
+                    // Use the centralized error handling component
+                    self?.handleAPIError(.customError(message: response.message))
+                }
+                self?.isLoading = false
+            case .failure(let error):
+                // Use the centralized error handling component
+                self?.handleAPIError(error)
+            }
+        }
+    }
+}

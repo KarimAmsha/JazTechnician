@@ -262,6 +262,8 @@
 		52AEC8DD2DCBF26900B4FC84 /* DeliveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AEC8DC2DCBF26100B4FC84 /* DeliveryView.swift */; };
 		52AEC8DF2DCBF27C00B4FC84 /* ServiceRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AEC8DE2DCBF27B00B4FC84 /* ServiceRatingView.swift */; };
 		52AEC8E12DCBF47300B4FC84 /* RejectionReasonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AEC8E02DCBF47100B4FC84 /* RejectionReasonView.swift */; };
+		52BFB3CB2DDF255C0045E3B4 /* OrderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BFB3CA2DDF255A0045E3B4 /* OrderData.swift */; };
+		52BFB3CD2DDF258B0045E3B4 /* PaymentCheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BFB3CC2DDF258A0045E3B4 /* PaymentCheckoutView.swift */; };
 		52C32A912DDDDB6F004536FE /* SubCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C32A902DDDDB6E004536FE /* SubCategoryView.swift */; };
 		52C32A932DDDDBC7004536FE /* MainServiceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C32A922DDDDBC6004536FE /* MainServiceItem.swift */; };
 		52C32A952DDDF8D9004536FE /* SubSubCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C32A942DDDF8D7004536FE /* SubSubCategoryView.swift */; };
@@ -513,6 +515,8 @@
 		52AEC8DC2DCBF26100B4FC84 /* DeliveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryView.swift; sourceTree = "<group>"; };
 		52AEC8DE2DCBF27B00B4FC84 /* ServiceRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRatingView.swift; sourceTree = "<group>"; };
 		52AEC8E02DCBF47100B4FC84 /* RejectionReasonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RejectionReasonView.swift; sourceTree = "<group>"; };
+		52BFB3CA2DDF255A0045E3B4 /* OrderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderData.swift; sourceTree = "<group>"; };
+		52BFB3CC2DDF258A0045E3B4 /* PaymentCheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCheckoutView.swift; sourceTree = "<group>"; };
 		52C32A902DDDDB6E004536FE /* SubCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoryView.swift; sourceTree = "<group>"; };
 		52C32A922DDDDBC6004536FE /* MainServiceItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainServiceItem.swift; sourceTree = "<group>"; };
 		52C32A942DDDF8D7004536FE /* SubSubCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubSubCategoryView.swift; sourceTree = "<group>"; };
@@ -1102,6 +1106,7 @@
 		5267FAB82DCD3D980063AF67 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				52BFB3CA2DDF255A0045E3B4 /* OrderData.swift */,
 				5267FABB2DCD3EA40063AF67 /* FirebaseMessage.swift */,
 				5267FAB92DCD3E980063AF67 /* FirebaseChat.swift */,
 				5267FAB62DCD3D900063AF67 /* FirebaseUser.swift */,
@@ -1139,6 +1144,7 @@
 		52D9E6CD2DCB953600ED2874 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				52BFB3CC2DDF258A0045E3B4 /* PaymentCheckoutView.swift */,
 				52C32A962DDE04BD004536FE /* OrderCompletionView.swift */,
 				52C32A942DDDF8D7004536FE /* SubSubCategoryView.swift */,
 				52C32A902DDDDB6E004536FE /* SubCategoryView.swift */,
@@ -1432,6 +1438,7 @@
 				5267FAC12DCD40D10063AF67 /* ChatDetailView.swift in Sources */,
 				1EFB9B322C1C40B900C15CE4 /* AddUserProduct.swift in Sources */,
 				1E1EDA782C1CBCA6003047CA /* GroupListView.swift in Sources */,
+				52BFB3CB2DDF255C0045E3B4 /* OrderData.swift in Sources */,
 				5235B18B2DCC93BC009F75FA /* ClientProjectsView.swift in Sources */,
 				1E2804362C04E3E50021DFB0 /* FavoriteItem.swift in Sources */,
 				1ECC94FE2BDD1379002BFE54 /* AuthViewModel.swift in Sources */,
@@ -1443,6 +1450,7 @@
 				52AEC8DD2DCBF26900B4FC84 /* DeliveryView.swift in Sources */,
 				1ECC94732BDC5B68002BFE54 /* View+Extensions.swift in Sources */,
 				1ECC95162BDD17E4002BFE54 /* InputAlertView.swift in Sources */,
+				52BFB3CD2DDF258B0045E3B4 /* PaymentCheckoutView.swift in Sources */,
 				1EC27FE82C035C050007279D /* MainCategoryItemView.swift in Sources */,
 				1ECC953F2BDDA9EF002BFE54 /* DateTimePicker.swift in Sources */,
 				5267FAC52DCD41000063AF67 /* ChatInputBar.swift in Sources */,

@@ -33,5 +33,14 @@ struct AddressItem: Codable, Hashable, Identifiable {
     var addressType: PlaceType? {
         return PlaceType(rawValue: type ?? "")
     }
+    
+    var fullAddress: String {
+        return [
+            streetName,
+            buildingNo,
+            flatNo,
+            floorNo
+        ].compactMap { $0 }.joined(separator: ", ")
+    }
 }
 

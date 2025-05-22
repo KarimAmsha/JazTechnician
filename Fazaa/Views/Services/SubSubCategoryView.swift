@@ -126,12 +126,16 @@ struct SubSubCategoryView: View {
             }
             
             Button(action: {
-                if selectedItems.isEmpty {
+                let selected = items.filter { selectedItems[$0._id] != nil }
+
+                if selected.isEmpty {
                     showValidationAlert = true
                 } else {
-                    appRouter.navigate(to: .orderCompletion(selectedItems: selected.map {
-                        SelectedServiceItem(item: $0, quantity: selectedItems[$0._id] ?? 1, subCategoryTitle: title)
-                    }))
+                    appRouter.navigate(to: .orderCompletion(
+                        selectedItems: selected.map {
+                            SelectedServiceItem(item: $0, quantity: selectedItems[$0._id] ?? 1, subCategoryTitle: title)
+                        }
+                    ))
                 }
             }) {
                 Text("استكمال الطلب")
