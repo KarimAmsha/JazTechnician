@@ -39,6 +39,8 @@ struct SelectedServiceItem: Identifiable, Hashable {
     let item: SubSubCategoryItem
     let quantity: Int
     let subCategoryTitle: String
+    let categoryId: String      // main_category_id
+    let subCategoryId: String   // sub_category_id
 
     var id: String { item._id }
 }

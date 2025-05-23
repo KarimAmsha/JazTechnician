@@ -37,7 +37,7 @@ class OrderViewModel: ObservableObject {
         
         return currentPage < totalPages
     }
-
+    
     func addOrder(params: [String: Any], onsuccess: @escaping (String, String) -> Void) {
         guard let token = userSettings.token else {
             self.handleAPIError(.customError(message: LocalizedStringKey.tokenError))
@@ -46,24 +46,26 @@ class OrderViewModel: ObservableObject {
 
         isLoading = true
         errorMessage = nil
+        if let data = try? JSONSerialization.data(withJSONObject: params, options: .prettyPrinted),
+           let jsonString = String(data: data, encoding: .utf8) {
+            print("\n===== JSON Body to be sent =====\n\(jsonString)\n============================\n")
+        }
+
         let endpoint = DataProvider.Endpoint.addOrder(params: params, token: token)
 
-        dataProvider.request(endpoint: endpoint, responseType: SingleAPIResponse<OrderModel>.self) { [weak self] result in
+        dataProvider.request(endpoint: endpoint, responseType: SingleAPIResponse<OrderCreatedModel>.self) { [weak self] result in
             self?.isLoading = false
-            print("ssssss \(result)")
             switch result {
             case .success(let response):
+                print("API Raw Response: \(response)")
                 if response.status {
-                    self?.order = response.items
-                    self?.errorMessage = nil
+                    // فقط الآي دي الجديد
                     onsuccess(response.items?.id ?? "", response.message)
                 } else {
-                    // Use the centralized error handling component
                     self?.handleAPIError(.customError(message: response.message))
                 }
-                self?.isLoading = false
             case .failure(let error):
-                // Use the centralized error handling component
+                print("API Error: \(error)")
                 self?.handleAPIError(error)
             }
         }
@@ -244,7 +246,7 @@ class OrderViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    func tamaraCheckout(params: TamaraBody, onsuccess: @escaping () -> Void) {
+    func tamaraCheckout(params: TamaraItemBody, onsuccess: @escaping () -> Void) {
         guard let token = userSettings.token else {
             self.handleAPIError(.customError(message: LocalizedStringKey.tokenError))
             return

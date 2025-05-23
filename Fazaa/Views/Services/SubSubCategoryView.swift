@@ -21,6 +21,8 @@ import SwiftUI
 struct SubSubCategoryView: View {
     let title: String
     let items: [SubSubCategoryItem]
+    let mainCategoryId: String
+    let subCategoryId: String
 
     @EnvironmentObject var appRouter: AppRouter
     @State private var selectedItems: [String: Int] = [:]
@@ -133,7 +135,13 @@ struct SubSubCategoryView: View {
                 } else {
                     appRouter.navigate(to: .orderCompletion(
                         selectedItems: selected.map {
-                            SelectedServiceItem(item: $0, quantity: selectedItems[$0._id] ?? 1, subCategoryTitle: title)
+                            SelectedServiceItem(
+                                item: $0,
+                                quantity: selectedItems[$0._id] ?? 1,
+                                subCategoryTitle: title,
+                                categoryId: mainCategoryId,       // ببساطة مرر المتغير
+                                subCategoryId: subCategoryId      // مرر المتغير
+                            )
                         }
                     ))
                 }
@@ -195,6 +203,6 @@ struct SubSubCategoryView: View {
 }
 
 #Preview {
-    SubSubCategoryView(title: "مكيف دولابي", items: [])
+    SubSubCategoryView(title: "مكيف دولابي", items: [], mainCategoryId: "", subCategoryId: "")
         .environmentObject(AppRouter())
 }

@@ -147,8 +147,13 @@ struct MainView: View {
                     ChatDetailView(viewModel: MockChatViewModel())
                 case .subCategory(let title, let categoryId):
                     SubCategoryView(title: title, categoryId: categoryId)
-                case .subSubCategory(let subCategory):
-                    SubSubCategoryView(title: subCategory.title, items: subCategory.sub ?? [])
+                case .subSubCategory(let title, let items, let mainCategoryId, let subCategoryId):
+                    SubSubCategoryView(
+                        title: title,
+                        items: items,
+                        mainCategoryId: mainCategoryId,
+                        subCategoryId: subCategoryId
+                    )
                 case .orderCompletion(let selectedItems):
                     OrderCompletionView(selectedItems: selectedItems)
                 case .paymentCheckout(let orderData):

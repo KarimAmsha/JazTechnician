@@ -20,3 +20,13 @@ struct TamaraBody: Codable, Hashable {
     let amount: Double
     let products: [TamaraProduct]
 }
+
+struct TamaraExtraItem: Codable {
+    let sub_sub_id: String
+    let qty: Int
+}
+
+struct TamaraItemBody: Codable {
+    let amount: Double
+    let extra: [TamaraExtraItem]
+}

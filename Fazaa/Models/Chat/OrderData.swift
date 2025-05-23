@@ -9,8 +9,8 @@ import CoreLocation
 
 struct OrderData: Hashable {
     let services: [SelectedServiceItem]
-    let address: AddressItem?              // إذا العنوان من دفتر العناوين
-    let userLocation: CLLocationCoordinate2D? // إذا اختار الموقع الحالي
+    let address: AddressItem?                   // إذا العنوان من دفتر العناوين
+    let userLocation: CLLocationCoordinate2D?   // إذا اختار الموقع الحالي
     let notes: String
 
     func hash(into hasher: inout Hasher) {
@@ -30,30 +30,28 @@ struct OrderData: Hashable {
     }
 
     // تحويل الى JSON للAPI
-    func toJson() -> [String: Any] {
+    func toJson(couponCode: String, paymentType: String) -> [String: Any] {
         let extraItems: [[String: Any]] = services.map { item in
             [
                 "sub_sub_id": item.item._id,
                 "qty": item.quantity
             ]
         }
-
-        let firstItem = services.first?.item
-        let subCategoryId = firstItem?.type ?? ""
+        let firstItem = services.first
+        let subCategoryId = firstItem?.subCategoryId ?? ""
         let categoryId = firstItem?.categoryId ?? ""
 
         var dict: [String: Any] = [
-            "couponCode": "",
-            "paymentType": "online",
+            "couponCode": couponCode,
+            "paymentType": paymentType,
+            "address": address?.id ?? "",   // هنا دائماً يُرسل حتى لو فارغ
             "notes": notes,
             "extra": extraItems,
             "orderNo": "112233",
             "sub_category_id": subCategoryId,
             "category_id": categoryId
         ]
-
         if let address = address {
-            dict["address"] = address.id ?? ""
             dict["lat"] = address.lat ?? 0
             dict["lng"] = address.lng ?? 0
             dict["title"] = address.title ?? ""

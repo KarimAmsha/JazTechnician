@@ -55,7 +55,7 @@ final class AppRouter: ObservableObject {
         case serviceDetails
         case chatDetail(String)
         case subCategory(title: String, categoryId: String)
-        case subSubCategory(SubCategoryItem)
+        case subSubCategory(title: String, items: [SubSubCategoryItem], mainCategoryId: String, subCategoryId: String)
         case orderCompletion(selectedItems: [SelectedServiceItem])
         case paymentCheckout(orderData: OrderData)
     }

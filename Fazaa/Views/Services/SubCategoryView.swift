@@ -59,7 +59,12 @@ struct SubCategoryView: View {
                                 .frame(height: 36)
                         }
                         .onTapGesture {
-                            appRouter.navigate(to: .subSubCategory(item))
+                            appRouter.navigate(to: .subSubCategory(
+                                title: item.title,
+                                items: item.sub ?? [],
+                                mainCategoryId: categoryId,
+                                subCategoryId: item._id
+                            ))
                         }
                     }
                 }

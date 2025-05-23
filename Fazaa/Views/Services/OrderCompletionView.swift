@@ -307,36 +307,6 @@ struct OrderCompletionView: View {
         )
     }
     
-    @ViewBuilder
-    func addressCell(_ address: AddressItem) -> some View {
-        Button(action: {
-            selectedAddress = address
-            isCurrentLocationSelected = false
-        }) {
-            HStack(alignment: .top, spacing: 8) {
-                Image(systemName: selectedAddress?.id == address.id ? "largecircle.fill.circle" : "circle")
-                    .foregroundColor(.primary)
-                VStack(alignment: .leading, spacing: 4) {
-                    HStack {
-                        Text(address.title ?? "")
-                            .fontWeight(.medium)
-                            .foregroundColor(.black121212())
-                        if let type = address.addressType?.rawValue {
-                            Text("(\(type))")
-                                .font(.footnote)
-                                .foregroundColor(.gray)
-                        }
-                    }
-                    Text(address.address ?? "")
-                        .font(.footnote)
-                        .foregroundColor(.gray)
-                        .lineLimit(1)
-                        .truncationMode(.tail)
-                }
-            }
-        }
-    }
-    
     func updateMiniMapLocation() {
         if isCurrentLocationSelected {
             miniMapCoordinate = locationManager.location?.coordinate
@@ -352,8 +322,26 @@ struct OrderCompletionView: View {
 }
 
 #Preview {
-    OrderCompletionView(selectedItems: [])
-        .environmentObject(AppRouter())
+    // هنا لازم تمرر عناصر فيها categoryId وsubCategoryId أو تجهز عنصر تجريبي كامل
+    let demoSubSubCategoryItem = SubSubCategoryItem(
+        _id: "demo_id",
+        price: 100,
+        title: "تجريبي",
+        description: "عنصر تجريبي للمعاينة",
+        image: "",
+        type: "",
+    )
+
+    OrderCompletionView(selectedItems: [
+        SelectedServiceItem(
+            item: demoSubSubCategoryItem, // اجهزه تجريبياً
+            quantity: 1,
+            subCategoryTitle: "عنوان فرعي",
+            categoryId: "main_category_id",
+            subCategoryId: "sub_category_id"
+        )
+    ])
+    .environmentObject(AppRouter())
 }
 
 extension OrderCompletionView {
@@ -374,7 +362,7 @@ extension OrderCompletionView {
         let notesText = notes.isEmpty || notes == placeholder ? "" : notes
         let addressValue = isCurrentLocationSelected ? nil : selectedAddress
         let userLoc = isCurrentLocationSelected ? locationManager.location?.coordinate : nil
-        
+
         return OrderData(
             services: selectedList,
             address: addressValue,
@@ -404,13 +392,12 @@ extension OrderCompletionView {
             orderViewModel.errorMessage = "تعذر تحديد الموقع"
             return
         }
-        
-        let params: [String: Any] = ["lat": finalLat, "lng": finalLng]
-        
-        orderViewModel.checkPlace(params: params) { message in
+                
+//        orderViewModel.checkPlace(params: params) { message in
             let orderData = prepareOrderData()
+            print("OOOO \(orderData)")
             appRouter.navigate(to: .paymentCheckout(orderData: orderData))
-        }
+//        }
     }
 }
 
@@ -419,14 +406,20 @@ struct AddressItemView: View {
     let isSelected: Bool
 
     var body: some View {
-        HStack(alignment: .top, spacing: 8) {
+        HStack(alignment: .top, spacing: 12) {
             Image(systemName: isSelected ? "largecircle.fill.circle" : "circle")
-                .foregroundColor(.primary)
-            VStack(alignment: .leading, spacing: 4) {
-                HStack {
+                .foregroundColor(isSelected ? Color.secondary() : .gray)
+                .font(.system(size: 22, weight: .medium))
+                .padding(.top, 8)
+
+            VStack(alignment: .leading, spacing: 6) {
+                HStack(spacing: 4) {
                     Text(address.title ?? "")
-                        .fontWeight(.medium)
-                    if let type = address.addressType?.rawValue {
+                        .font(.system(size: 16, weight: .medium))
+                        .foregroundColor(.primary)
+                        .lineLimit(2)
+                        .truncationMode(.tail)
+                    if let type = address.addressType?.rawValue, !type.isEmpty {
                         Text("(\(type))")
                             .font(.footnote)
                             .foregroundColor(.gray)
@@ -435,10 +428,21 @@ struct AddressItemView: View {
                 Text(address.address ?? "")
                     .font(.footnote)
                     .foregroundColor(.gray)
-                    .lineLimit(1)
+                    .lineLimit(2)
                     .truncationMode(.tail)
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
+        .padding(14)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(Color(.systemGray6))
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(isSelected ? Color.secondary() : Color.gray.opacity(0.13), lineWidth: isSelected ? 2 : 1)
+        )
     }
 }
 

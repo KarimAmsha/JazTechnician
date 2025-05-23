@@ -374,30 +374,41 @@ enum NOTIFICATION_TYPE: Int {
     case GENERAL = 3
 }
 
-enum PaymentType: String, Codable, CaseIterable {
-//    case cash = "cash"
-    case wallet = "wallet"
-    case online = "online"
-    case tamara = "tamara"
-}
+enum PaymentType: String, Codable, CaseIterable, Identifiable {
+    case wallet, online, tamara
 
-enum PaymentMethod: String, CaseIterable {
-    case goSell = "ic_gosell"
-    case wallet = "ic_w"
-//    case cash = "ic_cash"
-    case tamara = "ic_tamara"
-    
-    var value : String {
+    var id: String { self.rawValue }
+
+    var displayName: String {
         switch self {
-        case .goSell: return "goSell"
-        case .wallet: return LocalizedStringKey.wallet
-//        case .cash: return LocalizedStringKey.payCash
-        case .tamara: return "tamara"
+        case .wallet: return "المحفظة"
+        case .online: return "مدى / فيزا"
+        case .tamara: return "تمارا"
+        }
+    }
+
+    var subtitle: String {
+        switch self {
+        case .wallet: return "ادفع من رصيدك مباشرة"
+        case .online: return "ادفع ببطاقات مدى أو فيزا"
+        case .tamara: return " ‎قسّطدفعتك عبر تمارا"
         }
     }
     
-    var imageName: String {
-        self.rawValue
+    var iconName: String {
+        switch self {
+        case .wallet: return "wallet.pass.fill"     // صورة المحفظة
+        case .online: return "creditcard.fill"       // صورة البطاقة
+        case .tamara: return "creditcard.circle.fill"     // صورة تمارا
+        }
+    }
+    
+    var cardColor: Color {
+        switch self {
+        case .wallet: return Color.blue.opacity(0.15)
+        case .online: return Color.green.opacity(0.13)
+        case .tamara: return Color.orange.opacity(0.13)
+        }
     }
 }
 

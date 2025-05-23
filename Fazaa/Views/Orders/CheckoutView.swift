@@ -889,24 +889,24 @@ extension CheckoutView {
             products: products
         )
 
-        orderViewModel.tamaraCheckout(params: tamaraBody) {
-            let url = orderViewModel.tamaraCheckout?.checkout_url ?? ""
-            self.checkoutUrl = url
-//            self.checkoutUrl = "https://raw.githack.com/KarimAmsha/my-project/main/index.html"
-
-            // Initialize the Tamara view model with the new URL and merchantURL
-            self.tamaraViewModel = TamaraWebViewModel(
-                url: self.checkoutUrl,
-                merchantURL: TamaraMerchantURL(
-                    success: "https://wishy.sa/tamara/success",
-                    failure: "https://wishy.sa/tamara/failure",
-                    cancel: "https://wishy.sa/tamara/cancel",
-                    notification: "https://wishy.sa/tamara/cancel"
-                )
-            )
-
-            showTamaraPayment.toggle()
-        }
+//        orderViewModel.tamaraCheckout(params: tamaraBody) {
+//            let url = orderViewModel.tamaraCheckout?.checkout_url ?? ""
+//            self.checkoutUrl = url
+////            self.checkoutUrl = "https://raw.githack.com/KarimAmsha/my-project/main/index.html"
+//
+//            // Initialize the Tamara view model with the new URL and merchantURL
+//            self.tamaraViewModel = TamaraWebViewModel(
+//                url: self.checkoutUrl,
+//                merchantURL: TamaraMerchantURL(
+//                    success: "https://wishy.sa/tamara/success",
+//                    failure: "https://wishy.sa/tamara/failure",
+//                    cancel: "https://wishy.sa/tamara/cancel",
+//                    notification: "https://wishy.sa/tamara/cancel"
+//                )
+//            )
+//
+//            showTamaraPayment.toggle()
+//        }
     }
 }
 
