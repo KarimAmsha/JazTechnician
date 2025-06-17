@@ -108,17 +108,17 @@ extension AddReviewView {
     func getOrderDetails() {
         viewModel.getOrderDetails(orderId: orderId) {
             // Initialize the product reviews from the order items
-            if let items = viewModel.orderDetailsItem?.items?.items {
-                productReviews = items.map { item in
-                    ProductReview(
-                        id: item.id ?? "",
-                        name: item.name ?? "",
-                        image: item.image,
-                        rating: nil,
-                        note: ""
-                    )
-                }
-            }
+//            if let items = viewModel.orderDetailsItem?.items?.items {
+//                productReviews = items.map { item in
+//                    ProductReview(
+//                        id: item.id ?? "",
+//                        name: item.name ?? "",
+//                        image: item.image,
+//                        rating: nil,
+//                        note: ""
+//                    )
+//                }
+//            }
         }
     }
     

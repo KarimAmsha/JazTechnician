@@ -73,3 +73,18 @@ extension String {
         return (firstTwo, lastTwo)
     }
 }
+
+extension String {
+    func formattedString() -> String {
+        // إذا كانت السلسلة ISO date: "2024-05-29T11:30:00Z"
+        let formatter = ISO8601DateFormatter()
+        if let date = formatter.date(from: self) {
+            let displayFormatter = DateFormatter()
+            displayFormatter.dateStyle = .medium
+            displayFormatter.timeStyle = .short
+            displayFormatter.locale = Locale(identifier: "ar")
+            return displayFormatter.string(from: date)
+        }
+        return self
+    }
+}

@@ -1,119 +1,120 @@
-//
-//  MyOrdersView.swift
-//  Wishy
-//
-//  Created by Karim Amsha on 30.04.2024.
-//
-
 import SwiftUI
 
 struct MyOrdersView: View {
     @EnvironmentObject var appRouter: AppRouter
     @StateObject var viewModel = OrderViewModel(errorHandling: ErrorHandling())
-    @State var orderType: OrderStatus = .new
+    @State var selectedTab: OrderStatus = .new
+
+    // ترتيب الحالات حسب التصميم
+    let tabs: [OrderStatus] = [.new, .started, .finished, .prefinished, .canceled]
 
     var body: some View {
-        GeometryReader { geometry in
-            VStack {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 3) {
-                        OrderStatusButton(title: LocalizedStringKey.news, status: .new, selectedStatus: $orderType)
-                        OrderStatusButton(title: LocalizedStringKey.started, status: .started, selectedStatus: $orderType)
-                        OrderStatusButton(title: LocalizedStringKey.underway, status: .way, selectedStatus: $orderType)
-                        OrderStatusButton(title: LocalizedStringKey.unconfirmed, status: .prefinished, selectedStatus: $orderType)
-                        OrderStatusButton(title: LocalizedStringKey.finished, status: .finished, selectedStatus: $orderType)
-                        OrderStatusButton(title: LocalizedStringKey.canceled, status: .canceled, selectedStatus: $orderType)
-                    }
-                    .frame(maxWidth: .infinity) // Ensure the HStack takes up all available width
-                }
-                .background(Color.white.cornerRadius(8))
-                .frame(height: 60)
+        VStack(spacing: 0) {
+            // Tabs
+            let activeColor = Color(red: 16/255, green: 71/255, blue: 119/255) // لون أزرق غامق (غيره إذا عندك لون آخر)
+            let inactiveColor = Color(red: 243/255, green: 246/255, blue: 249/255) // رمادي جداً
 
-                ScrollView(showsIndicators: false) {
-                    if viewModel.orders.isEmpty {
-                        DefaultEmptyView(title: LocalizedStringKey.noOrdersFound)
-                    } else {
-                        let orders = viewModel.orders
-                        ForEach(orders.indices, id: \.self) { index in
-                            let item = orders[index]
-                            OrderItemView(item: item, onSelect: {
-                                appRouter.navigate(to: .orderDetails(item.id ?? ""))
-                            })
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 0) {
+                    ForEach(tabs, id: \.self) { status in
+                        Button {
+                            selectedTab = status
+                        } label: {
+                            Text(status.displayTitle)
+                                .font(.system(size: 15, weight: .semibold))
+                                .frame(minWidth: 0)
+                                .padding(.vertical, 10)
+                                .padding(.horizontal, 24)
+                                .background(
+                                    selectedTab == status ? activeColor : inactiveColor
+                                )
+                                .foregroundColor(selectedTab == status ? .white : .black)
+                                .cornerRadius(16)
+                                .animation(.easeInOut(duration: 0.18), value: selectedTab)
+                        }
+                        // مسافة بين العناصر (فقط في حال ليست الأخيرة)
+                        if status != tabs.last {
+                            Spacer().frame(width: 4)
                         }
                     }
-                    
-                    if viewModel.shouldLoadMoreData {
-                        Color.clear.onAppear {
-                            loadMore()
-                        }
-                    }
-                    
-                    if viewModel.isFetchingMoreData {
-                        LoadingView()
-                    }
-                    
-                    Spacer()
                 }
+                .padding(.vertical, 8)
+                .padding(.horizontal, 8)
+                .background(inactiveColor)
+                .clipShape(RoundedRectangle(cornerRadius: 18))
+            }
+            .frame(height: 56)
+
+            // Orders List
+            ScrollView(showsIndicators: false) {
+                if viewModel.orders.isEmpty {
+                    VStack(spacing: 20) {
+                        Spacer(minLength: 60)
+                        DefaultEmptyView(title: LocalizedStringKey.noDataFound)
+                        Spacer()
+                    }
+                } else {
+                    VStack(spacing: 12) {
+                        ForEach(viewModel.orders, id: \.id) { item in
+                            OrderItemView(item: item) {
+                                appRouter.navigate(to: .orderDetails(item.id ?? ""))
+                            }
+                        }
+                    }
+                    .padding(.top, 12)
+                }
+
+                if viewModel.shouldLoadMoreData {
+                    Color.clear.onAppear { loadMore() }
+                }
+                if viewModel.isFetchingMoreData {
+                    ProgressView().padding(.top)
+                }
+                Spacer(minLength: 32)
             }
         }
-        .padding(16)
+        .background(Color(.systemGray6).ignoresSafeArea())
         .navigationBarBackButtonHidden()
-        .background(Color.background())
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 HStack {
-                    Button {
-                        appRouter.navigateBack()
-                    } label: {
+                    Button { appRouter.navigateBack() } label: {
                         Image("ic_back")
                     }
-
-                    Text(LocalizedStringKey.myOrders)
-                        .customFont(weight: .bold, size: 20)
-                        .foregroundColor(Color.primaryBlack())
+                    Text("طلباتي")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .foregroundColor(.primary)
                 }
             }
         }
-        .onChange(of: orderType) { type in
+        .padding(.horizontal, 10)
+        .onAppear {
             loadData()
+            print("uuuu \(UserSettings.shared.token ?? "")")
         }
+        .onChange(of: selectedTab) { _ in loadData() }
         .overlay(
             MessageAlertObserverView(
                 message: $viewModel.errorMessage,
                 alertType: .constant(.error)
             )
         )
-        .onAppear {
-            loadData()
-        }
     }
 }
 
 #Preview {
-    MyOrdersView()
+    MyOrdersView().environmentObject(AppRouter())
 }
 
+// MARK: - Logic
 extension MyOrdersView {
     func loadData() {
         viewModel.orders.removeAll()
-        viewModel.getOrders(status: orderType.rawValue, page: 0, limit: 10)
+        viewModel.getOrders(status: selectedTab.rawValue, page: 0, limit: 10)
     }
-    
+
     func loadMore() {
-        viewModel.loadMoreOrders(status: orderType.rawValue, limit: 10)
-    }
-    
-    private func updateOrderStatus(orderID: String, status: OrderStatus, canceledNote: String = "") {
-        let params: [String: Any] = [
-            "status": status.rawValue,
-            "canceled_note": canceledNote
-        ]
-        
-        viewModel.updateOrderStatus(orderId: orderID, params: params, onsuccess: {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
-                loadData()
-            })
-        })
+        viewModel.loadMoreOrders(status: selectedTab.rawValue, limit: 10)
     }
 }
-

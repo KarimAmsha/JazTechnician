@@ -14,9 +14,9 @@ class OrderViewModel: ObservableObject {
     @Published var totalPages = 1
     @Published var isFetchingMoreData = false
     @Published var pagination: Pagination?
-    @Published var orders: [OrderModel] = []
+    @Published var orders: [Order] = []
     @Published var order: OrderModel?
-    @Published var orderDetailsItem: OrderDetailsItem?
+    @Published var orderDetailsItem: OrderModel?
     private let errorHandling: ErrorHandling
     private let dataProvider = DataProvider.shared
     @Published var errorMessage: String?
@@ -77,36 +77,36 @@ class OrderViewModel: ObservableObject {
             return
         }
 
-        isFetchingMoreData = true
-        errorMessage = nil
-
-        let endpoint = DataProvider.Endpoint.getOrders(status: status, page: page, limit: limit, token: token)
-
-        dataProvider.request(endpoint: endpoint, responseType: OrderResponse.self) { [weak self] result in
-            guard let self = self else { return }
-            self.isLoading = false
-            self.isFetchingMoreData = false
-
-            switch result {
-            case .success(let response):
-                if response.statusCode == 200 {
-                    if let items = response.items {
-                        self.orders.append(contentsOf: items)
-                        self.totalPages = response.pagination?.totalPages ?? 1
-                        self.pagination = response.pagination
-                    }
-                    self.errorMessage = nil
-                } else {
-                    // Handle API error and update UI
-                    handleAPIError(.customError(message: response.message ?? ""))
-                    isFetchingMoreData = false
-                }
-            case .failure(let error):
-                // Use the centralized error handling component
-                self.handleAPIError(error)
-                self.isFetchingMoreData = false
-            }
-        }
+//        isFetchingMoreData = true
+//        errorMessage = nil
+//
+//        let endpoint = DataProvider.Endpoint.getOrders(status: status, page: page, limit: limit, token: token)
+//
+//        dataProvider.request(endpoint: endpoint, responseType: OrderResponse.self) { [weak self] result in
+//            guard let self = self else { return }
+//            self.isLoading = false
+//            self.isFetchingMoreData = false
+//
+//            switch result {
+//            case .success(let response):
+//                if response.statusCode == 200 {
+//                    if let items = response.items {
+//                        self.orders.append(contentsOf: items)
+//                        self.totalPages = response.pagination?.totalPages ?? 1
+//                        self.pagination = response.pagination
+//                    }
+//                    self.errorMessage = nil
+//                } else {
+//                    // Handle API error and update UI
+//                    handleAPIError(.customError(message: response.message ?? ""))
+//                    isFetchingMoreData = false
+//                }
+//            case .failure(let error):
+//                // Use the centralized error handling component
+//                self.handleAPIError(error)
+//                self.isFetchingMoreData = false
+//            }
+//        }
     }
 
     func loadMoreOrders(status: String?, limit: Int?) {
@@ -129,7 +129,7 @@ class OrderViewModel: ObservableObject {
         errorMessage = nil
         let endpoint = DataProvider.Endpoint.getOrderDetails(orderId: orderId, token: token)
         
-        dataProvider.request(endpoint: endpoint, responseType: SingleAPIResponse<OrderDetailsItem>.self) { [weak self] result in
+        dataProvider.request(endpoint: endpoint, responseType: SingleAPIResponse<OrderModel>.self) { [weak self] result in
             guard let self = self else { return }
             self.isLoading = false
             switch result {
@@ -318,3 +318,4 @@ extension OrderViewModel {
         }
     }
 }
+

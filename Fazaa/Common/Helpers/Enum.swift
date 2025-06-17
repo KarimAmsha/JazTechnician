@@ -150,17 +150,9 @@ enum MessageType: String, Codable, CaseIterable {
 }
 
 enum OrderStatus: String, Codable, CaseIterable {
-    case new = "new"
-    case accepted = "accepted"
-    case started = "started"
-    case way = "way"
-    case progress = "progress"
-    case updated = "updated"
-    case prefinished = "prefinished"
-    case finished = "finished"
-    case rated = "rated"
-    case canceled = "canceled_by_user"
+    case new, accepted, started, way, progress, updated, prefinished, finished, rated, canceled
 
+    // MARK: - Initializer from Raw/String (Handles "canceled_by_user" & unlisted)
     init(_ type: String) {
         switch type {
         case "new" : self = .new
@@ -170,56 +162,79 @@ enum OrderStatus: String, Codable, CaseIterable {
         case "progress" : self = .progress
         case "updated": self = .updated
         case "prefinished" : self = .prefinished
-        case "finished" : self = .finished
-        case "rated" : self = .finished
+        case "finished", "rated": self = .finished
         case let status where status.contains("canceled"): self = .canceled
-        default:
-            self = .accepted
+        default: self = .accepted
         }
     }
 
-    var value: String {
+    // MARK: - Display Title (يمكن تعديله للغات)
+    var displayTitle: String {
+        switch self {
+        case .new: return "جديد"
+        case .accepted: return "تم القبول"
+        case .started: return "قيد التنفيذ"
+        case .way: return "في الطريق"
+        case .progress: return "قيد التسليم"
+        case .updated: return "تم التعديل"
+        case .prefinished: return "غير مؤكد"
+        case .finished: return "منتهي"
+        case .rated: return "تم التقييم"
+        case .canceled: return "ملغي"
+        }
+    }
+    
+    // MARK: - Localized Key (احتفظ به إذا تستخدمه بالترجمة)
+    var localizedValue: String {
         switch self {
         case .new: return LocalizedStringKey.new
-        case .accepted: return LocalizedStringKey.new
+        case .accepted: return LocalizedStringKey.accepted
         case .started: return LocalizedStringKey.started
         case .way: return LocalizedStringKey.way
         case .progress: return LocalizedStringKey.progress
         case .updated: return LocalizedStringKey.updated
         case .prefinished: return LocalizedStringKey.unconfirmed
         case .finished: return LocalizedStringKey.finished
-        case .rated: return LocalizedStringKey.finished
+        case .rated: return LocalizedStringKey.rated
         case .canceled: return LocalizedStringKey.canceled
         }
     }
-    
-    func iconName() -> String {
+
+    // MARK: - Icon (Asset Name)
+    var iconName: String {
         switch self {
-        case .new: return "ic_peace"
-        case .accepted: return "ic_peace"
-        case .started: return "ic_car"
-        case .way: return "ic_car"
+        case .new, .accepted: return "ic_peace"
+        case .started, .way, .prefinished, .rated, .finished: return "ic_car"
         case .progress: return "ic_g_export"
-        case .finished: return "ic_car"
-        case .prefinished: return "ic_car"
-        case .rated: return "ic_car"
-        case .updated: return ""
-        case .canceled: return ""
+        case .updated: return "ic_update"
+        case .canceled: return "ic_cancel"
         }
     }
 
-    func stepText() -> String {
+    // MARK: - Step Text
+    var stepText: String {
         switch self {
-        case .new: return "تعيين فني"
-        case .accepted: return "تعيين فني"
-        case .started: return "في الطريق"
-        case .way: return "في الطريق"
+        case .new, .accepted: return "تعيين فني"
+        case .started, .way: return "في الطريق"
         case .progress: return "قيد التسليم"
-        case .finished: return "تم التوصيل بنجاح!"
-        case .prefinished: return "تم التوصيل بنجاح!"
-        case .rated: return "تم التوصيل بنجاح!"
+        case .finished, .prefinished, .rated: return "تم التوصيل بنجاح!"
         case .updated: return "تم التعديل"
-        case .canceled: return "تم الالغاء"
+        case .canceled: return "تم الإلغاء"
+        }
+    }
+    
+    var color: Color {
+        switch self {
+        case .new: return .blue
+        case .accepted: return .green
+        case .started: return .yellow
+        case .way: return .orange
+        case .progress: return .purple
+        case .updated: return .cyan
+        case .prefinished: return .gray.opacity(0.5)
+        case .finished: return .gray
+        case .rated: return .mint
+        case .canceled: return .red
         }
     }
 }
@@ -1003,6 +1018,7 @@ enum LocalizedStringKey {
     static let cartMessage = "Your order has been successfully added to the cart, do you want to go to the cart?".localized
     static let payMada = "Pay Mada".localized
     static let payTamara = "Pay Tamara".localized
+    static let rated = "Rated".localized
 
 }
 
