@@ -239,6 +239,17 @@ enum OrderStatus: String, Codable, CaseIterable {
     }
 }
 
+extension OrderStatus {
+    var allowsChat: Bool {
+        switch self {
+        case .started, .way, .progress, .updated, .prefinished:
+            return true
+        default:
+            return false
+        }
+    }
+}
+
 enum ConstantType: String, Codable, CaseIterable {
     case privacy = "privacy"
     case terms = "terms"

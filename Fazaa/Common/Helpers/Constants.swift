@@ -13,7 +13,7 @@ struct Constants {
     static let baseURL = "https://fazzaa-a48e8d79fa23.herokuapp.com/api"
     static let apiKey = "f8dd3a017f39b886c815f5cb248d26a2" // API KEY
     static let FCMLink = "https:fcm.googleapis.com/fcm/send"
-    static let serverkey            = "AAAA_suExJk:APA91bG1H7Y4o4XLeRJfMLwt9aco2kEnVerjWg5pgLiDSMd9k91SEEzS_HBn8a5FKMWvjfaphAT5npGvH_oZYHVpH4VE8MnW0KtHSbVLURY67oi559yxyeCagyMtXKcG2LHPE5RYzUwr"
+    static let serverkey            = "AAAAbK-sj9o:APA91bGuybNZ8Z5t92aAvWb83iLvGmHgcl3kmxpERQFYeH96SmdwaCPrKD7ZYQZyeonezalAi-iB-SIYpNFnG3XIlHMYZbEA3mvbP0RvVUUHprVFzQfBjU4JEe_Hha5nq4nx1jktE2Sk"
     static let headers: HTTPHeaders = ["Authorization":"key = \(serverkey)", "Accept": "application/json"]
     static let dbRef                = Database.database().reference()
     static let usersRef             = dbRef.child("user")

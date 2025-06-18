@@ -11,6 +11,7 @@
 
 import SwiftUI
 import FirebaseDatabase
+import FirebaseMessaging
 
 class ChatViewModel: ObservableObject {
     @Published var messages: [FirebaseMessage] = []
@@ -25,6 +26,7 @@ class ChatViewModel: ObservableObject {
     private let userService = FirebaseUserService()
     private let pushService = PushNotificationService()
     private var typingTimer: Timer?
+    @Published var users: [String: FirebaseUser] = [:]
 
     init(chatId: String, currentUserId: String) {
         self.chatId = chatId
@@ -183,3 +185,65 @@ class MockChatViewModel: ChatViewModel {
         self.isOtherUserTyping = true
     }
 }
+
+extension ChatViewModel {
+    func getUser(for userId: String) -> FirebaseUser? {
+        guard !userId.isEmpty, userId.rangeOfCharacter(from: CharacterSet(charactersIn: ".$#[]")) == nil else { return nil }
+
+        if let user = users[userId] {
+            return user
+        }
+        // جلب من الداتابيز إذا لم يكن موجود
+        let ref = Database.database().reference().child("user").child(userId)
+        ref.observeSingleEvent(of: .value) { snapshot in
+            guard let value = snapshot.value as? [String: Any] else { return }
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: value)
+                let user = try JSONDecoder().decode(FirebaseUser.self, from: jsonData)
+                DispatchQueue.main.async {
+                    self.users[userId] = user
+                }
+            } catch {
+                print("Decoding error: \(error)")
+            }
+        }
+        return nil // أول مرة، البيانات ليست جاهزة
+    }
+}
+
+extension ChatViewModel {
+    static func setUser(completion: ((Error?) -> Void)? = nil) {
+        guard let userId = UserSettings.shared.id else {
+            completion?(NSError(domain: "Missing UserID", code: 0))
+            return
+        }
+        
+        Messaging.messaging().token { token, error in
+            if let error = error {
+                print("فشل في الحصول على FCM Token: \(error.localizedDescription)")
+            }
+            let fcmToken = token ?? UserSettings.shared.fcmToken ?? ""
+            UserSettings.shared.fcmToken = fcmToken
+            
+            let ref = Database.database().reference().child("user").child(userId)
+            let userData: [String: Any] = [
+                "id": userId,
+                "name": UserSettings.shared.user?.full_name ?? "",
+                "image": UserSettings.shared.user?.image ?? "",
+                "fcmToken": fcmToken,
+                "lastOnline": Int(Date().timeIntervalSince1970),
+                "online": true
+            ]
+            
+            ref.setValue(userData) { error, _ in
+                if let error = error {
+                    print("فشل تحديث بيانات المستخدم: \(error.localizedDescription)")
+                } else {
+                    print("✅ تم تحديث بيانات المستخدم بنجاح")
+                }
+                completion?(error)
+            }
+        }
+    }
+}
+

@@ -8,6 +8,8 @@
 import SwiftUI
 import Combine
 import Firebase
+import FirebaseDatabase
+import FirebaseMessaging
 
 class UserViewModel: ObservableObject {
     @Published var user: User?
@@ -637,3 +639,4 @@ extension UserViewModel {
             .store(in: &cancellables)
     }
 }
+

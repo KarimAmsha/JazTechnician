@@ -51,6 +51,8 @@ struct OrderModel: Codable, Identifiable {
     var coupon: String?
     var orderNo: String?
     var extra: [ExtraBody]?     // هنا Array وليس MutableList
+    var user: User?
+    var provider: User?
 }
 
 struct ExtraBody: Codable {

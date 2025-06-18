@@ -34,8 +34,7 @@ struct MainView: View {
                     case .orders:
                         MyOrdersView()
                     case .chat:
-//                        ChatListView(userId: UserSettings.shared.id ?? "")
-                        ChatListView(viewModel: MockChatListViewModel(userId: "user1"))
+                        ChatListView(userId: UserSettings.shared.id ?? "")
                     case .notifications:
                         NotificationsView()
                     case .more:
@@ -142,9 +141,8 @@ struct MainView: View {
                     FreelancerProfileView()
                 case .serviceDetails:
                     ServiceDetailsView()
-                case .chatDetail(let id):
-//                    ChatDetailView(chatId: id, currentUserId: UserSettings.shared.id ?? "")
-                    ChatDetailView(viewModel: MockChatViewModel())
+                case .chat(let chatId, let currentUserId):
+                    ChatDetailView(chatId: chatId, currentUserId: currentUserId)
                 case .subCategory(let title, let categoryId):
                     SubCategoryView(title: title, categoryId: categoryId)
                 case .subSubCategory(let title, let items, let mainCategoryId, let subCategoryId):

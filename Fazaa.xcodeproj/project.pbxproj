@@ -84,7 +84,6 @@
 		1EC27FEC2C0377450007279D /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC27FEB2C0377450007279D /* CartViewModel.swift */; };
 		1EC27FEE2C0383720007279D /* CartItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC27FED2C0383720007279D /* CartItems.swift */; };
 		1EC27FF02C038A0E0007279D /* CartItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC27FEF2C038A0E0007279D /* CartItemView.swift */; };
-		1EC27FF22C038C7C0007279D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1EC27FF12C038C7B0007279D /* GoogleService-Info.plist */; };
 		1EC27FF42C0392060007279D /* UpdateCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC27FF32C0392060007279D /* UpdateCart.swift */; };
 		1EC27FF62C03A4FF0007279D /* CartTotal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC27FF52C03A4FF0007279D /* CartTotal.swift */; };
 		1EC27FF82C03ACAE0007279D /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC27FF72C03ACAE0007279D /* OrderViewModel.swift */; };
@@ -285,6 +284,7 @@
 		52D9E6D22DCB956400ED2874 /* ProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D9E6D12DCB956400ED2874 /* ProjectsView.swift */; };
 		52D9E6D42DCB957500ED2874 /* AddServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D9E6D32DCB957500ED2874 /* AddServiceView.swift */; };
 		52F03F922DC1448F00D11215 /* TamaraProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F03F912DC1448E00D11215 /* TamaraProduct.swift */; };
+		52F7A4B32E02BF540066A0F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52F7A4B22E02BF540066A0F1 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -364,7 +364,6 @@
 		1EC27FEB2C0377450007279D /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		1EC27FED2C0383720007279D /* CartItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItems.swift; sourceTree = "<group>"; };
 		1EC27FEF2C038A0E0007279D /* CartItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemView.swift; sourceTree = "<group>"; };
-		1EC27FF12C038C7B0007279D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1EC27FF32C0392060007279D /* UpdateCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCart.swift; sourceTree = "<group>"; };
 		1EC27FF52C03A4FF0007279D /* CartTotal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTotal.swift; sourceTree = "<group>"; };
 		1EC27FF72C03ACAE0007279D /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
@@ -538,6 +537,7 @@
 		52D9E6D12DCB956400ED2874 /* ProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsView.swift; sourceTree = "<group>"; };
 		52D9E6D32DCB957500ED2874 /* AddServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddServiceView.swift; sourceTree = "<group>"; };
 		52F03F912DC1448E00D11215 /* TamaraProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamaraProduct.swift; sourceTree = "<group>"; };
+		52F7A4B22E02BF540066A0F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		89CC8E0B55F14BBB4BE47E81 /* Pods-Fazaa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fazaa.debug.xcconfig"; path = "Target Support Files/Pods-Fazaa/Pods-Fazaa.debug.xcconfig"; sourceTree = "<group>"; };
 		BA63D56C8735E7C2B7A6F7DB /* Pods_Fazaa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fazaa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E72A19A0468AF04C23C0E0B6 /* Pods-Fazaa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fazaa.release.xcconfig"; path = "Target Support Files/Pods-Fazaa/Pods-Fazaa.release.xcconfig"; sourceTree = "<group>"; };
@@ -667,7 +667,7 @@
 		1ECC94482BDC56C0002BFE54 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				1EC27FF12C038C7B0007279D /* GoogleService-Info.plist */,
+				52F7A4B22E02BF540066A0F1 /* GoogleService-Info.plist */,
 				1EEC2BD32BD83E6300975953 /* Assets.xcassets */,
 				1ECC950E2BDD166A002BFE54 /* CountryNumbers.json */,
 				1ECC95202BDD1C21002BFE54 /* Localizable.strings */,
@@ -757,6 +757,7 @@
 			isa = PBXGroup;
 			children = (
 				52C32A922DDDDBC6004536FE /* MainServiceItem.swift */,
+				52BFB3CA2DDF255A0045E3B4 /* OrderData.swift */,
 				5267FAB82DCD3D980063AF67 /* Chat */,
 				52AEC8D62DCBE61A00B4FC84 /* ServiceModel.swift */,
 				52D9E6CB2DCB92A800ED2874 /* MainTabItem.swift */,
@@ -1106,7 +1107,6 @@
 		5267FAB82DCD3D980063AF67 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				52BFB3CA2DDF255A0045E3B4 /* OrderData.swift */,
 				5267FABB2DCD3EA40063AF67 /* FirebaseMessage.swift */,
 				5267FAB92DCD3E980063AF67 /* FirebaseChat.swift */,
 				5267FAB62DCD3D900063AF67 /* FirebaseUser.swift */,
@@ -1288,7 +1288,7 @@
 				1ECC95222BDD1C21002BFE54 /* Localizable.strings in Resources */,
 				1EEC2BD42BD83E6300975953 /* Assets.xcassets in Resources */,
 				1ECC94E12BDC6362002BFE54 /* IBMPlexSansArabic-SemiBold.ttf in Resources */,
-				1EC27FF22C038C7C0007279D /* GoogleService-Info.plist in Resources */,
+				52F7A4B32E02BF540066A0F1 /* GoogleService-Info.plist in Resources */,
 				1ECC94E32BDC6362002BFE54 /* IBMPlexSansArabic-Regular.ttf in Resources */,
 				1ECC94E02BDC6362002BFE54 /* IBMPlexSansArabic-Light.ttf in Resources */,
 			);
@@ -1755,7 +1755,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.4;
-				PRODUCT_BUNDLE_IDENTIFIER = sa.com.Fazaa.Fazaa;
+				PRODUCT_BUNDLE_IDENTIFIER = sa.com.Fazaa.FazaaUser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1801,7 +1801,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.4;
-				PRODUCT_BUNDLE_IDENTIFIER = sa.com.Fazaa.Fazaa;
+				PRODUCT_BUNDLE_IDENTIFIER = sa.com.Fazaa.FazaaUser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

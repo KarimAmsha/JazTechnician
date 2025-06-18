@@ -259,6 +259,7 @@ struct HomeView: View {
             viewModel.fetchContactItems()
             refreshFcmToken()
             locationManager.startUpdatingLocation()
+            ChatViewModel.setUser()
         }
     }
 

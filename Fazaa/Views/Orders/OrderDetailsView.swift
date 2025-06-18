@@ -48,7 +48,13 @@ struct OrderDetailsView: View {
                         OrderActionsSection(
                             order: order,
                             onCancel: { showCancelSheet = true },
-                            onRate: { showRateSheet = true }
+                            onRate: { showRateSheet = true },
+                            onChat: {
+                                let myId = UserSettings.shared.id ?? ""
+                                let otherId = (myId == order.provider?.id) ? (order.user?.id ?? "") : (order.provider?.id ?? "")
+                                let chatId = Utilities.makeChatId(currentUserId: myId, otherUserId: otherId)
+                                appRouter.navigate(to: .chat(chatId: chatId, currentUserId: myId))
+                            }
                         )
                     }
                     .padding(.horizontal, 16)
@@ -278,11 +284,16 @@ struct OrderActionsSection: View {
     let order: OrderModel
     var onCancel: () -> Void
     var onRate: () -> Void
+    var onChat: () -> Void      // جديد
+
     var body: some View {
         let status = OrderStatus(order.status ?? "new")
         VStack(spacing: 10) {
             if status == .accepted {
                 actionButton(title: "إلغاء الطلب", background: Color(red: 1, green: 0.95, blue: 0.95), foreground: .red, action: onCancel)
+            }
+            if status.allowsChat {
+                chatButton
             }
             if status == .finished {
                 actionButton(title: "قيّم الطلب", background: Color.green.opacity(0.1), foreground: .green, action: onRate)
@@ -300,6 +311,22 @@ struct OrderActionsSection: View {
                 .background(background)
                 .foregroundColor(foreground)
                 .cornerRadius(12)
+        }
+    }
+    
+    var chatButton: some View {
+        Button(action: onChat) {
+            HStack {
+                Image(systemName: "bubble.left.and.bubble.right.fill")
+                    .foregroundColor(.blue)
+                Text("محادثة مع المزود")
+                    .foregroundColor(.blue)
+            }
+            .fontWeight(.bold)
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(Color.blue.opacity(0.10))
+            .cornerRadius(12)
         }
     }
 }
