@@ -25,6 +25,8 @@ class OrderViewModel: ObservableObject {
     @Published var coupon: Coupon?
     private var cancellables = Set<AnyCancellable>()
     @Published var tamaraCheckout: TamaraCheckoutData?
+    @Published var orderCount: OrderCount = OrderCount()
+    @Published var isLoadingOrderCount: Bool = false
 
     init(errorHandling: ErrorHandling) {
         self.errorHandling = errorHandling
@@ -38,6 +40,38 @@ class OrderViewModel: ObservableObject {
         return currentPage < totalPages
     }
     
+    func getOrderCount() {
+        guard let token = userSettings.token else {
+            self.handleAPIError(.customError(message: LocalizedStringKey.tokenError))
+            return
+        }
+        
+        self.isLoadingOrderCount = true
+        errorMessage = nil
+        let endpoint = DataProvider.Endpoint.getOrderCount(token: token)
+        
+        dataProvider.request(endpoint: endpoint, responseType: SingleAPIResponse<OrderCount>.self) { [weak self] result in
+            guard let self = self else { return }
+            self.isLoadingOrderCount = false
+            switch result {
+            case .success(let response):
+                if response.status {
+                    if let items = response.items {
+                        self.orderCount = items
+                        self.errorMessage = nil
+                    }
+                } else {
+                    // Use the centralized error handling component
+                    self.handleAPIError(.customError(message: response.message))
+                }
+                self.isLoading = false
+            case .failure(let error):
+                // Use the centralized error handling component
+                self.handleAPIError(error)
+            }
+        }
+    }
+
     func addOrder(params: [String: Any], onsuccess: @escaping (String, String) -> Void) {
         guard let token = userSettings.token else {
             self.handleAPIError(.customError(message: LocalizedStringKey.tokenError))

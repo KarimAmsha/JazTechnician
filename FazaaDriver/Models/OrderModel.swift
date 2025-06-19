@@ -220,3 +220,10 @@ struct Order: Codable, Identifiable, Hashable {
         OrderStatus(self.status ?? "new")
     }
 }
+
+struct OrderCount: Codable {
+    var accpeted: Int = 0
+    var progress: Int = 0
+    var finished: Int = 0
+    var cancelded: Int = 0
+}
