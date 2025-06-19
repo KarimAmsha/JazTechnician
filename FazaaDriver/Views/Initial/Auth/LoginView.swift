@@ -6,13 +6,10 @@ import Combine
 
 struct LoginView: View {
     @EnvironmentObject var appState: AppState
-    @State var loginType: LoginType = .login
     @State var name: String = ""
     @State var email: String = ""
     @State var mobile: String = ""
     @State private var password = ""
-    @State private var confirmPassword = ""
-    @State var isEditing: Bool = true
     @EnvironmentObject var settings: UserSettings
     @Environment(\.presentationMode) var presentationMode
     @State var completePhoneNumber = ""
@@ -20,82 +17,159 @@ struct LoginView: View {
     @State private var userLocation: CLLocationCoordinate2D? = nil
     @State var countryCode : String = "+966"
     @State var countryFlag : String = "🇸🇦"
-    @State var countryPattern : String = "## ### ####"
-    @State var countryLimit : Int = 17
     let counrties: [CPData] = Bundle.main.decode("CountryNumbers.json")
     @State private var searchCountry: String = ""
     @Binding var loginStatus: LoginStatus
     @FocusState private var keyIsFocused: Bool
     @State var presentSheet = false
-    @State private var privacyPolicyTapped = false
     @EnvironmentObject var appRouter: AppRouter
+
+    // UI States
+    @State private var showPassword = false
+    @State private var showForgotPassword = false
+    @State var loginType: LoginType = .login
 
     var body: some View {
         GeometryReader { geometry in
             ScrollView(showsIndicators: false) {
-                VStack(spacing: 32) {
-                    VStack(alignment: .leading, spacing: 12) {
-                        Text("يا مرحبا! 👋")
-                            .font(.title2.bold())
+                VStack(alignment: .leading, spacing: 28) {
+                    // عنوان
+                    Text("مرحباً بك!")
+                        .font(.system(size: 28, weight: .bold))
+                        .foregroundColor(.black)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.top, 32)
+                    
+                    // حقل الجوال
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("رقم الهاتف")
+                            .font(.system(size: 16, weight: .medium))
                             .foregroundColor(.black)
-
-                        Text("املأ الحقول التالية للوصول إلى حسابك والعودة لملفلك الشخصي مرة أخرى!")
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
-                            .multilineTextAlignment(.leading)
+                        MobileView(mobile: $mobile, presentSheet: $presentSheet)
                     }
-                    .padding(.top, 40)
-
-                    MobileView(mobile: $mobile, presentSheet: $presentSheet)
-
-                    if viewModel.isLoading {
-                        LoadingView()
-                    }
-
-                    VStack(spacing: 16) {
-                        Button {
-                            Messaging.messaging().token { token, error in
-                                if let error = error {
-                                    appRouter.toggleAppPopup(.alertError(LocalizedStringKey.error, error.localizedDescription))
-                                } else if let token = token {
-                                    register(fcmToken: token)
+                    
+                    // كلمة المرور
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("كلمة المرور")
+                            .font(.system(size: 15, weight: .regular))
+                            .foregroundColor(Color(hex: "#222B45"))
+                            .padding(.leading, 4)
+                        ZStack {
+                            // نفس ديزاين MobileView (نفس البورد ونفس كل شيء)
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(Color.primaryGreen(), lineWidth: 1)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .fill(Color.white)
+                                )
+                                .frame(height: 56)
+                            
+                            HStack {
+                                if showPassword {
+                                    TextField("كلمة المرور", text: $password)
+                                        .font(.system(size: 17))
+                                        .foregroundColor(.black)
+                                        .autocapitalization(.none)
+                                } else {
+                                    SecureField("كلمة المرور", text: $password)
+                                        .font(.system(size: 17))
+                                        .foregroundColor(.black)
+                                        .autocapitalization(.none)
                                 }
+                                Spacer()
+                                Button(action: { showPassword.toggle() }) {
+                                    Image(systemName: showPassword ? "eye.slash" : "eye")
+                                        .foregroundColor(.gray)
+                                }
+                                .padding(.leading, 8)
                             }
-                        } label: {
-                            Text("ارسل رمز التحقق")
-                        }
-                        .buttonStyle(GradientPrimaryButton(fontSize: 16, fontWeight: .bold, background: Color.primaryGradientColor(), foreground: .white, height: 48, radius: 12))
-                        .disabled(viewModel.isLoading)
-
-                        HStack {
-                            Button("سجل الآن") {
-                                loginType = .register
-                            }
-                            .font(.footnote)
-                            .foregroundColor(.gray)
-                            .padding(.horizontal)
-                            .padding(.vertical, 10)
-                            .background(Color.gray.opacity(0.1))
-                            .cornerRadius(10)
-
-                            Spacer()
-
-                            Button("ليس لديك حساب؟") {
-                                loginType = .register
-                            }
-                            .font(.footnote)
-                            .foregroundColor(.gray)
+                            .padding(.horizontal, 12)
                         }
                     }
+                    
+                    // هل نسيت كلمة المرور؟
+                    Button(action: { showForgotPassword = true }) {
+                        Text("هل نسيت كلمة المرور؟")
+                            .font(.system(size: 15, weight: .bold))
+                            .foregroundColor(Color(hex: "#222B45"))
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                    }
+                    .padding(.top, 2)
+                    .sheet(isPresented: $showForgotPassword) {
+                        ForgotPasswordView(isPresented: $showForgotPassword)
+                    }
 
-                    Spacer()
+                    // زر تسجيل الدخول
+                    Button {
+                        keyIsFocused = false
+                        Messaging.messaging().token { token, error in
+                            if let error = error {
+                                appRouter.toggleAppPopup(.alertError(LocalizedStringKey.error, error.localizedDescription))
+                            } else if let token = token {
+                                register(fcmToken: token)
+                            }
+                        }
+                    } label: {
+                        if viewModel.isLoading {
+                            ProgressView()
+                                .frame(maxWidth: .infinity)
+                                .frame(height: 48)
+                                .background(Color.primary())
+                                .cornerRadius(12)
+                        } else {
+                            Text("تسجيل الدخول")
+                                .font(.system(size: 18, weight: .bold))
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity)
+                                .frame(height: 48)
+                                .background(Color.primary())
+                                .cornerRadius(12)
+                        }
+                    }
+                    .shadow(color: Color.black.opacity(0.10), radius: 5, x: 0, y: 3)
+                    .disabled(viewModel.isLoading)
+                    
+                    // زر سجل الآن
+                    Button(action: {
+                        if let url = URL(string: "https://google.com") {
+                            UIApplication.shared.open(url)
+                        }
+                    }) {
+                        Text("سجّل الآن")
+                            .font(.system(size: 20, weight: .bold))
+                            .foregroundColor(Color(hex: "#222B45"))
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 52)
+                            .background(Color(hex: "#F2F3F7"))
+                            .cornerRadius(14)
+                    }
+                    .shadow(color: Color.black.opacity(0.03), radius: 1, x: 0, y: 1)
+
+                    Spacer(minLength: 0)
+                    
+                    // تواصل معنا
+                    HStack(spacing: 3) {
+                        Text("هل تواجه مشكلة في تسجيل الدخول؟")
+                            .font(.system(size: 15, weight: .regular))
+                            .foregroundColor(Color(hex: "#666"))
+                        Button(action: {
+                            appRouter.navigate(to: .contactUs)
+                        }) {
+                            Text("تواصل معنا!")
+                                .font(.system(size: 15, weight: .bold))
+                                .foregroundColor(Color.primary())
+                        }
+                    }
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .padding(.bottom, 10)
                 }
-                .frame(maxWidth: .infinity)
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .frame(minHeight: geometry.size.height)
+                .padding(.horizontal, 24)
             }
         }
-        .padding(24)
-        .background(Color.background())
+        .environment(\.layoutDirection, .rightToLeft)
+        .background(Color(.systemGroupedBackground).ignoresSafeArea())
         .navigationBarBackButtonHidden()
         .sheet(isPresented: $presentSheet) {
             NavigationStack {
@@ -111,8 +185,6 @@ struct LoginView: View {
                     .onTapGesture {
                         self.countryFlag = country.flag
                         self.countryCode = country.dial_code
-                        self.countryPattern = country.pattern
-                        self.countryLimit = country.limit
                         presentSheet = false
                         searchCountry = ""
                     }
@@ -128,18 +200,17 @@ struct LoginView: View {
                 alertType: .constant(.error)
             )
         )
+        .environment(\.layoutDirection, .rightToLeft)
     }
-
+    
     private func getCompletePhoneNumber() -> String {
         completePhoneNumber = "\(countryCode)\(mobile)".replacingOccurrences(of: " ", with: "")
-
         if countryCode.hasPrefix("+") {
             completePhoneNumber = completePhoneNumber.replacingOccurrences(of: countryCode, with: String(countryCode.dropFirst()))
         }
-
         return completePhoneNumber
     }
-
+    
     var filteredResorts: [CPData] {
         if searchCountry.isEmpty {
             return counrties
@@ -149,27 +220,25 @@ struct LoginView: View {
     }
 }
 
+// دوال التسجيل الأصلية كما طلبت
 extension LoginView {
     func register(fcmToken: String) {
         appState.phoneNumber = getCompletePhoneNumber()
-
         var params: [String: Any] = [
             "phone_number": getCompletePhoneNumber(),
+            "password": password,
             "os": "IOS",
             "fcmToken": fcmToken,
             "lat": userLocation?.latitude ?? 0.0,
             "lng": userLocation?.longitude ?? 0.0,
         ]
-
         if let userLocation = userLocation {
             let dispatchGroup = DispatchGroup()
             dispatchGroup.enter()
-
             Utilities.getAddress(for: userLocation) { address in
                 params["address"] = address
                 dispatchGroup.leave()
             }
-
             dispatchGroup.notify(queue: .main) {
                 self.continueRegistration(with: params)
             }
@@ -183,6 +252,42 @@ extension LoginView {
             appState.userId = id
             loginStatus = .verification
         }
+    }
+}
+
+// شاشة استعادة كلمة المرور
+struct ForgotPasswordView: View {
+    @Binding var isPresented: Bool
+    @State private var phone: String = ""
+    @State var presentSheet = false
+
+    var body: some View {
+        VStack(spacing: 24) {
+            HStack {
+                Text("استعادة كلمة المرور")
+                    .font(.title2.bold())
+                Spacer()
+                Button(action: { isPresented = false }) {
+                    Image(systemName: "xmark")
+                        .foregroundColor(.gray)
+                        .padding(8)
+                }
+            }
+            .padding(.top, 40)
+            
+            MobileView(mobile: $phone, presentSheet: $presentSheet)
+            
+            Button {
+                // أكشن الإرسال
+                isPresented = false
+            } label: {
+                Text(LocalizedStringKey.send)
+            }
+            .buttonStyle(GradientPrimaryButton(fontSize: 16, fontWeight: .bold, background: Color.primaryGradientColor(), foreground: .white, height: 48, radius: 12))
+            Spacer()
+        }
+        .padding(24)
+        .environment(\.layoutDirection, .rightToLeft)
     }
 }
 

@@ -15,8 +15,6 @@
 import SwiftUI
 import CoreLocation
 import PopupView
-import goSellSDK
-import TamaraSDK
 
 enum PaymentResult {
     case success
@@ -36,7 +34,7 @@ struct PaymentCheckoutView: View {
     @State private var loadingMessage: String? = nil
     @State private var showPaymentError = false
     var handleTamaraPaymentCompletion: ((PaymentResult) -> Void)? = nil
-    @StateObject private var paymentViewModel = PaymentViewModel()
+//    @StateObject private var paymentViewModel = PaymentViewModel()
     @State private var showTamaraPayment = false
     @State private var checkoutUrl = ""
     @State var tamaraViewModel: TamaraWebViewModel? = nil
@@ -154,23 +152,22 @@ struct PaymentCheckoutView: View {
                 }
             }
         }
-        .onChange(of: paymentViewModel.paymentStatus) { status in
-            guard let status = status else { return }
-            isLoading = false
-
-            switch status {
-            case .success:
-                addOrder(paymentType: .online)
-            case .failed(let message):
-                orderViewModel.errorMessage = message
-                showPaymentError = true
-            case .cancelled:
-                orderViewModel.errorMessage = "تم إلغاء عملية الدفع"
-                showPaymentError = true
-            }
-        }
+//        .onChange(of: paymentViewModel.paymentStatus) { status in
+//            guard let status = status else { return }
+//            isLoading = false
+//
+//            switch status {
+//            case .success:
+//                addOrder(paymentType: .online)
+//            case .failed(let message):
+//                orderViewModel.errorMessage = message
+//                showPaymentError = true
+//            case .cancelled:
+//                orderViewModel.errorMessage = "تم إلغاء عملية الدفع"
+//                showPaymentError = true
+//            }
+//        }
         .onAppear {
-            GoSellSDK.mode = .production
         }
     }
 
@@ -359,7 +356,8 @@ struct PaymentCheckoutView: View {
         case .wallet:
             addOrder(paymentType: .wallet)
         case .online:
-            startMadaPayment(amount: totalAmount)
+//            startMadaPayment(amount: totalAmount)
+            break
         case .tamara:
             startTamaraPayment(amount: totalAmount) { result in
                 if case .success = result {
@@ -375,13 +373,13 @@ struct PaymentCheckoutView: View {
         }
     }
 
-    func startMadaPayment(amount: Double) {
-        loadingMessage = "جارٍ معالجة الدفع..."
-        isLoading = true
-        paymentViewModel.updateAmount("\(amount)")
-        paymentViewModel.startPayment()
-    }
-
+//    func startMadaPayment(amount: Double) {
+//        loadingMessage = "جارٍ معالجة الدفع..."
+//        isLoading = true
+//        paymentViewModel.updateAmount("\(amount)")
+//        paymentViewModel.startPayment()
+//    }
+//
     func startTamaraPayment(amount: Double, completion: @escaping (PaymentResult) -> Void) {
         let extraItems: [TamaraExtraItem] = services.map {
             TamaraExtraItem(sub_sub_id: $0.item._id, qty: $0.quantity)

@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import goSellSDK
 
 struct AddBalanceView: View {
     @State private var coupon = ""
@@ -65,33 +64,32 @@ struct AddBalanceView: View {
             Spacer()
         }
         .padding()
-        .navigationTitle(LocalizedStringKey.addAccount)
+//        .navigationTitle(LocalizedStringKey.addAccount)
         .alert(isPresented: $showAlert) {
             Alert(title: Text(LocalizedStringKey.error), message: Text(alertMessage), dismissButton: .default(Text(LocalizedStringKey.ok)))
         }
         .onAppear {
-            GoSellSDK.mode = .production
         }
-        .overlay(
-            MessageAlertObserverView(
-                message: $viewModel.errorMessage,
-                alertType: .constant(.error)
-            )
-        )
-        .onChange(of: viewModel.paymentStatus) { status in
-            guard let status = status else { return }
-
-            paymentState.isLoading = false
-
-            switch status {
-            case .success:
-                addBalance()
-            case .failed(let message):
-                viewModel.errorMessage = message
-            case .cancelled:
-                viewModel.errorMessage = "تم إلغاء عملية الدفع"
-            }
-        }
+//        .overlay(
+//            MessageAlertObserverView(
+//                message: $viewModel.errorMessage,
+//                alertType: .constant(.error)
+//            )
+//        )
+//        .onChange(of: viewModel.paymentStatus) { status in
+//            guard let status = status else { return }
+//
+//            paymentState.isLoading = false
+//
+//            switch status {
+//            case .success:
+//                addBalance()
+//            case .failed(let message):
+//                viewModel.errorMessage = message
+//            case .cancelled:
+//                viewModel.errorMessage = "تم إلغاء عملية الدفع"
+//            }
+//        }
     }
 }
 
@@ -115,8 +113,8 @@ extension AddBalanceView {
     
     func startPayment(amount: Double) {
         paymentState.isLoading = true
-        viewModel.updateAmount(amount.toString())
-        viewModel.startPayment()
+//        viewModel.updateAmount(amount.toString())
+//        viewModel.startPayment()
     }
     
     func addBalance() {

@@ -118,6 +118,11 @@ struct WelcomeView: View {
                         .isOpaque(true)
                         .useKeyboardSafeArea(true)
                 }
+                .navigationDestination(for: AppRouter.Destination.self) { destination in
+                    if destination == .contactUs {
+                        ContactUsView()
+                    }
+                }
             }
             .accentColor(.black)
             .environmentObject(appRouter)

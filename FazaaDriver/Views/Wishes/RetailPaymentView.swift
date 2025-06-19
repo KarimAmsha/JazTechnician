@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-import goSellSDK
-import TamaraSDK
 
 struct RetailPaymentView: View {
     @EnvironmentObject var appRouter: AppRouter
@@ -105,26 +103,26 @@ struct RetailPaymentView: View {
                 alertType: .constant(.error)
             )
         )
-        .overlay(
-            MessageAlertObserverView(
-                message: $paymentViewModel.errorMessage,
-                alertType: .constant(.error)
-            )
-        )
-        .onChange(of: paymentViewModel.paymentStatus) { status in
-            guard let status = status else { return }
-
-            wishesViewModel.isLoading = false
-
-            switch status {
-            case .success:
-                payWish()
-            case .failed(let message):
-                paymentViewModel.errorMessage = message
-            case .cancelled:
-                paymentViewModel.errorMessage = "تم إلغاء عملية الدفع"
-            }
-        }
+//        .overlay(
+//            MessageAlertObserverView(
+//                message: $paymentViewModel.errorMessage,
+//                alertType: .constant(.error)
+//            )
+//        )
+//        .onChange(of: paymentViewModel.paymentStatus) { status in
+//            guard let status = status else { return }
+//
+//            wishesViewModel.isLoading = false
+//
+//            switch status {
+//            case .success:
+//                payWish()
+//            case .failed(let message):
+//                paymentViewModel.errorMessage = message
+//            case .cancelled:
+//                paymentViewModel.errorMessage = "تم إلغاء عملية الدفع"
+//            }
+//        }
         .fullScreenCover(isPresented: $showTamaraPayment) {
             if let url = URL(string: checkoutUrl) {
                 SafariView(url: url) { redirectedURL in
@@ -133,8 +131,6 @@ struct RetailPaymentView: View {
             }
         }
         .onAppear {
-            GoSellSDK.mode = .production
-            
             laodWishData()
         }
     }
@@ -166,9 +162,9 @@ struct RetailPaymentView: View {
     }
 
     func startPayment(amount: Double) {
-        orderViewModel.isLoading = true
-        paymentViewModel.updateAmount(amount.toString())
-        paymentViewModel.startPayment()
+//        orderViewModel.isLoading = true
+//        paymentViewModel.updateAmount(amount.toString())
+//        paymentViewModel.startPayment()
     }
 
     func startTamaraCheckout(amount: Double) {

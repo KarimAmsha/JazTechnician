@@ -1,8 +1,6 @@
 import SwiftUI
 import PopupView
 import MapKit
-import goSellSDK
-import TamaraSDK
 
 enum PurchaseType: String, CaseIterable, Identifiable {
     case myself = "شخصي"
@@ -49,7 +47,7 @@ struct CheckoutView: View {
     @State private var coupon: String = ""
     @State private var notes: String = LocalizedStringKey.notes
     @State var placeholderString = LocalizedStringKey.notes
-    @StateObject private var paymentViewModel = PaymentViewModel()
+//    @StateObject private var paymentViewModel = PaymentViewModel()
     @State private var showTamaraPayment = false
     @State private var checkoutUrl = ""
     @State var tamaraViewModel: TamaraWebViewModel? = nil
@@ -208,12 +206,12 @@ struct CheckoutView: View {
                 )
             }
         }
-        .overlay(
-            MessageAlertObserverView(
-                message: $paymentViewModel.errorMessage,
-                alertType: .constant(.error)
-            )
-        )
+//        .overlay(
+//            MessageAlertObserverView(
+//                message: $paymentViewModel.errorMessage,
+//                alertType: .constant(.error)
+//            )
+//        )
         .overlay(
             MessageAlertObserverView(
                 message: $orderViewModel.errorMessage,
@@ -225,20 +223,20 @@ struct CheckoutView: View {
             streetName = ""
             selectedAddress = nil
         }
-        .onChange(of: paymentViewModel.paymentStatus) { status in
-            guard let status = status else { return }
-
-            orderViewModel.isLoading = false
-
-            switch status {
-            case .success:
-                addOrder()
-            case .failed(let message):
-                orderViewModel.errorMessage = message
-            case .cancelled:
-                orderViewModel.errorMessage = "تم إلغاء عملية الدفع"
-            }
-        }
+//        .onChange(of: paymentViewModel.paymentStatus) { status in
+//            guard let status = status else { return }
+//
+//            orderViewModel.isLoading = false
+//
+//            switch status {
+//            case .success:
+//                addOrder()
+//            case .failed(let message):
+//                orderViewModel.errorMessage = message
+//            case .cancelled:
+//                orderViewModel.errorMessage = "تم إلغاء عملية الدفع"
+//            }
+//        }
 //        .fullScreenCover(isPresented: $showTamaraPayment) {
 //            if let tamaraViewModel = tamaraViewModel {
 //                VStack {
@@ -331,8 +329,6 @@ struct CheckoutView: View {
             }
             cartViewModel.getCartItems()
             locationManager2.startUpdatingLocation()
-            
-            GoSellSDK.mode = .production
         }
     }
     
@@ -856,8 +852,8 @@ extension CheckoutView {
         guard validation == .valid else { return }
 
         orderViewModel.isLoading = true
-        paymentViewModel.updateAmount(amount.toString())
-        paymentViewModel.startPayment()
+//        paymentViewModel.updateAmount(amount.toString())
+//        paymentViewModel.startPayment()
     }
 }
 

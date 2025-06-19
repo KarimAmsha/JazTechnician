@@ -9,7 +9,6 @@ import SwiftUI
 import Firebase
 import FirebaseMessaging
 import FirebaseCrashlytics
-import goSellSDK
 
 @main
 struct FazaaDriverApp: App {
@@ -36,8 +35,6 @@ struct FazaaDriverApp: App {
                 .environmentObject(appState)
                 .environmentObject(authViewModel)
                 .environmentObject(settings)
-//                .environmentObject(notificationHandler)
-//                .environmentObject(chatHelper)
                 .preferredColorScheme(.light)
         }
     }
@@ -46,9 +43,6 @@ struct FazaaDriverApp: App {
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        GoSellSDK.secretKey = SecretKey(sandbox:    "sk_test_YJlOMLfZPekucyKhnwSDUzog",
-                                        production:    "sk_live_zqam2B5Xng8jrhPGpN4dK7Qe")
-
         configureNotifications(application)
         Crashlytics.crashlytics().setCrashlyticsCollectionEnabled(true)
         return true
