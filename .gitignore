@@ -1,0 +1,15 @@
+# Xcode
+DerivedData/
+build/
+*.xcuserdatad
+xcuserdata/
+
+# CocoaPods
+Pods/
+Podfile.lock
+
+# SwiftPM
+.build/
+
+# Other
+.DS_Store
