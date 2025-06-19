@@ -1,6 +1,0 @@
-framework module goSellSDK {
-  umbrella header "goSellSDK-umbrella.h"
-
-  export *
-  module * { export * }
-}

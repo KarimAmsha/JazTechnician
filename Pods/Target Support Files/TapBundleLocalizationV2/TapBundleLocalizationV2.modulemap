@@ -1,6 +1,0 @@
-framework module TapBundleLocalizationV2 {
-  umbrella header "TapBundleLocalizationV2-umbrella.h"
-
-  export *
-  module * { export * }
-}
