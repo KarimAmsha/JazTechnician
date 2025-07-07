@@ -257,7 +257,7 @@
 		5267FAC92DCD42650063AF67 /* ChatListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267FAC82DCD42640063AF67 /* ChatListViewModel.swift */; };
 		5267FACB2DCD42F20063AF67 /* FirebaseUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267FACA2DCD42F10063AF67 /* FirebaseUserService.swift */; };
 		5267FACD2DCD44850063AF67 /* PushNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267FACC2DCD44840063AF67 /* PushNotificationService.swift */; };
-		52A414DD2E0437E3003AD14F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52A414DC2E0437E3003AD14F /* GoogleService-Info.plist */; };
+		529F6D1C2E1BA4FF0024D0C3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 529F6D1B2E1BA4FF0024D0C3 /* GoogleService-Info.plist */; };
 		52AEC8D72DCBE61C00B4FC84 /* ServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AEC8D62DCBE61A00B4FC84 /* ServiceModel.swift */; };
 		52AEC8DD2DCBF26900B4FC84 /* DeliveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AEC8DC2DCBF26100B4FC84 /* DeliveryView.swift */; };
 		52AEC8DF2DCBF27C00B4FC84 /* ServiceRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AEC8DE2DCBF27B00B4FC84 /* ServiceRatingView.swift */; };
@@ -510,7 +510,7 @@
 		5267FAC82DCD42640063AF67 /* ChatListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewModel.swift; sourceTree = "<group>"; };
 		5267FACA2DCD42F10063AF67 /* FirebaseUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserService.swift; sourceTree = "<group>"; };
 		5267FACC2DCD44840063AF67 /* PushNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationService.swift; sourceTree = "<group>"; };
-		52A414DC2E0437E3003AD14F /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		529F6D1B2E1BA4FF0024D0C3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		52AEC8D62DCBE61A00B4FC84 /* ServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceModel.swift; sourceTree = "<group>"; };
 		52AEC8DC2DCBF26100B4FC84 /* DeliveryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryView.swift; sourceTree = "<group>"; };
 		52AEC8DE2DCBF27B00B4FC84 /* ServiceRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRatingView.swift; sourceTree = "<group>"; };
@@ -675,7 +675,7 @@
 		1ECC94482BDC56C0002BFE54 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				52A414DC2E0437E3003AD14F /* GoogleService-Info.plist */,
+				529F6D1B2E1BA4FF0024D0C3 /* GoogleService-Info.plist */,
 				1EEC2BD32BD83E6300975953 /* Assets.xcassets */,
 				1ECC950E2BDD166A002BFE54 /* CountryNumbers.json */,
 				1ECC95202BDD1C21002BFE54 /* Localizable.strings */,
@@ -1287,7 +1287,7 @@
 				1ECC95222BDD1C21002BFE54 /* Localizable.strings in Resources */,
 				1EEC2BD42BD83E6300975953 /* Assets.xcassets in Resources */,
 				1ECC94E12BDC6362002BFE54 /* IBMPlexSansArabic-SemiBold.ttf in Resources */,
-				52A414DD2E0437E3003AD14F /* GoogleService-Info.plist in Resources */,
+				529F6D1C2E1BA4FF0024D0C3 /* GoogleService-Info.plist in Resources */,
 				1ECC94E32BDC6362002BFE54 /* IBMPlexSansArabic-Regular.ttf in Resources */,
 				1ECC94E02BDC6362002BFE54 /* IBMPlexSansArabic-Light.ttf in Resources */,
 			);
@@ -1706,21 +1706,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = FazaaDriver/FazaaDriver.entitlements;
+				CODE_SIGN_ENTITLEMENTS = JazTechnician/JazTechnician.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"FazaaDriver/Preview Content\"";
-				DEVELOPMENT_TEAM = CKZBH9QCG3;
+				DEVELOPMENT_ASSET_PATHS = "\"JazTechnician/Preview Content\"";
+				DEVELOPMENT_TEAM = 2Z499Z4ZM8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FazaaDriver/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Fazaa Partners - شركاء فزعة";
-				INFOPLIST_KEY_NSCameraUsageDescription = "Fazaa Partners will use camera to upload user photo";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Fazaa Partners will use location to send orders, track your order, and continuously provide real-time updates";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Fazaa Partners will use location to send orders, track your order, and continuously provide real-time updates";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Fazaa Partners will use location to send orders, track your order, and continuously provide real-time updates";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Fazaa Partners will use photo library to upload user photo";
+				INFOPLIST_FILE = JazTechnician/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = JazTechnician;
+				INFOPLIST_KEY_NSCameraUsageDescription = "JazTechnician will use camera to upload user photo";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "JazTechnician will use location to send orders, track your order, and continuously provide real-time updates";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "JazTechnician will use location to send orders, track your order, and continuously provide real-time updates";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "JazTechnician will use location to send orders, track your order, and continuously provide real-time updates";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "JazTechnician will use photo library to upload user photo";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1733,7 +1733,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.4;
-				PRODUCT_BUNDLE_IDENTIFIER = sa.com.Fazaa.FazaaServiceProvider;
+				PRODUCT_BUNDLE_IDENTIFIER = sa.com.jaz.technician;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1752,21 +1752,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = FazaaDriver/FazaaDriver.entitlements;
+				CODE_SIGN_ENTITLEMENTS = JazTechnician/JazTechnician.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"FazaaDriver/Preview Content\"";
-				DEVELOPMENT_TEAM = CKZBH9QCG3;
+				DEVELOPMENT_ASSET_PATHS = "\"JazTechnician/Preview Content\"";
+				DEVELOPMENT_TEAM = 2Z499Z4ZM8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FazaaDriver/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Fazaa Partners - شركاء فزعة";
-				INFOPLIST_KEY_NSCameraUsageDescription = "Fazaa Partners will use camera to upload user photo";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Fazaa Partners will use location to send orders, track your order, and continuously provide real-time updates";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Fazaa Partners will use location to send orders, track your order, and continuously provide real-time updates";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Fazaa Partners will use location to send orders, track your order, and continuously provide real-time updates";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Fazaa Partners will use photo library to upload user photo";
+				INFOPLIST_FILE = JazTechnician/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = JazTechnician;
+				INFOPLIST_KEY_NSCameraUsageDescription = "JazTechnician will use camera to upload user photo";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "JazTechnician will use location to send orders, track your order, and continuously provide real-time updates";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "JazTechnician will use location to send orders, track your order, and continuously provide real-time updates";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "JazTechnician will use location to send orders, track your order, and continuously provide real-time updates";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "JazTechnician will use photo library to upload user photo";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1779,7 +1779,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.4;
-				PRODUCT_BUNDLE_IDENTIFIER = sa.com.Fazaa.FazaaServiceProvider;
+				PRODUCT_BUNDLE_IDENTIFIER = sa.com.jaz.technician;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
