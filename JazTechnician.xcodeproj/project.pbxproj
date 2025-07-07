@@ -230,6 +230,7 @@
 		1EFB9B322C1C40B900C15CE4 /* AddUserProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFB9B312C1C40B900C15CE4 /* AddUserProduct.swift */; };
 		1EFB9B352C1C4CFE00C15CE4 /* VIPGiftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFB9B342C1C4CFE00C15CE4 /* VIPGiftView.swift */; };
 		1EFB9B372C1C624B00C15CE4 /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFB9B362C1C624B00C15CE4 /* EventListView.swift */; };
+		48969404FF01A7B598F050C7 /* Pods_JazTechnician.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E48630E3731A15BF5221973 /* Pods_JazTechnician.framework */; };
 		52294D392DC54FA900C1D456 /* FreelanceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEC2BCF2BD83E6000975953 /* FreelanceApp.swift */; };
 		5235B18B2DCC93BC009F75FA /* ClientProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5235B18A2DCC93BB009F75FA /* ClientProjectsView.swift */; };
 		5235B18F2DCC98BB009F75FA /* SpeedRequestSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5235B18E2DCC98BA009F75FA /* SpeedRequestSheet.swift */; };
@@ -284,7 +285,6 @@
 		52D9E6D22DCB956400ED2874 /* ProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D9E6D12DCB956400ED2874 /* ProjectsView.swift */; };
 		52D9E6D42DCB957500ED2874 /* AddServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D9E6D32DCB957500ED2874 /* AddServiceView.swift */; };
 		52F03F922DC1448F00D11215 /* TamaraProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F03F912DC1448E00D11215 /* TamaraProduct.swift */; };
-		B16E56583F5DB3EA361C9CB8 /* Pods_FazaaDriver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86D950D46A18A1C15F47999C /* Pods_FazaaDriver.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -323,7 +323,7 @@
 		1E2804432C067E4E0021DFB0 /* ProductsSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsSearchView.swift; sourceTree = "<group>"; };
 		1E38FB652C24A8E7001A2B78 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		1E41E1FB2BE942490061AC47 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
-		1E41E1FD2BE947560061AC47 /* FazaaDriver.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FazaaDriver.entitlements; sourceTree = "<group>"; };
+		1E41E1FD2BE947560061AC47 /* JazTechnician.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JazTechnician.entitlements; sourceTree = "<group>"; };
 		1E479B302C4D881B006130E1 /* WhatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsApp.swift; sourceTree = "<group>"; };
 		1E5F318A2BE23C9B00E5A914 /* FriendWishesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendWishesListView.swift; sourceTree = "<group>"; };
 		1E5F318C2BE23E5100E5A914 /* FriendWishesDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendWishesDetailsView.swift; sourceTree = "<group>"; };
@@ -469,7 +469,7 @@
 		1EDEF6822BE1A1D200863C10 /* SelectedGiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedGiftView.swift; sourceTree = "<group>"; };
 		1EDEF6842BE1A93600863C10 /* FriendWishesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendWishesView.swift; sourceTree = "<group>"; };
 		1EDEF6862BE1ABDF00863C10 /* ProgressLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressLineView.swift; sourceTree = "<group>"; };
-		1EEC2BCC2BD83E6000975953 /* FazaaDriver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FazaaDriver.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EEC2BCC2BD83E6000975953 /* JazTechnician.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JazTechnician.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EEC2BCF2BD83E6000975953 /* FreelanceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreelanceApp.swift; sourceTree = "<group>"; };
 		1EEC2BD12BD83E6000975953 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1EEC2BD32BD83E6300975953 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -485,7 +485,6 @@
 		1EFB9B312C1C40B900C15CE4 /* AddUserProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserProduct.swift; sourceTree = "<group>"; };
 		1EFB9B342C1C4CFE00C15CE4 /* VIPGiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPGiftView.swift; sourceTree = "<group>"; };
 		1EFB9B362C1C624B00C15CE4 /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
-		222689C8EFA0B44A6B3EFF33 /* Pods-FazaaDriver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FazaaDriver.release.xcconfig"; path = "Target Support Files/Pods-FazaaDriver/Pods-FazaaDriver.release.xcconfig"; sourceTree = "<group>"; };
 		5235B18A2DCC93BB009F75FA /* ClientProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientProjectsView.swift; sourceTree = "<group>"; };
 		5235B18E2DCC98BA009F75FA /* SpeedRequestSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedRequestSheet.swift; sourceTree = "<group>"; };
 		5235B1902DCC98D6009F75FA /* EditRequestSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRequestSheet.swift; sourceTree = "<group>"; };
@@ -539,8 +538,9 @@
 		52D9E6D12DCB956400ED2874 /* ProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsView.swift; sourceTree = "<group>"; };
 		52D9E6D32DCB957500ED2874 /* AddServiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddServiceView.swift; sourceTree = "<group>"; };
 		52F03F912DC1448E00D11215 /* TamaraProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamaraProduct.swift; sourceTree = "<group>"; };
-		86D950D46A18A1C15F47999C /* Pods_FazaaDriver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FazaaDriver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F061D03AFF47ED5A0AFAB2A6 /* Pods-FazaaDriver.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FazaaDriver.debug.xcconfig"; path = "Target Support Files/Pods-FazaaDriver/Pods-FazaaDriver.debug.xcconfig"; sourceTree = "<group>"; };
+		9E48630E3731A15BF5221973 /* Pods_JazTechnician.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JazTechnician.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B94F771DBDD6DE9C72492F5D /* Pods-JazTechnician.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JazTechnician.debug.xcconfig"; path = "Target Support Files/Pods-JazTechnician/Pods-JazTechnician.debug.xcconfig"; sourceTree = "<group>"; };
+		EFC430C54478417DB955B568 /* Pods-JazTechnician.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JazTechnician.release.xcconfig"; path = "Target Support Files/Pods-JazTechnician/Pods-JazTechnician.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -579,13 +579,21 @@
 				1ECC948D2BDC5D8B002BFE54 /* FirebaseAppDistribution-Beta in Frameworks */,
 				1ECC94992BDC5D8B002BFE54 /* FirebaseDynamicLinks in Frameworks */,
 				1ECC949F2BDC5D8B002BFE54 /* FirebaseFirestoreSwift in Frameworks */,
-				B16E56583F5DB3EA361C9CB8 /* Pods_FazaaDriver.framework in Frameworks */,
+				48969404FF01A7B598F050C7 /* Pods_JazTechnician.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C6E2FD45E9E05DCB508DB6D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9E48630E3731A15BF5221973 /* Pods_JazTechnician.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		1E0053392C1F051300C75E42 /* Review */ = {
 			isa = PBXGroup;
 			children = (
@@ -1035,25 +1043,25 @@
 		1EEC2BC32BD83E6000975953 = {
 			isa = PBXGroup;
 			children = (
-				1EEC2BCE2BD83E6000975953 /* FazaaDriver */,
+				1EEC2BCE2BD83E6000975953 /* JazTechnician */,
 				1EEC2BCD2BD83E6000975953 /* Products */,
 				304E035519AD4FBEEEDC9A60 /* Pods */,
-				5A82717DB884B62EF1B9096A /* Frameworks */,
+				0C6E2FD45E9E05DCB508DB6D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		1EEC2BCD2BD83E6000975953 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1EEC2BCC2BD83E6000975953 /* FazaaDriver.app */,
+				1EEC2BCC2BD83E6000975953 /* JazTechnician.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1EEC2BCE2BD83E6000975953 /* FazaaDriver */ = {
+		1EEC2BCE2BD83E6000975953 /* JazTechnician */ = {
 			isa = PBXGroup;
 			children = (
-				1E41E1FD2BE947560061AC47 /* FazaaDriver.entitlements */,
+				1E41E1FD2BE947560061AC47 /* JazTechnician.entitlements */,
 				1ECC94E52BDC638A002BFE54 /* Info.plist */,
 				1ECC944D2BDC56EE002BFE54 /* Models */,
 				1ECC944C2BDC56E6002BFE54 /* Views */,
@@ -1064,7 +1072,7 @@
 				1ECC94472BDC56B8002BFE54 /* Supporting Files */,
 				1EEC2BD52BD83E6300975953 /* Preview Content */,
 			);
-			path = FazaaDriver;
+			path = JazTechnician;
 			sourceTree = "<group>";
 		};
 		1EEC2BD52BD83E6300975953 /* Preview Content */ = {
@@ -1098,8 +1106,8 @@
 		304E035519AD4FBEEEDC9A60 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F061D03AFF47ED5A0AFAB2A6 /* Pods-FazaaDriver.debug.xcconfig */,
-				222689C8EFA0B44A6B3EFF33 /* Pods-FazaaDriver.release.xcconfig */,
+				B94F771DBDD6DE9C72492F5D /* Pods-JazTechnician.debug.xcconfig */,
+				EFC430C54478417DB955B568 /* Pods-JazTechnician.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1172,22 +1180,14 @@
 			path = Projects;
 			sourceTree = "<group>";
 		};
-		5A82717DB884B62EF1B9096A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				86D950D46A18A1C15F47999C /* Pods_FazaaDriver.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1EEC2BCB2BD83E6000975953 /* FazaaDriver */ = {
+		1EEC2BCB2BD83E6000975953 /* JazTechnician */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1EEC2BDA2BD83E6300975953 /* Build configuration list for PBXNativeTarget "FazaaDriver" */;
+			buildConfigurationList = 1EEC2BDA2BD83E6300975953 /* Build configuration list for PBXNativeTarget "JazTechnician" */;
 			buildPhases = (
-				B1146AFDE0985755440DA83C /* [CP] Check Pods Manifest.lock */,
+				3A4D7F4BB139CE33BAF5C9BE /* [CP] Check Pods Manifest.lock */,
 				1EEC2BC82BD83E6000975953 /* Sources */,
 				1EEC2BC92BD83E6000975953 /* Frameworks */,
 				1EEC2BCA2BD83E6000975953 /* Resources */,
@@ -1196,7 +1196,7 @@
 			);
 			dependencies = (
 			);
-			name = FazaaDriver;
+			name = JazTechnician;
 			packageProductDependencies = (
 				1ECC94822BDC5D8B002BFE54 /* FirebaseAnalytics */,
 				1ECC94842BDC5D8B002BFE54 /* FirebaseAnalyticsOnDeviceConversion */,
@@ -1231,7 +1231,7 @@
 				1EA740552BFBADC20028AAD0 /* RefreshableScrollView */,
 			);
 			productName = Wishy;
-			productReference = 1EEC2BCC2BD83E6000975953 /* FazaaDriver.app */;
+			productReference = 1EEC2BCC2BD83E6000975953 /* JazTechnician.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1249,7 +1249,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1EEC2BC72BD83E6000975953 /* Build configuration list for PBXProject "FazaaDriver" */;
+			buildConfigurationList = 1EEC2BC72BD83E6000975953 /* Build configuration list for PBXProject "JazTechnician" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = ar;
 			hasScannedForEncodings = 0;
@@ -1270,7 +1270,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1EEC2BCB2BD83E6000975953 /* FazaaDriver */,
+				1EEC2BCB2BD83E6000975953 /* JazTechnician */,
 			);
 		};
 /* End PBXProject section */
@@ -1296,7 +1296,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		B1146AFDE0985755440DA83C /* [CP] Check Pods Manifest.lock */ = {
+		3A4D7F4BB139CE33BAF5C9BE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1311,7 +1311,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-FazaaDriver-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-JazTechnician-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1702,7 +1702,7 @@
 		};
 		1EEC2BDB2BD83E6300975953 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F061D03AFF47ED5A0AFAB2A6 /* Pods-FazaaDriver.debug.xcconfig */;
+			baseConfigurationReference = B94F771DBDD6DE9C72492F5D /* Pods-JazTechnician.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1748,7 +1748,7 @@
 		};
 		1EEC2BDC2BD83E6300975953 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 222689C8EFA0B44A6B3EFF33 /* Pods-FazaaDriver.release.xcconfig */;
+			baseConfigurationReference = EFC430C54478417DB955B568 /* Pods-JazTechnician.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1795,7 +1795,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1EEC2BC72BD83E6000975953 /* Build configuration list for PBXProject "FazaaDriver" */ = {
+		1EEC2BC72BD83E6000975953 /* Build configuration list for PBXProject "JazTechnician" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1EEC2BD82BD83E6300975953 /* Debug */,
@@ -1804,7 +1804,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1EEC2BDA2BD83E6300975953 /* Build configuration list for PBXNativeTarget "FazaaDriver" */ = {
+		1EEC2BDA2BD83E6300975953 /* Build configuration list for PBXNativeTarget "JazTechnician" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1EEC2BDB2BD83E6300975953 /* Debug */,

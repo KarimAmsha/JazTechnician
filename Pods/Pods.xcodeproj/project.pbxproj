@@ -7,65 +7,65 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		365BCB7814B9C203F25B869EE0A36734 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */; };
-		3EEE6539117A28758A9800136ACBD022 /* Pods-FazaaDriver-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 839F198351DB0EAA832F568E0D561E95 /* Pods-FazaaDriver-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E344097CFBFEFAC7A5E3E7441993545C /* Pods-FazaaDriver-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A56F68B25354A675A0D7E0C7D072FCA8 /* Pods-FazaaDriver-dummy.m */; };
+		0B237CA57989271DBDF6070769ED293F /* Pods-JazTechnician-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DE45BCE8C7D799F51A873680F61EF573 /* Pods-JazTechnician-dummy.m */; };
+		E1CCE5F2F182D7AC19C36C49F44FE9CF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */; };
+		FBF6D0C1E1BC6B87BE0F36C013394E70 /* Pods-JazTechnician-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 87D539324BBA9F0C37D4301C49A27D06 /* Pods-JazTechnician-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		015026EEDA279F70CE002BFC5ED27E10 /* Pods-FazaaDriver */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-FazaaDriver"; path = Pods_FazaaDriver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		25EBED300F2607BA22C7804595ABDD42 /* Pods-FazaaDriver.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FazaaDriver.modulemap"; sourceTree = "<group>"; };
-		289A933630EC4658A97710C73A449414 /* Pods-FazaaDriver-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FazaaDriver-acknowledgements.plist"; sourceTree = "<group>"; };
+		0BF16B71FB0A163283670187404AFA04 /* Pods-JazTechnician-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JazTechnician-acknowledgements.plist"; sourceTree = "<group>"; };
+		2062B299D5EDAE9E88BE6795D3AB8A59 /* Pods-JazTechnician.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JazTechnician.release.xcconfig"; sourceTree = "<group>"; };
 		384DDA2CB25005BD6479B5987C619DD4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		7A99A74C38BF6328A00F8AB5FDAA04BE /* Pods-FazaaDriver-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FazaaDriver-acknowledgements.markdown"; sourceTree = "<group>"; };
-		839F198351DB0EAA832F568E0D561E95 /* Pods-FazaaDriver-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FazaaDriver-umbrella.h"; sourceTree = "<group>"; };
-		93B12F62237B941CEEFFA1E31734CDDA /* Pods-FazaaDriver.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FazaaDriver.debug.xcconfig"; sourceTree = "<group>"; };
+		491B1FD9B2D8B27FFA2E4285D217C477 /* Pods-JazTechnician-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JazTechnician-Info.plist"; sourceTree = "<group>"; };
+		87D539324BBA9F0C37D4301C49A27D06 /* Pods-JazTechnician-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JazTechnician-umbrella.h"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A56F68B25354A675A0D7E0C7D072FCA8 /* Pods-FazaaDriver-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FazaaDriver-dummy.m"; sourceTree = "<group>"; };
-		E335BD115A723ABC4A1BE4BC5B4EBAF8 /* Pods-FazaaDriver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FazaaDriver.release.xcconfig"; sourceTree = "<group>"; };
-		F2D028AAF1A68DC22D0193C7B3CF6C23 /* Pods-FazaaDriver-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FazaaDriver-Info.plist"; sourceTree = "<group>"; };
+		A697A4E6D1D3181BF180D98AC9B6243E /* Pods-JazTechnician.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-JazTechnician.modulemap"; sourceTree = "<group>"; };
+		C4A9F6E931A4F8D82F3D2B73B3723D8D /* Pods-JazTechnician */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-JazTechnician"; path = Pods_JazTechnician.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C872F4B4D7AD5EAF9C1A97C3B81F20A9 /* Pods-JazTechnician-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JazTechnician-acknowledgements.markdown"; sourceTree = "<group>"; };
+		DE45BCE8C7D799F51A873680F61EF573 /* Pods-JazTechnician-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JazTechnician-dummy.m"; sourceTree = "<group>"; };
+		E4A16A995A658A39D0A8901EB552331A /* Pods-JazTechnician.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JazTechnician.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		B18E878D07F6A89CBEBD19C19B015773 /* Frameworks */ = {
+		9471BAA983036BFF6F8D317B12C9B920 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				365BCB7814B9C203F25B869EE0A36734 /* Foundation.framework in Frameworks */,
+				E1CCE5F2F182D7AC19C36C49F44FE9CF /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		04C3D67A5C4E06397285BE0144EEB8F3 /* Pods-FazaaDriver */ = {
+		24864089B2279BBD31DA7444E2C8D043 /* Pods-JazTechnician */ = {
 			isa = PBXGroup;
 			children = (
-				25EBED300F2607BA22C7804595ABDD42 /* Pods-FazaaDriver.modulemap */,
-				7A99A74C38BF6328A00F8AB5FDAA04BE /* Pods-FazaaDriver-acknowledgements.markdown */,
-				289A933630EC4658A97710C73A449414 /* Pods-FazaaDriver-acknowledgements.plist */,
-				A56F68B25354A675A0D7E0C7D072FCA8 /* Pods-FazaaDriver-dummy.m */,
-				F2D028AAF1A68DC22D0193C7B3CF6C23 /* Pods-FazaaDriver-Info.plist */,
-				839F198351DB0EAA832F568E0D561E95 /* Pods-FazaaDriver-umbrella.h */,
-				93B12F62237B941CEEFFA1E31734CDDA /* Pods-FazaaDriver.debug.xcconfig */,
-				E335BD115A723ABC4A1BE4BC5B4EBAF8 /* Pods-FazaaDriver.release.xcconfig */,
+				A697A4E6D1D3181BF180D98AC9B6243E /* Pods-JazTechnician.modulemap */,
+				C872F4B4D7AD5EAF9C1A97C3B81F20A9 /* Pods-JazTechnician-acknowledgements.markdown */,
+				0BF16B71FB0A163283670187404AFA04 /* Pods-JazTechnician-acknowledgements.plist */,
+				DE45BCE8C7D799F51A873680F61EF573 /* Pods-JazTechnician-dummy.m */,
+				491B1FD9B2D8B27FFA2E4285D217C477 /* Pods-JazTechnician-Info.plist */,
+				87D539324BBA9F0C37D4301C49A27D06 /* Pods-JazTechnician-umbrella.h */,
+				E4A16A995A658A39D0A8901EB552331A /* Pods-JazTechnician.debug.xcconfig */,
+				2062B299D5EDAE9E88BE6795D3AB8A59 /* Pods-JazTechnician.release.xcconfig */,
 			);
-			name = "Pods-FazaaDriver";
-			path = "Target Support Files/Pods-FazaaDriver";
+			name = "Pods-JazTechnician";
+			path = "Target Support Files/Pods-JazTechnician";
 			sourceTree = "<group>";
 		};
-		1339DE5E082A75958252C4338F22E3D5 /* Products */ = {
+		7B33ED319008B45EA4C64C8E4A6F5B2F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				015026EEDA279F70CE002BFC5ED27E10 /* Pods-FazaaDriver */,
+				C4A9F6E931A4F8D82F3D2B73B3723D8D /* Pods-JazTechnician */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4DD5BAB800E5CCFBEA578DFCCE790C2D /* Targets Support Files */ = {
+		B8B542FB4DCDA60A35D8F0E711015768 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				04C3D67A5C4E06397285BE0144EEB8F3 /* Pods-FazaaDriver */,
+				24864089B2279BBD31DA7444E2C8D043 /* Pods-JazTechnician */,
 			);
 			name = "Targets Support Files";
 			sourceTree = "<group>";
@@ -75,8 +75,8 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				1339DE5E082A75958252C4338F22E3D5 /* Products */,
-				4DD5BAB800E5CCFBEA578DFCCE790C2D /* Targets Support Files */,
+				7B33ED319008B45EA4C64C8E4A6F5B2F /* Products */,
+				B8B542FB4DCDA60A35D8F0E711015768 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,33 +99,33 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		147CABFC3D24762267FEE3208879E147 /* Headers */ = {
+		7021A5FD2810E23F5BD0961F929036C2 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EEE6539117A28758A9800136ACBD022 /* Pods-FazaaDriver-umbrella.h in Headers */,
+				FBF6D0C1E1BC6B87BE0F36C013394E70 /* Pods-JazTechnician-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		7E95E540F0B987F1C2BE4C584DD2BBE4 /* Pods-FazaaDriver */ = {
+		A55818900A64CFE3C22B96CD602B5079 /* Pods-JazTechnician */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6EE6505D8D1412D5E41DD32757071571 /* Build configuration list for PBXNativeTarget "Pods-FazaaDriver" */;
+			buildConfigurationList = 282A00E954971F73A636518BC52913C3 /* Build configuration list for PBXNativeTarget "Pods-JazTechnician" */;
 			buildPhases = (
-				147CABFC3D24762267FEE3208879E147 /* Headers */,
-				3ABAD19DC3F1C0B79E8D0C5606402543 /* Sources */,
-				B18E878D07F6A89CBEBD19C19B015773 /* Frameworks */,
-				BFD3ED00E95EB838ADBF3130534B0E76 /* Resources */,
+				7021A5FD2810E23F5BD0961F929036C2 /* Headers */,
+				0851C88BAEA8DBFA2AD91EAC9B489DC9 /* Sources */,
+				9471BAA983036BFF6F8D317B12C9B920 /* Frameworks */,
+				8077218226E28B44D092A86630B1A3D0 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Pods-FazaaDriver";
-			productName = Pods_FazaaDriver;
-			productReference = 015026EEDA279F70CE002BFC5ED27E10 /* Pods-FazaaDriver */;
+			name = "Pods-JazTechnician";
+			productName = Pods_JazTechnician;
+			productReference = C4A9F6E931A4F8D82F3D2B73B3723D8D /* Pods-JazTechnician */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -148,17 +148,17 @@
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
 			minimizedProjectReferenceProxies = 0;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 1339DE5E082A75958252C4338F22E3D5 /* Products */;
+			productRefGroup = 7B33ED319008B45EA4C64C8E4A6F5B2F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7E95E540F0B987F1C2BE4C584DD2BBE4 /* Pods-FazaaDriver */,
+				A55818900A64CFE3C22B96CD602B5079 /* Pods-JazTechnician */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		BFD3ED00E95EB838ADBF3130534B0E76 /* Resources */ = {
+		8077218226E28B44D092A86630B1A3D0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -168,11 +168,11 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		3ABAD19DC3F1C0B79E8D0C5606402543 /* Sources */ = {
+		0851C88BAEA8DBFA2AD91EAC9B489DC9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E344097CFBFEFAC7A5E3E7441993545C /* Pods-FazaaDriver-dummy.m in Sources */,
+				0B237CA57989271DBDF6070769ED293F /* Pods-JazTechnician-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,9 +241,9 @@
 			};
 			name = Release;
 		};
-		371CAFDCAE79216DFF92EBF2280AD3CC /* Debug */ = {
+		B6D04E6884FC5F03C04BCF660770B7FB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 93B12F62237B941CEEFFA1E31734CDDA /* Pods-FazaaDriver.debug.xcconfig */;
+			baseConfigurationReference = 2062B299D5EDAE9E88BE6795D3AB8A59 /* Pods-JazTechnician.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -257,7 +257,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_MODULE_VERIFIER = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				INFOPLIST_FILE = "Target Support Files/Pods-FazaaDriver/Pods-FazaaDriver-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-JazTechnician/Pods-JazTechnician-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -266,46 +266,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-FazaaDriver/Pods-FazaaDriver.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		F3401A17C62F3AECB501728E57C5F984 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E335BD115A723ABC4A1BE4BC5B4EBAF8 /* Pods-FazaaDriver.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = NO;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				INFOPLIST_FILE = "Target Support Files/Pods-FazaaDriver/Pods-FazaaDriver-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-FazaaDriver/Pods-FazaaDriver.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-JazTechnician/Pods-JazTechnician.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -386,23 +347,62 @@
 			};
 			name = Debug;
 		};
+		FF334E74E8EE04E0246B0DCEFEB6756C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4A16A995A658A39D0A8901EB552331A /* Pods-JazTechnician.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = "Target Support Files/Pods-JazTechnician/Pods-JazTechnician-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-JazTechnician/Pods-JazTechnician.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		282A00E954971F73A636518BC52913C3 /* Build configuration list for PBXNativeTarget "Pods-JazTechnician" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF334E74E8EE04E0246B0DCEFEB6756C /* Debug */,
+				B6D04E6884FC5F03C04BCF660770B7FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F4FF6A0D1970CA9705974E3CB2134802 /* Debug */,
 				30E0B9EFD9A5C45D0D351231E81B30B3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6EE6505D8D1412D5E41DD32757071571 /* Build configuration list for PBXNativeTarget "Pods-FazaaDriver" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				371CAFDCAE79216DFF92EBF2280AD3CC /* Debug */,
-				F3401A17C62F3AECB501728E57C5F984 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

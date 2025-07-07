@@ -1,6 +1,0 @@
-framework module Pods_FazaaDriver {
-  umbrella header "Pods-FazaaDriver-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -1,6 +1,6 @@
 //
-//  FazaaDriverApp.swift
-//  FazaaDriverApp
+//  JazTechnicianApp.swift
+//  JazTechnicianApp
 //
 //  Created by Karim Amsha on 23.04.2024.
 //
@@ -11,7 +11,7 @@ import FirebaseMessaging
 import FirebaseCrashlytics
 
 @main
-struct FazaaDriverApp: App {
+struct JazTechnicianApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @StateObject var languageManager = LanguageManager()
     @StateObject var appState = AppState()
