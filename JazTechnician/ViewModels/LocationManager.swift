@@ -1,122 +1,83 @@
-//
-//  LocationManager.swift
-//  Wishy
-//
-//  Created by Karim Amsha on 27.04.2024.
-//
-
-import Foundation
-import CoreLocation
-
-class LocationManager: NSObject, CLLocationManagerDelegate {
-    static let shared = LocationManager()
-
-    private var locationManager = CLLocationManager()
-    private var locationCompletion: ((CLLocationCoordinate2D?) -> Void)?
-    @Published var userLocation: CLLocationCoordinate2D?
-
-    override private init() {
-        super.init()
-        setupLocationManager()
-    }
-
-    private func setupLocationManager() {
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-    }
-
-    func getCurrentLocation(completion: @escaping (CLLocationCoordinate2D?) -> Void) {
-        locationCompletion = completion
-        locationManager.requestLocation()
-    }
-
-    func startUpdatingLocation() {
-        locationManager.startUpdatingLocation()
-    }
-
-    func stopUpdatingLocation() {
-        locationManager.stopUpdatingLocation()
-    }
-
-    // MARK: - CLLocationManagerDelegate
-
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last?.coordinate else {
-            locationCompletion?(nil)
-            return
-        }
-        userLocation = location
-        locationCompletion?(location)
-        
-        // Stop updating location after receiving the first location
-        stopUpdatingLocation()
-    }
-
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Location update failed with error: \(error.localizedDescription)")
-        locationCompletion?(nil)
-    }
-}
-
 import Foundation
 import CoreLocation
 import Combine
 
-class LocationManager2: NSObject, ObservableObject, CLLocationManagerDelegate {
-    private var locationManager = CLLocationManager()
-    @Published var location: CLLocation? {
-        didSet {
-            fetchAddress(from: location)
-        }
-    }
+class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
+    private let manager = CLLocationManager()
+
+    @Published var coordinate: CLLocationCoordinate2D?
     @Published var address: String = ""
-    
-    override init() {
+    @Published var isLoading: Bool = false
+    @Published var errorMessage: String?
+
+    private var completion: ((CLLocationCoordinate2D?, String?) -> Void)?
+
+    // Singleton (لو تريد استخدامه من أي مكان)
+    static let shared = LocationManager()
+
+    override private init() {
         super.init()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
+        manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.requestWhenInUseAuthorization()
     }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.first {
-            self.location = location
+
+    /// احصل على الموقع الحالي مرة واحدة (بـCompletion)
+    func getUserLocation(completion: @escaping (CLLocationCoordinate2D?, String?) -> Void) {
+        isLoading = true
+        errorMessage = nil
+        self.completion = completion
+        manager.requestLocation()
+    }
+
+    // MARK: - CLLocationManagerDelegate
+
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse || status == .authorizedAlways {
+            manager.requestLocation()
+        } else if status == .denied {
+            isLoading = false
+            errorMessage = "تم رفض إذن الموقع"
+            completion?(nil, nil)
         }
     }
-    
-    func fetchAddress(from location: CLLocation?) {
-        guard let location = location else { return }
-        
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        isLoading = false
+        guard let location = locations.first else {
+            errorMessage = "لم يتم العثور على موقع"
+            completion?(nil, nil)
+            return
+        }
+        self.coordinate = location.coordinate
+
+        // Reverse Geocode
         let geocoder = CLGeocoder()
-        geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
-            if let error = error {
-                print("Failed to get address: \(error.localizedDescription)")
-                self.address = "Address not found"
-                return
-            }
-            
+        geocoder.reverseGeocodeLocation(location) { placemarks, error in
+            var addressText = ""
             if let placemark = placemarks?.first {
-                let addressString = [
+                addressText = [
                     placemark.name,
+                    placemark.subLocality,
                     placemark.locality,
                     placemark.administrativeArea,
-                    placemark.postalCode,
                     placemark.country
-                ].compactMap { $0 }.joined(separator: ", ")
-                
-                DispatchQueue.main.async {
-                    self.address = addressString
-                }
+                ]
+                .compactMap { $0 }
+                .joined(separator: " - ")
+            }
+            DispatchQueue.main.async {
+                self.address = addressText
+                self.completion?(location.coordinate, addressText)
+                self.completion = nil
             }
         }
     }
-}
 
-extension LocationManager2 {
-    func startUpdatingLocation() {
-        locationManager.startUpdatingLocation()
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        isLoading = false
+        errorMessage = "تعذر تحديد الموقع: \(error.localizedDescription)"
+        completion?(nil, nil)
+        completion = nil
     }
 }

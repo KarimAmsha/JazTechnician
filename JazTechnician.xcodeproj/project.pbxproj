@@ -247,6 +247,7 @@
 		5235B1A52DCCE432009F75FA /* FreelancerProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5235B1A42DCCE431009F75FA /* FreelancerProfileView.swift */; };
 		5235B1A72DCCE641009F75FA /* ServiceDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5235B1A62DCCE640009F75FA /* ServiceDetailsView.swift */; };
 		523DD5322E1EA5CA0003670E /* OrderRealTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DD5312E1EA5C90003670E /* OrderRealTime.swift */; };
+		523DD5342E1EB6F30003670E /* CompanyRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DD5332E1EB6F10003670E /* CompanyRegisterView.swift */; };
 		5267FAB72DCD3D930063AF67 /* FirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267FAB62DCD3D900063AF67 /* FirebaseUser.swift */; };
 		5267FABA2DCD3E990063AF67 /* FirebaseChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267FAB92DCD3E980063AF67 /* FirebaseChat.swift */; };
 		5267FABC2DCD3EA50063AF67 /* FirebaseMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267FABB2DCD3EA40063AF67 /* FirebaseMessage.swift */; };
@@ -501,6 +502,7 @@
 		5235B1A42DCCE431009F75FA /* FreelancerProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreelancerProfileView.swift; sourceTree = "<group>"; };
 		5235B1A62DCCE640009F75FA /* ServiceDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDetailsView.swift; sourceTree = "<group>"; };
 		523DD5312E1EA5C90003670E /* OrderRealTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRealTime.swift; sourceTree = "<group>"; };
+		523DD5332E1EB6F10003670E /* CompanyRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyRegisterView.swift; sourceTree = "<group>"; };
 		5267FAB62DCD3D900063AF67 /* FirebaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUser.swift; sourceTree = "<group>"; };
 		5267FAB92DCD3E980063AF67 /* FirebaseChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseChat.swift; sourceTree = "<group>"; };
 		5267FABB2DCD3EA40063AF67 /* FirebaseMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseMessage.swift; sourceTree = "<group>"; };
@@ -822,6 +824,7 @@
 		1ECC944E2BDC5750002BFE54 /* Initial */ = {
 			isa = PBXGroup;
 			children = (
+				523DD5332E1EB6F10003670E /* CompanyRegisterView.swift */,
 				1ECC95052BDD156F002BFE54 /* Auth */,
 				1ECC94E62BDC699D002BFE54 /* Welcome */,
 				1EEC2BD12BD83E6000975953 /* ContentView.swift */,
@@ -1349,6 +1352,7 @@
 				1ECC94CB2BDC5E49002BFE54 /* RootPresentationModeKey.swift in Sources */,
 				1ECC94CF2BDC5E49002BFE54 /* ButtonsStyles.swift in Sources */,
 				1ECC94C92BDC5E49002BFE54 /* CustomMapAnnotation.swift in Sources */,
+				523DD5342E1EB6F30003670E /* CompanyRegisterView.swift in Sources */,
 				1E0053412C1F2D8900C75E42 /* ShowOrderOnMapView.swift in Sources */,
 				1EFB9B232C1B829C00C15CE4 /* ExplorView.swift in Sources */,
 				1EEC2BD22BD83E6000975953 /* ContentView.swift in Sources */,

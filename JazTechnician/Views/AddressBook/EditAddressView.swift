@@ -206,9 +206,11 @@ struct EditAddressView: View {
             }
         }
         .onAppear {
-            LocationManager.shared.getCurrentLocation { location in
-                if let location = location {
-                    self.userLocation = userLocation
+            LocationManager.shared.getUserLocation { coordinate, address in
+                if let coordinate = coordinate {
+                    withAnimation(.easeInOut(duration: 2.0)) {
+                        self.userLocation = coordinate
+                    }
                 }
             }
         }

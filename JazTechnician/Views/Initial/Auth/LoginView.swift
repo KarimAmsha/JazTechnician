@@ -23,6 +23,7 @@ struct LoginView: View {
     @FocusState private var keyIsFocused: Bool
     @State var presentSheet = false
     @EnvironmentObject var appRouter: AppRouter
+    @State private var showCompanyRegisterSheet = false
 
     // UI States
     @State private var showPassword = false
@@ -131,11 +132,9 @@ struct LoginView: View {
                     
                     // زر سجل الآن
                     Button(action: {
-                        if let url = URL(string: "https://google.com") {
-                            UIApplication.shared.open(url)
-                        }
+                        showCompanyRegisterSheet = true
                     }) {
-                        Text("سجّل الآن")
+                        Text("تسجيل الشركات")
                             .font(.system(size: 20, weight: .bold))
                             .foregroundColor(Color(hex: "#222B45"))
                             .frame(maxWidth: .infinity)
@@ -200,6 +199,11 @@ struct LoginView: View {
                 alertType: .constant(.error)
             )
         )
+        .sheet(isPresented: $showCompanyRegisterSheet) {
+            CompanyRegisterView()
+                .presentationDetents([.medium, .large])
+                .presentationCornerRadius(22)
+        }
         .environment(\.layoutDirection, .rightToLeft)
     }
     

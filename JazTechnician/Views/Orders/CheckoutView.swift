@@ -629,22 +629,24 @@ struct AddressSelectionView: View {
     
     func moveToUserLocation() {
         withAnimation(.easeInOut(duration: 2.0)) {
-            LocationManager.shared.getCurrentLocation { location in
-                if let location = location {
-                    region.center = location
-                    region.span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-                    let userLocationMark = Mark(
-                        title: "موقعي",
-                        coordinate: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude),
-                        show: true,
-                        imageName: "ic_logo",
-                        isUserLocation: true
-                    )
-                    
-                    locations.append(userLocationMark)
-                    self.userLocation = location
-                    Utilities.getAddress(for: location) { address in
-                        self.streetName = address
+            LocationManager.shared.getUserLocation { coordinate, address in
+                if let coordinate = coordinate {
+                    withAnimation(.easeInOut(duration: 2.0)) {
+                        region.center = coordinate
+                        region.span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+                        let userLocationMark = Mark(
+                            title: "موقعي",
+                            coordinate: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude),
+                            show: true,
+                            imageName: "ic_logo",
+                            isUserLocation: true
+                        )
+                        
+                        locations.append(userLocationMark)
+                        self.userLocation = location
+                        Utilities.getAddress(for: location) { address in
+                            self.streetName = address
+                        }
                     }
                 }
             }

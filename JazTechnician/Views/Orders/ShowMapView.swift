@@ -51,10 +51,10 @@ struct ShowMapView: View {
     }
     
     func moveToUserLocation() {
-        withAnimation(.easeInOut(duration: 2.0)) {
-            LocationManager.shared.getCurrentLocation { location in
-                if let location = location {
-                    region.center = location
+        LocationManager.shared.getUserLocation { coordinate, address in
+            if let coordinate = coordinate {
+                withAnimation(.easeInOut(duration: 2.0)) {
+                    region.center = coordinate
                     region.span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
                 }
             }
