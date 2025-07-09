@@ -72,10 +72,12 @@ struct FullMapView: View {
     }
     
     func moveToUserLocation() {
-        withAnimation(.easeInOut(duration: 2.0)) {
-            if let userLocation = LocationManager.shared.userLocation {
-                region.center = userLocation
-                region.span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        LocationManager.shared.getUserLocation { coordinate, address in
+            if let coordinate = coordinate {
+                withAnimation(.easeInOut(duration: 2.0)) {
+                    region.center = coordinate
+                    region.span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+                }
             }
         }
     }

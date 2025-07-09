@@ -8,7 +8,6 @@ struct CompanyRegisterView: View {
     @State private var isSubmitting = false
     @State private var errorMessage: String?
     @FocusState private var focusedField: Field?
-    @StateObject private var locationManager = LocationManager()
 
     enum Field { case phone, name, email }
 
@@ -127,7 +126,7 @@ struct CompanyRegisterView: View {
             .navigationTitle("")
             .navigationBarHidden(true)
             .onAppear {
-                locationManager.requestLocation()
+                LocationManager.shared.requestLocation()
             }
         }
     }
@@ -157,9 +156,9 @@ struct CompanyRegisterView: View {
     var isFormValid: Bool {
         !phoneNumber.trimmingCharacters(in: .whitespaces).isEmpty &&
         !companyName.trimmingCharacters(in: .whitespaces).isEmpty &&
-        locationManager.lat != nil &&
-        locationManager.lng != nil &&
-        !locationManager.address.trimmingCharacters(in: .whitespaces).isEmpty &&
+        LocationManager.shared.lat != nil &&
+        LocationManager.shared.lng != nil &&
+        !LocationManager.shared.address.trimmingCharacters(in: .whitespaces).isEmpty &&
         !email.trimmingCharacters(in: .whitespaces).isEmpty &&
         email.contains("@") &&
         phoneNumber.count >= 9
