@@ -155,7 +155,7 @@ struct MainView: View {
                 case .orderCompletion(let selectedItems):
                     OrderCompletionView(selectedItems: selectedItems)
                 case .paymentCheckout(let orderData):
-                    PaymentCheckoutView(orderData: orderData)
+                    EmptyView()
                 }
             }
             .popup(isPresented: Binding<Bool>(
@@ -171,7 +171,7 @@ struct MainView: View {
                    case .inputAlert(let alertModelWithInput):
                        InputAlertView(alertModel: alertModelWithInput)
                    case .shareApp:
-                       ShareSheetView(items: ["قم بتحميل تطبيق فزعة الآن: https://example.com"])
+                       ShareSheetView(items: ["قم بتحميل تطبيق جاز الآن: https://example.com"])
                    }
                }
             } customize: {

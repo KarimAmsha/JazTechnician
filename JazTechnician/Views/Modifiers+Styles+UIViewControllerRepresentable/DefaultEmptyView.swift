@@ -17,7 +17,7 @@ struct DefaultEmptyView: View {
             Image("ic_logo")
                 .renderingMode(.template)
                 .resizable()
-                .frame(width: 85, height: 81)
+                .frame(width: 85, height: 85)
                 .foregroundColor(.gray)
             
             Text(title)

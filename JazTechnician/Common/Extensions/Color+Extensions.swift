@@ -33,34 +33,34 @@ extension Color {
         )
     }
     
+    static func primary() -> Color {
+        return Color(hex: "ED8911") // اللون الرئيسي
+    }
+
     static func primary1() -> Color {
-        return Color(hex: "054472")
+        return Color(hex: "F29C29") // أفتح شوي
     }
 
     static func primary2() -> Color {
-        return Color(hex: "054472")
-    }
-
-    static func primary() -> Color {
-        return Color(hex: "054472")
+        return Color(hex: "D67C0F") // أغمق شوي
     }
 
     static func primaryNormal() -> Color {
-        return Color(hex: "054472")
+        return Color(hex: "ED8911") // ثابت
     }
 
     static func primaryLight() -> Color {
-        return Color(hex: "054472")
+        return Color(hex: "FFE0B3") // خلفيات خفيفة
     }
 
     static func primaryLightHover() -> Color {
-        return Color(hex: "054472")
+        return Color(hex: "FFCA80") // حالة hover
     }
 
     static func primaryLightActive() -> Color {
-        return Color(hex: "054472")
+        return Color(hex: "FFB74D") // حالة الضغط
     }
-
+    
     // ✅ خلفيات إضافية من الصور
     static func backgroundF3F3F3() -> Color {
         return Color(hex: "F3F3F3")
@@ -115,32 +115,37 @@ extension Color {
 
     static
     func secondary() -> Color {
-        return Color(hex: "007F6D")
+        return Color(hex: "00A991")
     }
     
     static
     func secondaryLight() -> Color {
-        return Color(hex: "00A991")
+        return Color(hex: "E6F6F4")
     }
 
     static
     func secondaryLightActive() -> Color {
-        return Color(hex: "00A991")
+        return Color(hex: "B0E4DD")
     }
 
     static
     func secondaryLightHover() -> Color {
-        return Color(hex: "00A991")
+        return Color(hex: "D9F2EF")
     }
 
     static
     func secondaryDark() -> Color {
-        return Color(hex: "00A991")
+        return Color(hex: "007F6D")
     }
 
     static
     func secondaryDarker() -> Color {
-        return Color(hex: "00A991")
+        return Color(hex: "003B33")
+    }
+    
+    static
+    func cyan() -> Color {
+        return Color(hex: "00A5B9")
     }
 
     static
@@ -601,7 +606,7 @@ extension Color {
     static
     func background() -> Color {
         return Color(hex: "FAFAFA")
-    }    
+    }
 }
 
 public extension Color {

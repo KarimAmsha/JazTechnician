@@ -1,122 +1,106 @@
-//
-//  OrderItemView.swift
-//  Wishy
-//
-//  Created by Karim Amsha on 26.05.2024.
-//
-
 import SwiftUI
 
 struct OrderItemView: View {
-    let item: Order  // استخدم Order بدل OrderModel حسب تعريفك الجديد
-    var onSelect: (() -> Void)? = nil
+    let item: OrderModel
+    let onSelect: () -> Void
 
     var body: some View {
-        Button(action: { onSelect?() }) {
-            VStack(alignment: .leading, spacing: 10) {
-                HStack(alignment: .top, spacing: 12) {
-                    // صورة المستخدم (مثلاً العميل أو الفني حسب التطبيق)
-                    if let imageUrl = item.user?.image, let url = URL(string: imageUrl) {
-                        AsyncImage(url: url) { phase in
-                            if let image = phase.image {
-                                image.resizable()
-                                    .scaledToFill()
-                                    .frame(width: 44, height: 44)
-                                    .clipShape(Circle())
-                            } else {
-                                Image(systemName: "person.circle")
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 44, height: 44)
-                                    .clipShape(Circle())
-                                    .foregroundColor(.gray)
-                            }
-                        }
-                    } else {
-                        Image(systemName: "person.circle")
+        Button(action: { onSelect() }) {
+            HStack(alignment: .top, spacing: 16) {
+                // صورة المزود أو الخدمة (اختياري حسب الداتا المتوفرة)
+                AsyncImage(
+                    url: item.provider?.image?.toURL() ?? item.sub_category_id?.image?.toURL(),
+                    content: { image in
+                        image
                             .resizable()
-                            .scaledToFill()
-                            .frame(width: 44, height: 44)
-                            .clipShape(Circle())
-                            .foregroundColor(.gray)
+                            .aspectRatio(contentMode: .fill)
+                    },
+                    placeholder: {
+                        Image(systemName: "photo")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .foregroundColor(.gray.opacity(0.2))
                     }
+                )
+                .frame(width: 54, height: 54)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
 
-                    VStack(alignment: .leading, spacing: 2) {
-                        // عنوان الطلب أو نوع الخدمة
-                        Text(item.title ?? "خدمة")
-                            .font(.headline)
+                // تفاصيل الطلب
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack {
+                        Text(item.order_no ?? "-")
+                            .font(.system(size: 16, weight: .bold))
                             .foregroundColor(.primary)
 
-                        // اسم القسم أو الخدمة
-                        if let category = item.category?.title {
-                            Text(category)
-                                .font(.subheadline)
-                                .foregroundColor(.secondary)
-                        }
+                        Spacer()
 
-                        // الحالة وستيب الحالة
-                        HStack(spacing: 6) {
-                            Text(OrderStatus(item.status ?? "new").displayTitle)
-                                .font(.footnote)
-                                .foregroundColor(OrderStatus(item.status ?? "new") == .canceled ? .red : .blue)
-                            Text("•")
-                                .font(.footnote)
-                                .foregroundColor(.gray)
-                            Text(OrderStatus(item.status ?? "new").stepText)
-                                .font(.footnote)
-                                .foregroundColor(.gray)
+                        // حالة الطلب بشكل كبسولة
+                        if let statusText = item.orderStatus?.value {
+                            Text(statusText)
+                                .font(.system(size: 13, weight: .semibold))
+                                .foregroundColor(.orange)
+                                .padding(.horizontal, 10)
+                                .padding(.vertical, 4)
+                                .background(Color.orange.opacity(0.13))
+                                .clipShape(Capsule())
                         }
                     }
 
-                    Spacer()
+                    // اسم الخدمة أو التصنيف
+                    Text(item.sub_category_id?.title ?? item.category_id?.title ?? "-")
+                        .font(.system(size: 14, weight: .medium))
+                        .foregroundColor(.secondary)
 
-                    // المبلغ الإجمالي أو السعر
-                    if let total = item.total {
-                        Text("\(total, specifier: "%.2f") SAR")
-                            .font(.headline)
-                            .foregroundColor(.black)
+                    // العنوان مختصر
+                    if let address = item.address?.streetName, !address.isEmpty {
+                        HStack(spacing: 4) {
+                            Image(systemName: "mappin.and.ellipse")
+                                .font(.system(size: 13))
+                                .foregroundColor(.gray)
+                            Text(address)
+                                .font(.system(size: 13))
+                                .foregroundColor(.gray)
+                                .lineLimit(1)
+                        }
                     }
-                }
 
-                // تاريخ الطلب
-                if let dateString = item.createAt, !dateString.isEmpty {
-                    Text(dateString.formattedString())
-                        .font(.caption)
+                    // التاريخ والوقت والسعر
+                    HStack(spacing: 16) {
+                        HStack(spacing: 4) {
+                            Image(systemName: "calendar")
+                            Text(item.formattedCreateDate ?? "-")
+                        }
+                        .font(.system(size: 12))
                         .foregroundColor(.gray)
+
+                        if let time = item.dt_time {
+                            HStack(spacing: 4) {
+                                Image(systemName: "clock")
+                                Text(time)
+                            }
+                            .font(.system(size: 12))
+                            .foregroundColor(.gray)
+                        }
+
+                        Spacer()
+
+                        // السعر
+                        if let price = item.price {
+                            Text("\(Int(price)) ريال")
+                                .font(.system(size: 15, weight: .bold))
+                                .foregroundColor(.green)
+                        }
+                    }
                 }
             }
-            .padding(14)
-            .background(Color.white)
-            .cornerRadius(12)
-            .shadow(color: Color.black.opacity(0.04), radius: 4, x: 0, y: 2)
+            .padding(12)
+            .background(
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(Color(.systemGray6))
+                    .shadow(color: .black.opacity(0.06), radius: 3, y: 1)
+            )
+            .padding(.horizontal, 2)
         }
         .buttonStyle(PlainButtonStyle())
-    }
-}
-
-struct OrderItemView_Previews: PreviewProvider {
-    static var previews: some View {
-        // مثال لمستخدم/عميل
-        let user = User(fromDictionary: [:])
-                
-        // مثال لطلب
-        let exampleOrder = Order(
-            id: "123456",
-            price: 120,
-            tax: 18,
-            total: 138,
-            address: nil,
-            orderNo: "ORD-2024-001",
-            status: "started",
-            createAt: "2024-05-22T09:15:00+0300",
-            category: nil,
-            user: user,
-            notes: "يرجى الاتصال قبل الوصول"
-        )
-
-        OrderItemView(item: exampleOrder)
-            .previewLayout(.sizeThatFits)
-            .padding()
-            .background(Color.gray.opacity(0.08))
     }
 }

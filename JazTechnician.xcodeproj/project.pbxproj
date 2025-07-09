@@ -246,6 +246,7 @@
 		5235B1A32DCCE0D9009F75FA /* FreelancerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5235B1A22DCCE0D7009F75FA /* FreelancerListView.swift */; };
 		5235B1A52DCCE432009F75FA /* FreelancerProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5235B1A42DCCE431009F75FA /* FreelancerProfileView.swift */; };
 		5235B1A72DCCE641009F75FA /* ServiceDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5235B1A62DCCE640009F75FA /* ServiceDetailsView.swift */; };
+		523DD5322E1EA5CA0003670E /* OrderRealTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523DD5312E1EA5C90003670E /* OrderRealTime.swift */; };
 		5267FAB72DCD3D930063AF67 /* FirebaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267FAB62DCD3D900063AF67 /* FirebaseUser.swift */; };
 		5267FABA2DCD3E990063AF67 /* FirebaseChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267FAB92DCD3E980063AF67 /* FirebaseChat.swift */; };
 		5267FABC2DCD3EA50063AF67 /* FirebaseMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267FABB2DCD3EA40063AF67 /* FirebaseMessage.swift */; };
@@ -499,6 +500,7 @@
 		5235B1A22DCCE0D7009F75FA /* FreelancerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreelancerListView.swift; sourceTree = "<group>"; };
 		5235B1A42DCCE431009F75FA /* FreelancerProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreelancerProfileView.swift; sourceTree = "<group>"; };
 		5235B1A62DCCE640009F75FA /* ServiceDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceDetailsView.swift; sourceTree = "<group>"; };
+		523DD5312E1EA5C90003670E /* OrderRealTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRealTime.swift; sourceTree = "<group>"; };
 		5267FAB62DCD3D900063AF67 /* FirebaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUser.swift; sourceTree = "<group>"; };
 		5267FAB92DCD3E980063AF67 /* FirebaseChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseChat.swift; sourceTree = "<group>"; };
 		5267FABB2DCD3EA40063AF67 /* FirebaseMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseMessage.swift; sourceTree = "<group>"; };
@@ -764,6 +766,7 @@
 		1ECC944D2BDC56EE002BFE54 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				523DD5312E1EA5C90003670E /* OrderRealTime.swift */,
 				52C32A922DDDDBC6004536FE /* MainServiceItem.swift */,
 				52BFB3CA2DDF255A0045E3B4 /* OrderData.swift */,
 				5267FAB82DCD3D980063AF67 /* Chat */,
@@ -1495,6 +1498,7 @@
 				1ECC94752BDC5B68002BFE54 /* URL+Extensions.swift in Sources */,
 				1EDEF67B2BE18D6D00863C10 /* UpcomingRemindersView.swift in Sources */,
 				1E2804322C04D4560021DFB0 /* NotificationItem.swift in Sources */,
+				523DD5322E1EA5CA0003670E /* OrderRealTime.swift in Sources */,
 				1E2804172C04C6700021DFB0 /* AddAddressView.swift in Sources */,
 				1ECC94CC2BDC5E49002BFE54 /* CustomFont.swift in Sources */,
 				1EDEF6682BE1607E00863C10 /* SuccessView.swift in Sources */,
@@ -1715,7 +1719,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JazTechnician/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = JazTechnician;
+				INFOPLIST_KEY_CFBundleDisplayName = "Jaz Technicial";
 				INFOPLIST_KEY_NSCameraUsageDescription = "JazTechnician will use camera to upload user photo";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "JazTechnician will use location to send orders, track your order, and continuously provide real-time updates";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "JazTechnician will use location to send orders, track your order, and continuously provide real-time updates";
@@ -1727,7 +1731,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1761,7 +1765,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JazTechnician/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = JazTechnician;
+				INFOPLIST_KEY_CFBundleDisplayName = "Jaz Technicial";
 				INFOPLIST_KEY_NSCameraUsageDescription = "JazTechnician will use camera to upload user photo";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "JazTechnician will use location to send orders, track your order, and continuously provide real-time updates";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "JazTechnician will use location to send orders, track your order, and continuously provide real-time updates";
@@ -1773,7 +1777,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

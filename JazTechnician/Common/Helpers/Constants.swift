@@ -10,7 +10,7 @@ import Alamofire
 import Firebase
 
 struct Constants {
-    static let baseURL = "https://fazzaa-a48e8d79fa23.herokuapp.com/api"
+    static let baseURL = "https://jazapp-63bc0a074b4f.herokuapp.com/api"
     static let apiKey = "f8dd3a017f39b886c815f5cb248d26a2" // API KEY
     static let FCMLink = "https:fcm.googleapis.com/fcm/send"
     static let serverkey            = "AAAAbK-sj9o:APA91bGuybNZ8Z5t92aAvWb83iLvGmHgcl3kmxpERQFYeH96SmdwaCPrKD7ZYQZyeonezalAi-iB-SIYpNFnG3XIlHMYZbEA3mvbP0RvVUUHprVFzQfBjU4JEe_Hha5nq4nx1jktE2Sk"

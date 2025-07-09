@@ -65,7 +65,7 @@ struct WishCheckOutView: View {
                     title: selectedAddress.title ?? "",
                     coordinate: CLLocationCoordinate2D(latitude: selectedAddress.lat ?? 0, longitude: selectedAddress.lng ?? 0),
                     show: true,
-                    imageName: "ic_logo",
+                    imageName: "",
                     isUserLocation: false
                 )
 

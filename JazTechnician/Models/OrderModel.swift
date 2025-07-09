@@ -26,78 +26,10 @@ struct OrderResponse: Codable {
     }
 }
 
-struct OrderModel: Codable, Identifiable {
-    var couponCode: String?
-    var dtDate: String?
-    var dtTime: String?
-    var title: String?
-    var address: String?
-    var streetName: String?
-    var buildingNo: String?
-    var floorNo: String?
-    var flatNo: String?
-    var notes: String?
-    var categoryId: String?
-    var subCategoryId: String?
-    var paymentType: String?
-    var lat: Double?
-    var lng: Double?
-    var id: String?             // مطابق لـ id في كوتلن
-    var status: String?
-    var canceledNote: String?
-    var updateCode: String?
-    var rateFromUser: String?
-    var noteFromUser: String?
-    var coupon: String?
-    var orderNo: String?
-    var extra: [ExtraBody]?     // هنا Array وليس MutableList
-    var user: User?
-    var provider: User?
-}
-
-struct ExtraBody: Codable {
-    var subSubCategoryId: String?
-    var qty: Int?
-
-    enum CodingKeys: String, CodingKey {
-        case subSubCategoryId = "sub_sub_id"
-        case qty
-    }
-}
-
-extension ExtraBody {
-    static let mock = ExtraBody(subSubCategoryId: "sub_sub_1", qty: 2)
-    static let mock2 = ExtraBody(subSubCategoryId: "sub_sub_2", qty: 5)
-}
-
-// MARK: - Mock للمعاينة فقط
-extension OrderModel {
-    static let mock = OrderModel(
-        couponCode: "FAZAA50",
-        dtDate: "2024-06-19",
-        dtTime: "16:20",
-        title: "صيانة كهرباء",
-        address: "الرياض، حي العليا، شارع الملك فهد",
-        streetName: "شارع الملك فهد",
-        buildingNo: "17A",
-        floorNo: "2",
-        flatNo: "6",
-        notes: "يرجى الاتصال قبل الوصول.",
-        categoryId: "cat1",
-        subCategoryId: "sub1",
-        paymentType: "online",
-        lat: 24.7136,
-        lng: 46.6753,
-        id: "order_1",
-        status: "accepted",
-        canceledNote: "",
-        updateCode: "update123",
-        rateFromUser: "5",
-        noteFromUser: "ممتاز جداً",
-        coupon: "FAZAA2024",
-        orderNo: "ORD-1122",
-        extra: [ExtraBody.mock, ExtraBody.mock2]
-    )
+// MARK: - OrderItem
+struct OrderItem: Codable {
+    // Add properties for OrderItem when available
+    let product: Products?
 }
 
 struct AddressBook: Codable, Identifiable {
@@ -138,87 +70,117 @@ enum AddressType: String, Codable {
     case other
 }
 
-struct OrderCreatedModel: Codable {
-    let id: String?
+struct AddOrderResponse: Codable {
+    let status: Bool
+    let code: Int
+    let message: String
+    let items: AddOrderItem?
+}
+
+struct AddOrderItem: Codable {
+    let id: String
 
     enum CodingKeys: String, CodingKey {
         case id = "_id"
     }
 }
 
-struct Order: Codable, Identifiable, Hashable {
-    var id: String?                   // "_id"
-    var lat: Double?
-    var lng: Double?
-    var price: Double?
-    var tax: Double?
-    var total: Double?
-    var netTotal: Double?
-    var totalDiscount: Double?
-    var address: AddressItem?
-    var orderNo: String?
-    var status: String?
-    var createAt: String?
-    var dtDate: String?
-    var dtTime: String?
-    var subCategory: SubCategoryItem?
-    var category: MainCategory?
-    var couponCode: String?
-    var paymentType: String?
-    var user: User?
-    var notes: String?
-    var canceledNote: String?
-    var employee: User?
-    var provider: User?
-    var extra: [Category]?
-    var accpeted: String?
-    var progress: String?
-    var finished: String?
-    var cancelded: String?
-    var newTotal: Double?
-    var newTax: Double?
-    var points: Int?
-    var title: String?  // هذا ليس في الداتا لكنه كان في الكلاس الكوتلن
+/////
+///
+///
+///
 
-    // CodingKeys to map JSON fields to Swift properties
-    enum CodingKeys: String, CodingKey {
-        case id = "_id"
-        case lat
-        case lng
-        case price
-        case tax
-        case total
-        case netTotal
-        case totalDiscount
-        case address
-        case orderNo = "order_no"
-        case status
-        case createAt
-        case dtDate = "dt_date"
-        case dtTime = "dt_time"
-        case subCategory = "sub_category_id"
-        case category = "category_id"
-        case couponCode
-        case paymentType
-        case user
-        case notes
-        case canceledNote = "canceled_note"
-        case employee
-        case provider
-        case extra
-        case accpeted
-        case progress
-        case finished
-        case cancelded
-        case newTotal
-        case newTax
-        case points
-        case title
+struct OrderModel: Codable, Identifiable {
+    var id: String? { _id }
+    let _id: String?
+    let loc: LocationPoint?
+    let new_total: Double?
+    let new_tax: Double?
+    let update_code: String?
+    let provider_total: Double?
+    let admin_total: Double?
+    let lat: Double?
+    let lng: Double?
+    let price: Double?
+    let address: OrderAddress?
+    let order_no: String?
+    let tax: Double?
+    let total: Double?
+    let totalDiscount: Double?
+    let netTotal: Double?
+    var status: String?
+    let createAt: String?
+    let period: Int?
+    let dt_date: String?
+    let dt_time: String?
+    let couponCode: String?
+    let paymentType: String?
+    let user: User?
+    let notes: String?
+    let canceled_note: String?
+    let employee: Employee?
+    let provider: Provider?
+    let supervisor: Supervisor?
+    let place: String?
+    let sub_category_id: SubCategory?
+    let category_id: Category?
+    let extra: [SubCategory]?
+    
+    var formattedCreateDate: String? {
+        guard let dtDate = dt_date else { return nil }
+        return Utilities.convertDateStringToDate(stringDate: dtDate, outputFormat: "yyyy-MM-dd")
     }
     
-    var orderStatus: OrderStatus {
-        OrderStatus(self.status ?? "new")
+    var orderStatus: OrderStatus? {
+        return OrderStatus(rawValue: status ?? "")
     }
+}
+
+struct LocationPoint: Codable {
+    let type: String?
+    let coordinates: [Double]?
+}
+
+struct OrderAddress: Codable {
+    let streetName: String?
+    let floorNo: String?
+    let buildingNo: String?
+    let flatNo: String?
+    let type: String?
+    let createAt: String?
+    let isHidden: Bool?
+    let _id: String?
+    let lat: Double?
+    let lng: Double?
+    let user_id: String?
+    let discount: Double?
+}
+
+struct Employee: Codable {
+    // إذا لاحقًا جالك بيانات موظف ضيف خصائصه هنا
+}
+
+struct Provider: Codable {
+    let token: String?
+    let isDeleted: Bool?
+    let cities: [String]?
+    let _id: String?
+    let image: String?
+    let email: String?
+    let phone_number: String?
+    let password: String?
+    let name: String?
+    let isBlock: Bool?
+    let orderPercentage: Double?
+    let rate: Double?
+    let details: String?
+    let target: Double?
+    let createAt: String?
+    let __v: Int?
+}
+
+struct Supervisor: Codable {
+    // إذا جالك داتا مش فاضية، ضيف خصائصها هنا
 }
 
 struct OrderCount: Codable {
@@ -227,3 +189,4 @@ struct OrderCount: Codable {
     var finished: Int = 0
     var cancelded: Int = 0
 }
+
