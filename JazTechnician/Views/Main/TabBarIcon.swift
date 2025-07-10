@@ -1,79 +1,82 @@
 //
-// TabBarIcon.swift
-// Fazaa
+//  TabBarIcon.swift
+//  Wishy
 //
-// Created by Karim Amsha on 28.04.2024.
+//  Created by Karim Amsha on 28.04.2024.
 //
 
 import SwiftUI
 
 struct TabBarIcon: View {
+    
     @StateObject var appState: AppState
     let assignedPage: Page
+    @ObservedObject private var settings = UserSettings()
 
     let width, height: CGFloat
     let iconName, tabName: String
-    let isNotified: Bool?
 
     var body: some View {
-        VStack(spacing: 4) {
-            Image(systemName: iconName)
-                .font(.system(size: 22))
-                .foregroundColor(appState.currentPage == assignedPage ? .white : .secondary().opacity(0.8))
-
-            Text(tabName)
-                .font(.footnote)
-                .foregroundColor(appState.currentPage == assignedPage ? .white : .secondary())
+        VStack(spacing: 0) {
+            ZStack {
+                VStack(spacing: 8) {
+                    Image(systemName: iconName)
+                        .font(.system(size: 20))
+                        .foregroundColor(appState.currentPage == assignedPage ? .blue : .gray6C7278())
+                        .frame(width: 28, height: 28)
+                    
+                    Text(tabName)
+                        .customFont(weight: appState.currentPage == assignedPage ? .bold : .regular, size: 12)
+                        .foregroundColor(appState.currentPage == assignedPage ? .primary() : .primaryBlack())
+                }
+            }
         }
-        .padding(.vertical, 10)
-        .padding(.horizontal, 12)
-        .frame(maxWidth: .infinity)
-        .background(
-            appState.currentPage == assignedPage ? Color.secondary().opacity(0.9) : Color.clear
-        )
-        .cornerRadius(12)
         .onTapGesture {
             appState.currentPage = assignedPage
         }
     }
 }
 
-struct CustomTabBar: View {
-    @StateObject var appState: AppState
-
-    private var tabItems: [MainTabItem] {
-        [
-            MainTabItem(page: .home, iconSystemName: "house", title: "الرئيسية"),
-            MainTabItem(page: .orders, iconSystemName: "tray.full", title: "طلباتي"),
-            MainTabItem(page: .chat, iconSystemName: "bubble.left.and.bubble.right", title: "الرسائل"),
-            MainTabItem(page: .notifications, iconSystemName: "bell.badge", title: "الاشعارات"),
-            MainTabItem(page: .more, iconSystemName: "square.grid.2x2", title: "المزيد"),
-        ]
-    }
-
-    var body: some View {
-        HStack(spacing: 0) {
-            ForEach(tabItems, id: \MainTabItem.page) { item in
-                TabBarIcon(
-                    appState: appState,
-                    assignedPage: item.page,
-                    width: 24,
-                    height: 24,
-                    iconName: item.iconSystemName,
-                    tabName: item.title,
-                    isNotified: item.isNotified
-                )
-                .frame(maxWidth: .infinity)
-            }
-        }
-        .padding(.horizontal, 12)
-        .padding(.vertical, 10)
-        .background(Color.green.opacity(0.1))
-        .cornerRadius(20)
-        .padding(.bottom, 8)
-    }
+#Preview {
+    TabBarIcon(appState: AppState(), assignedPage: .home, width: 38, height: 38, iconName: "ic_home", tabName: LocalizedStringKey.home)
 }
 
-#Preview {
-    CustomTabBar(appState: AppState())
-} 
+enum TabItem2 {
+    case profile, orders, home
+}
+
+struct CustomTabBar: View {
+    @Binding var selectedTab: TabItem2
+
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack {
+                HStack {
+                    tabBarButton(image: "house.fill", title: "الرئيسية", tab: .home)
+                    tabBarButton(image: "square.grid.2x2.fill", title: "كل الطلبات", tab: .orders)
+                    tabBarButton(image: "person.fill", title: "الملف الشخصي", tab: .profile)
+                }
+                .padding(.horizontal, 10)
+                .frame(height: 60)
+            }
+        }
+        .frame(height: 80)
+    }
+
+    func tabBarButton(image: String, title: String, tab: TabItem2) -> some View {
+        Button(action: {
+            selectedTab = tab
+        }) {
+            VStack(spacing: 4) {
+                Image(systemName: image)
+                    .customFont(weight: .medium, size: 16)
+                    .foregroundColor(selectedTab == tab ? .primary() : .gray)
+
+                Text(title)
+                    .customFont(weight: .medium, size: 14)
+                    .foregroundColor(selectedTab == tab ? .secondary() : .gray)
+            }
+        }
+        .frame(maxWidth: .infinity)
+    }
+}

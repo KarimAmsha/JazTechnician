@@ -59,6 +59,7 @@ struct OrderDetailsView: View {
                                     Text("تفاصيل إضافية للطلب")
                                         .customFont(weight: .medium, size: 14)
                                         .foregroundColor(.primaryDark())
+                                    Spacer()
                                 }
                                 Text(notes)
                                     .customFont(weight: .regular, size: 14)

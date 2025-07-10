@@ -1,63 +1,102 @@
 import SwiftUI
 
 struct CompanyRegisterView: View {
+    // MARK: - Properties
+
     @State private var phoneNumber: String = ""
     @State private var companyName: String = ""
     @State private var email: String = ""
-    @State private var isSubmitting = false
-    @State private var errorMessage: String?
     @FocusState private var focusedField: Field?
 
-    // استخدم السنجلتون مباشرة كمراقب
+    @StateObject private var authVM = AuthViewModel(errorHandling: ErrorHandling())
     @ObservedObject private var locationManager = LocationManager.shared
+
+    @Environment(\.presentationMode) var presentationMode
+    @State private var showSuccess = false
 
     enum Field { case phone, name, email }
 
+    // MARK: - Main View
+
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack(spacing: 18) {
+        ZStack {
+            VStack(spacing: 0) {
+                // --- Header with Close Button ---
+                HStack {
                     Text("تسجيل شركة جديدة")
                         .customFont(weight: .semiBold, size: 19)
                         .foregroundColor(.primaryDark())
-                        .padding(.top, 8)
-
-                    companyNameField
-                    phoneNumberField
-                    emailField
-                    locationSection
-
-                    if let error = errorMessage {
-                        Text(error)
-                            .customFont(weight: .regular, size: 13)
-                            .foregroundColor(.dangerNormal())
-                            .padding(.top, 2)
+                    Spacer()
+                    Button {
+                        presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        Image(systemName: "xmark")
+                            .foregroundColor(.secondary)
+                            .padding(10)
+                            .background(Color.gray.opacity(0.13))
+                            .clipShape(Circle())
                     }
-
-                    Button(action: submit) {
-                        if isSubmitting {
-                            ProgressView()
-                        } else {
-                            Text("تسجيل الشركة")
-                                .customFont(weight: .medium, size: 16)
-                                .foregroundColor(.white)
-                        }
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(isFormValid ? Color.primary() : Color.grayDCDCDC())
-                    .cornerRadius(12)
-                    .disabled(!isFormValid || isSubmitting)
-                    .padding(.vertical, 8)
                 }
-                .padding(20)
+                .padding(10)
+                
+                Divider()
+                    .padding(.bottom, 6)
+                
+                // --- Content ScrollView ---
+                ScrollView {
+                    VStack(spacing: 22) {
+                        companyNameField
+                        phoneNumberField
+                        emailField
+                        locationSection
+                        
+                        if let error = authVM.errorMessage, !error.isEmpty {
+                            Text(error)
+                                .customFont(weight: .regular, size: 13)
+                                .foregroundColor(.dangerNormal())
+                                .padding(.top, 2)
+                        }
+                        
+                        Button(action: submit) {
+                            if authVM.isLoading {
+                                ProgressView()
+                            } else {
+                                Text("تسجيل الشركة")
+                                    .customFont(weight: .medium, size: 16)
+                                    .foregroundColor(.white)
+                            }
+                        }
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 54)
+                        .background(isFormValid ? Color.primary() : Color.grayDCDCDC())
+                        .cornerRadius(14)
+                        .disabled(!isFormValid || authVM.isLoading)
+                        .padding(.top, 12)
+                    }
+                    .padding(.horizontal, 22)
+                    .padding(.bottom, 30)
+                }
+                .onAppear {
+                    locationManager.requestLocation()
+                }
             }
-            .navigationTitle("")
-            .navigationBarHidden(true)
-            .onAppear {
-                locationManager.requestLocation()
+            
+            if showSuccess {
+                MaterialSuccessAlert(
+                    title: "تم التسجيل بنجاح!",
+                    message: "تمت إضافة الشركة إلى النظام بنجاح.",
+                    buttonTitle: "موافق"
+                ) {
+                    showSuccess = false
+                    presentationMode.wrappedValue.dismiss()
+                }
+                .zIndex(999)
             }
         }
+        .background(Color(.systemGroupedBackground))
+        .presentationDetents([.medium, .large])
+        .presentationCornerRadius(22)
+        .environment(\.layoutDirection, .rightToLeft)
     }
 
     // MARK: - Subviews
@@ -92,7 +131,7 @@ struct CompanyRegisterView: View {
     }
 
     private var locationSection: some View {
-        VStack(alignment: .trailing, spacing: 8) {
+        VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Image(systemName: "mappin.and.ellipse")
                     .foregroundColor(.primary())
@@ -104,7 +143,7 @@ struct CompanyRegisterView: View {
                 }
             }
             HStack(spacing: 12) {
-                VStack(alignment: .trailing) {
+                VStack(alignment: .leading) {
                     Text("Latitude")
                         .customFont(weight: .regular, size: 12)
                         .foregroundColor(.grayA1A1A1())
@@ -112,7 +151,7 @@ struct CompanyRegisterView: View {
                         .customFont(weight: .regular, size: 14)
                         .foregroundColor(.black121212())
                 }
-                VStack(alignment: .trailing) {
+                VStack(alignment: .leading) {
                     Text("Longitude")
                         .customFont(weight: .regular, size: 12)
                         .foregroundColor(.grayA1A1A1())
@@ -121,7 +160,7 @@ struct CompanyRegisterView: View {
                         .foregroundColor(.black121212())
                 }
             }
-            VStack(alignment: .trailing, spacing: 2) {
+            VStack(alignment: .leading, spacing: 2) {
                 Text("العنوان")
                     .customFont(weight: .regular, size: 12)
                     .foregroundColor(.grayA1A1A1())
@@ -129,7 +168,7 @@ struct CompanyRegisterView: View {
                     .customFont(weight: .regular, size: 14)
                     .foregroundColor(.black121212())
                     .lineLimit(3)
-                    .multilineTextAlignment(.trailing)
+                    .multilineTextAlignment(.leading)
             }
             Button(action: {
                 locationManager.requestLocation()
@@ -158,7 +197,7 @@ struct CompanyRegisterView: View {
     // MARK: - Helpers
 
     func formField(title: String, systemIcon: String, text: Binding<String>, keyboardType: UIKeyboardType = .default, field: Field) -> some View {
-        VStack(alignment: .trailing, spacing: 4) {
+        VStack(alignment: .leading, spacing: 4) {
             HStack {
                 Image(systemName: systemIcon)
                     .foregroundColor(.primary())
@@ -188,30 +227,133 @@ struct CompanyRegisterView: View {
         phoneNumber.count >= 9
     }
 
+    /// دالة إرسال البيانات للتسجيل
     func submit() {
         guard isFormValid else {
-            errorMessage = "يرجى تعبئة جميع الحقول بشكل صحيح"
+            authVM.errorMessage = "يرجى تعبئة جميع الحقول بشكل صحيح"
             return
         }
-        errorMessage = nil
-        isSubmitting = true
+        authVM.errorMessage = nil
 
-        // هنا مكان اتصالك بالـ API
-        // أرسل:
-        // phone_number: phoneNumber
-        // company_name: companyName
-        // lat: locationManager.lat
-        // lng: locationManager.lng
-        // address: locationManager.address
-        // email: email
+        let params: [String: Any] = [
+            "phone_number": phoneNumber,
+            "company_name": companyName,
+            "lat": locationManager.lat ?? 0,
+            "lng": locationManager.lng ?? 0,
+            "address": locationManager.address,
+            "email": email
+        ]
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-            isSubmitting = false
-            errorMessage = "تم تسجيل الشركة بنجاح!"
+        authVM.registerCompany(params: params) { company in
+            authVM.errorMessage = nil
+            showSuccess = true
+            // يمكنك هنا تنفيذ أي أمر إضافي (إغلاق/انتقال...إلخ)
+        } onerror: { errMsg in
+            authVM.errorMessage = errMsg
         }
     }
 }
 
 #Preview {
     CompanyRegisterView()
+}
+
+struct MaterialSuccessAlert: View {
+    var title: String = "تم التسجيل بنجاح!"
+    var message: String = "تمت إضافة الشركة إلى النظام بنجاح. يمكنك الآن تسجيل الدخول أو العودة للصفحة السابقة."
+    var buttonTitle: String = "حسنًا"
+    var onClose: (() -> Void)?
+
+    @State private var showCheck = false
+
+    var body: some View {
+        ZStack {
+            // الخلفية الشفافة
+            Color.black.opacity(0.28)
+                .ignoresSafeArea()
+                .onTapGesture { onClose?() }
+
+            // الكارد
+            VStack(spacing: 18) {
+                ZStack {
+                    Circle()
+                        .fill(Color.green.opacity(0.2))
+                        .frame(width: 74, height: 74)
+                    Image(systemName: "checkmark.circle.fill")
+                        .resizable()
+                        .foregroundColor(.green)
+                        .frame(width: 64, height: 64)
+                        .scaleEffect(showCheck ? 1 : 0.3)
+                        .opacity(showCheck ? 1 : 0)
+                        .animation(.spring(response: 0.5, dampingFraction: 0.58), value: showCheck)
+                }
+                .padding(.top, 4)
+
+                Text(title)
+                    .font(.system(size: 22, weight: .bold))
+                    .foregroundColor(Color.primary)
+                    .multilineTextAlignment(.center)
+
+                Text(message)
+                    .font(.system(size: 16, weight: .regular))
+                    .foregroundColor(Color.secondary)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 10)
+
+                Button(action: { onClose?() }) {
+                    Text(buttonTitle)
+                        .font(.system(size: 18, weight: .semibold))
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 14)
+                        .background(
+                            LinearGradient(
+                                gradient: Gradient(colors: [Color.green, Color.green.opacity(0.78)]),
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
+                        )
+                        .cornerRadius(14)
+                        .shadow(color: Color.green.opacity(0.15), radius: 7, x: 0, y: 3)
+                }
+                .padding(.top, 8)
+            }
+            .padding(.vertical, 26)
+            .padding(.horizontal, 20)
+            .frame(maxWidth: 370)
+            .background(
+                BlurView(style: .systemMaterial)
+                    .clipShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
+            )
+            .overlay(
+                Button(action: { onClose?() }) {
+                    Image(systemName: "xmark")
+                        .foregroundColor(.secondary)
+                        .padding(10)
+                        .background(Color(.systemBackground).opacity(0.85))
+                        .clipShape(Circle())
+                        .shadow(radius: 3)
+                }
+                .padding(6),
+                alignment: .topTrailing
+            )
+            .shadow(color: Color.black.opacity(0.13), radius: 24, x: 0, y: 18)
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    showCheck = true
+                }
+            }
+        }
+        .transition(.scale.combined(with: .opacity))
+        .animation(.easeInOut, value: showCheck)
+    }
+}
+
+// دعم تأثير البلور (Blur) في كل الأنظمة
+struct BlurView: UIViewRepresentable {
+    var style: UIBlurEffect.Style = .systemMaterial
+    func makeUIView(context: Context) -> UIVisualEffectView {
+        UIVisualEffectView(effect: UIBlurEffect(style: style))
+    }
+    func updateUIView(_ uiView: UIVisualEffectView, context: Context) {}
 }

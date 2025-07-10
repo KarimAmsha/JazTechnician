@@ -14,30 +14,51 @@ import FirebaseMessaging
 struct StatBox: View {
     var title: String
     var count: Int
+    var icon: String // اسم الصورة أو النظام
 
     var body: some View {
-        VStack(spacing: 6) {
+        VStack(spacing: 8) {
             ZStack {
-                RoundedRectangle(cornerRadius: 8)
-                    .fill(Color(hex: "#F2F3F7"))
-                Image(systemName: "square.grid.2x2")
-                    .foregroundColor(Color(hex: "#98A0AF"))
-                    .font(.system(size: 28, weight: .medium))
+                LinearGradient(
+                    gradient: Gradient(colors: [Color.primary().opacity(0.14), Color.primary().opacity(0.34)]),
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+                .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+                .frame(height: 56)
+                .shadow(color: Color.primary().opacity(0.16), radius: 5, x: 0, y: 4)
+
+                if icon.hasPrefix("ic_") {
+                    Image(icon)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 32, height: 32)
+                        .padding(8)
+                } else {
+                    Image(systemName: icon)
+                        .font(.system(size: 32, weight: .bold))
+                        .foregroundColor(Color.primary())
+                        .padding(8)
+                }
             }
-            .frame(height: 52)
+
             Text(title)
                 .font(.system(size: 15, weight: .semibold))
                 .foregroundColor(.black)
+                .lineLimit(1)
+
             Text("\(count)")
-                .font(.system(size: 19, weight: .bold))
-                .foregroundColor(Color(hex: "#113E72"))
+                .font(.system(size: 23, weight: .heavy))
+                .foregroundColor(Color.primary())
         }
-        .frame(height: 110)
+        .frame(height: 118)
         .frame(maxWidth: .infinity)
         .background(
-            RoundedRectangle(cornerRadius: 13)
-                .fill(Color(hex: "#F2F3F7"))
+            RoundedRectangle(cornerRadius: 17)
+                .fill(Color.white)
+                .shadow(color: Color.primary().opacity(0.07), radius: 9, x: 0, y: 3)
         )
+        .padding(.bottom, 4)
     }
 }
 
@@ -53,21 +74,19 @@ struct HomeView: View {
         ScrollView {
             VStack(spacing: 16) {
                 // 🔥 جزء الإحصائيات بالأعلى
-                VStack(alignment: .trailing, spacing: 14) {
-                    LazyVGrid(columns: [GridItem(), GridItem()], spacing: 14) {
-                        StatBox(title: "قيد التنفيذ", count: viewModel.orderCount.progress)
-                        StatBox(title: "المقبولة", count: viewModel.orderCount.accpeted)
-                        StatBox(title: "المنتهية", count: viewModel.orderCount.finished)
-                        StatBox(title: "الملغية", count: viewModel.orderCount.cancelded)
-                    }
+                LazyVGrid(columns: [GridItem(), GridItem()], spacing: 15) {
+                    StatBox(title: "قيد التنفيذ", count: viewModel.orderCount.progress, icon: "hourglass")
+                    StatBox(title: "المقبولة", count: viewModel.orderCount.accpeted, icon: "checkmark.seal.fill")
+                    StatBox(title: "المنتهية", count: viewModel.orderCount.finished, icon: "flag.checkered")
+                    StatBox(title: "الملغية", count: viewModel.orderCount.cancelded, icon: "xmark.octagon.fill")
                 }
-                .padding(.horizontal)
-                .padding(.top)
-                
+                .padding(.horizontal, 4)
+                .padding(.top, 10)
             }
             .padding(.top)
         }
-        .background(Color.white)
+        .navigationBarBackButtonHidden()
+        .background(Color.background())
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 HStack(spacing: 8) {
@@ -99,7 +118,6 @@ struct HomeView: View {
                 }
             }
         }
-
         .onAppear {
             viewModel.getOrderCount()
             refreshFcmToken()

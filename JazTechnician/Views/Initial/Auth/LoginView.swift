@@ -201,7 +201,7 @@ struct LoginView: View {
         )
         .sheet(isPresented: $showCompanyRegisterSheet) {
             CompanyRegisterView()
-                .presentationDetents([.medium, .large])
+                .presentationDetents([.large, .medium])
                 .presentationCornerRadius(22)
         }
         .environment(\.layoutDirection, .rightToLeft)

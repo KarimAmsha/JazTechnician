@@ -16,6 +16,7 @@ struct MainView: View {
     @ObservedObject var appRouter = AppRouter()
     @ObservedObject var viewModel = InitialViewModel(errorHandling: ErrorHandling())
     @StateObject var cartViewModel = CartViewModel(errorHandling: ErrorHandling())
+    @State private var selectedTab: TabItem2 = .home
 
     var body: some View {
         NavigationStack(path: $appRouter.navPath) {
@@ -24,25 +25,12 @@ struct MainView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .foregroundColor(.clear)
                     .background(.white)
-
                 VStack(spacing: 0) {
                     Spacer()
-                    
-                    switch appState.currentPage {
-                    case .home:
-                        HomeView()
-                    case .orders:
-                        MyOrdersView()
-                    case .chat:
-                        ChatListView(userId: UserSettings.shared.id ?? "")
-                    case .notifications:
-                        NotificationsView()
-                    case .more:
-                        settings.id == nil ? CustomeEmptyView().eraseToAnyView() : ProfileView().eraseToAnyView()
-                    }
-
-                    CustomTabBar(appState: appState)
+                    mainTabContent
+                    CustomTabBar(selectedTab: $selectedTab)
                 }
+                .edgesIgnoringSafeArea(.bottom)
             }
             .background(Color.background())
             .edgesIgnoringSafeArea(.bottom)
@@ -222,3 +210,20 @@ struct MainView: View {
         .environmentObject(AppState())
 }
 
+extension MainView {
+    @ViewBuilder
+    var mainTabContent: some View {
+        switch selectedTab {
+        case .home:
+            HomeView()
+        case .orders:
+            MyOrdersView()
+        case .profile:
+            if settings.id == nil {
+                CustomeEmptyView()
+            } else {
+                ProfileView()
+            }
+        }
+    }
+}
