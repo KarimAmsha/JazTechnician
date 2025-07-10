@@ -22,6 +22,12 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         manager.requestWhenInUseAuthorization()
     }
 
+    func requestLocation() {
+        isLoading = true
+        errorMessage = nil
+        manager.requestLocation()
+    }
+    
     /// احصل على الموقع الحالي مرة واحدة (بـCompletion)
     func getUserLocation(completion: @escaping (CLLocationCoordinate2D?, String?) -> Void) {
         isLoading = true
@@ -80,4 +86,11 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         completion?(nil, nil)
         completion = nil
     }
+}
+
+extension LocationManager {
+    var lat: Double? { coordinate?.latitude }
+    var lng: Double? { coordinate?.longitude }
+    var latString: String { lat != nil ? String(format: "%.6f", lat!) : "--" }
+    var lngString: String { lng != nil ? String(format: "%.6f", lng!) : "--" }
 }

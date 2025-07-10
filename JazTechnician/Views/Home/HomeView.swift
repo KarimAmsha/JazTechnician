@@ -46,7 +46,6 @@ struct HomeView: View {
     @StateObject var viewModel = OrderViewModel(errorHandling: ErrorHandling())
     @EnvironmentObject var appRouter: AppRouter
     @StateObject private var userViewModel = UserViewModel(errorHandling: ErrorHandling())
-    @StateObject private var locationManager = LocationManager2()
     @State private var currentIndex = 0
     let timer = Timer.publish(every: 4, on: .main, in: .common).autoconnect()
     
@@ -104,7 +103,9 @@ struct HomeView: View {
         .onAppear {
             viewModel.getOrderCount()
             refreshFcmToken()
-            locationManager.startUpdatingLocation()
+            LocationManager.shared.getUserLocation(completion: { location, address in
+                //
+            })
             ChatViewModel.setUser()
         }
     }

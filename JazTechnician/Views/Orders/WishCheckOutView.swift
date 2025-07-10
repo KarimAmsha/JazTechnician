@@ -40,7 +40,6 @@ struct WishCheckOutView: View {
     @StateObject var orderViewModel = OrderViewModel(errorHandling: ErrorHandling())
     @StateObject var wishViewModel = WishesViewModel(errorHandling: ErrorHandling())
     @State var currentUserLocation: AddressItem?
-    @StateObject private var locationManager2 = LocationManager2()
     @State private var selectedPurchaseType: PurchaseType = .myself
     @State private var isAddressBook = false
     @State private var coupon: String = ""
@@ -177,8 +176,8 @@ struct WishCheckOutView: View {
                 alertType: .constant(.error)
             )
         )
-        .onChange(of: locationManager2.location) { value in
-            if let location = locationManager2.location {
+        .onChange(of: LocationManager.shared.coordinate) { value in
+            if let location = LocationManager.shared.coordinate {
                 print("New Location: \(location)")
                 currentUserLocation = AddressItem(
                     streetName: "",
@@ -189,9 +188,9 @@ struct WishCheckOutView: View {
                     createAt: "",
                     id: "",
                     title: "موقعي الحالي",
-                    lat: location.coordinate.latitude,
-                    lng: location.coordinate.longitude,
-                    address: locationManager2.address,
+                    lat: location.latitude,
+                    lng: location.longitude,
+                    address: LocationManager.shared.address,
                     userId: "",
                     discount: 0
                 )
@@ -203,7 +202,6 @@ struct WishCheckOutView: View {
             cartViewModel.cartTotal {
                 //
             }
-            locationManager2.startUpdatingLocation()
         }
     }
 }

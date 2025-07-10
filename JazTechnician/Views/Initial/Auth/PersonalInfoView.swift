@@ -199,8 +199,12 @@ struct PersonalInfoView: View {
             getUserData()
 
             // Use the user's current location if available
-            if let userLocation = LocationManager.shared.userLocation {
-                self.userLocation = userLocation
+            LocationManager.shared.getUserLocation { coordinate, address in
+                if let coordinate = coordinate {
+                    withAnimation(.easeInOut(duration: 2.0)) {
+                        self.userLocation = coordinate
+                    }
+                }
             }
         }
         .overlay(

@@ -41,7 +41,6 @@ struct CheckoutView: View {
     let cartItems: CartItems?
     @StateObject var orderViewModel = OrderViewModel(errorHandling: ErrorHandling())
     @State var currentUserLocation: AddressItem?
-    @StateObject private var locationManager2 = LocationManager2()
     @State private var selectedPurchaseType: PurchaseType = .myself
     @State private var isAddressBook = false
     @State private var coupon: String = ""
@@ -186,8 +185,8 @@ struct CheckoutView: View {
                 alertType: .constant(.error)
             )
         )
-        .onChange(of: locationManager2.location) { value in
-            if let location = locationManager2.location {
+        .onChange(of: LocationManager.shared.coordinate) { value in
+            if let location = LocationManager.shared.coordinate {
                 print("New Location: \(location)")
                 currentUserLocation = AddressItem(
                     streetName: "",
@@ -198,20 +197,14 @@ struct CheckoutView: View {
                     createAt: "",
                     id: "",
                     title: "موقعي الحالي",
-                    lat: location.coordinate.latitude,
-                    lng: location.coordinate.longitude,
-                    address: locationManager2.address,
+                    lat: location.latitude,
+                    lng: location.longitude,
+                    address: LocationManager.shared.address,
                     userId: "",
                     discount: 0
                 )
             }
         }
-//        .overlay(
-//            MessageAlertObserverView(
-//                message: $paymentViewModel.errorMessage,
-//                alertType: .constant(.error)
-//            )
-//        )
         .overlay(
             MessageAlertObserverView(
                 message: $orderViewModel.errorMessage,
@@ -328,7 +321,6 @@ struct CheckoutView: View {
                 //
             }
             cartViewModel.getCartItems()
-            locationManager2.startUpdatingLocation()
         }
     }
     
@@ -634,19 +626,6 @@ struct AddressSelectionView: View {
                     withAnimation(.easeInOut(duration: 2.0)) {
                         region.center = coordinate
                         region.span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-                        let userLocationMark = Mark(
-                            title: "موقعي",
-                            coordinate: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude),
-                            show: true,
-                            imageName: "ic_logo",
-                            isUserLocation: true
-                        )
-                        
-                        locations.append(userLocationMark)
-                        self.userLocation = location
-                        Utilities.getAddress(for: location) { address in
-                            self.streetName = address
-                        }
                     }
                 }
             }

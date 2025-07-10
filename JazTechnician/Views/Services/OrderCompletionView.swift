@@ -20,7 +20,6 @@ struct OrderCompletionView: View {
     @EnvironmentObject var appRouter: AppRouter
     @StateObject private var orderViewModel = OrderViewModel(errorHandling: ErrorHandling())
     @StateObject private var userViewModel = UserViewModel(errorHandling: ErrorHandling())
-    @StateObject private var locationManager = LocationManager2()
     
     @State private var selectedAddress: AddressItem? = nil
     @State private var currentUserLocation: AddressItem? = nil
@@ -123,25 +122,7 @@ struct OrderCompletionView: View {
                         .padding(.bottom, 8)
                     }
                     
-                    // ✅ موقعي الحالي
-                    Button(action: {
-                        selectedAddress = nil
-                        isCurrentLocationSelected = true
-                    }) {
-                        HStack(alignment: .top, spacing: 8) {
-                            Image(systemName: isCurrentLocationSelected ? "largecircle.fill.circle" : "circle")
-                                .foregroundColor(.primary)
-                            VStack(alignment: .leading, spacing: 4) {
-                                Text("موقعي الحالي")
-                                    .fontWeight(.medium)
-                                Text(locationManager.address.isEmpty ? "جارٍ تحديد الموقع..." : locationManager.address)
-                                    .font(.footnote)
-                                    .foregroundColor(.gray)
-                                    .lineLimit(1)
-                                    .truncationMode(.tail)
-                            }
-                        }
-                    }
+
                     
                     Divider()
                     
@@ -165,15 +146,6 @@ struct OrderCompletionView: View {
                         .font(.footnote)
                         .foregroundColor(.secondary)
                     }
-                }
-                
-                // ✅ إظهار الخريطة المصغرة
-                if isCurrentLocationSelected, let loc = locationManager.location?.coordinate {
-                    MiniMapView(coordinate: loc)
-                } else if let address = selectedAddress,
-                          let lat = address.lat,
-                          let lng = address.lng {
-                    MiniMapView(coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lng))
                 }
                 
                 NotesView(notes: $notes, placeholder: placeholder)
@@ -202,7 +174,6 @@ struct OrderCompletionView: View {
             }
         }
         .onAppear {
-            locationManager.startUpdatingLocation()
             userViewModel.getAddressList()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 updateMiniMapLocation()
@@ -308,16 +279,6 @@ struct OrderCompletionView: View {
     }
     
     func updateMiniMapLocation() {
-        if isCurrentLocationSelected {
-            miniMapCoordinate = locationManager.location?.coordinate
-            if let loc = miniMapCoordinate {
-                miniMapRegion.center = loc
-            }
-        } else if let selected = selectedAddress, let lat = selected.lat, let lng = selected.lng {
-            let coord = CLLocationCoordinate2D(latitude: lat, longitude: lng)
-            miniMapCoordinate = coord
-            miniMapRegion.center = coord
-        }
     }
 }
 
@@ -358,18 +319,17 @@ extension OrderCompletionView {
         }
     }
 
-    func prepareOrderData() -> OrderData {
-        let notesText = notes.isEmpty || notes == placeholder ? "" : notes
-        let addressValue = isCurrentLocationSelected ? nil : selectedAddress
-        let userLoc = isCurrentLocationSelected ? locationManager.location?.coordinate : nil
-
-        return OrderData(
-            services: selectedList,
-            address: addressValue,
-            userLocation: userLoc,
-            notes: notesText
-        )
-    }
+//    func prepareOrderData() -> OrderData {
+//        let notesText = notes.isEmpty || notes == placeholder ? "" : notes
+//        let addressValue = isCurrentLocationSelected ? nil : selectedAddress
+//
+//        return OrderData(
+//            services: selectedList,
+//            address: addressValue,
+//            userLocation: userLoc,
+//            notes: notesText
+//        )
+//    }
 
     func handleOrderSubmission() {
         guard !selectedList.isEmpty else {
@@ -380,23 +340,15 @@ extension OrderCompletionView {
         var lat: Double? = nil
         var lng: Double? = nil
         
-        if isCurrentLocationSelected {
-            lat = locationManager.location?.coordinate.latitude
-            lng = locationManager.location?.coordinate.longitude
-        } else if let address = selectedAddress {
-            lat = address.lat
-            lng = address.lng
-        }
-        
         guard let finalLat = lat, let finalLng = lng else {
             orderViewModel.errorMessage = "تعذر تحديد الموقع"
             return
         }
                 
 //        orderViewModel.checkPlace(params: params) { message in
-            let orderData = prepareOrderData()
-            print("OOOO \(orderData)")
-            appRouter.navigate(to: .paymentCheckout(orderData: orderData))
+//            let orderData = prepareOrderData()
+//            print("OOOO \(orderData)")
+//            appRouter.navigate(to: .paymentCheckout(orderData: orderData))
 //        }
     }
 }

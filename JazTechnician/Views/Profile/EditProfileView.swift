@@ -105,8 +105,12 @@ struct EditProfileView: View {
         .background(Color.background())
         .onAppear {
             getUserData()
-            if let location = LocationManager.shared.userLocation {
-                userLocation = location
+            LocationManager.shared.getUserLocation { coordinate, address in
+                if let coordinate = coordinate {
+                    withAnimation(.easeInOut(duration: 2.0)) {
+                        self.userLocation = coordinate
+                    }
+                }
             }
         }
         .fullScreenCover(isPresented: $mediaPickerViewModel.isPresentingImagePicker) {
