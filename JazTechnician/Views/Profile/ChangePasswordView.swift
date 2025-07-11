@@ -59,6 +59,7 @@ struct ChangePasswordView: View {
                 .padding(.bottom, 18)
                 .disabled(!viewModel.isValid || viewModel.isLoading)
             }
+            .navigationBarBackButtonHidden()
             .background(Color.background().ignoresSafeArea())
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
