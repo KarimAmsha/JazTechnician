@@ -24,3 +24,9 @@ struct HomeItem: Codable, Hashable, Identifiable {
     let image: String?
     let type: String
 }
+
+struct CatItems: Codable, Hashable {
+    let category: [Category]?
+    let slider: [Slider]?
+    let whatsApp: WhatsApp?
+}

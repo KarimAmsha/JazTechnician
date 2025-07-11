@@ -33,6 +33,7 @@ class OrderViewModel: ObservableObject {
     var orderRefs: [String: DatabaseReference] = [:]
     @Published var orderCount: OrderCount = OrderCount()
     @Published var isLoadingOrderCount: Bool = false
+    @Published var catItems: CatItems?
 
     init(errorHandling: ErrorHandling) {
         self.errorHandling = errorHandling
@@ -41,6 +42,34 @@ class OrderViewModel: ObservableObject {
     var shouldLoadMoreData: Bool {
         guard let totalPages = pagination?.totalPages else { return false }
         return currentPage + 1 < totalPages // لأن الصفحة تبدأ من صفر
+    }
+
+    func fetchCatItems(q: String?, lat: Double, lng: Double) {
+        isLoading = true
+        errorMessage = nil
+        let endpoint = DataProvider.Endpoint.getHome(q: q, lat: lat, lng: lng)
+        
+        DataProvider.shared.request(endpoint: endpoint, responseType: SingleAPIResponse<CatItems>.self)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    // Use the centralized error handling component
+                    self.handleAPIError(error)
+                }
+            }, receiveValue: { [weak self] (response: SingleAPIResponse<CatItems>) in
+//                print("ssss \(response)")
+                if response.status {
+                    self?.catItems = response.items
+                    self?.errorMessage = nil
+                } else {
+                    // Use the centralized error handling component
+                    self?.handleAPIError(.customError(message: response.message))
+                }
+                self?.isLoading = false
+            })
+            .store(in: &cancellables)
     }
 
     func sendRawJsonRequest(
@@ -477,6 +506,7 @@ extension OrderViewModel {
             self.isLoadingOrderCount = false
             switch result {
             case .success(let response):
+                print("ssss \(response)")
                 if response.status {
                     if let items = response.items {
                         self.orderCount = items
@@ -495,4 +525,102 @@ extension OrderViewModel {
     }
 }
 
+extension OrderViewModel {
+    func updateOrderStatus(
+        orderId: String,
+        status: String,
+        extraServiceIDs: [String]? = nil,
+        onSuccess: @escaping () -> Void,
+        onError: @escaping (String) -> Void
+    ) {
+        var body: [String: Any] = [
+            "id": orderId,
+            "status": status
+        ]
+        if let extraServiceIDs = extraServiceIDs, !extraServiceIDs.isEmpty {
+            body["extra"] = extraServiceIDs
+        }
+        let url = "\(Constants.baseURL)/mobile/order/update/\(orderId)"
+        sendRawJsonRequest(urlString: url, body: body, onsuccess: { _ in
+            onSuccess()
+        }, onerror: { errorMsg in
+            onError(errorMsg)
+        })
+    }
 
+    func confirmUpdateCode(
+        orderId: String,
+        code: String,
+        onSuccess: @escaping () -> Void,
+        onError: @escaping (String) -> Void
+    ) {
+        let url = "\(Constants.baseURL)/mobile/order/update/confirm/\(orderId)"
+        let body: [String: Any] = [
+            "id": orderId,
+            "update_code": code
+        ]
+        sendFormUrlEncodedRequest(
+            urlString: url,
+            body: body,
+            onsuccess: { _ in onSuccess() },
+            onerror: { errorMsg in onError(errorMsg) }
+        )
+    }
+
+    func sendFormUrlEncodedRequest(
+        urlString: String,
+        body: [String: Any],
+        onsuccess: @escaping (String) -> Void,
+        onerror: ((String) -> Void)? = nil
+    ) {
+        guard let token = userSettings.token else {
+            let msg = LocalizedStringKey.tokenError
+            errorMessage = msg
+            onerror?(msg)
+            return
+        }
+
+        isLoading = true
+        errorMessage = nil
+
+        guard let url = URL(string: urlString) else {
+            let msg = "Invalid URL"
+            errorMessage = msg
+            isLoading = false
+            onerror?(msg)
+            return
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.addValue("ar", forHTTPHeaderField: "Accept-Language")
+        request.addValue(token, forHTTPHeaderField: "token")
+
+        let paramsString = body.map { "\($0)=\($1)" }.joined(separator: "&")
+        request.httpBody = paramsString.data(using: .utf8)
+
+        URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+            DispatchQueue.main.async {
+                self?.isLoading = false
+
+                if let error = error {
+                    self?.errorMessage = error.localizedDescription
+                    onerror?(error.localizedDescription)
+                    return
+                }
+
+                guard let data = data else {
+                    let msg = "لا يوجد استجابة من السيرفر"
+                    self?.errorMessage = msg
+                    onerror?(msg)
+                    return
+                }
+
+                let str = String(data: data, encoding: .utf8) ?? ""
+                print("Response String:", str)
+                onsuccess(str)
+            }
+        }.resume()
+    }
+}

@@ -50,7 +50,6 @@ class DataProvider {
         case getTotalPrices(params: [String: Any], token: String)
         case getRates(page: Int?, limit: Int?, id: String, token: String)
         case getAppConstants
-        case getHome
         case deleteAccount(id: String, token: String)
         case guest
         case getContact
@@ -92,6 +91,7 @@ class DataProvider {
         case getSubCategories(q: String?, id: String?)
         case getOrderCount(token: String)
         case registerCompany(params: [String: Any])
+        case getHome(q: String?, lat: Double, lng: Double)
 
         // Map your custom Endpoint to APIEndpoint
         func toAPIEndpoint() -> APIEndpoint {
@@ -166,8 +166,6 @@ class DataProvider {
                 return .getRates(page: page, limit: limit, id: id, token: token)
             case .getAppConstants:
                 return .getAppConstants
-            case .getHome:
-                return .getHome
             case .deleteAccount(let id, let token):
                 return .deleteAccount(id: id, token: token)
             case .guest:
@@ -250,6 +248,8 @@ class DataProvider {
                 return .getOrderCount(token: token)
             case .registerCompany(let params):
                 return .registerCompany(params: params)
+            case .getHome(let q, let lat, let lng):
+                return .getHome(q: q, lat: lat, lng: lng)
             }
         }
     }

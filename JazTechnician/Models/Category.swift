@@ -62,7 +62,7 @@ struct Category: Codable, Hashable, Identifiable {
 }
 
 struct SubCategory: Codable, Hashable, Identifiable {
-    let id: String
+    let id: String?
     let price: Double?
     let title: String?
     let description: String?

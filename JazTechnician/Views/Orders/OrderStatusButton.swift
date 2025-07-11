@@ -22,7 +22,7 @@ struct OrderStatusButton: View {
                 .foregroundColor(selectedStatus == status ? .white : .primary)
                 .padding(.vertical, 8)
                 .padding(.horizontal, 18)
-                .background(selectedStatus == status ? Color.primary : Color(.systemGray5))
+                .background(selectedStatus == status ? Color.blue068DA9() : Color(.systemGray5))
                 .cornerRadius(14)
         }
         .buttonStyle(PlainButtonStyle())

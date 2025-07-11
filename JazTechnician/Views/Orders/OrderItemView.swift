@@ -9,7 +9,7 @@ struct OrderItemView: View {
             HStack(alignment: .top, spacing: 16) {
                 // صورة المزود أو الخدمة (اختياري حسب الداتا المتوفرة)
                 AsyncImage(
-                    url: item.provider?.image?.toURL() ?? item.sub_category_id?.image?.toURL(),
+                    url: item.user?.image?.toURL() ?? item.sub_category_id?.image?.toURL(),
                     content: { image in
                         image
                             .resizable()
@@ -47,9 +47,17 @@ struct OrderItemView: View {
                     }
 
                     // اسم الخدمة أو التصنيف
-                    Text(item.sub_category_id?.title ?? item.category_id?.title ?? "-")
-                        .font(.system(size: 14, weight: .medium))
-                        .foregroundColor(.secondary)
+                    HStack(spacing: 4) {
+                        Text(item.category_id?.title ?? "-")
+                            .font(.system(size: 14, weight: .medium))
+                            .foregroundColor(.gray)
+                        Text("•")
+                            .font(.system(size: 14, weight: .bold))
+                            .foregroundColor(.gray.opacity(0.5))
+                        Text(item.sub_category_id?.title ?? "-")
+                            .font(.system(size: 14, weight: .medium))
+                            .foregroundColor(.primary())
+                    }
 
                     // العنوان مختصر
                     if let address = item.address?.streetName, !address.isEmpty {
@@ -83,13 +91,6 @@ struct OrderItemView: View {
                         }
 
                         Spacer()
-
-                        // السعر
-                        if let price = item.price {
-                            Text("\(Int(price)) ريال")
-                                .font(.system(size: 15, weight: .bold))
-                                .foregroundColor(.green)
-                        }
                     }
                 }
             }

@@ -26,15 +26,23 @@ struct User: Codable, Hashable, Identifiable {
     let image: String?
     let address: String?
     let orders: Int?
-//    let delivery_address: [AddressItem]?
     let points: Int?
     let dob: String?
+    
+    // الحقول الجديدة من JSON
+    let isAvailable: Bool?
+    let CompleteOrder: Int?
+    let ActiveOrder: Int?
+    let supervisor_id: String?
+    let supplier_id: String?
+    let special_id: String?
 
     enum CodingKeys: String, CodingKey {
         case createAt, isVerify, isBlock, wallet, streetName, floorNo, buildingNo, flatNo, rate, by
         case id = "_id"
         case full_name, email, password, phone_number, os, lat, lng, fcmToken
-        case verify_code, isEnableNotifications, token, image, address, orders, delivery_address, points, dob
+        case verify_code, isEnableNotifications, token, image, address, orders, points, dob
+        case isAvailable, CompleteOrder, ActiveOrder, supervisor_id, supplier_id, special_id
     }
 
     init(from decoder: Decoder) throws {
@@ -64,9 +72,15 @@ struct User: Codable, Hashable, Identifiable {
         image = try container.decodeIfPresent(String.self, forKey: .image)
         address = try container.decodeIfPresent(String.self, forKey: .address)
         orders = try container.decodeIfPresent(Int.self, forKey: .orders)
-//        delivery_address = try container.decodeIfPresent([AddressItem].self, forKey: .delivery_address)
         points = try container.decodeIfPresent(Int.self, forKey: .points)
         dob = try container.decodeIfPresent(String.self, forKey: .dob)
+
+        isAvailable = try container.decodeIfPresent(Bool.self, forKey: .isAvailable)
+        CompleteOrder = try container.decodeIfPresent(Int.self, forKey: .CompleteOrder)
+        ActiveOrder = try container.decodeIfPresent(Int.self, forKey: .ActiveOrder)
+        supervisor_id = try container.decodeIfPresent(String.self, forKey: .supervisor_id)
+        supplier_id = try container.decodeIfPresent(String.self, forKey: .supplier_id)
+        special_id = try container.decodeIfPresent(String.self, forKey: .special_id)
     }
 
     func encode(to encoder: Encoder) throws {
@@ -96,9 +110,15 @@ struct User: Codable, Hashable, Identifiable {
         try container.encodeIfPresent(image, forKey: .image)
         try container.encodeIfPresent(address, forKey: .address)
         try container.encodeIfPresent(orders, forKey: .orders)
-//        try container.encodeIfPresent(delivery_address, forKey: .delivery_address)
         try container.encodeIfPresent(points, forKey: .points)
         try container.encodeIfPresent(dob, forKey: .dob)
+
+        try container.encodeIfPresent(isAvailable, forKey: .isAvailable)
+        try container.encodeIfPresent(CompleteOrder, forKey: .CompleteOrder)
+        try container.encodeIfPresent(ActiveOrder, forKey: .ActiveOrder)
+        try container.encodeIfPresent(supervisor_id, forKey: .supervisor_id)
+        try container.encodeIfPresent(supplier_id, forKey: .supplier_id)
+        try container.encodeIfPresent(special_id, forKey: .special_id)
     }
     
     init(fromDictionary dictionary: [String: Any]) {
@@ -112,7 +132,9 @@ struct User: Codable, Hashable, Identifiable {
         flatNo = dictionary["flatNo"] as? String
         rate = dictionary["rate"] as? Double
         by = dictionary["by"] as? String
-        id = dictionary["id"] as? String
+
+        // بعض الأنظمة ترجع الـ id كـ "_id"
+        id = (dictionary["_id"] as? String) ?? (dictionary["id"] as? String)
         full_name = dictionary["full_name"] as? String
         email = dictionary["email"] as? String
         password = dictionary["password"] as? String
@@ -127,9 +149,16 @@ struct User: Codable, Hashable, Identifiable {
         image = dictionary["image"] as? String
         address = dictionary["address"] as? String
         orders = dictionary["orders"] as? Int
-//        delivery_address = dictionary["delivery_address"] as? [AddressItem]
         points = dictionary["points"] as? Int
         dob = dictionary["dob"] as? String
+
+        // الحقول الجديدة
+        isAvailable = dictionary["isAvailable"] as? Bool
+        CompleteOrder = dictionary["CompleteOrder"] as? Int
+        ActiveOrder = dictionary["ActiveOrder"] as? Int
+        supervisor_id = dictionary["supervisor_id"] as? String
+        supplier_id = dictionary["supplier_id"] as? String
+        special_id = dictionary["special_id"] as? String
     }
 }
 

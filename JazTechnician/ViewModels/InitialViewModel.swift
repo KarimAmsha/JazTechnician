@@ -209,32 +209,32 @@ class InitialViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    func fetchHomeItems() {
-        isLoading = true
-        errorMessage = nil
-        let endpoint = DataProvider.Endpoint.getHome
-        
-        DataProvider.shared.request(endpoint: endpoint, responseType: ArrayAPIResponse<HomeSection>.self)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .finished:
-                    break
-                case .failure(let error):
-                    self.handleAPIError(error)
-                }
-            }, receiveValue: { [weak self] (response: ArrayAPIResponse<HomeSection>) in
-                if response.status {
-                    if let items = response.items {
-                        self?.homeItems = items
-                    }
-                    self?.errorMessage = nil
-                } else {
-                    self?.handleAPIError(.customError(message: response.message))
-                }
-                self?.isLoading = false
-            })
-            .store(in: &cancellables)
-    }
+//    func fetchHomeItems() {
+//        isLoading = true
+//        errorMessage = nil
+//        let endpoint = DataProvider.Endpoint.getHome
+//        
+//        DataProvider.shared.request(endpoint: endpoint, responseType: ArrayAPIResponse<HomeSection>.self)
+//            .sink(receiveCompletion: { completion in
+//                switch completion {
+//                case .finished:
+//                    break
+//                case .failure(let error):
+//                    self.handleAPIError(error)
+//                }
+//            }, receiveValue: { [weak self] (response: ArrayAPIResponse<HomeSection>) in
+//                if response.status {
+//                    if let items = response.items {
+//                        self?.homeItems = items
+//                    }
+//                    self?.errorMessage = nil
+//                } else {
+//                    self?.handleAPIError(.customError(message: response.message))
+//                }
+//                self?.isLoading = false
+//            })
+//            .store(in: &cancellables)
+//    }
 
     
     func getMainCategories(q: String?) {

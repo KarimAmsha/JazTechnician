@@ -74,7 +74,7 @@ struct CustomTabBar: View {
 
                 Text(title)
                     .customFont(weight: .medium, size: 14)
-                    .foregroundColor(selectedTab == tab ? .secondary() : .gray)
+                    .foregroundColor(selectedTab == tab ? .blue068DA9() : .gray)
             }
         }
         .frame(maxWidth: .infinity)

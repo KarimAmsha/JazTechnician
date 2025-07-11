@@ -5,156 +5,220 @@ struct OrderDetailsView: View {
     @EnvironmentObject var appRouter: AppRouter
     @StateObject private var viewModel = OrderViewModel(errorHandling: ErrorHandling())
     let orderID: String
-
+    
     @State private var showCancelSheet = false
     @State private var showRateSheet = false
     @State private var cancelNote: String = ""
+    @State private var newExtraServices: [SubCategory] = []
+    @State private var showError = false
+    @State private var errorMessage: String?
 
     var body: some View {
-        VStack(spacing: 0) {
-            if let order = viewModel.orderBody {
-                ScrollView(showsIndicators: false) {
-                    VStack(spacing: 18) {
-
-                        // سير حالة الطلب (timeline)
-                        OrderStatusStepperView(status: OrderStatus(order.status ?? "new"))
-
-                        // بيانات الخدمة الرئيسية
-                        VStack(spacing: 6) {
-                            HStack(alignment: .center) {
-                                VStack(alignment: .leading, spacing: 5) {
-                                    Text(order.sub_category_id?.title ?? order.category_id?.title ?? order.title ?? "خدمة")
+        ZStack {
+            VStack(spacing: 0) {
+                if let order = viewModel.orderBody {
+                    ScrollView(showsIndicators: false) {
+                        VStack(spacing: 18) {
+                            
+                            // سير حالة الطلب (timeline)
+                            OrderStatusStepperView(status: OrderStatus(order.status ?? "new"))
+                            
+                            // بيانات الخدمة الرئيسية
+                            VStack(spacing: 6) {
+                                HStack(alignment: .center) {
+                                    VStack(alignment: .leading, spacing: 5) {
+                                        HStack(spacing: 4) {
+                                            Text(order.category_id?.title ?? "-")
+                                            Text("•")
+                                            Text(order.sub_category_id?.title ?? "-")
+                                        }
                                         .customFont(weight: .medium, size: 15)
                                         .foregroundColor(.black121212())
-                                    if let date = order.formattedCreateDate {
-                                        Text(date)
-                                            .customFont(weight: .light, size: 12)
-                                            .foregroundColor(.grayA1A1A1())
+                                        
+                                        if let date = order.formattedCreateDate {
+                                            Text(date)
+                                                .customFont(weight: .light, size: 12)
+                                                .foregroundColor(.grayA1A1A1())
+                                        }
+                                        if let orderNo = order.order_no {
+                                            Text("رقم الطلب: #\(orderNo)")
+                                                .customFont(weight: .regular, size: 12)
+                                                .foregroundColor(.grayA1A1A1())
+                                        }
                                     }
-                                    if let orderNo = order.order_no {
-                                        Text("رقم الطلب: #\(orderNo)")
-                                            .customFont(weight: .regular, size: 12)
-                                            .foregroundColor(.grayA1A1A1())
-                                    }
-                                }
-                                Spacer()
-                                Image(systemName: "wrench.and.screwdriver.fill")
-                                    .resizable()
-                                    .frame(width: 34, height: 34)
-                                    .foregroundColor(.primary())
-                                    .background(Color.backgroundFEF3DE())
-                                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                            }
-                            .padding(.vertical, 8)
-                        }
-                        .background(Color.white)
-                        .cornerRadius(14)
-
-                        // تفاصيل إضافية
-                        if let notes = order.notes, !notes.isEmpty {
-                            VStack(alignment: .leading, spacing: 8) {
-                                HStack(spacing: 5) {
-                                    Image(systemName: "doc.text")
-                                        .foregroundColor(.primary())
-                                    Text("تفاصيل إضافية للطلب")
-                                        .customFont(weight: .medium, size: 14)
-                                        .foregroundColor(.primaryDark())
                                     Spacer()
+                                    Image(systemName: "wrench.and.screwdriver.fill")
+                                        .resizable()
+                                        .frame(width: 34, height: 34)
+                                        .foregroundColor(.primary())
+                                        .background(Color.backgroundFEF3DE())
+                                        .clipShape(RoundedRectangle(cornerRadius: 10))
                                 }
-                                Text(notes)
-                                    .customFont(weight: .regular, size: 14)
-                                    .foregroundColor(.black121212())
-                                    .padding(.vertical, 4)
+                                .padding(.vertical, 8)
                             }
-                            .padding(12)
-                            .background(Color.backgroundFEF3DE())
+                            .background(Color.white)
+                            .cornerRadius(14)
+                            
+                            // تفاصيل إضافية
+                            if let notes = order.notes, !notes.isEmpty {
+                                VStack(alignment: .leading, spacing: 8) {
+                                    HStack(spacing: 5) {
+                                        Image(systemName: "doc.text")
+                                            .foregroundColor(.primary())
+                                        Text("تفاصيل إضافية للطلب")
+                                            .customFont(weight: .medium, size: 14)
+                                            .foregroundColor(.primaryDark())
+                                        Spacer()
+                                    }
+                                    Text(notes)
+                                        .customFont(weight: .regular, size: 14)
+                                        .foregroundColor(.black121212())
+                                        .padding(.vertical, 4)
+                                }
+                                .padding(12)
+                                .background(Color.backgroundFEF3DE())
+                                .cornerRadius(10)
+                            }
+                            
+                            // الموقع الجغرافي
+                            if let address = order.address?.streetName, let lat = order.lat, let lng = order.lng {
+                                OrderLocationSection(address: address, lat: lat, lng: lng)
+                            }
+                            
+                            // تفاصيل أخرى (أرقام/كود/الخ)
+                            VStack(alignment: .leading, spacing: 10) {
+                                HStack {
+                                    infoBox(icon: "clock", title: "وقت التنفيذ", value: order.formattedOrderDate ?? "--")
+                                    infoBox(icon: "number", title: "كود الطلب", value: order.order_no ?? "--")
+                                }
+                            }
+                            .padding(10)
+                            .background(Color.white)
                             .cornerRadius(10)
-                        }
-
-                        // الموقع الجغرافي
-                        if let address = order.address?.streetName, let lat = order.lat, let lng = order.lng {
-                            OrderLocationSection(address: address, lat: lat, lng: lng)
-                        }
-
-                        // تفاصيل أخرى (أرقام/كود/الخ)
-                        VStack(alignment: .leading, spacing: 10) {
-                            HStack {
-                                infoBox(icon: "clock", title: "وقت التنفيذ", value: order.formattedOrderDate ?? "--")
-                                infoBox(icon: "number", title: "كود الطلب", value: order.order_no ?? "--")
+                            
+                            // زر المحادثة مع مزود الخدمة
+                            // زر المحادثة مع العميل (بدل مزود الخدمة)
+                            let validOrderStatuses: [OrderStatus] = [.accepted, .way, .started, .finished]
+                            if let customer = order.user,
+                               let customerId = customer.id,
+                               customerId != UserSettings.shared.id, // حتى لا تظهر لنفسك
+                               validOrderStatuses.contains(OrderStatus(order.status ?? "new")) {
+                                CustomerCardWithChatButtonView(
+                                    customer: customer,
+                                    orderStatus: OrderStatus(order.status ?? ""),
+                                    onChat: {
+                                        let myId = UserSettings.shared.id ?? ""
+                                        let chatId = Utilities.makeChatId(currentUserId: myId, otherUserId: customerId)
+                                        appRouter.navigate(to: .chat(chatId: chatId, currentUserId: myId))
+                                    }
+                                )
                             }
-                        }
-                        .padding(10)
-                        .background(Color.white)
-                        .cornerRadius(10)
+                            
+                            // جدول الأسعار
+                            OrderPriceTableView(order: order)
+                            
+                            if (order.new_total ?? 0) > 0 || (order.new_tax ?? 0) > 0 {
+                                OrderNewTotalsTableView(order: order)
+                            }
+                            
+                            // ExtraServicesSection فقط
+                            let isEditable = order.orderStatus == .progress
+                            let showExtraSection = !(order.extra?.isEmpty ?? true) || isEditable
+                            if showExtraSection {
+                                // 1. قبل ExtraServicesSection
+                                let allCategories = viewModel.catItems?.category ?? []
+                                let currentCategoryId = order.category_id?.id
+                                let currentCategory = allCategories.first(where: { $0.id == currentCategoryId })
+                                let relatedSubCategories = currentCategory?.sub ?? []
 
-                        // زر المحادثة مع مزود الخدمة
-                        let validOrderStatuses: [OrderStatus] = [.accepted, .way, .started, .finished]
-                        if let provider = order.provider,
-                           let providerId = provider.id,
-                           providerId != UserSettings.shared.id,
-                           validOrderStatuses.contains(OrderStatus(order.status ?? "new")) {
-                            ProviderCardWithChatButtonView(
-                                provider: provider,
-                                orderStatus: OrderStatus(order.status ?? ""),
-                                onChat: {
-                                    let myId = UserSettings.shared.id ?? ""
-                                    let chatId = Utilities.makeChatId(currentUserId: myId, otherUserId: providerId)
-                                    appRouter.navigate(to: .chat(chatId: chatId, currentUserId: myId))
+                                ExtraServicesSection(
+                                    existingServices: order.extra ?? [],
+                                    newServices: $newExtraServices,
+                                    isEditable: isEditable,
+                                    availableExtras: relatedSubCategories
+                                )
+                            }
+                            
+                            switch order.orderStatus {
+                            case .accepted:
+                                // زر بدء الطلب مع تأكيد
+                                AcceptedActionsView(
+                                    viewModel: viewModel,
+                                    orderID: orderID,
+                                    showCancelSheet: $showCancelSheet,
+                                    showError: $showError,
+                                    errorMessage: $errorMessage
+                                )
+                            case .way:
+                                // زر بدء التنفيذ مع تأكيد
+                                WayActionsView(
+                                    viewModel: viewModel,
+                                    orderID: orderID,
+                                    showError: $showError,
+                                    errorMessage: $errorMessage
+                                )
+                            case .started:
+                                // زرين: تعديل وانهاء مع تأكيد
+                                StartedActionsView(
+                                    viewModel: viewModel,
+                                    orderID: orderID,
+                                    showError: $showError,
+                                    errorMessage: $errorMessage
+                                )
+                            case .updated, .prefinished:
+                                // يظهر شاشة تأكيد الكود (للكلاينت فقط غالبًا)
+                                ConfirmationCodeSection(
+                                    order: order,
+                                    viewModel: viewModel,
+                                    orderID: orderID,
+                                    errorMessage: $errorMessage,
+                                    showError: $showError
+                                )
+                            case .finished:
+                                // زر تقييم العميل فقط
+                                Button("تقييم العميل") {
+                                    showRateSheet = true
                                 }
-                            )
-                        }
+                                .buttonStyle(ActionButtonStyle(color: .primary()))
 
-                        // جدول الأسعار
-                        OrderPriceTableView(order: order)
+                            // حالة تعديل الطلب، إذا في خدمات جديدة أضفتها
+                            case .progress:
+                                ProgressActionsView(
+                                    viewModel: viewModel,
+                                    orderID: orderID,
+                                    newExtraServices: $newExtraServices,
+                                    showError: $showError,
+                                    errorMessage: $errorMessage
+                                )
 
-                        if (order.new_total ?? 0) > 0 || (order.new_tax ?? 0) > 0 {
-                            OrderNewTotalsTableView(order: order)
-                        }
-
-                        // جدول الخدمات المضافة (extra)
-                        if let extraServices = order.extra, !extraServices.isEmpty {
-                            ExtraServicesSection(extraServices: extraServices)
-                        }
-
-                        // زر إلغاء الطلب
-                        if order.orderStatus == .new {
-                            Button(action: { showCancelSheet = true }) {
-                                Text("إلغاء الطلب")
-                                    .customFont(weight: .medium, size: 15)
-                                    .foregroundColor(.dangerNormal())
-                                    .frame(maxWidth: .infinity)
-                                    .padding()
-                                    .background(Color.dangerLight())
-                                    .cornerRadius(14)
+                            default:
+                                EmptyView()
                             }
-                            .padding(.top, 5)
                         }
-
-                        // زر تقييم الخدمة
-                        if order.orderStatus == .finished {
-                            Button(action: { showRateSheet = true }) {
-                                Text("تقييم الخدمة")
-                                    .customFont(weight: .medium, size: 15)
-                                    .foregroundColor(.successNormal())
-                                    .frame(maxWidth: .infinity)
-                                    .padding()
-                                    .background(Color.successLight())
-                                    .cornerRadius(14)
-                            }
-                            .padding(.top, 5)
-                        }
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 18)
                     }
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 18)
+                } else if viewModel.isLoading {
+                    ProgressView("جاري التحميل ...")
+                        .customFont(weight: .medium, size: 15)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                } else {
+                    DefaultEmptyView(title: "لا يوجد بيانات")
                 }
-            } else if viewModel.isLoading {
-                ProgressView("جاري التحميل ...")
-                    .customFont(weight: .medium, size: 15)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-            } else {
-                DefaultEmptyView(title: "لا يوجد بيانات")
+            }
+            
+            if showError, let errorMessage = errorMessage {
+                Color.black.opacity(0.3)
+                    .edgesIgnoringSafeArea(.all)
+                CustomErrorAlert(message: errorMessage) {
+                    // onClose
+                    showError = false
+                    self.errorMessage = nil
+                }
+                .zIndex(99)
             }
         }
+        .animation(.spring(), value: showError)
         .background(Color.background().ignoresSafeArea())
         .navigationBarBackButtonHidden()
         .toolbar {
@@ -174,6 +238,10 @@ struct OrderDetailsView: View {
             viewModel.getOrderDetails(orderId: orderID) {
                 viewModel.startListeningOrderRealtime(orderId: orderID)
             }
+            
+            if (viewModel.catItems?.category ?? []).isEmpty {
+                viewModel.fetchCatItems(q: nil, lat: 18.2418308, lng: 42.4660169)
+            }
         }
         .onDisappear {
             viewModel.stopListeningOrderRealtime()
@@ -185,7 +253,7 @@ struct OrderDetailsView: View {
                     viewModel.updateOrderStatus(
                         orderId: orderID,
                         params: [
-                            "status": "canceled_by_user",
+                            "status": "canceled_by_driver",
                             "canceled_note": cancelNote
                         ]
                     ) {
@@ -226,7 +294,7 @@ struct OrderDetailsView: View {
             .presentationCornerRadius(22)
         }
     }
-
+    
     func infoBox(icon: String, title: String, value: String) -> some View {
         VStack(alignment: .leading, spacing: 4) {
             HStack(spacing: 4) {
@@ -243,7 +311,7 @@ struct OrderDetailsView: View {
         }
         .frame(maxWidth: .infinity)
     }
-
+    
     func canChat(status: String?) -> Bool {
         guard let status = status else { return false }
         // عدّل الحالات حسب المنظومة لديك
@@ -252,52 +320,113 @@ struct OrderDetailsView: View {
     }
 }
 
-// MARK: - سير حالة الطلب
+enum OrderStep: Int, CaseIterable {
+    case accepted = 0
+    case way
+    case started
+    case finished
+
+    var icon: String {
+        switch self {
+        case .accepted: return "handshake"
+        case .way: return "car"
+        case .started: return "hammer"
+        case .finished: return "checkmark.seal"
+        }
+    }
+    var label: String {
+        switch self {
+        case .accepted: return "تعيين الفني"
+        case .way: return "في الطريق"
+        case .started: return "قيد التنفيذ"
+        case .finished: return "تم التنفيذ بنجاح!"
+        }
+    }
+    var color: Color {
+        switch self {
+        case .accepted: return .primary()
+        case .way: return .blue0094FF()
+        case .started: return .orangeF7941D()
+        case .finished: return .successNormal()
+        }
+    }
+    var emoji: String {
+        switch self {
+        case .accepted: return "🤝"
+        case .way: return "🚗"
+        case .started: return "🛠️"
+        case .finished: return "✅"
+        }
+    }
+}
+
+func currentStep(for status: OrderStatus) -> Int {
+    switch status {
+    case .accepted: return 0
+    case .way: return 1
+    case .started: return 2
+    case .finished: return 3
+    // إذا عندك حالات إضافية (معدّل/مؤكد/الخ) اضفها هنا حسب ترتيب الفلو
+    default: return 0
+    }
+}
+
 struct OrderStatusStepperView: View {
     let status: OrderStatus
-    var steps: [(icon: String, label: String, isActive: Bool, color: Color, emoji: String?)] {
-        [
-            ("handshake", "تعيين الفني", status == .accepted, .primary(), "🤝"),
-            ("car", "في الطريق", status == .way || status == .started || status == .finished, .blue0094FF(), "🚗"),
-            ("hammer", "قيد التنفيذ", status == .started || status == .finished, .orangeF7941D(), "🛠️"),
-            ("checkmark.seal", "تم التنفيذ بنجاح!", status == .finished, .successNormal(), "✅")
-        ]
-    }
+
     var body: some View {
+        let current = currentStep(for: status)
+
         VStack(alignment: .leading, spacing: 0) {
             Text("حالة الطلب")
                 .customFont(weight: .medium, size: 14)
                 .foregroundColor(.primaryDark())
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.bottom, 2)
-            ForEach(steps.indices, id: \.self) { i in
-                let step = steps[i]
-                HStack(spacing: 10) {
-                    VStack {
-                        Circle()
-                            .fill(step.isActive ? step.color : Color.grayE6E6E6())
-                            .frame(width: 13, height: 13)
-                        if i < steps.count-1 {
-                            Rectangle()
-                                .fill(Color.grayEFEFEF())
-                                .frame(width: 2, height: 32)
+            HStack(alignment: .center, spacing: 10) {
+                // عمود النقاط والخط
+                VStack {
+                    ForEach(OrderStep.allCases.indices, id: \.self) { i in
+                        VStack(spacing: 0) {
+                            Circle()
+                                .fill(i <= current ? OrderStep.allCases[i].color : Color.grayE6E6E6())
+                                .frame(width: 13, height: 13)
+                            if i < OrderStep.allCases.count - 1 {
+                                Rectangle()
+                                    .fill(Color.grayEFEFEF())
+                                    .frame(width: 2, height: 32)
+                                    .padding(.vertical, 0)
+                            }
+                        }
+                        .frame(width: 13) // تثبيت العرض للمحاذاة
+                    }
+                }
+
+                // عمود الكلام والرمز
+                VStack(alignment: .leading, spacing: 32) {
+                    ForEach(OrderStep.allCases.indices, id: \.self) { i in
+                        let step = OrderStep.allCases[i]
+                        let isActive = i <= current
+                        HStack(spacing: 5) {
+                            if isActive {
+                                Text(step.emoji)
+                                    .font(.system(size: 18))
+                            } else {
+                                Image(systemName: step.icon)
+                                    .foregroundColor(.grayA1A1A1())
+                            }
+                            Text(step.label)
+                                .customFont(weight: isActive ? .semiBold : .regular, size: 14)
+                                .foregroundColor(isActive ? step.color : .grayA1A1A1())
                         }
                     }
-
-                    Image(systemName: step.icon)
-                        .foregroundColor(step.isActive ? step.color : .grayA1A1A1())
-
-                    if let emoji = step.emoji, step.isActive {
-                        Text(emoji)
-                            .font(.system(size: 17))
-                    }
-                    Text(step.label)
-                        .customFont(weight: step.isActive ? .semiBold : .regular, size: 14)
-                        .foregroundColor(step.isActive ? step.color : .grayA1A1A1())
-                    Spacer()
                 }
-                .padding(.vertical, 4)
+                .padding(.leading, 4)
             }
+            .padding(.vertical, 16)
+            .padding(.horizontal, 8)
+            .background(Color.backgroundFEF3DE())
+            .cornerRadius(14)
         }
         .padding(.vertical, 14)
         .padding(.horizontal, 8)
@@ -436,16 +565,16 @@ struct FullScreenMapView: View {
     }
 }
 
-struct ProviderCardWithChatButtonView: View {
-    let provider: User
+struct CustomerCardWithChatButtonView: View {
+    let customer: User
     let orderStatus: OrderStatus
     let onChat: () -> Void
 
     var body: some View {
         VStack(spacing: 10) {
-            // كارد بيانات المزود
+            // بيانات العميل
             HStack(spacing: 14) {
-                if let urlString = provider.image, let url = URL(string: urlString) {
+                if let urlString = customer.image, let url = URL(string: urlString) {
                     AsyncImage(url: url) { img in
                         img.resizable()
                     } placeholder: {
@@ -463,15 +592,15 @@ struct ProviderCardWithChatButtonView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 14))
                 }
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(provider.full_name ?? "مزود الخدمة")
+                    Text(customer.full_name ?? "العميل")
                         .customFont(weight: .medium, size: 15)
                         .foregroundColor(.primaryDark())
-                    if let phone = provider.phone_number {
+                    if let phone = customer.phone_number {
                         Text(phone)
                             .customFont(weight: .regular, size: 12)
                             .foregroundColor(.grayA1A1A1())
                     }
-                    if let rate = provider.rate {
+                    if let rate = customer.rate {
                         HStack(spacing: 3) {
                             Image(systemName: "star.fill")
                                 .foregroundColor(.yellowFFB020())
@@ -497,7 +626,7 @@ struct ProviderCardWithChatButtonView: View {
                 Button(action: onChat) {
                     HStack {
                         Image(systemName: "bubble.left.and.bubble.right.fill")
-                        Text("محادثة مع مزود الخدمة")
+                        Text("محادثة مع العميل")
                             .customFont(weight: .medium, size: 14)
                     }
                     .frame(maxWidth: .infinity)
@@ -595,28 +724,93 @@ struct OrderNewTotalsTableView: View {
 }
 
 struct ExtraServicesSection: View {
-    let extraServices: [SubCategory]
+    let existingServices: [SubCategory]        // من الـ API (عرض فقط)
+    @Binding var newServices: [SubCategory]    // التي يضيفها المزود (محلياً)
+    let isEditable: Bool                       // يظهر إضافة/حذف فقط لو true
+    let availableExtras: [SubCategory]         // كل الخدمات الفرعية الممكن إضافتها
+
+    @State private var pickedExtraId: String?
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Text("الخدمات المضافة")
+        VStack(alignment: .leading, spacing: 12) {
+            Text("الخدمات الإضافية")
                 .customFont(weight: .medium, size: 14)
                 .foregroundColor(.primaryDark())
                 .padding(.bottom, 4)
-            ForEach(extraServices) { service in
-                VStack(alignment: .leading, spacing: 6) {
+
+            // عرض الخدمات القديمة
+            if !existingServices.isEmpty {
+                ForEach(existingServices) { service in
                     HStack {
                         Text(service.title ?? "خدمة إضافية")
                             .customFont(weight: .medium, size: 13)
                             .foregroundColor(.black121212())
                         Spacer()
-                    }
-                    if let price = service.price {
-                        Text("سعر الخدمة: \(String(format: "%.2f", price)) ر.س")
+                        Text("\(String(format: "%.2f", service.price ?? 0)) ر.س")
                             .customFont(weight: .regular, size: 12)
                             .foregroundColor(.primary())
                     }
-                    Divider()
+                    .padding(.vertical, 4)
+                    .background(Color.white.opacity(0.75))
+                    .cornerRadius(8)
+                }
+                Divider()
+            }
+
+            // الخدمات الجديدة (قابلة للحذف)
+            if isEditable {
+                ForEach(newServices) { service in
+                    HStack {
+                        Text(service.title ?? "خدمة إضافية")
+                            .customFont(weight: .medium, size: 13)
+                            .foregroundColor(.blue)
+                        Spacer()
+                        Text("\(String(format: "%.2f", service.price ?? 0)) ر.س")
+                            .customFont(weight: .regular, size: 12)
+                            .foregroundColor(.blue)
+                        Button(action: {
+                            if let idx = newServices.firstIndex(where: { $0.id == service.id }) {
+                                newServices.remove(at: idx)
+                            }
+                        }) {
+                            Image(systemName: "xmark.circle.fill")
+                                .foregroundColor(.dangerNormal())
+                        }
+                    }
+                    .padding(.vertical, 4)
+                    .background(Color.blue.opacity(0.07))
+                    .cornerRadius(8)
+                }
+
+                // Picker للإضافة الفورية
+                let remainingExtras = availableExtras.filter { extra in
+                    !newServices.contains(where: { $0.id == extra.id }) &&
+                    !existingServices.contains(where: { $0.id == extra.id })
+                }
+
+                if !remainingExtras.isEmpty {
+                    Picker("اختر خدمة لإضافتها", selection: $pickedExtraId) {
+                        Text("اختر خدمة لإضافتها").tag(String?.none)
+                        ForEach(remainingExtras, id: \.id) { sub in
+                            Text(sub.title ?? "-").tag(String?.some(sub.id ?? ""))
+                        }
+                    }
+                    .pickerStyle(.menu)
+                    .customFont(weight: .medium, size: 13)
+                    .padding(.top, 6)
+                    .onChange(of: pickedExtraId) { newValue in
+                        guard let id = newValue,
+                              let extra = availableExtras.first(where: { $0.id == id })
+                        else { return }
+                        // أضف مباشرة عند الاختيار
+                        newServices.append(extra)
+                        pickedExtraId = nil
+                    }
+                } else {
+                    Text("تمت إضافة كل الخدمات الإضافية المتاحة.")
+                        .customFont(weight: .regular, size: 13)
+                        .foregroundColor(.gray)
+                        .padding(.top, 6)
                 }
             }
         }
@@ -624,15 +818,8 @@ struct ExtraServicesSection: View {
         .background(Color.backgroundFEF3DE())
         .cornerRadius(12)
         .padding(.top, 8)
+        .animation(.easeInOut, value: newServices)
     }
-}
-
-#Preview {
-    // مثال بيانات تجريبية
-    ExtraServicesSection(extraServices: [
-        SubCategory(id: "1", price: 25.0, title: "تنظيف مكيف", description: "تنظيف وتعقيم", image: nil),
-        SubCategory(id: "2", price: 40.0, title: "صيانة كهرباء", description: nil, image: nil)
-    ])
 }
 
 // MARK: - Preview
@@ -787,3 +974,402 @@ struct CancelOrderSheet: View {
         }
     }
 }
+
+struct ActionButtonStyle: ButtonStyle {
+    var color: Color
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(color.opacity(configuration.isPressed ? 0.7 : 1))
+            .foregroundColor(.white)
+            .cornerRadius(12)
+    }
+}
+
+struct ExtraServicesEditorView: View {
+    let order: OrderBody
+    @ObservedObject var viewModel: OrderViewModel
+    let orderID: String
+
+    @State private var newServiceTitle = ""
+    @State private var newServicePrice = ""
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text("إضافة خدمات إضافية")
+                .customFont(weight: .medium, size: 14)
+                .foregroundColor(.primaryDark())
+            HStack {
+                TextField("اسم الخدمة", text: $newServiceTitle)
+                TextField("السعر", text: $newServicePrice)
+                    .keyboardType(.decimalPad)
+                Button("إضافة") {
+                    // نفذ عملية إضافة الخدمة (API)
+                    // viewModel.addExtraService(...)
+                    // ثم:
+                    newServiceTitle = ""
+                    newServicePrice = ""
+                    viewModel.getOrderDetails(orderId: orderID) {}
+                }
+                .disabled(newServiceTitle.isEmpty || newServicePrice.isEmpty)
+            }
+        }
+        .padding()
+        .background(Color.grayF5F5F5())
+        .cornerRadius(10)
+    }
+}
+
+struct ConfirmationCodeSection: View {
+    let order: OrderBody
+    @ObservedObject var viewModel: OrderViewModel
+    let orderID: String
+
+    @State private var confirmationCode = ""
+    @Binding var errorMessage: String?
+    @Binding var showError: Bool
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text("أدخل كود التأكيد")
+                .customFont(weight: .medium, size: 14)
+            HStack {
+                TextField("الكود", text: $confirmationCode)
+                    .keyboardType(.numberPad)
+                Button("تأكيد الكود") {
+                    // تحقق من الكود (API)
+                    viewModel.confirmUpdateCode(orderId: orderID, code: confirmationCode, onSuccess: {
+                        viewModel.getOrderDetails(orderId: orderID) {}
+                    }, onError: { msg in
+                        errorMessage = msg
+                        showError = true
+                    })
+                }
+                .disabled(confirmationCode.isEmpty)
+            }
+        }
+        .padding()
+        .background(Color.grayF5F5F5())
+        .cornerRadius(10)
+    }
+}
+
+struct AcceptedActionsView: View {
+    @ObservedObject var viewModel: OrderViewModel
+    let orderID: String
+    @Binding var showCancelSheet: Bool
+    @Binding var showError: Bool
+    @Binding var errorMessage: String?
+    @State private var showConfirmAlert = false
+
+    var body: some View {
+        VStack(spacing: 8) {
+            Button("بدء الطلب") {
+                showConfirmAlert = true
+            }
+            .buttonStyle(ActionButtonStyle(color: .successNormal()))
+            .confirmationDialog(
+                "هل أنت متأكد من بدء الطلب؟",
+                isPresented: $showConfirmAlert,
+                titleVisibility: .visible
+            ) {
+                Button("تأكيد", role: .destructive) {
+                    viewModel.updateOrderStatus(
+                        orderId: orderID,
+                        status: "way",
+                        onSuccess: { viewModel.getOrderDetails(orderId: orderID) {} },
+                        onError: { msg in
+                            errorMessage = msg
+                            showError = true
+                        }
+                    )
+                }
+                Button("إلغاء", role: .cancel) { }
+            }
+        }
+    }
+}
+
+struct WayActionsView: View {
+    @ObservedObject var viewModel: OrderViewModel
+    let orderID: String
+    @Binding var showError: Bool
+    @Binding var errorMessage: String?
+    @State private var showConfirmAlert = false
+
+    var body: some View {
+        Button("بدء التنفيذ") {
+            showConfirmAlert = true
+        }
+        .buttonStyle(ActionButtonStyle(color: .blue))
+        .confirmationDialog(
+            "هل أنت متأكد من بدء التنفيذ؟",
+            isPresented: $showConfirmAlert,
+            titleVisibility: .visible
+        ) {
+            Button("تأكيد", role: .destructive) {
+                viewModel.updateOrderStatus(
+                    orderId: orderID,
+                    status: "started",
+                    onSuccess: { viewModel.getOrderDetails(orderId: orderID) {} },
+                    onError: { msg in
+                        errorMessage = msg
+                        showError = true
+                    }
+                )
+            }
+            Button("إلغاء", role: .cancel) { }
+        }
+    }
+}
+
+struct StartedActionsView: View {
+    @ObservedObject var viewModel: OrderViewModel
+    let orderID: String
+    var showError: Binding<Bool>
+    var errorMessage: Binding<String?>
+    @State private var showUpdateAlert = false
+    @State private var showFinishAlert = false
+
+    var body: some View {
+        VStack(spacing: 8) {
+            Button("تعديل الطلب") {
+                showUpdateAlert = true
+            }
+            .buttonStyle(ActionButtonStyle(color: .purple))
+            .confirmationDialog(
+                "هل تريد بالتأكيد تعديل الطلب؟",
+                isPresented: $showUpdateAlert,
+                titleVisibility: .visible
+            ) {
+                Button("تأكيد", role: .destructive) {
+                    viewModel.updateOrderStatus(
+                        orderId: orderID,
+                        status: "updated",
+                        onSuccess: { viewModel.getOrderDetails(orderId: orderID) {} },
+                        onError: { msg in
+                            errorMessage.wrappedValue = msg
+                            showError.wrappedValue = true
+                        }
+                    )
+                }
+                Button("إلغاء", role: .cancel) { }
+            }
+
+            Button("إنهاء الطلب") {
+                showFinishAlert = true
+            }
+            .buttonStyle(ActionButtonStyle(color: .successNormal()))
+            .confirmationDialog(
+                "هل أنت متأكد من إنهاء الطلب؟",
+                isPresented: $showFinishAlert,
+                titleVisibility: .visible
+            ) {
+                Button("تأكيد", role: .destructive) {
+                    viewModel.updateOrderStatus(
+                        orderId: orderID,
+                        status: "finished",
+                        onSuccess: { viewModel.getOrderDetails(orderId: orderID) {} },
+                        onError: { msg in
+                            errorMessage.wrappedValue = msg
+                            showError.wrappedValue = true
+                        }
+                    )
+                }
+                Button("إلغاء", role: .cancel) { }
+            }
+        }
+    }
+}
+
+struct ProgressActionsView: View {
+    @ObservedObject var viewModel: OrderViewModel
+    let orderID: String
+    @Binding var newExtraServices: [SubCategory]
+    @Binding var showError: Bool
+    @Binding var errorMessage: String?
+    @State private var showUpdateAlert = false
+    @State private var showFinishAlert = false
+
+    var body: some View {
+        VStack(spacing: 8) {
+            // زر تعديل الطلب (يظهر إذا فيه خدمات جديدة)
+            if !newExtraServices.isEmpty {
+                Button("تعديل الطلب") {
+                    showUpdateAlert = true
+                }
+                .buttonStyle(ActionButtonStyle(color: .purple))
+                .confirmationDialog(
+                    "هل تريد بالتأكيد تعديل الطلب؟",
+                    isPresented: $showUpdateAlert,
+                    titleVisibility: .visible
+                ) {
+                    Button("تأكيد", role: .destructive) {
+                        let addedIDs = newExtraServices.compactMap { $0.id }
+                        viewModel.updateOrderStatus(
+                            orderId: orderID,
+                            status: "updated",
+                            extraServiceIDs: addedIDs,
+                            onSuccess: {
+                                viewModel.getOrderDetails(orderId: orderID) {}
+                                newExtraServices = []
+                            },
+                            onError: { msg in
+                                errorMessage = msg
+                                showError = true
+                            }
+                        )
+                    }
+                    Button("إلغاء", role: .cancel) { }
+                }
+            }
+            
+            // زر إنهاء الطلب (دائمًا يظهر في progress)
+            Button("إنهاء الطلب") {
+                showFinishAlert = true
+            }
+            .buttonStyle(ActionButtonStyle(color: .successNormal()))
+            .confirmationDialog(
+                "هل أنت متأكد من إنهاء الطلب؟",
+                isPresented: $showFinishAlert,
+                titleVisibility: .visible
+            ) {
+                Button("تأكيد", role: .destructive) {
+                    viewModel.updateOrderStatus(
+                        orderId: orderID,
+                        status: "prefinished", // أو "prefinished" حسب الباك اند عندك
+                        onSuccess: {
+                            viewModel.getOrderDetails(orderId: orderID) {}
+                            // **لازم الباك اند يحول الطلب لـ .updated بعدها ليظهر الكود**
+                        },
+                        onError: { msg in
+                            errorMessage = msg
+                            showError = true
+                        }
+                    )
+                }
+                Button("إلغاء", role: .cancel) { }
+            }
+        }
+    }
+}
+
+struct CustomErrorAlert: View {
+    let message: String
+    var onClose: (() -> Void)? = nil
+
+    var body: some View {
+        VStack(spacing: 18) {
+            Image(systemName: "xmark.octagon.fill")
+                .resizable()
+                .frame(width: 40, height: 40)
+                .foregroundColor(.red)
+                .shadow(radius: 2)
+
+            Text("حدث خطأ")
+                .font(.system(size: 19, weight: .bold))
+                .foregroundColor(.red)
+
+            Text(message)
+                .font(.system(size: 15))
+                .foregroundColor(.black)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 8)
+
+            Button(action: { onClose?() }) {
+                Text("إغلاق")
+                    .font(.system(size: 15, weight: .medium))
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 30)
+                    .padding(.vertical, 10)
+                    .background(Color.red)
+                    .cornerRadius(8)
+                    .shadow(radius: 1)
+            }
+        }
+        .padding(30)
+        .background(.white)
+        .cornerRadius(18)
+        .shadow(color: .black.opacity(0.10), radius: 22, x: 0, y: 6)
+        .frame(maxWidth: 320)
+        .transition(.scale.combined(with: .opacity))
+    }
+}
+
+struct ChooseServiceView: View {
+    @ObservedObject var viewModel: OrderViewModel
+
+    @State private var pickedCategoryId: String? = nil
+    @State private var pickedSubCategoryId: String? = nil
+
+    var categories: [Category] {
+        viewModel.catItems?.category ?? []
+    }
+
+    var pickedCategory: Category? {
+        guard let id = pickedCategoryId else { return nil }
+        return categories.first(where: { $0.id == id })
+    }
+
+    var subCategories: [SubCategory] {
+        pickedCategory?.sub ?? []
+    }
+
+    var pickedSubCategory: SubCategory? {
+        guard let id = pickedSubCategoryId else { return nil }
+        return subCategories.first(where: { $0.id == id })
+    }
+
+    var body: some View {
+        VStack(spacing: 30) {
+            // التصنيف الرئيسي
+            VStack(alignment: .leading) {
+                Text("اختر التصنيف الرئيسي")
+                    .customFont(weight: .semiBold, size: 15)
+                    .foregroundColor(.primaryDark())
+                Picker("تصنيف", selection: $pickedCategoryId) {
+                    Text("اختر...").tag(String?.none)
+                        .customFont(weight: .regular, size: 13)
+                    ForEach(categories, id: \.id) { cat in
+                        Text(cat.title ?? "-").tag(String?.some(cat.id))
+                            .customFont(weight: .regular, size: 14)
+                    }
+                }
+                .pickerStyle(.menu)
+                .onChange(of: pickedCategoryId) { _ in
+                    pickedSubCategoryId = nil // صفّر الفرعي عند تغيير الرئيسي
+                }
+            }
+            .padding(.horizontal)
+
+            // الخدمة الفرعية
+            VStack(alignment: .leading) {
+                Text("اختر الخدمة الفرعية")
+                    .customFont(weight: .semiBold, size: 15)
+                    .foregroundColor(.primaryDark())
+                Picker("خدمة", selection: $pickedSubCategoryId) {
+                    Text("اختر...").tag(String?.none)
+                        .customFont(weight: .regular, size: 13)
+                    ForEach(subCategories, id: \.id) { sub in
+                        Text(sub.title ?? "-").tag(String?.some(sub.id ?? ""))
+                            .customFont(weight: .regular, size: 14)
+                    }
+                }
+                .pickerStyle(.menu)
+            }
+            .padding(.horizontal)
+
+            // نتيجة الاختيار
+            if let cat = pickedCategory, let sub = pickedSubCategory {
+                Text("تم اختيار: \(cat.title ?? "-") - \(sub.title ?? "-")")
+                    .customFont(weight: .bold, size: 15)
+                    .foregroundColor(.blue)
+                    .padding(.top, 30)
+            }
+
+            Spacer()
+        }
+    }
+}
+

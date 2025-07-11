@@ -27,6 +27,8 @@ struct MyOrdersView: View {
                         OrderStatusButton(title: LocalizedStringKey.news, status: .new, selectedStatus: $orderType)
                         OrderStatusButton(title: LocalizedStringKey.started, status: .started, selectedStatus: $orderType)
                         OrderStatusButton(title: LocalizedStringKey.way, status: .way, selectedStatus: $orderType)
+                        OrderStatusButton(title: LocalizedStringKey.progress, status: .progress, selectedStatus: $orderType)
+                        OrderStatusButton(title: LocalizedStringKey.updated, status: .updated, selectedStatus: $orderType)
                         OrderStatusButton(title: LocalizedStringKey.unconfirmed, status: .prefinished, selectedStatus: $orderType)
                         OrderStatusButton(title: LocalizedStringKey.finished, status: .finished, selectedStatus: $orderType)
                         OrderStatusButton(title: LocalizedStringKey.canceled, status: .canceled, selectedStatus: $orderType)

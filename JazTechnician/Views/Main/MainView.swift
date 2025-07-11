@@ -45,8 +45,7 @@ struct MainView: View {
                 case .editProfile:
                     EditProfileView()
                 case .changePassword:
-                    EmptyView()
-//                    ChangePasswordView()
+                    ChangePasswordView()
                 case .changePhoneNumber:
                     EmptyView()
 //                    ChangePhoneNumberView()

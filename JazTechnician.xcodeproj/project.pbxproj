@@ -232,6 +232,7 @@
 		1EFB9B372C1C624B00C15CE4 /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFB9B362C1C624B00C15CE4 /* EventListView.swift */; };
 		48969404FF01A7B598F050C7 /* Pods_JazTechnician.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E48630E3731A15BF5221973 /* Pods_JazTechnician.framework */; };
 		521C96B12E1FE22200F261B2 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521C96B02E1FE22000F261B2 /* Company.swift */; };
+		521FBD5D2E2144FE004D6542 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521FBD5C2E2144FD004D6542 /* ChangePasswordView.swift */; };
 		52294D392DC54FA900C1D456 /* FreelanceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEC2BCF2BD83E6000975953 /* FreelanceApp.swift */; };
 		5235B18B2DCC93BC009F75FA /* ClientProjectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5235B18A2DCC93BB009F75FA /* ClientProjectsView.swift */; };
 		5235B18F2DCC98BB009F75FA /* SpeedRequestSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5235B18E2DCC98BA009F75FA /* SpeedRequestSheet.swift */; };
@@ -489,6 +490,7 @@
 		1EFB9B342C1C4CFE00C15CE4 /* VIPGiftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPGiftView.swift; sourceTree = "<group>"; };
 		1EFB9B362C1C624B00C15CE4 /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
 		521C96B02E1FE22000F261B2 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
+		521FBD5C2E2144FD004D6542 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
 		5235B18A2DCC93BB009F75FA /* ClientProjectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientProjectsView.swift; sourceTree = "<group>"; };
 		5235B18E2DCC98BA009F75FA /* SpeedRequestSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedRequestSheet.swift; sourceTree = "<group>"; };
 		5235B1902DCC98D6009F75FA /* EditRequestSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRequestSheet.swift; sourceTree = "<group>"; };
@@ -1009,6 +1011,7 @@
 		1EDEF6692BE167E400863C10 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				521FBD5C2E2144FD004D6542 /* ChangePasswordView.swift */,
 				5235B1A02DCCD761009F75FA /* AccountSettingsView.swift */,
 				5235B19E2DCCD5E8009F75FA /* NotificationsSettingsView.swift */,
 				5235B19C2DCCD40E009F75FA /* EarningsView.swift */,
@@ -1341,6 +1344,7 @@
 				52AEC8E12DCBF47300B4FC84 /* RejectionReasonView.swift in Sources */,
 				5235B1972DCC99AA009F75FA /* RejectionReasonSheet.swift in Sources */,
 				5235B18F2DCC98BB009F75FA /* SpeedRequestSheet.swift in Sources */,
+				521FBD5D2E2144FE004D6542 /* ChangePasswordView.swift in Sources */,
 				1E41E1FC2BE942490061AC47 /* FirestoreService.swift in Sources */,
 				1EFB9B2C2C1BA94300C15CE4 /* UserProductsView.swift in Sources */,
 				1E5F31912BE2414B00E5A914 /* RetailPaymentView.swift in Sources */,
