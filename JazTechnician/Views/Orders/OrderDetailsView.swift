@@ -278,8 +278,8 @@ struct OrderDetailsView: View {
                 onRate: { rating, comment in
                     // كود التقييم هنا
                     let params: [String: Any] = [
-                        "rate_from_user": "\(rating)",
-                        "note_from_user": comment
+                        "rate_from_driver": "\(rating)",
+                        "note_from_driver": comment
                     ]
                     viewModel.addReview(orderID: orderID, params: params) { _ in
                         viewModel.getOrderDetails(orderId: orderID) {}
