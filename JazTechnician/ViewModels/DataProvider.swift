@@ -31,7 +31,7 @@ class DataProvider {
         case updateOfferStatus(orderId: String, params: [String: Any], token: String)
         case updateOrderStatus(orderId: String, params: [String: Any], token: String)
         case map(params: [String: Any], token: String)
-        case getOrders(status: String?, page: Int?, limit: Int?, token: String)
+        case getOrders(params: [String: Any], page: Int?, limit: Int?, token: String)
         case getOrderDetails(orderId: String, token: String)
         case addReview(orderID: String, params: [String: Any], token: String)
         case getNotifications(page: Int?, limit: Int?, token: String)
@@ -128,8 +128,8 @@ class DataProvider {
                 return .updateOfferStatus(orderId: orderId, params: params, token: token)
             case .updateOrderStatus(let orderId, let params, let token):
                 return .updateOrderStatus(orderId: orderId, params: params, token: token)
-            case .getOrders(let status, let page, let limit, let token):
-                return .getOrders(status: status, page: page, limit: limit, token: token)
+            case .getOrders(let params, let page, let limit, let token):
+                return .getOrders(params: params, page: page, limit: limit, token: token)
             case .getOrderDetails(let orderId, let token):
                 return .getOrderDetails(orderId: orderId, token: token)
             case .addReview(let orderID, let params, let token):

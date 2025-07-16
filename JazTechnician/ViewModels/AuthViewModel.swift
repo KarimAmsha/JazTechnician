@@ -118,13 +118,13 @@ class AuthViewModel: ObservableObject {
                 if response.status {
                     self?.user = response.items
                     self?.errorMessage = nil
-                    let profileCompleted = !(self?.user?.full_name?.isEmpty ?? false)
-                    if profileCompleted {
+//                    let profileCompleted = !(self?.user?.full_name?.isEmpty ?? false)
+//                    if profileCompleted {
                         self?.handleVerificationStatus(isVerified: response.items?.isVerify ?? false)
-                    } else {
-                        self?.userSettings.token = self?.user?.token ?? ""
-                        onsuccess(profileCompleted, self?.user?.token ?? "")
-                    }
+//                    } else {
+//                        self?.userSettings.token = self?.user?.token ?? ""
+//                        onsuccess(profileCompleted, self?.user?.token ?? "")
+//                    }
                 } else {
                     // Use the centralized error handling component
                     self?.handleAPIError(.customError(message: response.message))
@@ -280,14 +280,14 @@ extension AuthViewModel {
     }
     
     func handleVerificationStatus(isVerified: Bool) {
-        if isVerified {
+//        if isVerified {
             // User is verified
             if let user = self.user {
                 UserSettings.shared.login(user: user, id: user.id ?? "", token: user.token ?? "")
             }
-        } else {
-            // User is not verified
-            errorMessage = nil
-        }
+//        } else {
+//            // User is not verified
+//            errorMessage = nil
+//        }
     }
 }

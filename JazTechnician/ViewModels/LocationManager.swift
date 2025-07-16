@@ -11,6 +11,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var errorMessage: String?
 
     private var completion: ((CLLocationCoordinate2D?, String?) -> Void)?
+    private var locationCompletion: ((CLLocationCoordinate2D?) -> Void)?
 
     // Singleton (لو تريد استخدامه من أي مكان)
     static let shared = LocationManager()
@@ -25,6 +26,11 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     func requestLocation() {
         isLoading = true
         errorMessage = nil
+        manager.requestLocation()
+    }
+    
+    func getCurrentLocation(completion: @escaping (CLLocationCoordinate2D?) -> Void) {
+        locationCompletion = completion
         manager.requestLocation()
     }
     

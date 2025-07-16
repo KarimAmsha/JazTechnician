@@ -46,20 +46,19 @@ struct OrderDetails: Codable, Identifiable {
 }
 
 struct OrderBody: Codable, Identifiable {
-    var id: String? { _id ?? id_ }
-    let _id: String?         // موجود بالجيسون كـ "_id"
-    let id_: String?         // دعم لأي حالة id أخرى (لن يؤثر إذا كان دائمًا nil)
-    
+    var id: String? { _id }
+    let _id: String?
+
     let new_total: Double?
     let new_tax: Double?
-    let extra: [SubCategory]?           // أو [SubCategory]? حسب الحاجة
+    let extra: [SubCategory]?           // مصفوفة فاضية أو عناصر SubCategory حسب الداتا
     let update_code: String?
     let provider_total: Double?
     let admin_total: Double?
     let lat: Double?
     let lng: Double?
     let price: Double?
-    let address: OrderAddress?    // إذا الجيسون يعيد object مش string (حسب الداتا)
+    let address: OrderAddress?
     let order_no: String?
     let tax: Double?
     let total: Double?
@@ -78,36 +77,11 @@ struct OrderBody: Codable, Identifiable {
     let notes: String?
     let canceled_note: String?
     let employee: Employee?
-    let provider: User?
-    let supervisor: Supervisor?
+    let provider: Provider?
+    let supervisor: String?     // هو عبارة عن ID string
     let place: String?
     let loc: LocationPoint?
-    
-    // --- من عندك إذا عندك حاجات custom:
-    let payment_id: String?
-    let title: String?
-    let streetName: String?
-    let buildingNo: String?
-    let floorNo: String?
-    let flatNo: String?
-    let rate_from_user: String?
-    let note_from_user: String?
-    let coupon: String?
-    // دعم الموديلات إذا احتجت:
-    let subCategory: Category?
-    let category: Category?
-    
-    // التوافق مع أسماء مختلفة للحقل "id"
-    private enum CodingKeys: String, CodingKey {
-        case _id
-        case id_ = "id"
-        case new_total, new_tax, extra, update_code, provider_total, admin_total, lat, lng, price, address,
-             order_no, tax, total, totalDiscount, netTotal, status, createAt, period, dt_date, dt_time, sub_category_id,
-             category_id, couponCode, paymentType, user, notes, canceled_note, employee, provider, supervisor, place, loc,
-             payment_id, title, streetName, buildingNo, floorNo, flatNo, rate_from_user, note_from_user, coupon,
-             subCategory, category
-    }
-    
+
     var orderStatus: OrderStatus? {
         return OrderStatus(rawValue: status ?? "")
     }

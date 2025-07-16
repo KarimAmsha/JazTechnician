@@ -35,7 +35,7 @@ struct OrderItemView: View {
                         Spacer()
 
                         // حالة الطلب بشكل كبسولة
-                        if let statusText = item.orderStatus?.value {
+                        if let statusText = item.orderStatus?.localized {
                             Text(statusText)
                                 .font(.system(size: 13, weight: .semibold))
                                 .foregroundColor(.orange)

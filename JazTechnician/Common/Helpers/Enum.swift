@@ -149,78 +149,170 @@ enum MessageType: String, Codable, CaseIterable {
     case newMessage = "newMessage"
 }
 
-enum OrderStatus: String, Codable, CaseIterable {
-    case new = "new"
-    case accepted = "accepted"
-    case started = "started"
-    case way = "way"
-    case progress = "progress"
-    case updated = "updated"
-    case prefinished = "prefinished"
-    case finished = "finished"
-    case rated = "rated"
-    case canceled = "canceled_by_user"
+//enum OrderStatus: String, Codable, CaseIterable {
+//    case accepted = "accepted"
+//    case started = "started"
+//    case way = "way"
+//    case progress = "progress"
+//    case updated = "updated"
+//    case prefinished = "prefinished"
+//    case finished = "finished"
+//    case rated = "rated"
+//    case canceled = "canceled_by_user" // جميع حالات الإلغاء
+//
+//    init(_ type: String) {
+//        switch type {
+//        case "accepted": self = .accepted
+//        case "started": self = .started
+//        case "way": self = .way
+//        case "progress": self = .progress
+//        case "updated": self = .updated
+//        case "prefinished": self = .prefinished
+//        case "finished": self = .finished
+//        case "rated": self = .rated
+//        case let status where status.contains("canceled"): self = .canceled
+//        default: self = .accepted
+//        }
+//    }
+//
+//    var value: String {
+//        switch self {
+//        case .accepted:      return LocalizedStringKey.new
+//        case .started:       return LocalizedStringKey.started
+//        case .way:           return LocalizedStringKey.way
+//        case .progress:      return LocalizedStringKey.progress
+//        case .updated:       return LocalizedStringKey.updated
+//        case .prefinished:   return LocalizedStringKey.unconfirmed
+//        case .finished:      return LocalizedStringKey.finished
+//        case .rated:         return LocalizedStringKey.rated
+//        case .canceled:      return LocalizedStringKey.canceled
+//        }
+//    }
+//
+//    func iconName() -> String {
+//        switch self {
+//        case .accepted:      return "ic_peace"
+//        case .started:       return "ic_car"
+//        case .way:           return "ic_car"
+//        case .progress:      return "ic_g_export"
+//        case .updated:       return "ic_g_export"
+//        case .prefinished:   return "ic_car"
+//        case .finished:      return "ic_check"
+//        case .rated:         return "ic_star"
+//        case .canceled:      return "ic_close"
+//        }
+//    }
+//
+//    func stepText() -> String {
+//        switch self {
+//        case .accepted:      return "تعيين فني"
+//        case .started:       return "بدء التنفيذ"
+//        case .way:           return "في الطريق"
+//        case .progress:      return "قيد التنفيذ / تعديل"
+//        case .updated:       return "بانتظار تأكيد التعديل"
+//        case .prefinished:   return "بانتظار تأكيد العميل"
+//        case .finished:      return "تم التوصيل بنجاح"
+//        case .rated:         return "تم التقييم"
+//        case .canceled:      return "تم الإلغاء"
+//        }
+//    }
+//}
 
-    init(_ type: String) {
-        switch type {
-        case "new" : self = .new
-        case "accepted" : self = .accepted
-        case "started" : self = .started
-        case "way" : self = .way
-        case "progress" : self = .progress
+enum OrderStatus: String, Codable {
+    case accepted, way, started, progress, updated, prefinished, finished, canceled, rated
+    case unknown
+    
+    init(rawValue: String) {
+        switch rawValue.lowercased() {
+        case "accepted": self = .accepted
+        case "way": self = .way
+        case "started": self = .started
+        case "progress": self = .progress
         case "updated": self = .updated
-        case "prefinished" : self = .prefinished
-        case "finished" : self = .finished
-        case "rated" : self = .finished
-        case let status where status.contains("canceled"): self = .canceled
-        default:
-            self = .accepted
-        }
-    }
-
-    var value: String {
-        switch self {
-        case .new: return LocalizedStringKey.new
-        case .accepted: return LocalizedStringKey.new
-        case .started: return LocalizedStringKey.started
-        case .way: return LocalizedStringKey.way
-        case .progress: return LocalizedStringKey.progress
-        case .updated: return LocalizedStringKey.updated
-        case .prefinished: return LocalizedStringKey.unconfirmed
-        case .finished: return LocalizedStringKey.finished
-        case .rated: return LocalizedStringKey.finished
-        case .canceled: return LocalizedStringKey.canceled
+        case "prefinished": self = .prefinished
+        case "finished": self = .finished
+        case "canceled": self = .canceled
+        case "rated": self = .rated
+        default: self = .unknown
         }
     }
     
-    func iconName() -> String {
+    var localized: String {
         switch self {
-        case .new: return "ic_peace"
-        case .accepted: return "ic_peace"
-        case .started: return "ic_car"
-        case .way: return "ic_car"
-        case .progress: return "ic_g_export"
-        case .finished: return "ic_car"
-        case .prefinished: return "ic_car"
-        case .rated: return "ic_car"
-        case .updated: return ""
-        case .canceled: return ""
+        case .accepted: return "تم قبول الطلب"
+        case .way: return "في الطريق"
+        case .started: return "بدأ التنفيذ"
+        case .progress: return "قيد التنفيذ"
+        case .updated: return "تم التحديث"
+        case .prefinished: return "بانتظار تأكيد العميل"
+        case .finished: return "تم الانتهاء"
+        case .canceled: return "ملغي"
+        case .rated: return "تم التقييم"
+        case .unknown:
+            return ""
         }
     }
+}
 
-    func stepText() -> String {
+enum OrderStep: Int, CaseIterable {
+    case accepted = 0
+    case way
+    case started
+    case progress
+    case prefinished
+    case finished
+
+    var icon: String {
         switch self {
-        case .new: return "تعيين فني"
-        case .accepted: return "تعيين فني"
-        case .started: return "في الطريق"
-        case .way: return "في الطريق"
-        case .progress: return "قيد التسليم"
-        case .finished: return "تم التوصيل بنجاح!"
-        case .prefinished: return "تم التوصيل بنجاح!"
-        case .rated: return "تم التوصيل بنجاح!"
-        case .updated: return "تم التعديل"
-        case .canceled: return "تم الالغاء"
+        case .accepted: return "handshake"
+        case .way: return "car"
+        case .started: return "hammer"
+        case .progress: return "square.and.pencil"
+        case .prefinished: return "keypad"
+        case .finished: return "checkmark.seal"
         }
+    }
+    var label: String {
+        switch self {
+        case .accepted: return "تعيين الفني"
+        case .way: return "في الطريق"
+        case .started: return "قيد التنفيذ"
+        case .progress: return "تعديل الطلب"
+        case .prefinished: return "كود التأكيد"
+        case .finished: return "تم التنفيذ"
+        }
+    }
+    var color: Color {
+        switch self {
+        case .accepted: return .primary()
+        case .way: return .blue0094FF()
+        case .started: return .orangeF7941D()
+        case .progress: return .purple
+        case .prefinished: return .gray737373()
+        case .finished: return .successNormal()
+        }
+    }
+    var emoji: String {
+        switch self {
+        case .accepted: return "🤝"
+        case .way: return "🚗"
+        case .started: return "🛠️"
+        case .progress: return "📝"
+        case .prefinished: return "🔢"
+        case .finished: return "✅"
+        }
+    }
+}
+
+func currentStep(for status: OrderStatus) -> Int {
+    switch status {
+    case .accepted: return 0
+    case .way: return 1
+    case .started: return 2
+    case .progress: return 3
+    case .prefinished, .updated: return 4
+    case .finished, .rated: return 5
+    case .canceled, .unknown: return 0
     }
 }
 
@@ -245,13 +337,13 @@ enum ConstantType: String, Codable, CaseIterable {
 extension OrderStatus {
     var colors: (foreground: Color, background: Color) {
         switch self {
-        case .new, .accepted, .started:
+        case .accepted, .started:
             return (.blue068DA9(), .blueE6F3F6())
         case .progress, .updated, .way:
             return (.blue3A70E2(), .blueEBF0FC())
         case .prefinished, .finished, .rated:
             return (.green0C9D61(), .greenE6F5EF())
-        case .canceled:
+        case .canceled, .unknown:
             return (.redE50000(), .orangeFCE5E5())
         }
     }

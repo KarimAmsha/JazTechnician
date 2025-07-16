@@ -9,21 +9,11 @@ import Foundation
 
 // MARK: - OrderResponse
 struct OrderResponse: Codable {
-    let items: [OrderModel]?
-    let statusCode: Int?
+    let status: Bool?
+    let code: Int?
     let message: String?
-    let messageAr: String?
-    let messageEn: String?
+    let items: [OrderModel]?
     let pagination: Pagination?
-    
-    enum CodingKeys: String, CodingKey {
-        case items
-        case statusCode = "status_code"
-        case message
-        case messageAr = "messageAr"
-        case messageEn = "messageEn"
-        case pagination = "pagenation"
-    }
 }
 
 // MARK: - OrderItem
@@ -113,7 +103,6 @@ struct OrderModel: Codable, Identifiable {
     let period: Int?
     let dt_date: String?
     let dt_time: String?
-    let couponCode: String?
     let paymentType: String?
     let user: User?
     let notes: String?
@@ -125,7 +114,7 @@ struct OrderModel: Codable, Identifiable {
     let sub_category_id: SubCategory?
     let category_id: Category?
     let extra: [SubCategory]?
-    
+
     var formattedCreateDate: String? {
         guard let dtDate = dt_date else { return nil }
         return Utilities.convertDateStringToDate(stringDate: dtDate, outputFormat: "yyyy-MM-dd")
@@ -150,14 +139,34 @@ struct OrderAddress: Codable {
     let createAt: String?
     let isHidden: Bool?
     let _id: String?
+    let title: String?
     let lat: Double?
     let lng: Double?
+    let address: String?
     let user_id: String?
     let discount: Double?
 }
 
 struct Employee: Codable {
-    // إذا لاحقًا جالك بيانات موظف ضيف خصائصه هنا
+    let _id: String?
+    let createAt: String?
+    let isBlock: Bool?
+    let rate: Double?
+    let image: String?
+    let email: String?
+    let phone_number: String?
+    let password: String?
+    let full_name: String?
+    let supervisor_id: String?
+    let address: String?
+    let supplier_id: String?
+    let special_id: String?
+    let os: String?
+    let verify_code: String?
+    let fcmToken: String?
+    let isDeleted: Bool?
+    let isVerify: Bool?
+    let isAvailable: Bool?
 }
 
 struct Provider: Codable {
@@ -180,7 +189,20 @@ struct Provider: Codable {
 }
 
 struct Supervisor: Codable {
-    // إذا جالك داتا مش فاضية، ضيف خصائصها هنا
+    let isDeleted: Bool?
+    let rate: Double?
+    let createAt: String?
+    let _id: String?
+    let image: String?
+    let email: String?
+    let phone_number: String?
+    let password: String?
+    let name: String?
+    let isBlock: Bool?
+    let supplier_id: String?
+    let place_id: String?
+    let city_id: String?
+    let __v: Int?
 }
 
 struct OrderCount: Codable {

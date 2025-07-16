@@ -172,7 +172,7 @@ class OrderViewModel: ObservableObject {
         }
     }
 
-    func getOrders(status: String?, page: Int?, limit: Int?) {
+    func getOrders(params: [String: Any], page: Int?, limit: Int?) {
         guard let token = userSettings.token else {
             handleAPIError(.customError(message: LocalizedStringKey.tokenError))
             return
@@ -181,16 +181,16 @@ class OrderViewModel: ObservableObject {
         isFetchingMoreData = true
         errorMessage = nil
 
-        let endpoint = DataProvider.Endpoint.getOrders(status: status, page: page, limit: limit, token: token)
+        let endpoint = DataProvider.Endpoint.getOrders(params: params, page: page, limit: limit, token: token)
 
         dataProvider.request(endpoint: endpoint, responseType: OrderResponse.self) { [weak self] result in
             guard let self = self else { return }
             self.isLoading = false
             self.isFetchingMoreData = false
-
+print("rrrr \(result)")
             switch result {
             case .success(let response):
-                if response.statusCode == 200 {
+                if response.code == 200 {
                     if let items = response.items {
                         self.orders.append(contentsOf: items)
                         self.totalPages = response.pagination?.totalPages ?? 1
@@ -210,14 +210,14 @@ class OrderViewModel: ObservableObject {
         }
     }
 
-    func loadMoreOrders(status: String?, limit: Int?) {
+    func loadMoreOrders(params: [String: Any], limit: Int?) {
         guard !isFetchingMoreData, currentPage < totalPages else {
             // Don't fetch more data while a request is already in progress or no more pages available
             return
         }
 
         currentPage += 1
-        getOrders(status: status, page: currentPage, limit: limit)
+        getOrders(params: params, page: currentPage, limit: limit)
     }
     
     func getOrderDetails(orderId: String, onsuccess: @escaping () -> Void) {
@@ -229,8 +229,10 @@ class OrderViewModel: ObservableObject {
         isLoading = true
         errorMessage = nil
         let endpoint = DataProvider.Endpoint.getOrderDetails(orderId: orderId, token: token)
-        
+        print("orderId ttt \(orderId)")
+
         dataProvider.request(endpoint: endpoint, responseType: SingleAPIResponse<OrderBody>.self) { [weak self] result in
+            print("result ttt \(result)")
             guard let self = self else { return }
             self.isLoading = false
             switch result {
@@ -394,14 +396,10 @@ extension OrderViewModel {
         self.orderRealtimeRef = ref
         self.orderListenerHandle = ref.observe(.value, with: { [weak self] snapshot in
             guard let dict = snapshot.value as? [String: Any] else { return }
-            if let jsonData = try? JSONSerialization.data(withJSONObject: dict),
-               let realtimeOrder = try? JSONDecoder().decode(OrderRealTime.self, from: jsonData) {
+            if let status = dict["status"] as? String {
                 DispatchQueue.main.async {
-                    if var order = self?.orderBody {
-                        order.status = realtimeOrder.status
-                        // ... إذا فيه حقول ثانية ضيفها هنا
-                        self?.orderBody = order
-                    }
+                    self?.orderBody?.status = status
+                    self?.getOrderDetails(orderId: orderId) {}
                 }
             }
         })

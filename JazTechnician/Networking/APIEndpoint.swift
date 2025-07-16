@@ -23,7 +23,7 @@ enum APIEndpoint {
     case updateOfferStatus(orderId: String, params: [String: Any], token: String)
     case updateOrderStatus(orderId: String, params: [String: Any], token: String)
     case map(params: [String: Any], token: String)
-    case getOrders(status: String?, page: Int?, limit: Int?, token: String)
+    case getOrders(params: [String: Any], page: Int?, limit: Int?, token: String)
     case getOrderDetails(orderId: String, token: String)
     case addReview(orderID: String, params: [String: Any], token: String)
     case getNotifications(page: Int?, limit: Int?, token: String)
@@ -102,7 +102,7 @@ enum APIEndpoint {
         case .getConstantDetails(let _id):
             return "/mobile/constant/static/\(_id)"
         case .register:
-            return "/mobile/user/create_login"
+            return "/driver/login"
         case .verify:
             return "/mobile/user/verify"
         case .resend:
@@ -114,7 +114,7 @@ enum APIEndpoint {
         case .getUserProfile:
             return "/mobile/user/get-user"
         case .logout(let userID):
-            return "/mobile/user/logout/\(userID)"
+            return "/mobile/employee/logout/\(userID)"
         case .addOrder:
             return "/mobile/order/add"
         case .addOfferToOrder(orderId: let orderId, _ , _):
@@ -131,13 +131,9 @@ enum APIEndpoint {
             } else {
                 return "/mobile/order/map"
             }
-        case .getOrders(status: let status, page: let page, limit: let limit, _):
+        case .getOrders(_, page: let page, limit: let limit, _):
             var params: [String: Any] = [:]
 
-            if let status = status {
-                params["status"] = status
-
-            }
             if let page = page {
                 params["page"] = page
 
@@ -147,11 +143,11 @@ enum APIEndpoint {
             }
 
             if !params.isEmpty {
-                var url = "/mobile/order/get?"
+                var url = "/driver/order?"
                 url += params.map { "\($0.key)=\($0.value)" }.joined(separator: "&")
                 return url
             } else {
-                return "/mobile/order/get"
+                return "/driver/order"
             }
         case .getOrderDetails(orderId: let orderId, _):
             return "/mobile/order/single/\(orderId)"
@@ -250,7 +246,7 @@ enum APIEndpoint {
         case .guest:
             return "/mobile/guest/token"
         case .deleteAccount(let id, _):
-            return "/mobile/delete/\(id)"
+            return "/mobile/driver/delete/\(id)"
         case .getContact:
             return "/mobile/constant/contact_options"
         case .tamaraCheckout:
@@ -485,9 +481,9 @@ enum APIEndpoint {
     
     var method: HTTPMethod {
         switch self {
-        case .getWelcome, .getConstants, .getUserProfile, .getConstantDetails, .map, .getOrders, .getOrderDetails, .getNotifications, .getWallet, .getCategories, .getAddressByType, .getAddressList, .getRates, .getAppConstants, .getHome, .guest, .getContact, .getProducts, .getProductDetails, .cartCount, .getFavorite, .getWishGroups, .getGroup, .getFriends, .explore, .reminder, .getUserWishes, .getWish, .getSubCategories, .getOrderCount:
+        case .getWelcome, .getConstants, .getUserProfile, .getConstantDetails, .map, .getOrderDetails, .getNotifications, .getWallet, .getCategories, .getAddressByType, .getAddressList, .getRates, .getAppConstants, .getHome, .guest, .getContact, .getProducts, .getProductDetails, .cartCount, .getFavorite, .getWishGroups, .getGroup, .getFriends, .explore, .reminder, .getUserWishes, .getWish, .getSubCategories, .getOrderCount:
             return .get
-        case .register, .verify, .resend, .updateUserDataWithImage, .updateUserData, .logout, .addOrder, .addOfferToOrder, .updateOfferStatus, .updateOrderStatus, .addReview, .deleteNotification, .addBalanceToWallet, .addComplain, .createReferal, .checkCoupon, .addAddress, .updateAddress, .deleteAddress, .getTotalPrices, .deleteAccount, .tamaraCheckout, .checkPlace, .checkPoint, .rechangePoint, .addToCart, .getCartItems, .cartTotal, .updateCartItems, .deleteCart, .deleteCartItem, .addToFavorite, .addGroup, .editGroup, .deleteGroup, .addFriend, .addReminder, .deleteReminder, .addUserProduct, .addVIP, .addWish, .payWish, .checkCartCoupun, .addOrderWish, .refreshFcmToken, .registerCompany:
+        case .register, .verify, .resend, .updateUserDataWithImage, .updateUserData, .logout, .addOrder, .addOfferToOrder, .updateOfferStatus, .updateOrderStatus, .addReview, .deleteNotification, .addBalanceToWallet, .addComplain, .createReferal, .checkCoupon, .addAddress, .updateAddress, .deleteAddress, .getTotalPrices, .deleteAccount, .tamaraCheckout, .checkPlace, .checkPoint, .rechangePoint, .addToCart, .getCartItems, .cartTotal, .updateCartItems, .deleteCart, .deleteCartItem, .addToFavorite, .addGroup, .editGroup, .deleteGroup, .addFriend, .addReminder, .deleteReminder, .addUserProduct, .addVIP, .addWish, .payWish, .checkCartCoupun, .addOrderWish, .refreshFcmToken, .registerCompany, .getOrders:
             return .post
         }
     }
@@ -508,9 +504,9 @@ enum APIEndpoint {
     
     var parameters: [String: Any]? {
         switch self {
-        case .getWelcome, .getConstants, .getConstantDetails, .getUserProfile, .logout, .map, .getOrders, .getOrderDetails, .getNotifications, .deleteNotification, .getWallet, .createReferal, .getCategories, .getAddressByType, .getAddressList, .getRates, .getAppConstants, .getHome, .guest, .deleteAccount, .getContact, .getProducts, .getProductDetails, .getCartItems, .deleteCart, .cartCount, .cartTotal, .getFavorite, .getWishGroups, .getGroup, .getFriends, .explore, .reminder, .getUserWishes, .getWish, .getSubCategories, .getOrderCount:
+        case .getWelcome, .getConstants, .getConstantDetails, .getUserProfile, .logout, .map, .getOrderDetails, .getNotifications, .deleteNotification, .getWallet, .createReferal, .getCategories, .getAddressByType, .getAddressList, .getRates, .getAppConstants, .getHome, .guest, .deleteAccount, .getContact, .getProducts, .getProductDetails, .getCartItems, .deleteCart, .cartCount, .cartTotal, .getFavorite, .getWishGroups, .getGroup, .getFriends, .explore, .reminder, .getUserWishes, .getWish, .getSubCategories, .getOrderCount:
             return nil
-        case .register(let params), .verify(let params), .resend(let params), .updateUserDataWithImage(let params, _, _), .updateUserData(let params, _), .addOrder(let params, _), .addOfferToOrder(_, let params, _), .updateOfferStatus(_, let params, _), .updateOrderStatus(_, let params, _), .addReview(_, let params, _), .addBalanceToWallet(let params, _), .addComplain(let params, _), .checkCoupon(let params, _), .addAddress(let params, _), .updateAddress(let params, _), .getTotalPrices(let params, _), .tamaraCheckout(let params, _), .checkPlace(let params, _), .checkPoint(let params, _), .rechangePoint(let params, _), .addToCart(let params, _), .updateCartItems(let params, _), .deleteCartItem(let params, _), .addToFavorite(let params, _), .addGroup(let params, _), .editGroup(_, let params, _), .deleteGroup(_, let params, _), .addFriend(let params, _), .addReminder(let params, _), .deleteReminder(_, let params, _), .addUserProduct(let params, _), .addVIP(let params, _), .addWish(let params, _), .payWish(_, let params, _), .checkCartCoupun(let params, _), .addOrderWish(let params, _), .refreshFcmToken(let params, _), .registerCompany(let params):
+        case .register(let params), .verify(let params), .resend(let params), .updateUserDataWithImage(let params, _, _), .updateUserData(let params, _), .addOrder(let params, _), .addOfferToOrder(_, let params, _), .updateOfferStatus(_, let params, _), .updateOrderStatus(_, let params, _), .addReview(_, let params, _), .addBalanceToWallet(let params, _), .addComplain(let params, _), .checkCoupon(let params, _), .addAddress(let params, _), .updateAddress(let params, _), .getTotalPrices(let params, _), .tamaraCheckout(let params, _), .checkPlace(let params, _), .checkPoint(let params, _), .rechangePoint(let params, _), .addToCart(let params, _), .updateCartItems(let params, _), .deleteCartItem(let params, _), .addToFavorite(let params, _), .addGroup(let params, _), .editGroup(_, let params, _), .deleteGroup(_, let params, _), .addFriend(let params, _), .addReminder(let params, _), .deleteReminder(_, let params, _), .addUserProduct(let params, _), .addVIP(let params, _), .addWish(let params, _), .payWish(_, let params, _), .checkCartCoupun(let params, _), .addOrderWish(let params, _), .refreshFcmToken(let params, _), .getOrders(let params, _, _, _), .registerCompany(let params):
             return params
         case .deleteAddress(let id, _):
             let params: [String: Any] = ["id": id]

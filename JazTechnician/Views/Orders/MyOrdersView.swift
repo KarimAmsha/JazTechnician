@@ -3,7 +3,7 @@ import SwiftUI
 struct MyOrdersView: View {
     @EnvironmentObject var appRouter: AppRouter
     @StateObject var viewModel = OrderViewModel(errorHandling: ErrorHandling())
-    @State var orderType: OrderStatus = .new
+    @State var orderType: OrderStatus = .accepted
     @State private var searchText: String = ""
 
     var filteredOrders: [OrderModel] {
@@ -24,7 +24,7 @@ struct MyOrdersView: View {
                 // شريط الحالات
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 3) {
-                        OrderStatusButton(title: LocalizedStringKey.news, status: .new, selectedStatus: $orderType)
+                        OrderStatusButton(title: LocalizedStringKey.new, status: .accepted, selectedStatus: $orderType)
                         OrderStatusButton(title: LocalizedStringKey.started, status: .started, selectedStatus: $orderType)
                         OrderStatusButton(title: LocalizedStringKey.way, status: .way, selectedStatus: $orderType)
                         OrderStatusButton(title: LocalizedStringKey.progress, status: .progress, selectedStatus: $orderType)
@@ -121,9 +121,7 @@ struct MyOrdersView: View {
         .onReceive(viewModel.$orders) { orders in
             // إذا أي طلب خرج من التاب الحالي (حالة تغيرت)، انتقل للتاب الصحيح تلقائي
             if let changedOrder = orders.first(where: { $0.status != orderType.rawValue }) {
-                if let newStatus = OrderStatus(rawValue: changedOrder.status ?? "") {
-                    orderType = newStatus
-                }
+                orderType = OrderStatus(rawValue: changedOrder.status ?? "") 
             }
         }
     }
@@ -137,11 +135,13 @@ extension MyOrdersView {
     func loadData() {
         viewModel.currentPage = 0
         viewModel.orders.removeAll()
-        viewModel.getOrders(status: orderType.rawValue, page: 0, limit: 10)
+        let params: [String: Any] = ["status": orderType.rawValue, "order_no": searchText]
+        viewModel.getOrders(params: params, page: 0, limit: 10)
     }
 
     func loadMore() {
-        viewModel.loadMoreOrders(status: orderType.rawValue, limit: 10)
+        let params: [String: Any] = ["status": orderType.rawValue, "order_no": searchText]
+        viewModel.loadMoreOrders(params: params, limit: 10)
     }
     
     private func updateOrderStatus(orderID: String, status: OrderStatus, canceledNote: String = "") {

@@ -19,7 +19,7 @@ class InitialViewModel: ObservableObject {
     @Published var errorMessage: String?
     private var cancellables = Set<AnyCancellable>()
     private let errorHandling: ErrorHandling
-    @Published var homeItems: [HomeSection] = []
+    @Published var homeSections: [HomeSection] = []
     @Published var products: [Products] = []
     @Published var product: Products?
     @Published var currentPage = 0
@@ -32,6 +32,7 @@ class InitialViewModel: ObservableObject {
     @Published var whatsAppContactItem: Contact?
     @Published var subCategories: [SubCategoryItem] = []
     @Published var appConstants: [AppConstantItem] = []
+    @Published var homeItems: HomeItems?
 
     init(errorHandling: ErrorHandling) {
         self.errorHandling = errorHandling
@@ -45,6 +46,34 @@ class InitialViewModel: ObservableObject {
         return currentPage < totalPages
     }
     
+    func fetchHomeItems(q: String?, lat: Double, lng: Double) {
+        isLoading = true
+        errorMessage = nil
+        let endpoint = DataProvider.Endpoint.getHome(q: q, lat: lat, lng: lng)
+        
+        DataProvider.shared.request(endpoint: endpoint, responseType: SingleAPIResponse<HomeItems>.self)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    // Use the centralized error handling component
+                    self.handleAPIError(error)
+                }
+            }, receiveValue: { [weak self] (response: SingleAPIResponse<HomeItems>) in
+//                print("ssss \(response)")
+                if response.status {
+                    self?.homeItems = response.items
+                    self?.errorMessage = nil
+                } else {
+                    // Use the centralized error handling component
+                    self?.handleAPIError(.customError(message: response.message))
+                }
+                self?.isLoading = false
+            })
+            .store(in: &cancellables)
+    }
+
     func fetchWelcomeItems() {
         isLoading = true
         errorMessage = nil
@@ -587,4 +616,10 @@ extension InitialViewModel {
         let errorDescription = errorHandling.handleAPIError(error)
         errorMessage = errorDescription
     }
+}
+
+struct HomeItems: Codable, Hashable {
+    let category: [Category]?
+    let slider: [Slider]?
+    let whatsApp: WhatsApp?
 }
