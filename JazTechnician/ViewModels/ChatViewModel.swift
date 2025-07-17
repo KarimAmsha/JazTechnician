@@ -27,10 +27,15 @@ class ChatViewModel: ObservableObject {
     private let pushService = PushNotificationService()
     private var typingTimer: Timer?
     @Published var users: [String: FirebaseUser] = [:]
+    private var receiverId: String?
 
-    init(chatId: String, currentUserId: String) {
+    init(chatId: String, currentUserId: String, receiverId: String?) {
         self.chatId = chatId
         self.currentUserId = currentUserId
+        self.receiverId = receiverId
+
+        print("11ss \(self.chatId)")
+        print("1122 \(self.currentUserId)")
 
         #if DEBUG
         if chatId == "debug" {
@@ -97,13 +102,58 @@ class ChatViewModel: ObservableObject {
     }
 
     func sendMessage() {
-        guard !messageText.trimmingCharacters(in: .whitespaces).isEmpty else { return }
-        guard let chat = chat else { return }
+        guard let receiverId = self.receiverId, !receiverId.isEmpty else {
+            print("🚨 Error: receiverId is nil or empty")
+            return
+        }
+
+        guard !messageText.trimmingCharacters(in: .whitespaces).isEmpty else {
+            print("❌ Empty message")
+            return
+        }
 
         let timestamp = Int(Date().timeIntervalSince1970)
-        let newMessageRef = dbRef.child("messages").child(chatId).child("messagesList").childByAutoId()
-        let messageId = newMessageRef.key ?? UUID().uuidString
+        let messageId = UUID().uuidString
 
+        // في حال ما تم تحميل chat بعد
+        if chat == nil {
+            print("🆕 إنشاء شات جديد تلقائيًا")
+
+            // مؤقتًا خمن الطرف الآخر
+            let receiverIdGuess = self.receiverId ?? (currentUserId == UserSettings.shared.id ? nil : UserSettings.shared.id)
+
+            let newChat: FirebaseChat = FirebaseChat(
+                id: chatId,
+                chatEnabled: true,
+                lastMessage: messageText,
+                lastMessageDate: Int64(timestamp),
+                orderId: nil,
+                senderId: currentUserId,
+                receiverId: receiverIdGuess,
+                messagesList: nil
+            )
+
+            let chatData: [String: Any] = [
+                "chatEnabled": true,
+                "senderId": newChat.senderId ?? "",
+                "receiverId": newChat.receiverId ?? "",
+                "lastMessage": messageText,
+                "lastMessageDate": timestamp
+            ]
+
+            dbRef.child("messages").child(chatId).setValue(chatData)
+
+            DispatchQueue.main.async {
+                self.chat = newChat
+            }
+        } else {
+            dbRef.child("messages").child(chatId).updateChildValues([
+                "lastMessage": messageText,
+                "lastMessageDate": timestamp
+            ])
+        }
+
+        // أضف الرسالة
         let messageData: [String: Any] = [
             "id": messageId,
             "message": messageText,
@@ -111,16 +161,11 @@ class ChatViewModel: ObservableObject {
             "senderId": currentUserId
         ]
 
+        let newMessageRef = dbRef.child("messages").child(chatId).child("messagesList").child(messageId)
         newMessageRef.setValue(messageData)
 
-        dbRef.child("messages").child(chatId).updateChildValues([
-            "lastMessage": messageText,
-            "lastMessageDate": timestamp
-        ])
-
-        let receiverId = chat.senderId == currentUserId ? chat.receiverId : chat.senderId
-
-        if let receiverId = receiverId {
+        // إشعار للطرف الآخر
+        if let receiverId = chat?.senderId == currentUserId ? chat?.receiverId : chat?.senderId {
             userService.fetchUser(userId: receiverId) { user in
                 if let token = user?.fcmToken {
                     self.pushService.sendPush(
@@ -166,7 +211,7 @@ class ChatViewModel: ObservableObject {
 
 class MockChatViewModel: ChatViewModel {
     init() {
-        super.init(chatId: "mock_chat_id", currentUserId: "user1")
+        super.init(chatId: "mock_chat_id", currentUserId: "user1", receiverId: "user2")
         self.messages = [
             FirebaseMessage(id: "1", message: "مرحبا، كيف فيني أساعدك؟", messageDate: Int64(Date().timeIntervalSince1970 - 300), senderId: "user2"),
             FirebaseMessage(id: "2", message: "عندي استفسار عن الخدمة اللي بتقدمها", messageDate: Int64(Date().timeIntervalSince1970 - 200), senderId: "user1"),
@@ -187,10 +232,51 @@ class MockChatViewModel: ChatViewModel {
 }
 
 extension ChatViewModel {
+    func isValidFirebaseKey(_ key: String?) -> Bool {
+        guard let key = key, !key.isEmpty else { return false }
+        let forbiddenCharacters = CharacterSet(charactersIn: ".$#[]")
+        return key.rangeOfCharacter(from: forbiddenCharacters) == nil
+    }
+
+    func fetchUserIfNeeded(for userId: String) {
+        print("👀 Trying to fetch userId: \(userId)")
+
+        guard !userId.isEmpty,
+              userId.rangeOfCharacter(from: CharacterSet(charactersIn: ".$#[]")) == nil else {
+            print("❌ Invalid Firebase Key: \(userId)")
+            return
+        }
+
+        guard users[userId] == nil else {
+            print("ℹ️ User already loaded: \(userId)")
+            return
+        }
+
+        let ref = Database.database().reference().child("user").child(userId)
+        ref.observeSingleEvent(of: .value) { snapshot in
+            guard let value = snapshot.value as? [String: Any] else {
+                print("❌ Snapshot empty or invalid for userId: \(userId)")
+                return
+            }
+
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: value)
+                let user = try JSONDecoder().decode(FirebaseUser.self, from: jsonData)
+                print("✅ User fetched: \(user.displayName)")
+                DispatchQueue.main.async {
+                    self.users[userId] = user
+                }
+            } catch {
+                print("❌ Decoding error for userId \(userId): \(error)")
+            }
+        }
+    }
+
     func getUser(for userId: String) -> FirebaseUser? {
         guard !userId.isEmpty, userId.rangeOfCharacter(from: CharacterSet(charactersIn: ".$#[]")) == nil else { return nil }
 
         if let user = users[userId] {
+            print("1111 \(user)")
             return user
         }
         // جلب من الداتابيز إذا لم يكن موجود
@@ -200,6 +286,7 @@ extension ChatViewModel {
             do {
                 let jsonData = try JSONSerialization.data(withJSONObject: value)
                 let user = try JSONDecoder().decode(FirebaseUser.self, from: jsonData)
+                print("22222 \(user)")
                 DispatchQueue.main.async {
                     self.users[userId] = user
                 }

@@ -128,8 +128,8 @@ struct MainView: View {
                     FreelancerProfileView()
                 case .serviceDetails:
                     ServiceDetailsView()
-                case .chat(let chatId, let currentUserId):
-                    ChatDetailView(chatId: chatId, currentUserId: currentUserId)
+                case .chat(let chatId, let currentUserId, let receiverId):
+                    ChatDetailView(chatId: chatId, currentUserId: currentUserId, receiverId: receiverId)
                 case .subCategory(let title, let categoryId):
                     SubCategoryView(title: title, categoryId: categoryId)
                 case .subSubCategory(let title, let items, let mainCategoryId, let subCategoryId):

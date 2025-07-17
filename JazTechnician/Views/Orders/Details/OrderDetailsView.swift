@@ -98,11 +98,11 @@ struct OrderDetailsView: View {
             viewModel.getOrderDetails(orderId: orderID) {
                 viewModel.startListeningOrderRealtime(orderId: orderID)
             }
-//            LocationManager.shared.getCurrentLocation { coordinate in
-//                guard let coordinate = coordinate else { return }
+            LocationManager.shared.getCurrentLocation { coordinate in
+                guard let coordinate = coordinate else { return }
                 if (initialViewModel.homeItems?.category ?? []).isEmpty {
-                    initialViewModel.fetchHomeItems(q: nil, lat: 16.93002447563705, lng: 42.55263087854291)
-//                }
+                    initialViewModel.fetchHomeItems(q: nil, lat: coordinate.latitude, lng: coordinate.longitude)
+                }
             }
         }
         .onDisappear { viewModel.stopListeningOrderRealtime() }
@@ -232,7 +232,7 @@ struct OrderDetailsView: View {
                     onChat: {
                         let myId = UserSettings.shared.id ?? ""
                         let chatId = Utilities.makeChatId(currentUserId: myId, otherUserId: customerId)
-                        appRouter.navigate(to: .chat(chatId: chatId, currentUserId: myId))
+                        appRouter.navigate(to: .chat(chatId: chatId, currentUserId: myId, receiverId: customerId))
                     }
                 )
             )

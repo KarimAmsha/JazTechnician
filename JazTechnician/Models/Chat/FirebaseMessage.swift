@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FirebaseMessage: Codable, Identifiable {
+struct FirebaseMessage: Codable, Identifiable, Equatable {
     var id: String?
     var message: String?
     var messageDate: Int64?
