@@ -43,12 +43,12 @@ struct StatBox: View {
             }
 
             Text(title)
-                .font(.system(size: 15, weight: .semibold))
+                .customFont(weight: .medium, size: 16)
                 .foregroundColor(.black)
                 .lineLimit(1)
 
             Text("\(count)")
-                .font(.system(size: 23, weight: .heavy))
+                .customFont(weight: .medium, size: 16)
                 .foregroundColor(Color.primary())
         }
         .frame(height: 118)
@@ -113,7 +113,7 @@ struct HomeView: View {
                     }
 
                     Text(LocalizedStringKey.statistics)
-                        .font(.system(size: 20, weight: .bold))
+                        .customFont(weight: .bold, size: 18)
                         .foregroundColor(.black)
                 }
             }

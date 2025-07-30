@@ -37,12 +37,12 @@ struct OrderLocationSection: View {
                 Button(action: { showFullMap = true }) {
                     HStack(spacing: 3) {
                         Image(systemName: "map")
-                        Text("عرض على الخريطة")
+                        Text("عرض الموقع ")
                             .customFont(weight: .medium, size: 12)
                     }
-                    .foregroundColor(.blue0094FF())
+                    .foregroundColor(.black121212())
                 }
-                .buttonStyle(.plain)
+                .buttonStyle(CustomButtonStyle(fontSize: 14, fontWeight: .medium, background: .primary(), foreground: .white))
             }
 
             Text(address)
@@ -62,7 +62,7 @@ struct OrderLocationSection: View {
             )
         }
         .padding(12)
-        .background(Color.backgroundFEF3DE())
+        .background(Color.white)
         .cornerRadius(14)
         .sheet(isPresented: $showFullMap) {
             FullScreenMapView(address: address, lat: lat, lng: lng)

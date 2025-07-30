@@ -57,7 +57,7 @@ struct CustomerCardWithChatButtonView: View {
                 Spacer()
             }
             .padding()
-            .background(Color.backgroundFEF3DE())
+            .background(Color.white)
             .cornerRadius(16)
             .overlay(
                 RoundedRectangle(cornerRadius: 16)

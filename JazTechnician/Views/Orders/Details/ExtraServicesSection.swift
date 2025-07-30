@@ -142,14 +142,14 @@ struct ExtraServicesSection: View {
                         .padding(.bottom, 12)
                     }
                     .padding(.horizontal, 16)
-                    .background(Color.backgroundFEF3DE().ignoresSafeArea())
+                    .background(Color.white.ignoresSafeArea())
                     .presentationDetents([.medium, .large])
                     .presentationCornerRadius(18)
                 }
             }
         }
         .padding()
-        .background(Color.backgroundFEF3DE())
+        .background(Color.white)
         .cornerRadius(12)
         .padding(.top, 8)
         .animation(.easeInOut, value: newServices)

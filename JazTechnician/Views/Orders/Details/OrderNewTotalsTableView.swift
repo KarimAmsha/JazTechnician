@@ -24,7 +24,7 @@ struct OrderNewTotalsTableView: View {
             }
         }
         .padding()
-        .background(Color.backgroundFEF3DE())
+        .background(Color.white)
         .cornerRadius(12)
         .padding(.top, 12)
     }

@@ -17,8 +17,7 @@ struct OrderStatusButton: View {
             selectedStatus = status
         }) {
             Text(title)
-                .font(.subheadline)
-                .fontWeight(selectedStatus == status ? .bold : .regular)
+                .customFont(weight: .medium, size: 15)
                 .foregroundColor(selectedStatus == status ? .white : .primary)
                 .padding(.vertical, 8)
                 .padding(.horizontal, 18)

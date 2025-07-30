@@ -36,7 +36,7 @@ struct LoginView: View {
                 VStack(alignment: .leading, spacing: 28) {
                     // عنوان
                     Text("مرحباً بك!")
-                        .font(.system(size: 28, weight: .bold))
+                        .customFont(weight: .medium, size: 16)
                         .foregroundColor(.black)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.top, 32)
@@ -44,7 +44,7 @@ struct LoginView: View {
                     // حقل الجوال
                     VStack(alignment: .leading, spacing: 8) {
                         Text("رقم الهاتف")
-                            .font(.system(size: 16, weight: .medium))
+                            .customFont(weight: .medium, size: 16)
                             .foregroundColor(.black)
                         MobileView(mobile: $mobile, presentSheet: $presentSheet)
                     }
@@ -52,7 +52,7 @@ struct LoginView: View {
                     // كلمة المرور
                     VStack(alignment: .leading, spacing: 8) {
                         Text("كلمة المرور")
-                            .font(.system(size: 15, weight: .regular))
+                            .customFont(weight: .medium, size: 16)
                             .foregroundColor(Color(hex: "#222B45"))
                             .padding(.leading, 4)
                         ZStack {
@@ -68,12 +68,12 @@ struct LoginView: View {
                             HStack {
                                 if showPassword {
                                     TextField("كلمة المرور", text: $password)
-                                        .font(.system(size: 17))
+                                        .customFont(weight: .medium, size: 16)
                                         .foregroundColor(.black)
                                         .autocapitalization(.none)
                                 } else {
                                     SecureField("كلمة المرور", text: $password)
-                                        .font(.system(size: 17))
+                                        .customFont(weight: .medium, size: 16)
                                         .foregroundColor(.black)
                                         .autocapitalization(.none)
                                 }
@@ -91,7 +91,7 @@ struct LoginView: View {
                     // هل نسيت كلمة المرور؟
                     Button(action: { showForgotPassword = true }) {
                         Text("هل نسيت كلمة المرور؟")
-                            .font(.system(size: 15, weight: .bold))
+                            .customFont(weight: .medium, size: 16)
                             .foregroundColor(Color(hex: "#222B45"))
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     }
@@ -119,7 +119,7 @@ struct LoginView: View {
                                 .cornerRadius(12)
                         } else {
                             Text("تسجيل الدخول")
-                                .font(.system(size: 18, weight: .bold))
+                                .customFont(weight: .medium, size: 16)
                                 .foregroundColor(.white)
                                 .frame(maxWidth: .infinity)
                                 .frame(height: 48)
@@ -135,7 +135,7 @@ struct LoginView: View {
                         showCompanyRegisterSheet = true
                     }) {
                         Text("تسجيل الشركات")
-                            .font(.system(size: 20, weight: .bold))
+                            .customFont(weight: .medium, size: 16)
                             .foregroundColor(Color(hex: "#222B45"))
                             .frame(maxWidth: .infinity)
                             .frame(height: 52)
@@ -149,13 +149,13 @@ struct LoginView: View {
                     // تواصل معنا
                     HStack(spacing: 3) {
                         Text("هل تواجه مشكلة في تسجيل الدخول؟")
-                            .font(.system(size: 15, weight: .regular))
+                            .customFont(weight: .medium, size: 16)
                             .foregroundColor(Color(hex: "#666"))
                         Button(action: {
                             appRouter.navigate(to: .contactUs)
                         }) {
                             Text("تواصل معنا!")
-                                .font(.system(size: 15, weight: .bold))
+                                .customFont(weight: .medium, size: 16)
                                 .foregroundColor(Color.primary())
                         }
                     }
@@ -269,7 +269,7 @@ struct ForgotPasswordView: View {
         VStack(spacing: 24) {
             HStack {
                 Text("استعادة كلمة المرور")
-                    .font(.title2.bold())
+                    .customFont(weight: .regular, size: 16)
                 Spacer()
                 Button(action: { isPresented = false }) {
                     Image(systemName: "xmark")

@@ -49,6 +49,7 @@ struct ChatBubble: View {
                 Spacer(minLength: 40)
             }
         }
+        .customFont(weight: .medium, size: 14)
         .frame(maxWidth: .infinity, alignment: isSender ? .trailing : .leading)
         .padding(isSender ? .leading : .trailing, 70)
         .padding(.vertical, 2)

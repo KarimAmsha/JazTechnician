@@ -155,16 +155,29 @@ struct OrderDetailsView: View {
 
     // MARK: - Sections
     func mainInfoSection(_ order: OrderBody) -> some View {
+        // بيانات الخدمة الرئيسية
         VStack(spacing: 6) {
             HStack(alignment: .center) {
                 VStack(alignment: .leading, spacing: 5) {
-                    HStack(spacing: 4) {
-                        Text(order.category_id?.title ?? "-")
-                        Text("•")
-                        Text(order.sub_category_id?.title ?? "-")
+                    HStack {
+                        Image(systemName: "wrench.and.screwdriver.fill")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                            .foregroundColor(.primary())
+                            .background(Color.backgroundFEF3DE())
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                        Text("الخدمة")
+                            .customFont(weight: .bold, size: 18)
+                            .foregroundColor(.black121212())
                     }
-                    .customFont(weight: .medium, size: 15)
+                    HStack {
+                        Text(order.category_id?.title ?? "")
+                        Text(" / ")
+                        Text(order.sub_category_id?.title ?? "")
+                    }
+                    .customFont(weight: .medium, size: 14)
                     .foregroundColor(.black121212())
+                    
                     if let date = order.formattedCreateDate {
                         Text(date)
                             .customFont(weight: .light, size: 12)
@@ -177,12 +190,6 @@ struct OrderDetailsView: View {
                     }
                 }
                 Spacer()
-                Image(systemName: "wrench.and.screwdriver.fill")
-                    .resizable()
-                    .frame(width: 34, height: 34)
-                    .foregroundColor(.primary())
-                    .background(Color.backgroundFEF3DE())
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
             }
             .padding(.vertical, 8)
         }
@@ -205,7 +212,7 @@ struct OrderDetailsView: View {
                 .padding(.vertical, 4)
         }
         .padding(12)
-        .background(Color.backgroundFEF3DE())
+        .background(Color.white)
         .cornerRadius(10)
     }
     func orderInfoSection(_ order: OrderBody) -> some View {

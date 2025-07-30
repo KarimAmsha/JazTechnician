@@ -58,12 +58,12 @@ struct OrderStatusStepperView: View {
             }
             .padding(.vertical, 16)
             .padding(.horizontal, 8)
-            .background(Color.backgroundFEF3DE())
+            .background(Color.white)
             .cornerRadius(14)
         }
         .padding(.vertical, 14)
         .padding(.horizontal, 8)
-        .background(Color.backgroundFEF3DE())
+        .background(Color.white)
         .cornerRadius(14)
         .onAppear {
             print("sttttt \(status)")

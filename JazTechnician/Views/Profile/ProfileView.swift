@@ -472,7 +472,7 @@ struct UserProfileSheetView: View {
                 }
             }
             .padding()
-            .background(Color.backgroundFEF3DE())
+            .background(Color.white)
             .cornerRadius(12)
             .padding(.horizontal, 6)
 

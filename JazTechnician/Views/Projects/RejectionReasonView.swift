@@ -15,10 +15,10 @@ struct RejectionReasonView: View {
             HStack {
                 VStack(alignment: .leading) {
                     Text("سبب الرفض")
-                        .font(.title3).bold()
+                        .customFont(weight: .medium, size: 14)
 
                     Text("تم رفض هذه الخدمة من قبل العميل للأسباب التالية. الرجاء مراجعة التفاصيل بعناية.")
-                        .font(.footnote)
+                        .customFont(weight: .medium, size: 14)
                         .foregroundColor(.gray)
                         .multilineTextAlignment(.leading)
                 }
